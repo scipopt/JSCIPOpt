@@ -63,7 +63,7 @@ JNIOBJ	=	$(JNISRC:.c=.o)
 #-----------------------------------------------------------------------------
 CFLAGS	+=	-fpic
 FLAGS		+=	-I$(JAVAINC) -I$(SCIPINC)
-LDFLAGS	= --shared
+LDFLAGS	+= -shared
 
 JAVAC_d	=	-d
 JARFLAGS =	cf
@@ -86,17 +86,18 @@ endif
 .PHONY: library
 library: | $(OBJDIR) $(LIBDIR) $(CLASSDIR)
 		@echo "-> compiling $(OBJDIR)/$(JNIOBJ)"
-		$(CC) $(CC_c) $(SRCDIR)/$(JNISRC) $(FLAGS) $(CFLAGS) $(CC_o) $(OBJDIR)/$(JNIOBJ)
+		$(CC) $(CC_c) $(SRCDIR)/$(JNISRC) $(FLAGS) $(CFLAGS) $(CC_o)$(OBJDIR)/$(JNIOBJ)
 		@echo "-> generating library $(LIBDIR)/$(JNILIB).$(SHAREDLIBEXT)"
-		$(LD) $(LDFLAGS) $(LINKCC_L)$(LIBDIR) -l$(SCIPOPTLIB) $(OBJDIR)/$(JNIOBJ) $(LINKCC_o) $(LIBDIR)/$(JNILIB).$(SHAREDLIBEXT)
+		$(LINKCC) $(LINKCC_o)$(LIBDIR)/$(JNILIB).$(SHAREDLIBEXT) $(LDFLAGS) $(OBJDIR)/$(JNIOBJ) $(LINKCC_L)$(LIBDIR) $(LINKCC_l)$(SCIPOPTLIB)
 		@echo "-> compiling all java files"
 		$(JAVAC) $(JAVAC_d) $(CLASSDIR) $(JAVASRCDIR)/*.java
 
 # generate jar file containing all class files
 .PHONY: jar
-jar: | library $(JAVAOBJ)
+jar: | library $(CLASSDIR)
 		@echo "-> generate $(LIBDIR)/$(SCIPJAR)"
-		$(JAR) $(JARFLAGS) $(LIBDIR)/$(SCIPJAR) $(JARSRCFILES)
+      # todo: creating the jar from the main directory adds $(CLASSDIR) to the package name; how can we avoid this?
+		cd $(CLASSDIR); $(JAR) $(JARFLAGS) ../$(LIBDIR)/$(SCIPJAR) $(PACKAGENAME)/*.class; cd -
 
 # generates JNI interface with SWIG
 .PHONY: swig
@@ -123,4 +124,4 @@ $(LIBDIR):
 		@-mkdir -p $(LIBDIR)
 
 $(CLASSDIR):
-		@-mkdir -p $(CLASSDIR)
+		@-mkdir -p $(CLASSDIR)/$(PACKAGENAME)
