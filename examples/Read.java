@@ -8,7 +8,7 @@ public class Read
       if( args.length == 0 || args.length > 2 )
       {
          System.out.println("usage: java Read <input file> <settings file (optional)>");
-	 return;
+         return;
       }
 
       // load generated C-library
