@@ -11,21 +11,23 @@ You need to download the following software packages to use/extend the Java inte
 
 The following steps need to be done before compiling the Java interface.
 
-1) Create a shared library of the SCIP optimization suite by executing
+1) Create a shared library of the [SCIP optimization suite](http://scip.zib.de/#download) by executing
 
     make SHARED=true scipoptlib
 
-You find the library (*.so) in the ./lib directory of the optimization suite. Copy the library to the lib directory of
-JSCIPOpt and rename it to libscipopt.so.
+in the SCIP optimization suite directory.
+Afterwards, you will find the library (*.so) in the ./lib directory of the optimization suite.
 
-2) Create a symbolic link in JSCIPOpt to the include directory of Java JDK and to the source directory of SCIP (in the
-optimization suite)
+2) Create a symbolic link in JSCIPOpt to the library compiled in 1), to the include directory of Java JDK and to the source directory of
+SCIP (in the optimization suite)
 
+    mkdir -p lib;
     cd lib;
     ln -s <Java JDK include directory> javainc
     ln -s <SCIP source directory> scipinc
+    ln -s <SCIP source directory>/lib/<scip opt library> libscipopt.so
 
-3a) This step is only necessary if you have modified src/scipjni.i. If this is the case call 
+3a) This step is only necessary if you have modified src/scipjni.i. If this is the case call
 
     make swig SWIG=<path to the SWIG binary>
 
@@ -57,9 +59,9 @@ After building the Java interface the compilation of the examples works as follo
 
 2) Run the examples with the run.sh script, e.g.,
 
-    run.sh Read <instance file> <settings file (optional)>
-    run.sh Linear
-    run.sh Quadratic
+    ./run.sh Read <instance file> <settings file (optional)>
+    ./run.sh Linear
+    ./run.sh Quadratic
 
 
 ============================
