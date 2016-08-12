@@ -42,7 +42,7 @@ How to extend the interface
 ===========================
 
 The package already contains an interface to SCIP created with the Simplified Wrapper and Interface Generator
-[http://www.swig.org/]. Extending the interface requires to install SWIG. The following steps are necessary to add a new
+[SWIG](http://www.swig.org/). Extending the interface requires to install SWIG. The following steps are necessary to add a new
 function to the interface:
 
 1) Add the signature of an interface function to src/scipjni.i, e.g.,
