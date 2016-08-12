@@ -47,6 +47,8 @@ JNIOBJ	=	$(JNISRC:.c=.o)
 # compiler and linker parameters
 #-----------------------------------------------------------------------------
 FLAGS		+=	-I$(JAVAINC) -I$(SCIPINC)
+FLAGS 		+=     	$(addprefix -I,$(wildcard $(JAVAINC)/linux))
+FLAGS 		+=     	$(addprefix -I,$(wildcard $(JAVAINC)/win32))
 
 ifeq ($(COMP),msvc)
 	LDFLAGS	+= -dll
