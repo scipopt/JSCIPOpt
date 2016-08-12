@@ -75,7 +75,7 @@ JARSRCFILES	=	$(subst $(CLASSDIR)/, -C $(CLASSDIR) ,$(shell find $(CLASSDIR)/$(P
 -include make.$(BASE)
 
 .PHONY: all
-all:  swig library jar
+all:  library jar
 
 ifeq ($(VERBOSE),false)
 .SILENT:	library jar swig clean
