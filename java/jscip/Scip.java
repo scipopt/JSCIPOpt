@@ -1,3 +1,5 @@
+package jscip;
+
 /** Class representing a single SCIP instance (equivalent of SCIP).*/
 public class Scip
 {
@@ -50,6 +52,12 @@ public class Scip
    public void readProb(String filename)
    {
       CHECK_RETCODE( SCIPJNI.SCIPreadProb(_scipptr, filename, null) );
+   }
+   
+   /** wraps SCIPreadParams() */
+   public void readParams(String filename)
+   {
+      CHECK_RETCODE( SCIPJNI.SCIPreadParams(_scipptr, filename) );
    }
 
    /** wraps SCIPwriteOrigProblem() */

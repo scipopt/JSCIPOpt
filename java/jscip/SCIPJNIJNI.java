@@ -6,6 +6,7 @@
  * the SWIG interface file instead.
  * ----------------------------------------------------------------------------- */
 
+package jscip;
 
 public class SCIPJNIJNI {
   public final static native long new_double_array(int jarg1);
@@ -44,11 +45,10 @@ public class SCIPJNIJNI {
   public final static native int SCIP_VARTYPE_IMPLINT_get();
   public final static native int SCIP_VARTYPE_CONTINUOUS_get();
   public final static native double SCIPcalcMachineEpsilon();
-  public final static native int SCIPcalcGreComDiv(int jarg1, int jarg2);
-  public final static native long SCIPfileExists(String jarg1);
   public final static native int SCIPcreate(long jarg1);
   public final static native int SCIPgetNVars(long jarg1);
   public final static native int SCIPreadProb(long jarg1, String jarg2, String jarg3);
+  public final static native int SCIPreadParams(long jarg1, String jarg2);
   public final static native int SCIPcreateProbBasic(long jarg1, String jarg2);
   public final static native int SCIPincludeDefaultPlugins(long jarg1);
   public final static native int SCIPsolve(long jarg1);

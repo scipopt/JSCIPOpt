@@ -6,6 +6,7 @@
  * the SWIG interface file instead.
  * ----------------------------------------------------------------------------- */
 
+package jscip;
 
 public final class SCIP_Vartype {
   public final static SCIP_Vartype SCIP_VARTYPE_BINARY = new SCIP_Vartype("SCIP_VARTYPE_BINARY", SCIPJNIJNI.SCIP_VARTYPE_BINARY_get());

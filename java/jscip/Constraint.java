@@ -1,3 +1,5 @@
+package jscip;
+
 /** Class representing a single constraint (equivalent of SCIP_CONS).*/
 public class Constraint
 {

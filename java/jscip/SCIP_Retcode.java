@@ -6,6 +6,7 @@
  * the SWIG interface file instead.
  * ----------------------------------------------------------------------------- */
 
+package jscip;
 
 public final class SCIP_Retcode {
   public final static SCIP_Retcode SCIP_OKAY = new SCIP_Retcode("SCIP_OKAY", SCIPJNIJNI.SCIP_OKAY_get());

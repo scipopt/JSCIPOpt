@@ -1,3 +1,5 @@
+package jscip;
+
 /** Class representing a single solution (equivalent of SCIP_SOL).*/
 public class Solution
 {

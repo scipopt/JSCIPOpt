@@ -6,6 +6,7 @@
  * the SWIG interface file instead.
  * ----------------------------------------------------------------------------- */
 
+package jscip;
 
 public class SCIPJNI {
   public static SWIGTYPE_p_double new_double_array(int nelements) {
@@ -65,14 +66,6 @@ public class SCIPJNI {
     return SCIPJNIJNI.SCIPcalcMachineEpsilon();
   }
 
-  public static int SCIPcalcGreComDiv(int val1, int val2) {
-    return SCIPJNIJNI.SCIPcalcGreComDiv(val1, val2);
-  }
-
-  public static long SCIPfileExists(String filename) {
-    return SCIPJNIJNI.SCIPfileExists(filename);
-  }
-
   public static SCIP_Retcode SCIPcreate(SWIGTYPE_p_p_SCIP scip) {
     return SCIP_Retcode.swigToEnum(SCIPJNIJNI.SCIPcreate(SWIGTYPE_p_p_SCIP.getCPtr(scip)));
   }
@@ -83,6 +76,10 @@ public class SCIPJNI {
 
   public static SCIP_Retcode SCIPreadProb(SWIGTYPE_p_SCIP scip, String filename, String extension) {
     return SCIP_Retcode.swigToEnum(SCIPJNIJNI.SCIPreadProb(SWIGTYPE_p_SCIP.getCPtr(scip), filename, extension));
+  }
+
+  public static SCIP_Retcode SCIPreadParams(SWIGTYPE_p_SCIP scip, String filename) {
+    return SCIP_Retcode.swigToEnum(SCIPJNIJNI.SCIPreadParams(SWIGTYPE_p_SCIP.getCPtr(scip), filename));
   }
 
   public static SCIP_Retcode SCIPcreateProbBasic(SWIGTYPE_p_SCIP scip, String probname) {

@@ -6,6 +6,7 @@
  * the SWIG interface file instead.
  * ----------------------------------------------------------------------------- */
 
+package jscip;
 
 public class SWIGTYPE_p_SCIP_SOL {
   private transient long swigCPtr;

@@ -1,3 +1,5 @@
+package jscip;
+
 /** Class representing a single variable (equivalent of SCIP_VAR).*/
 public class Variable
 {

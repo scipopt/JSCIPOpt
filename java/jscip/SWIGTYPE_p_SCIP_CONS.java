@@ -6,19 +6,20 @@
  * the SWIG interface file instead.
  * ----------------------------------------------------------------------------- */
 
+package jscip;
 
-public class SWIGTYPE_p_double {
+public class SWIGTYPE_p_SCIP_CONS {
   private transient long swigCPtr;
 
-  protected SWIGTYPE_p_double(long cPtr, @SuppressWarnings("unused") boolean futureUse) {
+  protected SWIGTYPE_p_SCIP_CONS(long cPtr, @SuppressWarnings("unused") boolean futureUse) {
     swigCPtr = cPtr;
   }
 
-  protected SWIGTYPE_p_double() {
+  protected SWIGTYPE_p_SCIP_CONS() {
     swigCPtr = 0;
   }
 
-  protected static long getCPtr(SWIGTYPE_p_double obj) {
+  protected static long getCPtr(SWIGTYPE_p_SCIP_CONS obj) {
     return (obj == null) ? 0 : obj.swigCPtr;
   }
 }
