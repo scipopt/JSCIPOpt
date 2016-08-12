@@ -86,7 +86,7 @@ library: | $(OBJDIR) $(LIBDIR) $(CLASSDIR)
 jar: | library $(CLASSDIR)
 		@echo "-> generate $(LIBDIR)/$(SCIPJAR)"
       # todo: creating the jar from the main directory adds $(CLASSDIR) to the package name; how can we avoid this?
-		cd $(CLASSDIR); $(JAR) $(JARFLAGS) ../$(LIBDIR)/$(SCIPJAR) $(PACKAGENAME)/*.class; cd -
+		cd $(CLASSDIR); $(JAR) $(JARFLAGS) ../$(LIBDIR)/$(SCIPJAR) $(PACKAGENAME)/*.class; cd ..
 
 # generates JNI interface with SWIG
 .PHONY: swig
