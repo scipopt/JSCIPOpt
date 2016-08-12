@@ -10,12 +10,12 @@ public class Read
          System.out.println("usage: java Read <input file> <settings file (optional)>");
 	 return;
       }
-   
+
       // load generated C-library
-      System.loadLibrary("jni");
-  
+      System.loadLibrary("jscip");
+
       Scip scip = new Scip();
-      
+
       // set up data structures of SCIP
       scip.create(args[0]);
 
@@ -28,7 +28,7 @@ public class Read
 
       // solve problem
       scip.solve();
-      
+
       // print statistics and the best found solution (only non-zeros)
       scip.printStatistics();
       scip.printBestSol(false);

@@ -26,7 +26,7 @@ JAVAINC	=	$(LIBDIR)/javainc
 SCIPINC	=	$(LIBDIR)/scipinc
 
 SCIPOPTLIB	=	scipopt
-JNILIB		=	libjni
+JNILIB		=	libjscip
 SCIPJAR		=	scip.jar
 PACKAGENAME	=	jscip
 
