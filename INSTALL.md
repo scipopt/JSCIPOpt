@@ -25,7 +25,7 @@ SCIP (in the optimization suite)
     cd lib;
     ln -s <Java JDK include directory> javainc
     ln -s <SCIP source directory> scipinc
-    ln -s <SCIP source directory>/lib/<scip opt library> libscipopt.so
+    ln -s <SCIP opt suite directory>/lib/<scip opt library> libscipopt.so
 
 3a) This step is only necessary if you have modified src/scipjni.i. If this is the case call
 
