@@ -61,13 +61,17 @@ JNIOBJ	=	$(JNISRC:.c=.o)
 #-----------------------------------------------------------------------------
 # compiler and linker parameters
 #-----------------------------------------------------------------------------
-CFLAGS	+=	-fpic
 FLAGS		+=	-I$(JAVAINC) -I$(SCIPINC)
-LDFLAGS	+= -shared
+
+ifeq ($(COMP),msvc)
+	LDFLAGS	+= -dll
+else
+	CFLAGS	+=	-fpic
+	LDFLAGS	+= -shared
+endif
 
 JAVAC_d	=	-d
 JARFLAGS =	cf
-JARSRCFILES	=	$(subst $(CLASSDIR)/, -C $(CLASSDIR) ,$(shell find $(CLASSDIR)/$(PACKAGENAME) -name '*.class'))
 
 #-----------------------------------------------------------------------------
 # include additional make files
