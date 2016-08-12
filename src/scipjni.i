@@ -110,13 +110,12 @@ typedef enum SCIP_Vartype SCIP_VARTYPE;
 
 /* from pub_misc.h */
 SCIP_Real      SCIPcalcMachineEpsilon();
-SCIP_Longint   SCIPcalcGreComDiv(SCIP_Longint val1, SCIP_Longint val2);
-SCIP_Bool      SCIPfileExists(const char* filename);
 
 /* from scip.h*/
 SCIP_RETCODE   SCIPcreate(SCIP** scip);
 int            SCIPgetNVars(SCIP* scip);
 SCIP_RETCODE   SCIPreadProb(SCIP* scip, const char* filename, const char* extension);
+SCIP_RETCODE   SCIPreadParams(SCIP* scip, const char* filename);
 SCIP_RETCODE   SCIPcreateProbBasic(SCIP* scip, const char* probname);
 SCIP_RETCODE   SCIPincludeDefaultPlugins(SCIP* scip);
 SCIP_RETCODE   SCIPsolve(SCIP* scip);
