@@ -9,19 +9,19 @@ serve as an entry point for writing more complex code. The following steps are a
 
 1) It is necessary to add
 
-    'import jscip.*;'
+    import jscip.*;
 
-to your code. This allows to use all classes contained in the interface.
+to the beginning of your Java file. This imports all needed classes to use the interfaces.
 
 2) Create a solver instance and initialize the internal C data structures with
 
     Scip scip = new SCIP();
     scip.create("Example");
 
-This is equivalent to calling `SCIPcreate(&scip); SCIPcreateProbBasic(scip, "Example")` in C.
+This is the equivalent to calling `SCIPcreate(&scip)` and `SCIPcreateProbBasic(scip, "Example")` in C.
 
-3) The most important classes are Scip.java, Variable.java, Constraint.java, and Solution.java. They are equivalent to
-the C data structs `SCIP`, `SCIP_VAR`, `SCIP_CONS`, and `SCIP_SOL`. Using the classes is very similar to C, e.g.,
+3) The most important classes are Scip.java, Variable.java, Constraint.java, and Solution.java. They represent
+the C data structs `SCIP`, `SCIP_VAR`, `SCIP_CONS`,`SCIP_SOL` and provide some basic functionality. Using the Java classes works similar to C , e.g.,
 
     Variable vars = new Variables[2];
     vars[0] = scip.createVar("x", 1.0, 2.0, -1.0, SCIP_Vartype.SCIP_VARTYPE_INTEGER);
@@ -35,15 +35,15 @@ the C data structs `SCIP`, `SCIP_VAR`, `SCIP_CONS`, and `SCIP_SOL`. Using the cl
     scip.solve();
     scip.free();
 
-which creates two variables, a linear constraint, adds it to SCIP and solves the problem.
+which creates two variables, a linear constraint, adds it to SCIP, solves the problem and finally frees it.
+
 
 ===========================
 How to extend the interface
 ===========================
 
 The package already contains an interface to SCIP created with the Simplified Wrapper and Interface Generator
-[SWIG](http://www.swig.org/). Extending the interface requires to install SWIG. The following steps are necessary to add a new
-function to the interface:
+[SWIG](http://www.swig.org/). Extending the interface requires to install SWIG. The following steps are necessary to add a new function to the interface:
 
 1) Add the signature of an interface function to src/scipjni.i, e.g.,
 
@@ -53,7 +53,7 @@ function to the interface:
 
     make swig SWIG=<path to swig>
 
-3) Implement the function, depending on its signature, in java/jscip/{Scip,Variable,Constraint,Solution}.java, e.g.,
+3) Implement the function, depending on its signature, in `java/jscip/{Scip,Variable,Constraint,Solution}.java`, e.g.,
 
     public class Scip
     {
