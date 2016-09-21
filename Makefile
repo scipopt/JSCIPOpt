@@ -49,6 +49,7 @@ JNIOBJ	=	$(JNISRC:.c=.o)
 FLAGS		+=	-I$(JAVAINC) -I$(SCIPINC)
 FLAGS 		+=     	$(addprefix -I,$(wildcard $(JAVAINC)/linux))
 FLAGS 		+=     	$(addprefix -I,$(wildcard $(JAVAINC)/win32))
+FLAGS 		+=     	$(addprefix -I,$(wildcard $(JAVAINC)/darwin))
 
 ifeq ($(COMP),msvc)
 	LDFLAGS	+= -dll
