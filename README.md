@@ -27,7 +27,7 @@ the C data structs `SCIP`, `SCIP_VAR`, `SCIP_CONS`,`SCIP_SOL` and provide some b
     vars[0] = scip.createVar("x", 1.0, 2.0, -1.0, SCIP_Vartype.SCIP_VARTYPE_INTEGER);
     vars[1] = scip.createVar("y", 3.0, 4.0, -2.0, SCIP_Vartype.SCIP_VARTYPE_CONTINUOUS);
 
-    double[] coefs = {1.0, -3.6};
+    double[] vals = {1.0, -3.6};
     Constraint lincons = scip.createConsLinear("lincons", vars, vals, -scip.infinity(), 10.0);
     scip.addCons(lincons);
     scip.releaseCons(lincons);
