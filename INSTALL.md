@@ -92,8 +92,8 @@ On a 64bit system this command should look like
 
 NOTE: To run one of the examples you need to change the line
 
-    System.loadLibrary("jni");
+    System.loadLibrary("jscip");
 
 to
 
-    System.loadLibrary("libjni");
+    System.loadLibrary("libjscip");
