@@ -207,6 +207,7 @@ static void SWIGUNUSED SWIG_JavaThrowException(JNIEnv *jenv, SWIG_JavaExceptionC
 
 
    #include "scip/scip.h"
+   #include "scip/scipdefplugins.h"
 
    /* assist function to create a SCIP */
    SCIP* createSCIP()
@@ -1161,6 +1162,149 @@ SWIGEXPORT jdouble JNICALL Java_jscip_SCIPJNIJNI_SCIPfeastol(JNIEnv *jenv, jclas
   arg1 = *(SCIP **)&jarg1; 
   result = (double)SCIPfeastol(arg1);
   jresult = (jdouble)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jint JNICALL Java_jscip_SCIPJNIJNI_SCIPsetBoolParam(JNIEnv *jenv, jclass jcls, jlong jarg1, jstring jarg2, jlong jarg3) {
+  jint jresult = 0 ;
+  SCIP *arg1 = (SCIP *) 0 ;
+  char *arg2 = (char *) 0 ;
+  unsigned int arg3 ;
+  SCIP_RETCODE result;
+  
+  (void)jenv;
+  (void)jcls;
+  arg1 = *(SCIP **)&jarg1; 
+  arg2 = 0;
+  if (jarg2) {
+    arg2 = (char *)(*jenv)->GetStringUTFChars(jenv, jarg2, 0);
+    if (!arg2) return 0;
+  }
+  arg3 = (unsigned int)jarg3; 
+  result = (SCIP_RETCODE)SCIPsetBoolParam(arg1,(char const *)arg2,arg3);
+  jresult = (jint)result; 
+  if (arg2) (*jenv)->ReleaseStringUTFChars(jenv, jarg2, (const char *)arg2);
+  return jresult;
+}
+
+
+SWIGEXPORT jint JNICALL Java_jscip_SCIPJNIJNI_SCIPsetIntParam(JNIEnv *jenv, jclass jcls, jlong jarg1, jstring jarg2, jint jarg3) {
+  jint jresult = 0 ;
+  SCIP *arg1 = (SCIP *) 0 ;
+  char *arg2 = (char *) 0 ;
+  int arg3 ;
+  SCIP_RETCODE result;
+  
+  (void)jenv;
+  (void)jcls;
+  arg1 = *(SCIP **)&jarg1; 
+  arg2 = 0;
+  if (jarg2) {
+    arg2 = (char *)(*jenv)->GetStringUTFChars(jenv, jarg2, 0);
+    if (!arg2) return 0;
+  }
+  arg3 = (int)jarg3; 
+  result = (SCIP_RETCODE)SCIPsetIntParam(arg1,(char const *)arg2,arg3);
+  jresult = (jint)result; 
+  if (arg2) (*jenv)->ReleaseStringUTFChars(jenv, jarg2, (const char *)arg2);
+  return jresult;
+}
+
+
+SWIGEXPORT jint JNICALL Java_jscip_SCIPJNIJNI_SCIPsetLongintParam(JNIEnv *jenv, jclass jcls, jlong jarg1, jstring jarg2, jint jarg3) {
+  jint jresult = 0 ;
+  SCIP *arg1 = (SCIP *) 0 ;
+  char *arg2 = (char *) 0 ;
+  long arg3 ;
+  SCIP_RETCODE result;
+  
+  (void)jenv;
+  (void)jcls;
+  arg1 = *(SCIP **)&jarg1; 
+  arg2 = 0;
+  if (jarg2) {
+    arg2 = (char *)(*jenv)->GetStringUTFChars(jenv, jarg2, 0);
+    if (!arg2) return 0;
+  }
+  arg3 = (long)jarg3; 
+  result = (SCIP_RETCODE)SCIPsetLongintParam(arg1,(char const *)arg2,arg3);
+  jresult = (jint)result; 
+  if (arg2) (*jenv)->ReleaseStringUTFChars(jenv, jarg2, (const char *)arg2);
+  return jresult;
+}
+
+
+SWIGEXPORT jint JNICALL Java_jscip_SCIPJNIJNI_SCIPsetRealParam(JNIEnv *jenv, jclass jcls, jlong jarg1, jstring jarg2, jdouble jarg3) {
+  jint jresult = 0 ;
+  SCIP *arg1 = (SCIP *) 0 ;
+  char *arg2 = (char *) 0 ;
+  double arg3 ;
+  SCIP_RETCODE result;
+  
+  (void)jenv;
+  (void)jcls;
+  arg1 = *(SCIP **)&jarg1; 
+  arg2 = 0;
+  if (jarg2) {
+    arg2 = (char *)(*jenv)->GetStringUTFChars(jenv, jarg2, 0);
+    if (!arg2) return 0;
+  }
+  arg3 = (double)jarg3; 
+  result = (SCIP_RETCODE)SCIPsetRealParam(arg1,(char const *)arg2,arg3);
+  jresult = (jint)result; 
+  if (arg2) (*jenv)->ReleaseStringUTFChars(jenv, jarg2, (const char *)arg2);
+  return jresult;
+}
+
+
+SWIGEXPORT jint JNICALL Java_jscip_SCIPJNIJNI_SCIPsetCharParam(JNIEnv *jenv, jclass jcls, jlong jarg1, jstring jarg2, jchar jarg3) {
+  jint jresult = 0 ;
+  SCIP *arg1 = (SCIP *) 0 ;
+  char *arg2 = (char *) 0 ;
+  char arg3 ;
+  SCIP_RETCODE result;
+  
+  (void)jenv;
+  (void)jcls;
+  arg1 = *(SCIP **)&jarg1; 
+  arg2 = 0;
+  if (jarg2) {
+    arg2 = (char *)(*jenv)->GetStringUTFChars(jenv, jarg2, 0);
+    if (!arg2) return 0;
+  }
+  arg3 = (char)jarg3; 
+  result = (SCIP_RETCODE)SCIPsetCharParam(arg1,(char const *)arg2,arg3);
+  jresult = (jint)result; 
+  if (arg2) (*jenv)->ReleaseStringUTFChars(jenv, jarg2, (const char *)arg2);
+  return jresult;
+}
+
+
+SWIGEXPORT jint JNICALL Java_jscip_SCIPJNIJNI_SCIPsetStringParam(JNIEnv *jenv, jclass jcls, jlong jarg1, jstring jarg2, jstring jarg3) {
+  jint jresult = 0 ;
+  SCIP *arg1 = (SCIP *) 0 ;
+  char *arg2 = (char *) 0 ;
+  char *arg3 = (char *) 0 ;
+  SCIP_RETCODE result;
+  
+  (void)jenv;
+  (void)jcls;
+  arg1 = *(SCIP **)&jarg1; 
+  arg2 = 0;
+  if (jarg2) {
+    arg2 = (char *)(*jenv)->GetStringUTFChars(jenv, jarg2, 0);
+    if (!arg2) return 0;
+  }
+  arg3 = 0;
+  if (jarg3) {
+    arg3 = (char *)(*jenv)->GetStringUTFChars(jenv, jarg3, 0);
+    if (!arg3) return 0;
+  }
+  result = (SCIP_RETCODE)SCIPsetStringParam(arg1,(char const *)arg2,(char const *)arg3);
+  jresult = (jint)result; 
+  if (arg2) (*jenv)->ReleaseStringUTFChars(jenv, jarg2, (const char *)arg2);
+  if (arg3) (*jenv)->ReleaseStringUTFChars(jenv, jarg3, (const char *)arg3);
   return jresult;
 }
 

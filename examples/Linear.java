@@ -28,6 +28,11 @@ public class Linear
       // release constraint (if not needed anymore)
       scip.releaseCons(lincons);
 
+      // set parameters
+      scip.setRealParam("limits/time", 100.0);
+      scip.setRealParam("limits/memory", 10000.0);
+      scip.setLongintParam("limits/totalnodes", 1000);
+
       // solve problem
       scip.solve();
 

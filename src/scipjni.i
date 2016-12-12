@@ -2,6 +2,7 @@
 %module SCIPJNI
 %{
    #include "scip/scip.h"
+   #include "scip/scipdefplugins.h"
 
    /* assist function to create a SCIP */
    SCIP* createSCIP()
@@ -136,6 +137,12 @@ SCIP_Real      SCIPgetSolOrigObj(SCIP* scip, SCIP_SOL* sol);
 SCIP_Real      SCIPinfinity(SCIP* scip);
 SCIP_Real      SCIPepsilon(SCIP* scip);
 SCIP_Real      SCIPfeastol(SCIP* scip);
+SCIP_RETCODE   SCIPsetBoolParam(SCIP* scip, const char* name, SCIP_Bool value);
+SCIP_RETCODE   SCIPsetIntParam(SCIP* scip, const char* name, int value);
+SCIP_RETCODE   SCIPsetLongintParam(SCIP* scip, const char* name, SCIP_Longint value);
+SCIP_RETCODE   SCIPsetRealParam(SCIP* scip, const char* name, SCIP_Real value);
+SCIP_RETCODE   SCIPsetCharParam(SCIP* scip, const char* name, char value);
+SCIP_RETCODE   SCIPsetStringParam(SCIP* scip, const char* name, const char* value);
 
 /* from memory.h */
 void           BMScheckEmptyMemory();

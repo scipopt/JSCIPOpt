@@ -161,6 +161,30 @@ public class SCIPJNI {
     return SCIPJNIJNI.SCIPfeastol(SWIGTYPE_p_SCIP.getCPtr(scip));
   }
 
+  public static SCIP_Retcode SCIPsetBoolParam(SWIGTYPE_p_SCIP scip, String name, long value) {
+    return SCIP_Retcode.swigToEnum(SCIPJNIJNI.SCIPsetBoolParam(SWIGTYPE_p_SCIP.getCPtr(scip), name, value));
+  }
+
+  public static SCIP_Retcode SCIPsetIntParam(SWIGTYPE_p_SCIP scip, String name, int value) {
+    return SCIP_Retcode.swigToEnum(SCIPJNIJNI.SCIPsetIntParam(SWIGTYPE_p_SCIP.getCPtr(scip), name, value));
+  }
+
+  public static SCIP_Retcode SCIPsetLongintParam(SWIGTYPE_p_SCIP scip, String name, int value) {
+    return SCIP_Retcode.swigToEnum(SCIPJNIJNI.SCIPsetLongintParam(SWIGTYPE_p_SCIP.getCPtr(scip), name, value));
+  }
+
+  public static SCIP_Retcode SCIPsetRealParam(SWIGTYPE_p_SCIP scip, String name, double value) {
+    return SCIP_Retcode.swigToEnum(SCIPJNIJNI.SCIPsetRealParam(SWIGTYPE_p_SCIP.getCPtr(scip), name, value));
+  }
+
+  public static SCIP_Retcode SCIPsetCharParam(SWIGTYPE_p_SCIP scip, String name, char value) {
+    return SCIP_Retcode.swigToEnum(SCIPJNIJNI.SCIPsetCharParam(SWIGTYPE_p_SCIP.getCPtr(scip), name, value));
+  }
+
+  public static SCIP_Retcode SCIPsetStringParam(SWIGTYPE_p_SCIP scip, String name, String value) {
+    return SCIP_Retcode.swigToEnum(SCIPJNIJNI.SCIPsetStringParam(SWIGTYPE_p_SCIP.getCPtr(scip), name, value));
+  }
+
   public static void BMScheckEmptyMemory() {
     SCIPJNIJNI.BMScheckEmptyMemory();
   }
