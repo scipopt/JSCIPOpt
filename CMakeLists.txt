@@ -1,0 +1,71 @@
+cmake_minimum_required (VERSION 2.8)
+project (JSCIPOpt)
+
+# find JNI and java
+find_package (JNI REQUIRED)
+find_package (Java REQUIRED)
+include (UseJava)
+
+# list of all java sourcse
+set(SWIG_JAVA_SOURCES
+  ${PROJECT_SOURCE_DIR}/java/jscip/SCIPJNI.java
+  ${PROJECT_SOURCE_DIR}/java/jscip/SCIPJNIJNI.java
+  ${PROJECT_SOURCE_DIR}/java/jscip/SCIP_Retcode.java
+  ${PROJECT_SOURCE_DIR}/java/jscip/SCIP_Vartype.java
+  ${PROJECT_SOURCE_DIR}/java/jscip/SWIGTYPE_p_double.java
+  ${PROJECT_SOURCE_DIR}/java/jscip/SWIGTYPE_p_FILE.java
+  ${PROJECT_SOURCE_DIR}/java/jscip/SWIGTYPE_p_p_SCIP.java
+  ${PROJECT_SOURCE_DIR}/java/jscip/SWIGTYPE_p_p_SCIP_SOL.java
+  ${PROJECT_SOURCE_DIR}/java/jscip/SWIGTYPE_p_p_SCIP_VAR.java
+  ${PROJECT_SOURCE_DIR}/java/jscip/SWIGTYPE_p_SCIP_CONS.java
+  ${PROJECT_SOURCE_DIR}/java/jscip/SWIGTYPE_p_SCIP.java
+  ${PROJECT_SOURCE_DIR}/java/jscip/SWIGTYPE_p_SCIP_SOL.java
+  ${PROJECT_SOURCE_DIR}/java/jscip/SWIGTYPE_p_SCIP_VAR.java
+  )
+
+set(JAVA_SOURCES
+  ${SWIG_JAVA_SOURCES}
+  ${PROJECT_SOURCE_DIR}/java/jscip/Constraint.java
+  ${PROJECT_SOURCE_DIR}/java/jscip/Scip.java
+  ${PROJECT_SOURCE_DIR}/java/jscip/Variable.java
+  ${PROJECT_SOURCE_DIR}/java/jscip/Constraint.java
+  ${PROJECT_SOURCE_DIR}/java/jscip/Solution.java
+  )
+
+# find SWIG
+find_package (SWIG)
+if (SWIG_FOUND)
+  add_custom_command(OUTPUT ${PROJECT_SOURCE_DIR}/src/scipjni_wrap.c ${SWIG_JAVA_SOURCES}
+    COMMAND ${SWIG_EXECUTABLE} -package jscip -java ${PROJECT_SOURCE_DIR}/src/scipjni.i
+    COMMAND mv ${PROJECT_SOURCE_DIR}/src/*.java ${PROJECT_SOURCE_DIR}/java/jscip/
+    DEPENDS ${PROJECT_SOURCE_DIR}/src/scipjni.i)
+endif()
+
+# include directories
+include_directories ("${JNI_INCLUDE_DIRS}" ${PROJECT_SOURCE_DIR}/lib/scipinc ${PROJECT_SOURCE_DIR}/src)
+
+# link directories
+link_directories (${PROJECT_SOURCE_DIR}/lib)
+
+# find SCIP library
+FILE (GLOB SCIPOPT_LIBRARIES ${PROJECT_SOURCE_DIR}/lib/*scip*.*)
+#find_library (SCIPOPT_LIBRARIES NAMES scipopt PATHS ${PROJECT_SOURCE_DIR}/lib)
+
+# build JSCIPOpt library
+add_library (jscip SHARED ${PROJECT_SOURCE_DIR}/src/scipjni_wrap.c ${PROJECT_SOURCE_DIR}/lib)
+
+# add dependencies of other libraries
+target_link_libraries (jscip ${SCIPOPT_LIBRARIES} ${JNI_LIBRARIES})
+
+# generate jar
+add_jar (scipjar
+        SOURCES ${JAVA_SOURCES}
+        OUTPUT_NAME scip
+        )
+
+# generate jar containing all examples
+FILE (GLOB example_sources ${PROJECT_SOURCE_DIR}/examples/*.java)
+add_jar (examples
+        SOURCES ${example_sources}
+        INCLUDE_JARS scipjar
+        )
