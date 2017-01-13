@@ -108,12 +108,12 @@ Building JSCIPOpt with CMake
 --------
    mkdir build
    cd build
-   cmake ..
-   cmake --build . --config <Release or Debug>
+   cmake .. [-DCMAKE_BUILD_TYPE=<"Debug" or "Release", default: "Release">]
+   make
    java -cp scip.jar:examples.jar <"Linear" or "Quadratic" or "Read">
 
 ---------
- WINDOWS
+ Windows
 ---------
    mkdir build
    cd build
