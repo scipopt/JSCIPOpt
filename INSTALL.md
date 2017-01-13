@@ -97,3 +97,26 @@ NOTE: To run one of the examples you need to change the line
 to
 
     System.loadLibrary("libjscip");
+
+
+============================
+Building JSCIPOpt with CMake
+============================
+
+--------
+ Linux
+--------
+   mkdir build
+   cd build
+   cmake ..
+   cmake --build . --config <Release or Debug>
+   java -cp scip.jar:examples.jar <"Linear" or "Quadratic" or "Read">
+
+---------
+ WINDOWS
+---------
+   mkdir build
+   cd build
+   cmake .. -G "Visual Studio 14 2015 Win64"
+   cmake --build . --config <"Release" or "Debug">
+   PATH=$PATH:../lib:./<"Release" or "Debug"> java -cp "scip.jar;examples.jar" <"Linear" or "Quadratic" or "Read">

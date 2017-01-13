@@ -1,12 +1,23 @@
+#@file    CMakeLists.txt
+#@brief   CMake file for Java interface for the SCIP Optimization Suite
+#@author  Robert Gottwald, Benjamin Mueller
+
 cmake_minimum_required (VERSION 2.8)
 project (JSCIPOpt)
 
+set(CMAKE_BUILD_TYPE "Release")
+
+
+#
 # find JNI and java
+#
 find_package (JNI REQUIRED)
 find_package (Java REQUIRED)
 include (UseJava)
 
+#
 # list of all java sourcse
+#
 set(SWIG_JAVA_SOURCES
   ${PROJECT_SOURCE_DIR}/java/jscip/SCIPJNI.java
   ${PROJECT_SOURCE_DIR}/java/jscip/SCIPJNIJNI.java
@@ -32,7 +43,9 @@ set(JAVA_SOURCES
   ${PROJECT_SOURCE_DIR}/java/jscip/Solution.java
   )
 
+#
 # find SWIG
+#
 find_package (SWIG)
 if (SWIG_FOUND)
   add_custom_command(OUTPUT ${PROJECT_SOURCE_DIR}/src/scipjni_wrap.c ${SWIG_JAVA_SOURCES}
@@ -41,29 +54,50 @@ if (SWIG_FOUND)
     DEPENDS ${PROJECT_SOURCE_DIR}/src/scipjni.i)
 endif()
 
+#
 # include directories
+#
 include_directories ("${JNI_INCLUDE_DIRS}" ${PROJECT_SOURCE_DIR}/lib/scipinc ${PROJECT_SOURCE_DIR}/src)
 
+#
 # link directories
+#
 link_directories (${PROJECT_SOURCE_DIR}/lib)
 
+#
 # find SCIP library
-FILE (GLOB SCIPOPT_LIBRARIES ${PROJECT_SOURCE_DIR}/lib/*scip*.*)
-#find_library (SCIPOPT_LIBRARIES NAMES scipopt PATHS ${PROJECT_SOURCE_DIR}/lib)
+#
+file (GLOB SCIPOPT_SO  ${PROJECT_SOURCE_DIR}/lib/*scip*.so RELATIVE_PATH)
+get_filename_component (SCIPOPT_SO_LIBRARY "${SCIPOPT_SO}" NAME)
+file (GLOB SCIPOPT_LIB  ${PROJECT_SOURCE_DIR}/lib/*scip*.lib RELATIVE_PATH)
+get_filename_component (SCIPOPT_LIB_LIBRARY "${SCIPOPT_LIB}" NAME)
+file (GLOB SCIPOPT_DYLIB  ${PROJECT_SOURCE_DIR}/lib/*scip*.dylib RELATIVE_PATH)
+get_filename_component (SCIPOPT_DYLIB_LIBRARY "${SCIPOPT_DYLIB}" NAME)
 
+find_library (SCIPOPT_LIBRARIES NAMES ${SCIPOPT_SO_LIBRARY} ${SCIPOPT_LIB_LIBRARY} ${SCIPOPT_DYLIB_LIBRARY} HINTS ${PROJECT_SOURCE_DIR}/lib)
+message ("found SCIP library: ${SCIPOPT_LIBRARIES}")
+
+#
 # build JSCIPOpt library
+#
 add_library (jscip SHARED ${PROJECT_SOURCE_DIR}/src/scipjni_wrap.c ${PROJECT_SOURCE_DIR}/lib)
 
+#
 # add dependencies of other libraries
+#
 target_link_libraries (jscip ${SCIPOPT_LIBRARIES} ${JNI_LIBRARIES})
 
+#
 # generate jar
+#
 add_jar (scipjar
         SOURCES ${JAVA_SOURCES}
         OUTPUT_NAME scip
         )
 
+#
 # generate jar containing all examples
+#
 FILE (GLOB example_sources ${PROJECT_SOURCE_DIR}/examples/*.java)
 add_jar (examples
         SOURCES ${example_sources}
