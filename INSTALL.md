@@ -38,6 +38,7 @@ Compile the interface by executing the following commands:
 
 Execute the examples via
 
+ - export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:./
  - java -cp scip.jar:examples.jar <"Linear" or "Quadratic" or "Read">
 
 3b) Building JSCIPOpt on Windows.
@@ -51,4 +52,5 @@ Compile the interface by executing the following commands:
 
 Execute the examples via
 
+ - export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:./
  - PATH=$PATH:../lib:./<"Release" or "Debug"> java -cp "scip.jar;examples.jar" <"Linear" or "Quadratic" or "Read">
