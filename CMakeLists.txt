@@ -25,6 +25,7 @@ set(SWIG_JAVA_SOURCES
   ${PROJECT_SOURCE_DIR}/java/jscip/SCIPJNIJNI.java
   ${PROJECT_SOURCE_DIR}/java/jscip/SCIP_Retcode.java
   ${PROJECT_SOURCE_DIR}/java/jscip/SCIP_Vartype.java
+  ${PROJECT_SOURCE_DIR}/java/jscip/SCIP_ParamEmphasis.java
   ${PROJECT_SOURCE_DIR}/java/jscip/SWIGTYPE_p_double.java
   ${PROJECT_SOURCE_DIR}/java/jscip/SWIGTYPE_p_FILE.java
   ${PROJECT_SOURCE_DIR}/java/jscip/SWIGTYPE_p_p_SCIP.java
