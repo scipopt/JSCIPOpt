@@ -99,6 +99,12 @@ public class Scip
       CHECK_RETCODE( SCIPJNI.SCIPsetStringParam(_scipptr, name, value) );
    }
 
+   /** wraps SCIPsetEmphasis() */
+   public void setEmphasis(SCIP_ParamEmphasis paramEmphasis, boolean quite) 
+   {
+      CHECK_RETCODE( SCIPJNI.SCIPsetEmphasis(_scipptr, paramEmphasis, quite ? 1 : 0) );
+   }
+
    /** wraps SCIPwriteOrigProblem() */
    public void writeOrigProblem(String filename)
    {

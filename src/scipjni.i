@@ -109,6 +109,22 @@ enum SCIP_Vartype
 };
 typedef enum SCIP_Vartype SCIP_VARTYPE;
 
+/* SCIP ParamEmphasis enum */
+enum SCIP_ParamEmphasis 
+{ 
+  SCIP_PARAMEMPHASIS_DEFAULT = 0, 
+  SCIP_PARAMEMPHASIS_CPSOLVER = 1, 
+  SCIP_PARAMEMPHASIS_EASYCIP = 2, 
+  SCIP_PARAMEMPHASIS_FEASIBILITY = 3, 
+  SCIP_PARAMEMPHASIS_HARDLP = 4, 
+  SCIP_PARAMEMPHASIS_OPTIMALITY = 5, 
+  SCIP_PARAMEMPHASIS_COUNTER = 6, 
+  SCIP_PARAMEMPHASIS_PHASEFEAS = 7, 
+  SCIP_PARAMEMPHASIS_PHASEIMPROVE = 8, 
+  SCIP_PARAMEMPHASIS_PHASEPROOF = 9 
+};
+typedef enum SCIP_ParamEmphasis SCIP_PARAMEMPHASIS;
+
 /* from pub_misc.h */
 SCIP_Real      SCIPcalcMachineEpsilon();
 
@@ -143,6 +159,7 @@ SCIP_RETCODE   SCIPsetLongintParam(SCIP* scip, const char* name, SCIP_Longint va
 SCIP_RETCODE   SCIPsetRealParam(SCIP* scip, const char* name, SCIP_Real value);
 SCIP_RETCODE   SCIPsetCharParam(SCIP* scip, const char* name, char value);
 SCIP_RETCODE   SCIPsetStringParam(SCIP* scip, const char* name, const char* value);
+SCIP_RETCODE   SCIPsetEmphasis(SCIP* scip, SCIP_PARAMEMPHASIS paramemphasis, SCIP_Bool quiet);
 
 /* from memory.h */
 void           BMScheckEmptyMemory();
