@@ -23,6 +23,7 @@ This is the equivalent to calling `SCIPcreate(&scip)` and `SCIPcreateProbBasic(s
 data structs `SCIP`, `SCIP_VAR`, `SCIP_CONS`,`SCIP_SOL` and provide some basic functionality. Using the Java classes
 works similar to C , e.g.,
 
+    ```
     Variable vars = new Variables[2];
     vars[0] = scip.createVar("x", 1.0, 2.0, -1.0, SCIP_Vartype.SCIP_VARTYPE_INTEGER);
     vars[1] = scip.createVar("y", 3.0, 4.0, -2.0, SCIP_Vartype.SCIP_VARTYPE_CONTINUOUS);
@@ -34,6 +35,7 @@ works similar to C , e.g.,
 
     scip.solve();
     scip.free();
+    ```
 
 which creates two variables, a linear constraint, adds it to SCIP, solves the problem and finally frees it.
 
@@ -47,10 +49,11 @@ a new function to the interface:
 
 1) Add the signature of an interface function to src/scipjni.i, e.g.,
 
-    SCIP_Real SCIPfeastol(SCIP* scip);
+    `SCIP_Real SCIPfeastol(SCIP* scip);`
 
 2) Implement the function, depending on its signature, in `java/jscip/{Scip,Variable,Constraint,Solution}.java`, e.g.,
 
+    ```
     public class Scip
     {
        private SWIGTYPE_p_SCIP _scipptr;
@@ -62,6 +65,7 @@ a new function to the interface:
           return SCIPJNI.SCIPfeastol(_scipptr);
        }
     }
+    ```
 
 3) Follow the steps in INSTALL.md to compile JSCIPOpt.
 
@@ -70,5 +74,6 @@ class needs to be passed to the new implemented interface function.
 
 
 After all previous steps it is now possible to call the function via
-
-    double ftol = scip.feastol();
+```
+double ftol = scip.feastol();
+```
