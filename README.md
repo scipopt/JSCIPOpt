@@ -1,6 +1,5 @@
  This project provides an interface from the Java programming language to the [SCIP](http://scip.zib.de) solver software.
 
-===================================
 How to build a model using JSCIPOpt
 ===================================
 
@@ -39,7 +38,6 @@ works similar to C , e.g.,
 which creates two variables, a linear constraint, adds it to SCIP, solves the problem and finally frees it.
 
 
-===========================
 How to extend the interface
 ===========================
 
