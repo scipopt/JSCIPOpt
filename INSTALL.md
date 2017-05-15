@@ -1,6 +1,6 @@
-==========================
 Building JSCIPOpt on Linux
 ==========================
+
 
 You need to download the following software packages to use/extend the Java interface:
 
