@@ -265,6 +265,11 @@ public class SCIPJNI {
     return (cPtr == 0) ? null : new SWIGTYPE_p_SCIP_CONS(cPtr, false);
   }
 
+  public static SWIGTYPE_p_SCIP_CONS createConsBasicSuperIndicator(SWIGTYPE_p_SCIP scip, String name, SWIGTYPE_p_SCIP_VAR binvar, SWIGTYPE_p_SCIP_CONS slackcons) {
+    long cPtr = SCIPJNIJNI.createConsBasicSuperIndicator(SWIGTYPE_p_SCIP.getCPtr(scip), name, SWIGTYPE_p_SCIP_VAR.getCPtr(binvar), SWIGTYPE_p_SCIP_CONS.getCPtr(slackcons));
+    return (cPtr == 0) ? null : new SWIGTYPE_p_SCIP_CONS(cPtr, false);
+  }
+
   public static void releaseCons(SWIGTYPE_p_SCIP scip, SWIGTYPE_p_SCIP_CONS cons) {
     SCIPJNIJNI.releaseCons(SWIGTYPE_p_SCIP.getCPtr(scip), SWIGTYPE_p_SCIP_CONS.getCPtr(cons));
   }

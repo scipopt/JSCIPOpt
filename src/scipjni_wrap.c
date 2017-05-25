@@ -261,6 +261,16 @@ static void SWIGUNUSED SWIG_JavaThrowException(JNIEnv *jenv, SWIG_JavaExceptionC
       return cons;
    }
 
+   /* assist function to create a super indicator constraint */
+   SCIP_CONS* createConsBasicSuperIndicator(SCIP *scip, const char *name, SCIP_VAR *binvar, SCIP_CONS *slackcons)
+   {
+      SCIP_CONS* cons;
+
+      SCIP_CALL_ABORT( SCIPcreateConsBasicSuperindicator(scip, &cons, name, binvar, slackcons) );
+
+      return cons;
+   }
+
    /* assist function to release a constraint */
    void releaseCons(SCIP* scip, SCIP_CONS* cons)
    {
@@ -1733,6 +1743,31 @@ SWIGEXPORT jlong JNICALL Java_jscip_SCIPJNIJNI_createConsBasicQuadratic(JNIEnv *
   arg10 = (double)jarg10; 
   arg11 = (double)jarg11; 
   result = (SCIP_CONS *)createConsBasicQuadratic(arg1,(char const *)arg2,arg3,arg4,arg5,arg6,arg7,arg8,arg9,arg10,arg11);
+  *(SCIP_CONS **)&jresult = result; 
+  if (arg2) (*jenv)->ReleaseStringUTFChars(jenv, jarg2, (const char *)arg2);
+  return jresult;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_jscip_SCIPJNIJNI_createConsBasicSuperIndicator(JNIEnv *jenv, jclass jcls, jlong jarg1, jstring jarg2, jlong jarg3, jlong jarg4) {
+  jlong jresult = 0 ;
+  SCIP *arg1 = (SCIP *) 0 ;
+  char *arg2 = (char *) 0 ;
+  SCIP_VAR *arg3 = (SCIP_VAR *) 0 ;
+  SCIP_CONS *arg4 = (SCIP_CONS *) 0 ;
+  SCIP_CONS *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  arg1 = *(SCIP **)&jarg1; 
+  arg2 = 0;
+  if (jarg2) {
+    arg2 = (char *)(*jenv)->GetStringUTFChars(jenv, jarg2, 0);
+    if (!arg2) return 0;
+  }
+  arg3 = *(SCIP_VAR **)&jarg3; 
+  arg4 = *(SCIP_CONS **)&jarg4; 
+  result = (SCIP_CONS *)createConsBasicSuperIndicator(arg1,(char const *)arg2,arg3,arg4);
   *(SCIP_CONS **)&jresult = result; 
   if (arg2) (*jenv)->ReleaseStringUTFChars(jenv, jarg2, (const char *)arg2);
   return jresult;

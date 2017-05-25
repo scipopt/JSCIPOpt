@@ -56,6 +56,16 @@
       return cons;
    }
 
+   /* assist function to create a super indicator constraint */
+   SCIP_CONS* createConsBasicSuperIndicator(SCIP *scip, const char *name, SCIP_VAR *binvar, SCIP_CONS *slackcons)
+   {
+      SCIP_CONS* cons;
+
+      SCIP_CALL_ABORT( SCIPcreateConsBasicSuperindicator(scip, &cons, name, binvar, slackcons) );
+
+      return cons;
+   }
+
    /* assist function to release a constraint */
    void releaseCons(SCIP* scip, SCIP_CONS* cons)
    {
@@ -188,4 +198,5 @@ SCIP_VAR*      createVar(SCIP* scip, const char* name, SCIP_Real lb, SCIP_Real u
 void           releaseVar(SCIP* scip, SCIP_VAR* var);
 SCIP_CONS*     createConsBasicLinear(SCIP* scip, const char* name , int nvars, SCIP_VAR** vars, SCIP_Real* vals, SCIP_Real lhs, SCIP_Real rhs);
 SCIP_CONS*     createConsBasicQuadratic(SCIP* scip, const char* name, int nlinvars, SCIP_VAR** linvars, SCIP_Real* lincoefs, int nquadvars, SCIP_VAR** quadvars1, SCIP_VAR** quadvars2, SCIP_Real* quadcoefs, SCIP_Real lhs, SCIP_Real rhs);
+SCIP_CONS*     createConsBasicSuperIndicator(SCIP *scip, const char *name, SCIP_VAR *binvar, SCIP_CONS *slackcons);
 void           releaseCons(SCIP* scip, SCIP_CONS* cons);
