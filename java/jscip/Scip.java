@@ -268,6 +268,15 @@ public class Scip
       return new Constraint(consptr);
    }
 
+   /** wraps SCIPcreateConsBasicSuperindicator() */
+   public Constraint createConsBasicSuperIndicator(String name, Variable binVar, Constraint slackCons)
+   {
+      SWIGTYPE_p_SCIP_CONS consptr = SCIPJNI.createConsBasicSuperIndicator(_scipptr, name, binVar.getPtr(), slackCons.getPtr());
+      assert(consptr != null);
+
+      return new Constraint(consptr);
+   }
+
    /** wraps SCIPaddCons() */
    public void addCons(Constraint cons)
    {
