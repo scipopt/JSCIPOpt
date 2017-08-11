@@ -71,7 +71,7 @@ link_directories (${PROJECT_SOURCE_DIR}/lib)
 #
 # build JSCIPOpt library
 #
-add_library (jscip SHARED ${PROJECT_SOURCE_DIR}/src/scipjni_wrap.c ${PROJECT_SOURCE_DIR}/lib)
+add_library (jscip SHARED ${PROJECT_SOURCE_DIR}/src/scipjni_wrap.c)
 
 #
 # add dependencies of other libraries
