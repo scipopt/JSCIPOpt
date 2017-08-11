@@ -50,5 +50,5 @@ Execute the examples via
  - java -cp "scip.jar;examples.jar" <"Linear" or "Quadratic" or "Read">
 
 Please note that the first command makes sure that java is finding the scip.dll of the SCIP Optimization
-Suite. It would also be possible to exent the PATH environment varialbe.
+Suite. Alternatively, it would be possible to copy the scip.dll next to jscip.dll in the Release (or Debug) directory.
 
