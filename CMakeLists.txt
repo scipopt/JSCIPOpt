@@ -58,27 +58,15 @@ if (SWIG_FOUND)
 endif()
 
 #
-# include directories
+# find SCIP library and add include directories
 #
-include_directories ("${JNI_INCLUDE_DIRS}" ${PROJECT_SOURCE_DIR}/lib/scipinc ${PROJECT_SOURCE_DIR}/src)
+find_package(SCIP REQUIRED CONFIG)
+include_directories (${JNI_INCLUDE_DIRS} ${SCIP_INCLUDE_DIRS} ${PROJECT_SOURCE_DIR}/src)
 
 #
 # link directories
 #
 link_directories (${PROJECT_SOURCE_DIR}/lib)
-
-#
-# find SCIP library
-#
-file (GLOB SCIPOPT_SO  ${PROJECT_SOURCE_DIR}/lib/*scip*.so RELATIVE_PATH)
-get_filename_component (SCIPOPT_SO_LIBRARY "${SCIPOPT_SO}" NAME)
-file (GLOB SCIPOPT_LIB  ${PROJECT_SOURCE_DIR}/lib/*scip*.lib RELATIVE_PATH)
-get_filename_component (SCIPOPT_LIB_LIBRARY "${SCIPOPT_LIB}" NAME)
-file (GLOB SCIPOPT_DYLIB  ${PROJECT_SOURCE_DIR}/lib/*scip*.dylib RELATIVE_PATH)
-get_filename_component (SCIPOPT_DYLIB_LIBRARY "${SCIPOPT_DYLIB}" NAME)
-
-find_library (SCIPOPT_LIBRARIES NAMES ${SCIPOPT_SO_LIBRARY} ${SCIPOPT_LIB_LIBRARY} ${SCIPOPT_DYLIB_LIBRARY} HINTS ${PROJECT_SOURCE_DIR}/lib)
-message ("found SCIP library: ${SCIPOPT_LIBRARIES}")
 
 #
 # build JSCIPOpt library
@@ -88,7 +76,7 @@ add_library (jscip SHARED ${PROJECT_SOURCE_DIR}/src/scipjni_wrap.c ${PROJECT_SOU
 #
 # add dependencies of other libraries
 #
-target_link_libraries (jscip ${SCIPOPT_LIBRARIES} ${JNI_LIBRARIES})
+target_link_libraries (jscip ${SCIP_LIBRARIES} ${JNI_LIBRARIES})
 
 #
 # generate jar
