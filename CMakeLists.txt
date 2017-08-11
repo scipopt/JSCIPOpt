@@ -84,13 +84,16 @@ target_link_libraries (jscip ${SCIP_LIBRARIES} ${JNI_LIBRARIES})
 add_jar (scipjar
         SOURCES ${JAVA_SOURCES}
         OUTPUT_NAME scip
+        OUTPUT_DIR ${PROJECT_BINARY_DIR}/${CMAKE_BUILD_TYPE}
         )
 
 #
 # generate jar containing all examples
 #
 FILE (GLOB example_sources ${PROJECT_SOURCE_DIR}/examples/*.java)
+
 add_jar (examples
         SOURCES ${example_sources}
         INCLUDE_JARS scipjar
+        OUTPUT_DIR ${PROJECT_BINARY_DIR}/${CMAKE_BUILD_TYPE}
         )
