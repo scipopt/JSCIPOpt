@@ -8,14 +8,16 @@ serve as an entry point for writing more complex code. The following steps are a
 
 1) It is necessary to add
 
-    import jscip.*;
+    `import jscip.*;`
 
 to the beginning of your Java file. This imports all needed classes to use the interfaces.
 
 2) Create a solver instance and initialize the internal C data structures with
 
+    ```
     Scip scip = new SCIP();
     scip.create("Example");
+    ```
 
 This is the equivalent to calling `SCIPcreate(&scip)` and `SCIPcreateProbBasic(scip, "Example")` in C.
 
