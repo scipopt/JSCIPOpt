@@ -72,6 +72,7 @@ link_directories (${PROJECT_SOURCE_DIR}/lib)
 # build JSCIPOpt library
 #
 add_library (jscip SHARED ${PROJECT_SOURCE_DIR}/src/scipjni_wrap.c)
+set_target_properties(jscip PROPERTIES LIBRARY_OUTPUT_DIRECTORY ${PROJECT_BINARY_DIR}/${CMAKE_BUILD_TYPE})
 
 #
 # add dependencies of other libraries
