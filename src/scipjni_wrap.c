@@ -888,6 +888,30 @@ SWIGEXPORT jint JNICALL Java_jscip_SCIPJNIJNI_SCIP_1PARAMEMPHASIS_1PHASEPROOF_1g
 }
 
 
+SWIGEXPORT jint JNICALL Java_jscip_SCIPJNIJNI_SCIP_1OBJSENSE_1MAXIMIZE_1get(JNIEnv *jenv, jclass jcls) {
+  jint jresult = 0 ;
+  enum SCIP_Objsense result;
+  
+  (void)jenv;
+  (void)jcls;
+  result = (enum SCIP_Objsense)SCIP_OBJSENSE_MAXIMIZE;
+  jresult = (jint)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jint JNICALL Java_jscip_SCIPJNIJNI_SCIP_1OBJSENSE_1MINIMIZE_1get(JNIEnv *jenv, jclass jcls) {
+  jint jresult = 0 ;
+  enum SCIP_Objsense result;
+  
+  (void)jenv;
+  (void)jcls;
+  result = (enum SCIP_Objsense)SCIP_OBJSENSE_MINIMIZE;
+  jresult = (jint)result; 
+  return jresult;
+}
+
+
 SWIGEXPORT jdouble JNICALL Java_jscip_SCIPJNIJNI_SCIPcalcMachineEpsilon(JNIEnv *jenv, jclass jcls) {
   jdouble jresult = 0 ;
   double result;
@@ -1452,6 +1476,36 @@ SWIGEXPORT jint JNICALL Java_jscip_SCIPJNIJNI_SCIPsetEmphasis(JNIEnv *jenv, jcla
   arg2 = (SCIP_PARAMEMPHASIS)jarg2; 
   arg3 = (unsigned int)jarg3; 
   result = (SCIP_RETCODE)SCIPsetEmphasis(arg1,arg2,arg3);
+  jresult = (jint)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jint JNICALL Java_jscip_SCIPJNIJNI_SCIPsetObjsense(JNIEnv *jenv, jclass jcls, jlong jarg1, jint jarg2) {
+  jint jresult = 0 ;
+  SCIP *arg1 = (SCIP *) 0 ;
+  SCIP_OBJSENSE arg2 ;
+  SCIP_RETCODE result;
+  
+  (void)jenv;
+  (void)jcls;
+  arg1 = *(SCIP **)&jarg1; 
+  arg2 = (SCIP_OBJSENSE)jarg2; 
+  result = (SCIP_RETCODE)SCIPsetObjsense(arg1,arg2);
+  jresult = (jint)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jint JNICALL Java_jscip_SCIPJNIJNI_SCIPgetObjsense(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+  jint jresult = 0 ;
+  SCIP *arg1 = (SCIP *) 0 ;
+  SCIP_OBJSENSE result;
+  
+  (void)jenv;
+  (void)jcls;
+  arg1 = *(SCIP **)&jarg1; 
+  result = (SCIP_OBJSENSE)SCIPgetObjsense(arg1);
   jresult = (jint)result; 
   return jresult;
 }

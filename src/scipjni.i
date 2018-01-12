@@ -135,6 +135,14 @@ enum SCIP_ParamEmphasis
 };
 typedef enum SCIP_ParamEmphasis SCIP_PARAMEMPHASIS;
 
+/** objective sense */
+enum SCIP_Objsense
+{
+   SCIP_OBJSENSE_MAXIMIZE = -1,           /**< maximize objective function */
+   SCIP_OBJSENSE_MINIMIZE = +1            /**< minimize objective function */
+};
+typedef enum SCIP_Objsense SCIP_OBJSENSE;
+
 /* from pub_misc.h */
 SCIP_Real      SCIPcalcMachineEpsilon();
 
@@ -170,6 +178,8 @@ SCIP_RETCODE   SCIPsetRealParam(SCIP* scip, const char* name, SCIP_Real value);
 SCIP_RETCODE   SCIPsetCharParam(SCIP* scip, const char* name, char value);
 SCIP_RETCODE   SCIPsetStringParam(SCIP* scip, const char* name, const char* value);
 SCIP_RETCODE   SCIPsetEmphasis(SCIP* scip, SCIP_PARAMEMPHASIS paramemphasis, SCIP_Bool quiet);
+SCIP_RETCODE   SCIPsetObjsense(SCIP* scip, SCIP_OBJSENSE objsense);
+SCIP_OBJSENSE  SCIPgetObjsense(SCIP* scip);
 
 /* from memory.h */
 void           BMScheckEmptyMemory();
