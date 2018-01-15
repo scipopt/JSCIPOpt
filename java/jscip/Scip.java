@@ -363,15 +363,25 @@ public class Scip
    }
 
    /** wraps SCIPsetObjsense() */
-   public void setMaximize() { SCIPJNI.SCIPsetObjsense(_scipptr, SCIP_Objsense.SCIP_OBJSENSE_MAXIMIZE); }
+   public void setMaximize()
+   {
+      SCIPJNI.SCIPsetObjsense(_scipptr, SCIP_Objsense.SCIP_OBJSENSE_MAXIMIZE);
+   }
 
    /** wraps SCIPsetObjsense(); minimize is the default */
-   public void setMinimize() { SCIPJNI.SCIPsetObjsense(_scipptr, SCIP_Objsense.SCIP_OBJSENSE_MINIMIZE); }
+   public void setMinimize() {
+      SCIPJNI.SCIPsetObjsense(_scipptr, SCIP_Objsense.SCIP_OBJSENSE_MINIMIZE);
+   }
 
    /** wraps SCIPgetObjsense() */
-   public boolean maximization() { return SCIPJNI.SCIPgetObjsense(_scipptr) == SCIP_Objsense.SCIP_OBJSENSE_MAXIMIZE; }
+   public boolean maximization()
+   {
+      return SCIPJNI.SCIPgetObjsense(_scipptr) == SCIP_Objsense.SCIP_OBJSENSE_MAXIMIZE;
+   }
 
    /** wraps SCIPgetObjsense() */
-   public boolean minimization() { return SCIPJNI.SCIPgetObjsense(_scipptr) == SCIP_Objsense.SCIP_OBJSENSE_MINIMIZE; }
-
+   public boolean minimization()
+   {
+      return SCIPJNI.SCIPgetObjsense(_scipptr) == SCIP_Objsense.SCIP_OBJSENSE_MINIMIZE;
+   }
 }
