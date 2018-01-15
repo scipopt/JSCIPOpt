@@ -189,6 +189,14 @@ public class SCIPJNI {
     return SCIP_Retcode.swigToEnum(SCIPJNIJNI.SCIPsetEmphasis(SWIGTYPE_p_SCIP.getCPtr(scip), paramemphasis.swigValue(), quiet));
   }
 
+  public static SCIP_Retcode SCIPsetObjsense(SWIGTYPE_p_SCIP scip, SCIP_Objsense objsense) {
+    return SCIP_Retcode.swigToEnum(SCIPJNIJNI.SCIPsetObjsense(SWIGTYPE_p_SCIP.getCPtr(scip), objsense.swigValue()));
+  }
+
+  public static SCIP_Objsense SCIPgetObjsense(SWIGTYPE_p_SCIP scip) {
+    return SCIP_Objsense.swigToEnum(SCIPJNIJNI.SCIPgetObjsense(SWIGTYPE_p_SCIP.getCPtr(scip)));
+  }
+
   public static void BMScheckEmptyMemory() {
     SCIPJNIJNI.BMScheckEmptyMemory();
   }

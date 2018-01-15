@@ -54,6 +54,8 @@ public class SCIPJNIJNI {
   public final static native int SCIP_PARAMEMPHASIS_PHASEFEAS_get();
   public final static native int SCIP_PARAMEMPHASIS_PHASEIMPROVE_get();
   public final static native int SCIP_PARAMEMPHASIS_PHASEPROOF_get();
+  public final static native int SCIP_OBJSENSE_MAXIMIZE_get();
+  public final static native int SCIP_OBJSENSE_MINIMIZE_get();
   public final static native double SCIPcalcMachineEpsilon();
   public final static native int SCIPcreate(long jarg1);
   public final static native int SCIPgetNVars(long jarg1);
@@ -85,6 +87,8 @@ public class SCIPJNIJNI {
   public final static native int SCIPsetCharParam(long jarg1, String jarg2, char jarg3);
   public final static native int SCIPsetStringParam(long jarg1, String jarg2, String jarg3);
   public final static native int SCIPsetEmphasis(long jarg1, int jarg2, long jarg3);
+  public final static native int SCIPsetObjsense(long jarg1, int jarg2);
+  public final static native int SCIPgetObjsense(long jarg1);
   public final static native void BMScheckEmptyMemory();
   public final static native long BMSgetMemoryUsed();
   public final static native String SCIPvarGetName(long jarg1);
