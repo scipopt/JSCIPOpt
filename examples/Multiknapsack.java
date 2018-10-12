@@ -5,8 +5,8 @@ import jscip.*;
  *  Two ways two write simple multi-knapsack models with 10 articles and many knapsack constraints.
  *  each article can be assigned at most once. The contribution on the Objective
  *  Function and of weight of the articles of each article are assigned randomly
- *  In the First model, each  knapsack constraint is built manually. It includes 2 knapsacks
- *  In the Second model, each knapsack constraint is built with a for Cycle. It includes 20 knapsacks
+ *  In the First model, each  knapsack constraint is built manually. It includes 2 knapsacks.
+ *  In the Second model, each knapsack constraint is built with a for Cycle. It includes 20 knapsacks.
  *
  * @author  José Miguel Quesada Perez (jose.quesada@uclouvain.be)
  * @version 1.0
@@ -21,7 +21,6 @@ public class Multiknapsack
          Scip scip = new Scip();
          scip.create("multiKnapsack");
 
-
          // FIRST WAY: Write multi-knapsack by writing each constraint manually
          // declare variables and varCoefficients
          System.out.print("\n***********  FIRST WAY *******************************\n");
@@ -35,7 +34,6 @@ public class Multiknapsack
          // create variables and coefficients
          for( int i = 0; i < vars1.length; i++ )
          {
-
             // variable Xi = 1 if the article  i is selected; 0 otherwise. Since SCIP minimizes by default, the value on
             // the OF is multiplied by -1, so we will maximize.Contribution in the OF random int between 0 and 50
             vars1[i] = scip.createVar("x" + i, 0.0, 1, -(rand.nextInt(50) + 1), SCIP_Vartype.SCIP_VARTYPE_BINARY);
