@@ -37,7 +37,7 @@ Execute the examples via
 
 ```
    cd Release
-   java -cp scip.jar:examples.jar <"Linear" or "Quadratic" or "Read">
+   java -cp scip.jar:examples.jar <"Linear" or "Quadratic" or "Read" or "Multiknapsack">
 ```
 
 2b) Building JSCIPOpt on Windows.
@@ -56,7 +56,7 @@ Execute the examples via
 ```
     export PATH=$PATH:<absolute path to SCIP Optimization Suite>/build/bin/{Release,Debug}
     cd Release
-    java -cp "scip.jar;examples.jar" <"Linear" or "Quadratic" or "Read">
+    java -cp "scip.jar;examples.jar" <"Linear" or "Quadratic" or "Read" or "Multiknapsack">
 ```
 
 Please note that the first command makes sure that java is finding the scip.dll of the SCIP Optimization
