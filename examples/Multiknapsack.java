@@ -1,16 +1,15 @@
 import java.util.Random;
 import jscip.*;
 
-/**
- *  Two ways two write simple multi-knapsack models with 10 articles and many knapsack constraints.
+/** Two ways two write simple multi-knapsack models with 10 articles and many knapsack constraints.
  *  each article can be assigned at most once. The contribution on the Objective
  *  Function and of weight of the articles of each article are assigned randomly
  *  In the First model, each  knapsack constraint is built manually. It includes 2 knapsacks.
  *  In the Second model, each knapsack constraint is built with a for Cycle. It includes 20 knapsacks.
  *
- * @author  José Miguel Quesada Perez (jose.quesada@uclouvain.be)
- * @version 1.0
- * @since   2018-10-12
+ *  @author  José Miguel Quesada Perez (jose.quesada@uclouvain.be)
+ *  @version 1.1
+ *  @since   2018-10-12
  */
 public class Multiknapsack
 {
@@ -38,13 +37,13 @@ public class Multiknapsack
             // the OF is multiplied by -1, so we will maximize.Contribution in the OF random int between 0 and 50
             vars1[i] = scip.createVar("x" + i, 0.0, 1, -(rand.nextInt(50) + 1), SCIP_Vartype.SCIP_VARTYPE_BINARY);
 
-            // coefficients of each article are random between 0 and 25;
+            // oefficients of each article are random between 0 and 25
             coef1[i] = rand.nextDouble()*25;
             coef2[i] = rand.nextDouble()*25;
          }
 
          // create and add constraints to SCIP
-         // knapsack capacity, random between 50 and 80 ;
+         // knapsack capacity, random between 50 and 80
          Constraint knapsack1 = scip.createConsLinear("knapsack1", vars1, coef1, 0, 50+rand.nextDouble()*30);
          Constraint knapsack2 = scip.createConsLinear("knapsack2", vars1, coef2, 0, 50+rand.nextDouble()*30);
          scip.addCons(knapsack1);
@@ -80,7 +79,7 @@ public class Multiknapsack
 
          scip.free();
 
-         // SECOND WAY: Using a for cycle that writes each constraint
+         // SECOND WAY: Using a cycle that writes each constraint
          System.out.print("\n***********  FIRST WAY *******************************\n");
          System.out.print("\n***********  20 knapsacks \n");
          scip = new Scip();
@@ -95,8 +94,8 @@ public class Multiknapsack
             vars[i] = scip.createVar("x" + i, 0.0, 1, -(rand.nextInt(50) + 1), SCIP_Vartype.SCIP_VARTYPE_BINARY);
          }
 
-         // create, add and release constraints
-         int nrKnapsacks = 20; // increase this number to add knapsacks
+         // create, add, and release constraints
+         int nrKnapsacks = 20; // increase this number to add more knapsacks
          for( int j = 1; j <= nrKnapsacks; j++ )
          {
             for( int i = 0; i < coefs.length; i++ )
