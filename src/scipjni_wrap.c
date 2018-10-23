@@ -294,6 +294,22 @@ static void double_array_setitem(double *ary, int index, double value) {
 }
 
 
+static unsigned int *new_unsigned_int_array(int nelements) { 
+  return (unsigned int *) calloc(nelements,sizeof(unsigned int)); 
+}
+
+static void delete_unsigned_int_array(unsigned int *ary) { 
+  free(ary); 
+}
+
+static unsigned int unsigned_int_array_getitem(unsigned int *ary, int index) {
+    return ary[index];
+}
+static void unsigned_int_array_setitem(unsigned int *ary, int index, unsigned int value) {
+    ary[index] = value;
+}
+
+
 static SCIP_VAR* *new_SCIP_VAR_array(int nelements) { 
   return (SCIP_VAR* *) calloc(nelements,sizeof(SCIP_VAR*)); 
 }
@@ -381,6 +397,60 @@ SWIGEXPORT void JNICALL Java_jscip_SCIPJNIJNI_double_1array_1setitem(JNIEnv *jen
   arg2 = (int)jarg2; 
   arg3 = (double)jarg3; 
   double_array_setitem(arg1,arg2,arg3);
+}
+
+
+SWIGEXPORT jlong JNICALL Java_jscip_SCIPJNIJNI_new_1unsigned_1int_1array(JNIEnv *jenv, jclass jcls, jint jarg1) {
+  jlong jresult = 0 ;
+  int arg1 ;
+  unsigned int *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  arg1 = (int)jarg1; 
+  result = (unsigned int *)new_unsigned_int_array(arg1);
+  *(unsigned int **)&jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_jscip_SCIPJNIJNI_delete_1unsigned_1int_1array(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+  unsigned int *arg1 = (unsigned int *) 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  arg1 = *(unsigned int **)&jarg1; 
+  delete_unsigned_int_array(arg1);
+}
+
+
+SWIGEXPORT jlong JNICALL Java_jscip_SCIPJNIJNI_unsigned_1int_1array_1getitem(JNIEnv *jenv, jclass jcls, jlong jarg1, jint jarg2) {
+  jlong jresult = 0 ;
+  unsigned int *arg1 = (unsigned int *) 0 ;
+  int arg2 ;
+  unsigned int result;
+  
+  (void)jenv;
+  (void)jcls;
+  arg1 = *(unsigned int **)&jarg1; 
+  arg2 = (int)jarg2; 
+  result = (unsigned int)unsigned_int_array_getitem(arg1,arg2);
+  jresult = (jlong)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_jscip_SCIPJNIJNI_unsigned_1int_1array_1setitem(JNIEnv *jenv, jclass jcls, jlong jarg1, jint jarg2, jlong jarg3) {
+  unsigned int *arg1 = (unsigned int *) 0 ;
+  int arg2 ;
+  unsigned int arg3 ;
+  
+  (void)jenv;
+  (void)jcls;
+  arg1 = *(unsigned int **)&jarg1; 
+  arg2 = (int)jarg2; 
+  arg3 = (unsigned int)jarg3; 
+  unsigned_int_array_setitem(arg1,arg2,arg3);
 }
 
 
@@ -1506,6 +1576,84 @@ SWIGEXPORT jint JNICALL Java_jscip_SCIPJNIJNI_SCIPgetObjsense(JNIEnv *jenv, jcla
   (void)jcls;
   arg1 = *(SCIP **)&jarg1; 
   result = (SCIP_OBJSENSE)SCIPgetObjsense(arg1);
+  jresult = (jint)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jint JNICALL Java_jscip_SCIPJNIJNI_SCIPcreateSol(JNIEnv *jenv, jclass jcls, jlong jarg1, jlong jarg2, jlong jarg3) {
+  jint jresult = 0 ;
+  SCIP *arg1 = (SCIP *) 0 ;
+  SCIP_SOL **arg2 = (SCIP_SOL **) 0 ;
+  SCIP_HEUR *arg3 = (SCIP_HEUR *) 0 ;
+  SCIP_RETCODE result;
+  
+  (void)jenv;
+  (void)jcls;
+  arg1 = *(SCIP **)&jarg1; 
+  arg2 = *(SCIP_SOL ***)&jarg2; 
+  arg3 = *(SCIP_HEUR **)&jarg3; 
+  result = (SCIP_RETCODE)SCIPcreateSol(arg1,arg2,arg3);
+  jresult = (jint)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jint JNICALL Java_jscip_SCIPJNIJNI_SCIPsetSolVal(JNIEnv *jenv, jclass jcls, jlong jarg1, jlong jarg2, jlong jarg3, jdouble jarg4) {
+  jint jresult = 0 ;
+  SCIP *arg1 = (SCIP *) 0 ;
+  SCIP_SOL *arg2 = (SCIP_SOL *) 0 ;
+  SCIP_VAR *arg3 = (SCIP_VAR *) 0 ;
+  double arg4 ;
+  SCIP_RETCODE result;
+  
+  (void)jenv;
+  (void)jcls;
+  arg1 = *(SCIP **)&jarg1; 
+  arg2 = *(SCIP_SOL **)&jarg2; 
+  arg3 = *(SCIP_VAR **)&jarg3; 
+  arg4 = (double)jarg4; 
+  result = (SCIP_RETCODE)SCIPsetSolVal(arg1,arg2,arg3,arg4);
+  jresult = (jint)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jint JNICALL Java_jscip_SCIPJNIJNI_SCIPsetSolVals(JNIEnv *jenv, jclass jcls, jlong jarg1, jlong jarg2, jint jarg3, jlong jarg4, jlong jarg5) {
+  jint jresult = 0 ;
+  SCIP *arg1 = (SCIP *) 0 ;
+  SCIP_SOL *arg2 = (SCIP_SOL *) 0 ;
+  int arg3 ;
+  SCIP_VAR **arg4 = (SCIP_VAR **) 0 ;
+  double *arg5 = (double *) 0 ;
+  SCIP_RETCODE result;
+  
+  (void)jenv;
+  (void)jcls;
+  arg1 = *(SCIP **)&jarg1; 
+  arg2 = *(SCIP_SOL **)&jarg2; 
+  arg3 = (int)jarg3; 
+  arg4 = *(SCIP_VAR ***)&jarg4; 
+  arg5 = *(double **)&jarg5; 
+  result = (SCIP_RETCODE)SCIPsetSolVals(arg1,arg2,arg3,arg4,arg5);
+  jresult = (jint)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jint JNICALL Java_jscip_SCIPJNIJNI_SCIPaddSolFree(JNIEnv *jenv, jclass jcls, jlong jarg1, jlong jarg2, jlong jarg3) {
+  jint jresult = 0 ;
+  SCIP *arg1 = (SCIP *) 0 ;
+  SCIP_SOL **arg2 = (SCIP_SOL **) 0 ;
+  unsigned int *arg3 = (unsigned int *) 0 ;
+  SCIP_RETCODE result;
+  
+  (void)jenv;
+  (void)jcls;
+  arg1 = *(SCIP **)&jarg1; 
+  arg2 = *(SCIP_SOL ***)&jarg2; 
+  arg3 = *(unsigned int **)&jarg3; 
+  result = (SCIP_RETCODE)SCIPaddSolFree(arg1,arg2,arg3);
   jresult = (jint)result; 
   return jresult;
 }

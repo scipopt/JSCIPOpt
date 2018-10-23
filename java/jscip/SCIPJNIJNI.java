@@ -13,6 +13,10 @@ public class SCIPJNIJNI {
   public final static native void delete_double_array(long jarg1);
   public final static native double double_array_getitem(long jarg1, int jarg2);
   public final static native void double_array_setitem(long jarg1, int jarg2, double jarg3);
+  public final static native long new_unsigned_int_array(int jarg1);
+  public final static native void delete_unsigned_int_array(long jarg1);
+  public final static native long unsigned_int_array_getitem(long jarg1, int jarg2);
+  public final static native void unsigned_int_array_setitem(long jarg1, int jarg2, long jarg3);
   public final static native long new_SCIP_VAR_array(int jarg1);
   public final static native void delete_SCIP_VAR_array(long jarg1);
   public final static native long SCIP_VAR_array_getitem(long jarg1, int jarg2);
@@ -89,6 +93,10 @@ public class SCIPJNIJNI {
   public final static native int SCIPsetEmphasis(long jarg1, int jarg2, long jarg3);
   public final static native int SCIPsetObjsense(long jarg1, int jarg2);
   public final static native int SCIPgetObjsense(long jarg1);
+  public final static native int SCIPcreateSol(long jarg1, long jarg2, long jarg3);
+  public final static native int SCIPsetSolVal(long jarg1, long jarg2, long jarg3, double jarg4);
+  public final static native int SCIPsetSolVals(long jarg1, long jarg2, int jarg3, long jarg4, long jarg5);
+  public final static native int SCIPaddSolFree(long jarg1, long jarg2, long jarg3);
   public final static native void BMScheckEmptyMemory();
   public final static native long BMSgetMemoryUsed();
   public final static native String SCIPvarGetName(long jarg1);

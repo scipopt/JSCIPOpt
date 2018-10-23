@@ -76,6 +76,7 @@
 /* use SWIG internal arrays */
 %include carrays.i
 %array_functions( double, double_array )
+%array_functions( unsigned int, unsigned_int_array )
 %array_functions( SCIP_VAR*, SCIP_VAR_array )
 %array_functions( SCIP_SOL*, SCIP_SOL_array )
 
@@ -180,6 +181,12 @@ SCIP_RETCODE   SCIPsetStringParam(SCIP* scip, const char* name, const char* valu
 SCIP_RETCODE   SCIPsetEmphasis(SCIP* scip, SCIP_PARAMEMPHASIS paramemphasis, SCIP_Bool quiet);
 SCIP_RETCODE   SCIPsetObjsense(SCIP* scip, SCIP_OBJSENSE objsense);
 SCIP_OBJSENSE  SCIPgetObjsense(SCIP* scip);
+
+/* from scip_sol.h */
+SCIP_RETCODE   SCIPcreateSol(SCIP* scip, SCIP_SOL** sol, SCIP_HEUR* heur);
+SCIP_RETCODE   SCIPsetSolVal(SCIP* scip, SCIP_SOL* sol, SCIP_VAR* var, SCIP_Real val);
+SCIP_RETCODE   SCIPsetSolVals(SCIP* scip, SCIP_SOL* sol, int nvars, SCIP_VAR** vars, SCIP_Real* val);
+SCIP_RETCODE   SCIPaddSolFree(SCIP* scip, SCIP_SOL** sol, SCIP_Bool *stored);
 
 /* from memory.h */
 void           BMScheckEmptyMemory();

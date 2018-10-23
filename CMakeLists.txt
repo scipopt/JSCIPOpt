@@ -28,6 +28,7 @@ set(SWIG_JAVA_SOURCES
   ${PROJECT_SOURCE_DIR}/java/jscip/SCIP_ParamEmphasis.java
   ${PROJECT_SOURCE_DIR}/java/jscip/SCIP_Objsense.java
   ${PROJECT_SOURCE_DIR}/java/jscip/SWIGTYPE_p_double.java
+  ${PROJECT_SOURCE_DIR}/java/jscip/SWIGTYPE_p_unsigned_int.java
   ${PROJECT_SOURCE_DIR}/java/jscip/SWIGTYPE_p_FILE.java
   ${PROJECT_SOURCE_DIR}/java/jscip/SWIGTYPE_p_p_SCIP.java
   ${PROJECT_SOURCE_DIR}/java/jscip/SWIGTYPE_p_p_SCIP_SOL.java
@@ -36,6 +37,7 @@ set(SWIG_JAVA_SOURCES
   ${PROJECT_SOURCE_DIR}/java/jscip/SWIGTYPE_p_SCIP.java
   ${PROJECT_SOURCE_DIR}/java/jscip/SWIGTYPE_p_SCIP_SOL.java
   ${PROJECT_SOURCE_DIR}/java/jscip/SWIGTYPE_p_SCIP_VAR.java
+  ${PROJECT_SOURCE_DIR}/java/jscip/SWIGTYPE_p_SCIP_HEUR.java
   )
 
 set(JAVA_SOURCES
