@@ -26,6 +26,23 @@ public class SCIPJNI {
     SCIPJNIJNI.double_array_setitem(SWIGTYPE_p_double.getCPtr(ary), index, value);
   }
 
+  public static SWIGTYPE_p_unsigned_int new_unsigned_int_array(int nelements) {
+    long cPtr = SCIPJNIJNI.new_unsigned_int_array(nelements);
+    return (cPtr == 0) ? null : new SWIGTYPE_p_unsigned_int(cPtr, false);
+  }
+
+  public static void delete_unsigned_int_array(SWIGTYPE_p_unsigned_int ary) {
+    SCIPJNIJNI.delete_unsigned_int_array(SWIGTYPE_p_unsigned_int.getCPtr(ary));
+  }
+
+  public static long unsigned_int_array_getitem(SWIGTYPE_p_unsigned_int ary, int index) {
+    return SCIPJNIJNI.unsigned_int_array_getitem(SWIGTYPE_p_unsigned_int.getCPtr(ary), index);
+  }
+
+  public static void unsigned_int_array_setitem(SWIGTYPE_p_unsigned_int ary, int index, long value) {
+    SCIPJNIJNI.unsigned_int_array_setitem(SWIGTYPE_p_unsigned_int.getCPtr(ary), index, value);
+  }
+
   public static SWIGTYPE_p_p_SCIP_VAR new_SCIP_VAR_array(int nelements) {
     long cPtr = SCIPJNIJNI.new_SCIP_VAR_array(nelements);
     return (cPtr == 0) ? null : new SWIGTYPE_p_p_SCIP_VAR(cPtr, false);
@@ -195,6 +212,22 @@ public class SCIPJNI {
 
   public static SCIP_Objsense SCIPgetObjsense(SWIGTYPE_p_SCIP scip) {
     return SCIP_Objsense.swigToEnum(SCIPJNIJNI.SCIPgetObjsense(SWIGTYPE_p_SCIP.getCPtr(scip)));
+  }
+
+  public static SCIP_Retcode SCIPcreateSol(SWIGTYPE_p_SCIP scip, SWIGTYPE_p_p_SCIP_SOL sol, SWIGTYPE_p_SCIP_HEUR heur) {
+    return SCIP_Retcode.swigToEnum(SCIPJNIJNI.SCIPcreateSol(SWIGTYPE_p_SCIP.getCPtr(scip), SWIGTYPE_p_p_SCIP_SOL.getCPtr(sol), SWIGTYPE_p_SCIP_HEUR.getCPtr(heur)));
+  }
+
+  public static SCIP_Retcode SCIPsetSolVal(SWIGTYPE_p_SCIP scip, SWIGTYPE_p_SCIP_SOL sol, SWIGTYPE_p_SCIP_VAR var, double val) {
+    return SCIP_Retcode.swigToEnum(SCIPJNIJNI.SCIPsetSolVal(SWIGTYPE_p_SCIP.getCPtr(scip), SWIGTYPE_p_SCIP_SOL.getCPtr(sol), SWIGTYPE_p_SCIP_VAR.getCPtr(var), val));
+  }
+
+  public static SCIP_Retcode SCIPsetSolVals(SWIGTYPE_p_SCIP scip, SWIGTYPE_p_SCIP_SOL sol, int nvars, SWIGTYPE_p_p_SCIP_VAR vars, SWIGTYPE_p_double val) {
+    return SCIP_Retcode.swigToEnum(SCIPJNIJNI.SCIPsetSolVals(SWIGTYPE_p_SCIP.getCPtr(scip), SWIGTYPE_p_SCIP_SOL.getCPtr(sol), nvars, SWIGTYPE_p_p_SCIP_VAR.getCPtr(vars), SWIGTYPE_p_double.getCPtr(val)));
+  }
+
+  public static SCIP_Retcode SCIPaddSolFree(SWIGTYPE_p_SCIP scip, SWIGTYPE_p_p_SCIP_SOL sol, SWIGTYPE_p_unsigned_int stored) {
+    return SCIP_Retcode.swigToEnum(SCIPJNIJNI.SCIPaddSolFree(SWIGTYPE_p_SCIP.getCPtr(scip), SWIGTYPE_p_p_SCIP_SOL.getCPtr(sol), SWIGTYPE_p_unsigned_int.getCPtr(stored)));
   }
 
   public static void BMScheckEmptyMemory() {

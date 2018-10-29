@@ -384,4 +384,58 @@ public class Scip
    {
       return SCIPJNI.SCIPgetObjsense(_scipptr) == SCIP_Objsense.SCIP_OBJSENSE_MINIMIZE;
    }
+   
+   /** wraps SCIPcreateSol() */
+   public Solution createSol()
+   {
+      SWIGTYPE_p_p_SCIP_SOL solptr = SCIPJNI.new_SCIP_SOL_array(1);
+      CHECK_RETCODE( SCIPJNI.SCIPcreateSol(_scipptr, solptr, null) );
+      Solution sol = new Solution(SCIPJNI.SCIP_SOL_array_getitem(solptr, 0));
+      SCIPJNI.delete_SCIP_SOL_array(solptr);
+      return sol;
+   }
+	
+   /** wraps SCIPsetSolVal() */
+   public void setSolVal(Solution sol, Variable var, double val)
+   {
+      CHECK_RETCODE( SCIPJNI.SCIPsetSolVal(_scipptr, sol.getPtr(), var.getPtr(), val) );
+   }
+	
+   /** wraps SCIPsetSolVals() */
+   public void setSolVals(Solution sol, Variable[] vars, double[] vals)
+   {
+      int nvars = vars.length;
+      assert(vars.length == vals.length);
+
+      SWIGTYPE_p_p_SCIP_VAR varsptr = SCIPJNI.new_SCIP_VAR_array(nvars);
+      SWIGTYPE_p_double valsptr = SCIPJNI.new_double_array(nvars);
+
+      for( int i = 0; i < nvars; ++i )
+      {
+         SCIPJNI.SCIP_VAR_array_setitem(varsptr, i, vars[i].getPtr());
+         SCIPJNI.double_array_setitem(valsptr, i, vals[i]);
+      }
+	  
+      CHECK_RETCODE( SCIPJNI.SCIPsetSolVals(_scipptr, sol.getPtr(), nvars, varsptr, valsptr) );
+
+      SCIPJNI.delete_double_array(valsptr);
+      SCIPJNI.delete_SCIP_VAR_array(varsptr);	   
+   }
+   
+   /** wraps SCIPaddSolFree() */
+   public boolean addSolFree(Solution sol)
+   {
+      SWIGTYPE_p_p_SCIP_SOL arr = SCIPJNI.new_SCIP_SOL_array(1);
+      SWIGTYPE_p_unsigned_int stored = SCIPJNI.new_unsigned_int_array(1);
+      SCIPJNI.SCIP_SOL_array_setitem(arr, 0, sol.getPtr());
+
+      // add and free solution
+      CHECK_RETCODE( SCIPJNI.SCIPaddSolFree(_scipptr, arr, stored) );
+	   
+      // get success value and free memory
+      boolean succ = SCIPJNI.unsigned_int_array_getitem(stored, 0) != 0;
+      SCIPJNI.delete_unsigned_int_array(stored);
+      SCIPJNI.delete_SCIP_SOL_array(arr);
+      return succ;
+   }
 }
