@@ -385,19 +385,25 @@ public class Scip
       return SCIPJNI.SCIPgetObjsense(_scipptr) == SCIP_Objsense.SCIP_OBJSENSE_MINIMIZE;
    }
    
-   public Solution createSol() {
-	   SWIGTYPE_p_p_SCIP_SOL solptr = SCIPJNI.new_SCIP_SOL_array(1); // when to free?
-	   CHECK_RETCODE( SCIPJNI.SCIPcreateSol(_scipptr, solptr, null) );
-	   Solution sol = new Solution(SCIPJNI.SCIP_SOL_array_getitem(solptr, 0));
-	   SCIPJNI.delete_SCIP_SOL_array(solptr);
-	   return sol;
+   /** wraps SCIPcreateSol() */
+   public Solution createSol()
+   {
+      SWIGTYPE_p_p_SCIP_SOL solptr = SCIPJNI.new_SCIP_SOL_array(1);
+      CHECK_RETCODE( SCIPJNI.SCIPcreateSol(_scipptr, solptr, null) );
+      Solution sol = new Solution(SCIPJNI.SCIP_SOL_array_getitem(solptr, 0));
+      SCIPJNI.delete_SCIP_SOL_array(solptr);
+      return sol;
    }
-   
-   public void setSolVal(Solution sol, Variable var, double val) {
-	   CHECK_RETCODE( SCIPJNI.SCIPsetSolVal(_scipptr, sol.getPtr(), var.getPtr(), val) );
+	
+   /** wraps SCIPsetSolVal() */
+   public void setSolVal(Solution sol, Variable var, double val)
+   {
+      CHECK_RETCODE( SCIPJNI.SCIPsetSolVal(_scipptr, sol.getPtr(), var.getPtr(), val) );
    }
-   
-   public void setSolVals(Solution sol, Variable[] vars, double[] vals) {
+	
+   /** wraps SCIPsetSolVals() */
+   public void setSolVals(Solution sol, Variable[] vars, double[] vals)
+   {
       int nvars = vars.length;
       assert(vars.length == vals.length);
 
@@ -416,15 +422,20 @@ public class Scip
       SCIPJNI.delete_SCIP_VAR_array(varsptr);	   
    }
    
-   public boolean addSolFree(Solution sol) {
-	   SWIGTYPE_p_p_SCIP_SOL arr = SCIPJNI.new_SCIP_SOL_array(1);
-	   SWIGTYPE_p_unsigned_int stored = SCIPJNI.new_unsigned_int_array(1);
-	   SCIPJNI.SCIP_SOL_array_setitem(arr, 0, sol.getPtr());
-	   CHECK_RETCODE( SCIPJNI.SCIPaddSolFree(_scipptr, arr, stored) );
-	   boolean ret = SCIPJNI.unsigned_int_array_getitem(stored, 0) != 0;
-	   SCIPJNI.delete_unsigned_int_array(stored);
-	   SCIPJNI.delete_SCIP_SOL_array(arr);
-	   return ret;
-   }
+   /** wraps SCIPaddSolFree() */
+   public boolean addSolFree(Solution sol)
+   {
+      SWIGTYPE_p_p_SCIP_SOL arr = SCIPJNI.new_SCIP_SOL_array(1);
+      SWIGTYPE_p_unsigned_int stored = SCIPJNI.new_unsigned_int_array(1);
+      SCIPJNI.SCIP_SOL_array_setitem(arr, 0, sol.getPtr());
 
+      // add and free solution
+      CHECK_RETCODE( SCIPJNI.SCIPaddSolFree(_scipptr, arr, stored) );
+	   
+      // get success value and free memory
+      boolean succ = SCIPJNI.unsigned_int_array_getitem(stored, 0) != 0;
+      SCIPJNI.delete_unsigned_int_array(stored);
+      SCIPJNI.delete_SCIP_SOL_array(arr);
+      return succ;
+   }
 }
