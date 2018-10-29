@@ -416,7 +416,7 @@ public class Scip
          SCIPJNI.double_array_setitem(valsptr, i, vals[i]);
       }
 	  
-	  CHECK_RETCODE( SCIPJNI.SCIPsetSolVals(_scipptr, sol.getPtr(), nvars, varsptr, valsptr) );
+      CHECK_RETCODE( SCIPJNI.SCIPsetSolVals(_scipptr, sol.getPtr(), nvars, varsptr, valsptr) );
 
       SCIPJNI.delete_double_array(valsptr);
       SCIPJNI.delete_SCIP_VAR_array(varsptr);	   
