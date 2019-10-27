@@ -7,7 +7,7 @@ import jscip.*;
  *  In the First model, each  knapsack constraint is built manually. It includes 2 knapsacks.
  *  In the Second model, each knapsack constraint is built with a for Cycle. It includes 20 knapsacks.
  *
- *  @author  José Miguel Quesada Perez (jose.quesada@uclouvain.be)
+ *  @author  Jose Miguel Quesada Perez (jose.quesada@uclouvain.be)
  *  @version 1.1
  *  @since   2018-10-12
  */
