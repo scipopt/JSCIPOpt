@@ -181,6 +181,7 @@ SCIP_RETCODE   SCIPsetStringParam(SCIP* scip, const char* name, const char* valu
 SCIP_RETCODE   SCIPsetEmphasis(SCIP* scip, SCIP_PARAMEMPHASIS paramemphasis, SCIP_Bool quiet);
 SCIP_RETCODE   SCIPsetObjsense(SCIP* scip, SCIP_OBJSENSE objsense);
 SCIP_OBJSENSE  SCIPgetObjsense(SCIP* scip);
+SCIP_Real      SCIPgetGap(SCIP* scip);
 
 /* from scip_sol.h */
 SCIP_RETCODE   SCIPcreateSol(SCIP* scip, SCIP_SOL** sol, SCIP_HEUR* heur);

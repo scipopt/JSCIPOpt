@@ -93,6 +93,7 @@ public class SCIPJNIJNI {
   public final static native int SCIPsetEmphasis(long jarg1, int jarg2, long jarg3);
   public final static native int SCIPsetObjsense(long jarg1, int jarg2);
   public final static native int SCIPgetObjsense(long jarg1);
+  public final static native double SCIPgetGap(long jarg1);
   public final static native int SCIPcreateSol(long jarg1, long jarg2, long jarg3);
   public final static native int SCIPsetSolVal(long jarg1, long jarg2, long jarg3, double jarg4);
   public final static native int SCIPsetSolVals(long jarg1, long jarg2, int jarg3, long jarg4, long jarg5);

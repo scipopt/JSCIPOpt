@@ -438,4 +438,10 @@ public class Scip
       SCIPJNI.delete_SCIP_SOL_array(arr);
       return succ;
    }
+
+   /** wraps SCIPgetGap() */
+   public double getGap()
+   {
+      return SCIPJNI.SCIPgetGap(_scipptr);
+   }
 }

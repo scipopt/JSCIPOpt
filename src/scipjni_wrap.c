@@ -1581,6 +1581,20 @@ SWIGEXPORT jint JNICALL Java_jscip_SCIPJNIJNI_SCIPgetObjsense(JNIEnv *jenv, jcla
 }
 
 
+SWIGEXPORT jdouble JNICALL Java_jscip_SCIPJNIJNI_SCIPgetGap(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+  jdouble jresult = 0 ;
+  SCIP *arg1 = (SCIP *) 0 ;
+  double result;
+  
+  (void)jenv;
+  (void)jcls;
+  arg1 = *(SCIP **)&jarg1; 
+  result = (double)SCIPgetGap(arg1);
+  jresult = (jdouble)result; 
+  return jresult;
+}
+
+
 SWIGEXPORT jint JNICALL Java_jscip_SCIPJNIJNI_SCIPcreateSol(JNIEnv *jenv, jclass jcls, jlong jarg1, jlong jarg2, jlong jarg3) {
   jint jresult = 0 ;
   SCIP *arg1 = (SCIP *) 0 ;

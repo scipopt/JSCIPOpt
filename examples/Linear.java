@@ -35,6 +35,7 @@ public class Linear
 
       // solve problem
       scip.solve();
+      System.out.println("final gap = " + scip.getGap());
 
       // print all solutions
       Solution[] allsols = scip.getSols();

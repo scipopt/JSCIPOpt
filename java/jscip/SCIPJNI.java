@@ -214,6 +214,10 @@ public class SCIPJNI {
     return SCIP_Objsense.swigToEnum(SCIPJNIJNI.SCIPgetObjsense(SWIGTYPE_p_SCIP.getCPtr(scip)));
   }
 
+  public static double SCIPgetGap(SWIGTYPE_p_SCIP scip) {
+    return SCIPJNIJNI.SCIPgetGap(SWIGTYPE_p_SCIP.getCPtr(scip));
+  }
+
   public static SCIP_Retcode SCIPcreateSol(SWIGTYPE_p_SCIP scip, SWIGTYPE_p_p_SCIP_SOL sol, SWIGTYPE_p_SCIP_HEUR heur) {
     return SCIP_Retcode.swigToEnum(SCIPJNIJNI.SCIPcreateSol(SWIGTYPE_p_SCIP.getCPtr(scip), SWIGTYPE_p_p_SCIP_SOL.getCPtr(sol), SWIGTYPE_p_SCIP_HEUR.getCPtr(heur)));
   }
