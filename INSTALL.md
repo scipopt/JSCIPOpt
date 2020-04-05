@@ -36,6 +36,7 @@ Compile the interface by executing the following commands:
 Execute the examples via
 
 ```
+   export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:.
    cd Release
    java -cp scip.jar:examples.jar <"Linear" or "Quadratic" or "Read" or "Multiknapsack">
 ```
