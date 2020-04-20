@@ -100,7 +100,7 @@ public class Scip
    }
 
    /** wraps SCIPsetEmphasis() */
-   public void setEmphasis(SCIP_ParamEmphasis paramEmphasis, boolean quite) 
+   public void setEmphasis(SCIP_ParamEmphasis paramEmphasis, boolean quite)
    {
       CHECK_RETCODE( SCIPJNI.SCIPsetEmphasis(_scipptr, paramEmphasis, quite ? 1 : 0) );
    }
@@ -384,7 +384,7 @@ public class Scip
    {
       return SCIPJNI.SCIPgetObjsense(_scipptr) == SCIP_Objsense.SCIP_OBJSENSE_MINIMIZE;
    }
-   
+
    /** wraps SCIPcreateSol() */
    public Solution createSol()
    {
@@ -394,13 +394,13 @@ public class Scip
       SCIPJNI.delete_SCIP_SOL_array(solptr);
       return sol;
    }
-	
+
    /** wraps SCIPsetSolVal() */
    public void setSolVal(Solution sol, Variable var, double val)
    {
       CHECK_RETCODE( SCIPJNI.SCIPsetSolVal(_scipptr, sol.getPtr(), var.getPtr(), val) );
    }
-	
+
    /** wraps SCIPsetSolVals() */
    public void setSolVals(Solution sol, Variable[] vars, double[] vals)
    {
@@ -415,13 +415,13 @@ public class Scip
          SCIPJNI.SCIP_VAR_array_setitem(varsptr, i, vars[i].getPtr());
          SCIPJNI.double_array_setitem(valsptr, i, vals[i]);
       }
-	  
+
       CHECK_RETCODE( SCIPJNI.SCIPsetSolVals(_scipptr, sol.getPtr(), nvars, varsptr, valsptr) );
 
       SCIPJNI.delete_double_array(valsptr);
-      SCIPJNI.delete_SCIP_VAR_array(varsptr);	   
+      SCIPJNI.delete_SCIP_VAR_array(varsptr);
    }
-   
+
    /** wraps SCIPaddSolFree() */
    public boolean addSolFree(Solution sol)
    {
@@ -431,7 +431,7 @@ public class Scip
 
       // add and free solution
       CHECK_RETCODE( SCIPJNI.SCIPaddSolFree(_scipptr, arr, stored) );
-	   
+
       // get success value and free memory
       boolean succ = SCIPJNI.unsigned_int_array_getitem(stored, 0) != 0;
       SCIPJNI.delete_unsigned_int_array(stored);
