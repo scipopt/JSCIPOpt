@@ -147,6 +147,13 @@ public class Scip
       return var;
    }
 
+   /** wraps SCIPchgVarObj() */
+   public void changeVarObj(Variable var, double obj)
+   {
+      assert(var.getPtr() != null);
+      CHECK_RETCODE( SCIPJNI.SCIPchgVarObj(_scipptr, var.getPtr(), obj));
+   }
+
    /** wraps SCIPreleaseVar() */
    public void releaseVar(Variable var)
    {
