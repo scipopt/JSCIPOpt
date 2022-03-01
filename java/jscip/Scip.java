@@ -385,6 +385,13 @@ public class Scip
       return SCIPJNI.SCIPgetObjsense(_scipptr) == SCIP_Objsense.SCIP_OBJSENSE_MINIMIZE;
    }
 
+   /** wraps SCIPchgVarBranchPriority() */
+   public void chgVarBranchPriority(Variable var, int branchpriority)
+   {
+      assert(var != null && var.getPtr() != null);
+      CHECK_RETCODE( SCIPJNI.SCIPchgVarBranchPriority(_scipptr, var.getPtr(), branchpriority) );
+   }
+
    /** wraps SCIPcreateSol() */
    public Solution createSol()
    {

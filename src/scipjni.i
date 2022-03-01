@@ -183,6 +183,9 @@ SCIP_RETCODE   SCIPsetObjsense(SCIP* scip, SCIP_OBJSENSE objsense);
 SCIP_OBJSENSE  SCIPgetObjsense(SCIP* scip);
 SCIP_Real      SCIPgetGap(SCIP* scip);
 
+/* from scip_var.h */
+SCIP_RETCODE   SCIPchgVarBranchPriority(SCIP* scip, SCIP_VAR* var, int branchpriority);
+
 /* from scip_sol.h */
 SCIP_RETCODE   SCIPcreateSol(SCIP* scip, SCIP_SOL** sol, SCIP_HEUR* heur);
 SCIP_RETCODE   SCIPsetSolVal(SCIP* scip, SCIP_SOL* sol, SCIP_VAR* var, SCIP_Real val);
@@ -201,6 +204,7 @@ SCIP_Real      SCIPvarGetUbLocal(SCIP_VAR* var);
 SCIP_Real      SCIPvarGetLbGlobal(SCIP_VAR* var);
 SCIP_Real      SCIPvarGetUbGlobal(SCIP_VAR* var);
 SCIP_Real      SCIPvarGetObj(SCIP_VAR* var);
+int            SCIPvarGetBranchPriority(SCIP_VAR* var);
 
 /* from pub_sol.h */
 int            SCIPsolGetDepth(SCIP_SOL* sol);

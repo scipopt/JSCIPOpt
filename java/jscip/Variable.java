@@ -72,6 +72,13 @@ public class Variable
       return SCIPJNI.SCIPvarGetObj(_varptr);
    }
 
+   /** wraps SCIPvarGetBranchPriority() */
+   public int getBranchPriority()
+   {
+      assert(_varptr != null);
+      return SCIPJNI.SCIPvarGetBranchPriority(_varptr);
+   }
+
    /** returns a String representation */
    public String toString()
    {
