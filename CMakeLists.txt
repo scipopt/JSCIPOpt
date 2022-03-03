@@ -55,8 +55,7 @@ set(JAVA_SOURCES
 find_package (SWIG)
 if (SWIG_FOUND)
   add_custom_command(OUTPUT ${PROJECT_SOURCE_DIR}/src/scipjni_wrap.c ${SWIG_JAVA_SOURCES}
-    COMMAND ${SWIG_EXECUTABLE} -package jscip -java ${PROJECT_SOURCE_DIR}/src/scipjni.i
-    COMMAND mv ${PROJECT_SOURCE_DIR}/src/*.java ${PROJECT_SOURCE_DIR}/java/jscip/
+    COMMAND ${SWIG_EXECUTABLE} -package jscip -java -outdir ${PROJECT_SOURCE_DIR}/java/jscip/ ${PROJECT_SOURCE_DIR}/src/scipjni.i
     DEPENDS ${PROJECT_SOURCE_DIR}/src/scipjni.i)
 endif()
 
