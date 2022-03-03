@@ -68,6 +68,7 @@ public class SCIPJNIJNI {
   public final static native int SCIPcreateProbBasic(long jarg1, String jarg2);
   public final static native int SCIPincludeDefaultPlugins(long jarg1);
   public final static native int SCIPsolve(long jarg1);
+  public final static native int SCIPsolveConcurrent(long jarg1);
   public final static native int SCIPaddVar(long jarg1, long jarg2);
   public final static native long SCIPgetVars(long jarg1);
   public final static native int SCIPaddCons(long jarg1, long jarg2);
