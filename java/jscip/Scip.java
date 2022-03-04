@@ -39,6 +39,12 @@ public class Scip
       CHECK_RETCODE( SCIPJNI.SCIPsolve(_scipptr) );
    }
 
+   /** wraps SCIPsolveConcurrent() */
+   public void solveConcurrent()
+   {
+      CHECK_RETCODE( SCIPJNI.SCIPsolveConcurrent(_scipptr) );
+   }
+
    /** wraps SCIPsetMessagehdlrQuiet() */
    public void hideOutput(boolean quite)
    {
