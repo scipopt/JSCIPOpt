@@ -222,6 +222,10 @@ public class SCIPJNI {
     return SCIPJNIJNI.SCIPgetGap(SWIGTYPE_p_SCIP.getCPtr(scip));
   }
 
+  public static SCIP_Retcode SCIPchgVarObj(SWIGTYPE_p_SCIP scip, SWIGTYPE_p_SCIP_VAR var, double obj) {
+    return SCIP_Retcode.swigToEnum(SCIPJNIJNI.SCIPchgVarObj(SWIGTYPE_p_SCIP.getCPtr(scip), SWIGTYPE_p_SCIP_VAR.getCPtr(var), obj));
+  }
+
   public static SCIP_Retcode SCIPchgVarBranchPriority(SWIGTYPE_p_SCIP scip, SWIGTYPE_p_SCIP_VAR var, int branchpriority) {
     return SCIP_Retcode.swigToEnum(SCIPJNIJNI.SCIPchgVarBranchPriority(SWIGTYPE_p_SCIP.getCPtr(scip), SWIGTYPE_p_SCIP_VAR.getCPtr(var), branchpriority));
   }

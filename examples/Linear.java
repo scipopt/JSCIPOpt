@@ -17,6 +17,10 @@ public class Linear
       Variable x = scip.createVar("x", 2.0, 3.0, 1.0, SCIP_Vartype.SCIP_VARTYPE_CONTINUOUS);
       Variable y = scip.createVar("y", 0.0, scip.infinity(), -3.0, SCIP_Vartype.SCIP_VARTYPE_INTEGER);
 
+      // alternatively, you can add obj later
+      //Variable y = scip.createVar("y", 0.0, scip.infinity(), -3.0, SCIP_Vartype.SCIP_VARTYPE_INTEGER);
+      //scip.changeVarObj(y, -3.0);
+
       // create a linear constraint
       Variable[] vars = {x, y};
       double[] vals = {1.0, 2.0};
