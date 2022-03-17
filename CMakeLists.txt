@@ -79,7 +79,7 @@ set_target_properties(jscip PROPERTIES LIBRARY_OUTPUT_DIRECTORY ${PROJECT_BINARY
 #
 # add dependencies of other libraries
 #
-target_link_libraries (jscip ${SCIP_LIBRARIES} ${JNI_LIBRARIES})
+target_link_libraries (jscip ${SCIP_LIBRARIES})
 
 #
 # generate jar
