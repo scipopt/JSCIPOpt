@@ -1,5 +1,9 @@
 /* File: scipjni.i */
-%module SCIPJNI
+%module(directors="1") SCIPJNI
+
+// generate directors for all classes that have virtual methods
+%feature("director");
+
 %{
    #include "scip/scip.h"
    #include "scip/scipdefplugins.h"
