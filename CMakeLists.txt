@@ -54,8 +54,8 @@ set(JAVA_SOURCES
 #
 find_package (SWIG)
 if (SWIG_FOUND)
-  add_custom_command(OUTPUT ${PROJECT_SOURCE_DIR}/src/scipjni_wrap.c ${SWIG_JAVA_SOURCES}
-    COMMAND ${SWIG_EXECUTABLE} -package jscip -java -outdir ${PROJECT_SOURCE_DIR}/java/jscip/ ${PROJECT_SOURCE_DIR}/src/scipjni.i
+  add_custom_command(OUTPUT ${PROJECT_SOURCE_DIR}/src/scipjni_wrap.cxx ${SWIG_JAVA_SOURCES}
+    COMMAND ${SWIG_EXECUTABLE} -package jscip -c++ -java -outdir ${PROJECT_SOURCE_DIR}/java/jscip/ ${PROJECT_SOURCE_DIR}/src/scipjni.i
     DEPENDS ${PROJECT_SOURCE_DIR}/src/scipjni.i)
 endif()
 
@@ -73,7 +73,7 @@ link_directories (${PROJECT_SOURCE_DIR}/lib)
 #
 # build JSCIPOpt library
 #
-add_library (jscip SHARED ${PROJECT_SOURCE_DIR}/src/scipjni_wrap.c)
+add_library (jscip SHARED ${PROJECT_SOURCE_DIR}/src/scipjni_wrap.cxx)
 set_target_properties(jscip PROPERTIES LIBRARY_OUTPUT_DIRECTORY ${PROJECT_BINARY_DIR}/${CMAKE_BUILD_TYPE})
 
 #
