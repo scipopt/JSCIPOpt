@@ -21,12 +21,14 @@ include (UseJava)
 # list of all java sourcse
 #
 set(SWIG_JAVA_SOURCES
+  ${PROJECT_SOURCE_DIR}/java/jscip/ObjMessagehdlr.java
   ${PROJECT_SOURCE_DIR}/java/jscip/SCIPJNI.java
   ${PROJECT_SOURCE_DIR}/java/jscip/SCIPJNIJNI.java
   ${PROJECT_SOURCE_DIR}/java/jscip/SCIP_Retcode.java
   ${PROJECT_SOURCE_DIR}/java/jscip/SCIP_Vartype.java
   ${PROJECT_SOURCE_DIR}/java/jscip/SCIP_ParamEmphasis.java
   ${PROJECT_SOURCE_DIR}/java/jscip/SCIP_Objsense.java
+  ${PROJECT_SOURCE_DIR}/java/jscip/SCIP_VerbLevel.java
   ${PROJECT_SOURCE_DIR}/java/jscip/SWIGTYPE_p_double.java
   ${PROJECT_SOURCE_DIR}/java/jscip/SWIGTYPE_p_unsigned_int.java
   ${PROJECT_SOURCE_DIR}/java/jscip/SWIGTYPE_p_FILE.java
@@ -38,6 +40,7 @@ set(SWIG_JAVA_SOURCES
   ${PROJECT_SOURCE_DIR}/java/jscip/SWIGTYPE_p_SCIP_SOL.java
   ${PROJECT_SOURCE_DIR}/java/jscip/SWIGTYPE_p_SCIP_VAR.java
   ${PROJECT_SOURCE_DIR}/java/jscip/SWIGTYPE_p_SCIP_HEUR.java
+  ${PROJECT_SOURCE_DIR}/java/jscip/SWIGTYPE_p_SCIP_Messagehdlr.java
   )
 
 set(JAVA_SOURCES
@@ -47,6 +50,7 @@ set(JAVA_SOURCES
   ${PROJECT_SOURCE_DIR}/java/jscip/Variable.java
   ${PROJECT_SOURCE_DIR}/java/jscip/Constraint.java
   ${PROJECT_SOURCE_DIR}/java/jscip/Solution.java
+  ${PROJECT_SOURCE_DIR}/java/jscip/MessageHandler.java
   )
 
 #

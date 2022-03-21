@@ -11,5 +11,24 @@
 #ifndef SWIG_SCIPJNI_WRAP_H_
 #define SWIG_SCIPJNI_WRAP_H_
 
+class SwigDirector_ObjMessagehdlr : public scip::ObjMessagehdlr, public Swig::Director {
+
+public:
+    void swig_connect_director(JNIEnv *jenv, jobject jself, jclass jcls, bool swig_mem_own, bool weak_global);
+    SwigDirector_ObjMessagehdlr(JNIEnv *jenv, unsigned int bufferedoutput);
+    virtual ~SwigDirector_ObjMessagehdlr();
+    virtual void scip_error(SCIP_MESSAGEHDLR *messagehdlr, FILE *file, char const *msg);
+    virtual void scip_warning(SCIP_MESSAGEHDLR *messagehdlr, FILE *file, char const *msg);
+    virtual void scip_dialog(SCIP_MESSAGEHDLR *messagehdlr, FILE *file, char const *msg);
+    virtual void scip_info(SCIP_MESSAGEHDLR *messagehdlr, FILE *file, char const *msg);
+    virtual SCIP_RETCODE scip_free(SCIP_MESSAGEHDLR *messagehdlr);
+public:
+    bool swig_overrides(int n) {
+      return (n < 5 ? swig_override[n] : false);
+    }
+protected:
+    Swig::BoolArray<5> swig_override;
+};
+
 
 #endif
