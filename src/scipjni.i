@@ -1,8 +1,13 @@
 /* File: scipjni.i */
-%module SCIPJNI
+%module(directors="1") SCIPJNI
+
+// generate directors for all classes that have virtual methods
+%feature("director");
+
 %{
    #include "scip/scip.h"
    #include "scip/scipdefplugins.h"
+   #include "objscip/objmessagehdlr.h"
 
    /* assist function to create a SCIP */
    SCIP* createSCIP()
@@ -71,6 +76,16 @@
    {
       SCIP_CALL_ABORT( SCIPreleaseCons(scip, &cons) );
    }
+
+   /* assist function to create a message handler */
+   SCIP_MESSAGEHDLR* createObjMessagehdlr(scip::ObjMessagehdlr* objmessagehdlr, SCIP_Bool deleteobject)
+   {
+      SCIP_MESSAGEHDLR* messagehdlr;
+
+      SCIP_CALL_ABORT( SCIPcreateObjMessagehdlr(&messagehdlr, objmessagehdlr, deleteobject) );
+
+      return messagehdlr;
+   }
 %}
 
 /* use SWIG internal arrays */
@@ -135,6 +150,18 @@ enum SCIP_ParamEmphasis
   SCIP_PARAMEMPHASIS_PHASEPROOF = 9 
 };
 typedef enum SCIP_ParamEmphasis SCIP_PARAMEMPHASIS;
+
+/** SCIP VerbLevel enum */
+enum SCIP_VerbLevel
+{
+   SCIP_VERBLEVEL_NONE    = 0,
+   SCIP_VERBLEVEL_DIALOG  = 1,
+   SCIP_VERBLEVEL_MINIMAL = 2,
+   SCIP_VERBLEVEL_NORMAL  = 3,
+   SCIP_VERBLEVEL_HIGH    = 4,
+   SCIP_VERBLEVEL_FULL    = 5
+};
+typedef enum SCIP_VerbLevel SCIP_VERBLEVEL;
 
 /** objective sense */
 enum SCIP_Objsense
@@ -215,6 +242,38 @@ int            SCIPsolGetIndex(SCIP_SOL* sol);
 /* from pub_cons.h */
 const char*    SCIPconsGetName(SCIP_CONS* cons);
 
+/* from type_message.h */
+typedef struct SCIP_Messagehdlr SCIP_MESSAGEHDLR;
+
+/* from obj_message.h */
+namespace scip
+{
+class ObjMessagehdlr
+{
+public:
+   const SCIP_Bool scip_bufferedoutput_;
+
+   explicit ObjMessagehdlr(SCIP_Bool bufferedoutput);
+   virtual ~ObjMessagehdlr();
+   virtual void scip_error(SCIP_MESSAGEHDLR* messagehdlr, FILE* file, const char* msg);
+   virtual void scip_warning(SCIP_MESSAGEHDLR* messagehdlr, FILE* file, const char* msg);
+   virtual void scip_dialog(SCIP_MESSAGEHDLR* messagehdlr, FILE* file, const char* msg);
+   virtual void scip_info(SCIP_MESSAGEHDLR* messagehdlr, FILE* file, const char* msg);
+   virtual SCIP_RETCODE scip_free(SCIP_MESSAGEHDLR* messagehdlr);
+};
+
+} /* namespace scip */
+
+scip::ObjMessagehdlr* SCIPgetObjMessagehdlr(SCIP_MESSAGEHDLR* messagehdlr);
+void           SCIPsetStaticErrorPrintingMessagehdlr(SCIP_MESSAGEHDLR* messagehdlr);
+
+/* from scip_message.h */
+SCIP_RETCODE   SCIPsetMessagehdlr(SCIP* scip, SCIP_MESSAGEHDLR* messagehdlr);
+SCIP_MESSAGEHDLR* SCIPgetMessagehdlr(SCIP* scip);
+void           SCIPsetMessagehdlrLogfile(SCIP* scip, const char* filename);
+void           SCIPsetMessagehdlrQuiet(SCIP* scip, SCIP_Bool quiet);
+SCIP_VERBLEVEL SCIPgetVerbLevel(SCIP* scip);
+
 /* assist functions */
 SCIP*          createSCIP();
 void           freeSCIP(SCIP* scip);
@@ -224,3 +283,4 @@ SCIP_CONS*     createConsBasicLinear(SCIP* scip, const char* name , int nvars, S
 SCIP_CONS*     createConsBasicQuadratic(SCIP* scip, const char* name, int nlinvars, SCIP_VAR** linvars, SCIP_Real* lincoefs, int nquadvars, SCIP_VAR** quadvars1, SCIP_VAR** quadvars2, SCIP_Real* quadcoefs, SCIP_Real lhs, SCIP_Real rhs);
 SCIP_CONS*     createConsBasicSuperIndicator(SCIP *scip, const char *name, SCIP_VAR *binvar, SCIP_CONS *slackcons);
 void           releaseCons(SCIP* scip, SCIP_CONS* cons);
+SCIP_MESSAGEHDLR* createObjMessagehdlr(scip::ObjMessagehdlr* objmessagehdlr, SCIP_Bool deleteobject);

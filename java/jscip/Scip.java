@@ -464,4 +464,30 @@ public class Scip
    {
       return SCIPJNI.SCIPgetGap(_scipptr);
    }
+
+   /** wraps SCIPsetStaticErrorPrintingMessagehdlr() */
+   public static void setStaticErrorPrintingMessagehdlr(MessageHandler messagehdlr) {
+      SCIPJNI.SCIPsetStaticErrorPrintingMessagehdlr(MessageHandler.getPtr(messagehdlr));
+   }
+
+   /** wraps SCIPsetMessagehdlr() */
+   public void setMessagehdlr(MessageHandler messagehdlr) {
+      CHECK_RETCODE( SCIPJNI.SCIPsetMessagehdlr(_scipptr, MessageHandler.getPtr(messagehdlr)) );
+   }
+
+   /** wraps SCIPgetMessagehdlr() */
+   public MessageHandler getMessagehdlr() {
+      SWIGTYPE_p_SCIP_Messagehdlr ptr = SCIPJNI.SCIPgetMessagehdlr(_scipptr);
+      return (ptr == null) ? null : new MessageHandler.Wrapper(ptr);
+   }
+
+   /** wraps SCIPsetMessagehdlrLogfile() */
+   public void setMessagehdlrLogfile(String filename) {
+      SCIPJNI.SCIPsetMessagehdlrLogfile(_scipptr, filename);
+   }
+
+   /** wraps SCIPgetVerbLevel() */
+   public SCIP_VerbLevel getVerbLevel() {
+      return SCIPJNI.SCIPgetVerbLevel(_scipptr);
+   }
 }

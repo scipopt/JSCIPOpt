@@ -298,6 +298,32 @@ public class SCIPJNI {
     return SCIPJNIJNI.SCIPconsGetName(SWIGTYPE_p_SCIP_CONS.getCPtr(cons));
   }
 
+  public static ObjMessagehdlr SCIPgetObjMessagehdlr(SWIGTYPE_p_SCIP_Messagehdlr messagehdlr) {
+    long cPtr = SCIPJNIJNI.SCIPgetObjMessagehdlr(SWIGTYPE_p_SCIP_Messagehdlr.getCPtr(messagehdlr));
+    return (cPtr == 0) ? null : new ObjMessagehdlr(cPtr, false);
+  }
+
+  public static void SCIPsetStaticErrorPrintingMessagehdlr(SWIGTYPE_p_SCIP_Messagehdlr messagehdlr) {
+    SCIPJNIJNI.SCIPsetStaticErrorPrintingMessagehdlr(SWIGTYPE_p_SCIP_Messagehdlr.getCPtr(messagehdlr));
+  }
+
+  public static SCIP_Retcode SCIPsetMessagehdlr(SWIGTYPE_p_SCIP scip, SWIGTYPE_p_SCIP_Messagehdlr messagehdlr) {
+    return SCIP_Retcode.swigToEnum(SCIPJNIJNI.SCIPsetMessagehdlr(SWIGTYPE_p_SCIP.getCPtr(scip), SWIGTYPE_p_SCIP_Messagehdlr.getCPtr(messagehdlr)));
+  }
+
+  public static SWIGTYPE_p_SCIP_Messagehdlr SCIPgetMessagehdlr(SWIGTYPE_p_SCIP scip) {
+    long cPtr = SCIPJNIJNI.SCIPgetMessagehdlr(SWIGTYPE_p_SCIP.getCPtr(scip));
+    return (cPtr == 0) ? null : new SWIGTYPE_p_SCIP_Messagehdlr(cPtr, false);
+  }
+
+  public static void SCIPsetMessagehdlrLogfile(SWIGTYPE_p_SCIP scip, String filename) {
+    SCIPJNIJNI.SCIPsetMessagehdlrLogfile(SWIGTYPE_p_SCIP.getCPtr(scip), filename);
+  }
+
+  public static SCIP_VerbLevel SCIPgetVerbLevel(SWIGTYPE_p_SCIP scip) {
+    return SCIP_VerbLevel.swigToEnum(SCIPJNIJNI.SCIPgetVerbLevel(SWIGTYPE_p_SCIP.getCPtr(scip)));
+  }
+
   public static SWIGTYPE_p_SCIP createSCIP() {
     long cPtr = SCIPJNIJNI.createSCIP();
     return (cPtr == 0) ? null : new SWIGTYPE_p_SCIP(cPtr, false);
@@ -333,6 +359,11 @@ public class SCIPJNI {
 
   public static void releaseCons(SWIGTYPE_p_SCIP scip, SWIGTYPE_p_SCIP_CONS cons) {
     SCIPJNIJNI.releaseCons(SWIGTYPE_p_SCIP.getCPtr(scip), SWIGTYPE_p_SCIP_CONS.getCPtr(cons));
+  }
+
+  public static SWIGTYPE_p_SCIP_Messagehdlr createObjMessagehdlr(ObjMessagehdlr objmessagehdlr, long deleteobject) {
+    long cPtr = SCIPJNIJNI.createObjMessagehdlr(ObjMessagehdlr.getCPtr(objmessagehdlr), objmessagehdlr, deleteobject);
+    return (cPtr == 0) ? null : new SWIGTYPE_p_SCIP_Messagehdlr(cPtr, false);
   }
 
 }

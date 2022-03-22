@@ -58,6 +58,12 @@ public class SCIPJNIJNI {
   public final static native int SCIP_PARAMEMPHASIS_PHASEFEAS_get();
   public final static native int SCIP_PARAMEMPHASIS_PHASEIMPROVE_get();
   public final static native int SCIP_PARAMEMPHASIS_PHASEPROOF_get();
+  public final static native int SCIP_VERBLEVEL_NONE_get();
+  public final static native int SCIP_VERBLEVEL_DIALOG_get();
+  public final static native int SCIP_VERBLEVEL_MINIMAL_get();
+  public final static native int SCIP_VERBLEVEL_NORMAL_get();
+  public final static native int SCIP_VERBLEVEL_HIGH_get();
+  public final static native int SCIP_VERBLEVEL_FULL_get();
   public final static native int SCIP_OBJSENSE_MAXIMIZE_get();
   public final static native int SCIP_OBJSENSE_MINIMIZE_get();
   public final static native double SCIPcalcMachineEpsilon();
@@ -114,6 +120,27 @@ public class SCIPJNIJNI {
   public final static native int SCIPsolGetDepth(long jarg1);
   public final static native int SCIPsolGetIndex(long jarg1);
   public final static native String SCIPconsGetName(long jarg1);
+  public final static native long ObjMessagehdlr_scip_bufferedoutput__get(long jarg1, ObjMessagehdlr jarg1_);
+  public final static native long new_ObjMessagehdlr(long jarg1);
+  public final static native void delete_ObjMessagehdlr(long jarg1);
+  public final static native void ObjMessagehdlr_scip_error(long jarg1, ObjMessagehdlr jarg1_, long jarg2, long jarg3, String jarg4);
+  public final static native void ObjMessagehdlr_scip_errorSwigExplicitObjMessagehdlr(long jarg1, ObjMessagehdlr jarg1_, long jarg2, long jarg3, String jarg4);
+  public final static native void ObjMessagehdlr_scip_warning(long jarg1, ObjMessagehdlr jarg1_, long jarg2, long jarg3, String jarg4);
+  public final static native void ObjMessagehdlr_scip_warningSwigExplicitObjMessagehdlr(long jarg1, ObjMessagehdlr jarg1_, long jarg2, long jarg3, String jarg4);
+  public final static native void ObjMessagehdlr_scip_dialog(long jarg1, ObjMessagehdlr jarg1_, long jarg2, long jarg3, String jarg4);
+  public final static native void ObjMessagehdlr_scip_dialogSwigExplicitObjMessagehdlr(long jarg1, ObjMessagehdlr jarg1_, long jarg2, long jarg3, String jarg4);
+  public final static native void ObjMessagehdlr_scip_info(long jarg1, ObjMessagehdlr jarg1_, long jarg2, long jarg3, String jarg4);
+  public final static native void ObjMessagehdlr_scip_infoSwigExplicitObjMessagehdlr(long jarg1, ObjMessagehdlr jarg1_, long jarg2, long jarg3, String jarg4);
+  public final static native int ObjMessagehdlr_scip_free(long jarg1, ObjMessagehdlr jarg1_, long jarg2);
+  public final static native int ObjMessagehdlr_scip_freeSwigExplicitObjMessagehdlr(long jarg1, ObjMessagehdlr jarg1_, long jarg2);
+  public final static native void ObjMessagehdlr_director_connect(ObjMessagehdlr obj, long cptr, boolean mem_own, boolean weak_global);
+  public final static native void ObjMessagehdlr_change_ownership(ObjMessagehdlr obj, long cptr, boolean take_or_release);
+  public final static native long SCIPgetObjMessagehdlr(long jarg1);
+  public final static native void SCIPsetStaticErrorPrintingMessagehdlr(long jarg1);
+  public final static native int SCIPsetMessagehdlr(long jarg1, long jarg2);
+  public final static native long SCIPgetMessagehdlr(long jarg1);
+  public final static native void SCIPsetMessagehdlrLogfile(long jarg1, String jarg2);
+  public final static native int SCIPgetVerbLevel(long jarg1);
   public final static native long createSCIP();
   public final static native void freeSCIP(long jarg1);
   public final static native long createVar(long jarg1, String jarg2, double jarg3, double jarg4, double jarg5, int jarg6);
@@ -122,4 +149,26 @@ public class SCIPJNIJNI {
   public final static native long createConsBasicQuadratic(long jarg1, String jarg2, int jarg3, long jarg4, long jarg5, int jarg6, long jarg7, long jarg8, long jarg9, double jarg10, double jarg11);
   public final static native long createConsBasicSuperIndicator(long jarg1, String jarg2, long jarg3, long jarg4);
   public final static native void releaseCons(long jarg1, long jarg2);
+  public final static native long createObjMessagehdlr(long jarg1, ObjMessagehdlr jarg1_, long jarg2);
+
+  public static void SwigDirector_ObjMessagehdlr_scip_error(ObjMessagehdlr jself, long messagehdlr, long file, String msg) {
+    jself.scip_error((messagehdlr == 0) ? null : new SWIGTYPE_p_SCIP_Messagehdlr(messagehdlr, false), (file == 0) ? null : new SWIGTYPE_p_FILE(file, false), msg);
+  }
+  public static void SwigDirector_ObjMessagehdlr_scip_warning(ObjMessagehdlr jself, long messagehdlr, long file, String msg) {
+    jself.scip_warning((messagehdlr == 0) ? null : new SWIGTYPE_p_SCIP_Messagehdlr(messagehdlr, false), (file == 0) ? null : new SWIGTYPE_p_FILE(file, false), msg);
+  }
+  public static void SwigDirector_ObjMessagehdlr_scip_dialog(ObjMessagehdlr jself, long messagehdlr, long file, String msg) {
+    jself.scip_dialog((messagehdlr == 0) ? null : new SWIGTYPE_p_SCIP_Messagehdlr(messagehdlr, false), (file == 0) ? null : new SWIGTYPE_p_FILE(file, false), msg);
+  }
+  public static void SwigDirector_ObjMessagehdlr_scip_info(ObjMessagehdlr jself, long messagehdlr, long file, String msg) {
+    jself.scip_info((messagehdlr == 0) ? null : new SWIGTYPE_p_SCIP_Messagehdlr(messagehdlr, false), (file == 0) ? null : new SWIGTYPE_p_FILE(file, false), msg);
+  }
+  public static int SwigDirector_ObjMessagehdlr_scip_free(ObjMessagehdlr jself, long messagehdlr) {
+    return (jself.scip_free((messagehdlr == 0) ? null : new SWIGTYPE_p_SCIP_Messagehdlr(messagehdlr, false))).swigValue();
+  }
+
+  private final static native void swig_module_init();
+  static {
+    swig_module_init();
+  }
 }
