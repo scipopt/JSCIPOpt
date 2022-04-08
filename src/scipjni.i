@@ -7,6 +7,7 @@
 %{
    #include "scip/scip.h"
    #include "scip/scipdefplugins.h"
+   #include "scip/cons_quadratic.h"
    #include "objscip/objmessagehdlr.h"
 
    /* assist function to create a SCIP */
