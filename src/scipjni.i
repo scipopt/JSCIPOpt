@@ -222,6 +222,9 @@ SCIP_RETCODE   SCIPsetSolVal(SCIP* scip, SCIP_SOL* sol, SCIP_VAR* var, SCIP_Real
 SCIP_RETCODE   SCIPsetSolVals(SCIP* scip, SCIP_SOL* sol, int nvars, SCIP_VAR** vars, SCIP_Real* val);
 SCIP_RETCODE   SCIPaddSolFree(SCIP* scip, SCIP_SOL** sol, SCIP_Bool *stored);
 
+/* from scip_solvingstats.h */
+SCIP_Real      SCIPgetDualbound(SCIP* scip);
+
 /* from memory.h */
 void           BMScheckEmptyMemory();
 long long      BMSgetMemoryUsed();

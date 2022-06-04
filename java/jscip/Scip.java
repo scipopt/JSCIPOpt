@@ -459,6 +459,12 @@ public class Scip
       return succ;
    }
 
+   /** wraps SCIPgetDualbound() */
+   public double getDualbound()
+   {
+      return SCIPJNI.SCIPgetDualbound(_scipptr);
+   }
+
    /** wraps SCIPgetGap() */
    public double getGap()
    {

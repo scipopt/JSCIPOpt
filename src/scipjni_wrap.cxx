@@ -2579,6 +2579,20 @@ SWIGEXPORT jint JNICALL Java_jscip_SCIPJNIJNI_SCIPaddSolFree(JNIEnv *jenv, jclas
 }
 
 
+SWIGEXPORT jdouble JNICALL Java_jscip_SCIPJNIJNI_SCIPgetDualbound(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+  jdouble jresult = 0 ;
+  SCIP *arg1 = (SCIP *) 0 ;
+  double result;
+  
+  (void)jenv;
+  (void)jcls;
+  arg1 = *(SCIP **)&jarg1; 
+  result = (double)SCIPgetDualbound(arg1);
+  jresult = (jdouble)result; 
+  return jresult;
+}
+
+
 SWIGEXPORT void JNICALL Java_jscip_SCIPJNIJNI_BMScheckEmptyMemory(JNIEnv *jenv, jclass jcls) {
   (void)jenv;
   (void)jcls;

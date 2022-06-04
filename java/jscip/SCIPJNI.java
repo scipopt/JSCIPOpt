@@ -246,6 +246,10 @@ public class SCIPJNI {
     return SCIP_Retcode.swigToEnum(SCIPJNIJNI.SCIPaddSolFree(SWIGTYPE_p_SCIP.getCPtr(scip), SWIGTYPE_p_p_SCIP_SOL.getCPtr(sol), SWIGTYPE_p_unsigned_int.getCPtr(stored)));
   }
 
+  public static double SCIPgetDualbound(SWIGTYPE_p_SCIP scip) {
+    return SCIPJNIJNI.SCIPgetDualbound(SWIGTYPE_p_SCIP.getCPtr(scip));
+  }
+
   public static void BMScheckEmptyMemory() {
     SCIPJNIJNI.BMScheckEmptyMemory();
   }

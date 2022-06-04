@@ -107,6 +107,7 @@ public class SCIPJNIJNI {
   public final static native int SCIPsetSolVal(long jarg1, long jarg2, long jarg3, double jarg4);
   public final static native int SCIPsetSolVals(long jarg1, long jarg2, int jarg3, long jarg4, long jarg5);
   public final static native int SCIPaddSolFree(long jarg1, long jarg2, long jarg3);
+  public final static native double SCIPgetDualbound(long jarg1);
   public final static native void BMScheckEmptyMemory();
   public final static native long BMSgetMemoryUsed();
   public final static native String SCIPvarGetName(long jarg1);
