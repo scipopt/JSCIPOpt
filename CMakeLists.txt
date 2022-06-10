@@ -76,6 +76,15 @@ endif()
 include_directories (${JNI_INCLUDE_DIRS} ${SCIP_INCLUDE_DIRS} ${PROJECT_SOURCE_DIR}/src)
 
 #
+# check whether SCIP is a static library (in which case it is safe to use macros)
+#
+get_target_property(LIBSCIP_TARGET_TYPE libscip TYPE)
+message("libscip is a ${LIBSCIP_TARGET_TYPE}.")
+if (LIBSCIP_TARGET_TYPE STREQUAL STATIC_LIBRARY)
+  add_definitions(-DHAVE_STATIC_LIBSCIP=1)
+endif()
+
+#
 # link directories
 #
 link_directories (${PROJECT_SOURCE_DIR}/lib)

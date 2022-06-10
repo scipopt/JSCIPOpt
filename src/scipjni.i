@@ -10,6 +10,68 @@
    #include "scip/cons_quadratic.h"
    #include "objscip/objmessagehdlr.h"
 
+   /* if libscip is a shared library, ensure we use function calls instead of
+      macros, for better binary compatibility across SCIP versions */
+   #ifndef HAVE_STATIC_LIBSCIP
+   #ifdef SCIPinfinity
+   #undef SCIPinfinity
+   #endif
+
+   #ifdef BMScheckEmptyMemory
+   #undef BMScheckEmptyMemory
+   #endif
+   #define BMScheckEmptyMemory() BMScheckEmptyMemory_call()
+
+   #ifdef BMSgetMemoryUsed
+   #undef BMSgetMemoryUsed
+   #endif
+   #define BMSgetMemoryUsed() BMSgetMemoryUsed_call()
+
+   #ifdef SCIPvarGetName
+   #undef SCIPvarGetName
+   #endif
+
+   #ifdef SCIPvarGetType
+   #undef SCIPvarGetType
+   #endif
+
+   #ifdef SCIPvarGetLbLocal
+   #undef SCIPvarGetLbLocal
+   #endif
+
+   #ifdef SCIPvarGetUbLocal
+   #undef SCIPvarGetUbLocal
+   #endif
+
+   #ifdef SCIPvarGetLbGlobal
+   #undef SCIPvarGetLbGlobal
+   #endif
+
+   #ifdef SCIPvarGetUbGlobal
+   #undef SCIPvarGetUbGlobal
+   #endif
+
+   #ifdef SCIPvarGetObj
+   #undef SCIPvarGetObj
+   #endif
+
+   #ifdef SCIPvarGetBranchPriority
+   #undef SCIPvarGetBranchPriority
+   #endif
+
+   #ifdef SCIPsolGetDepth
+   #undef SCIPsolGetDepth
+   #endif
+
+   #ifdef SCIPsolGetIndex
+   #undef SCIPsolGetIndex
+   #endif
+
+   #ifdef SCIPconsGetName
+   #undef SCIPconsGetName
+   #endif
+   #endif /* ndef HAVE_STATIC_LIBSCIP */
+
    /* assist function to create a SCIP */
    SCIP* createSCIP()
    {
