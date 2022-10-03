@@ -82,9 +82,16 @@ public class Scip
    }
 
    /** wraps SCIPsetLongintParam() */
-   public void setLongintParam(String name, int value)
+   public void setLongintParam(String name, long value)
    {
       CHECK_RETCODE( SCIPJNI.SCIPsetLongintParam(_scipptr, name, value) );
+   }
+
+   /** wraps SCIPsetLongintParam(). Overload to preserve binary
+       compatibility. */
+   public void setLongintParam(String name, int value)
+   {
+      setLongintParam(name, (long) value);
    }
 
    /** wraps SCIPsetRealParam() */

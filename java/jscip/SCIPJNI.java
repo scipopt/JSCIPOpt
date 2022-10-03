@@ -190,7 +190,7 @@ public class SCIPJNI {
     return SCIP_Retcode.swigToEnum(SCIPJNIJNI.SCIPsetIntParam(SWIGTYPE_p_SCIP.getCPtr(scip), name, value));
   }
 
-  public static SCIP_Retcode SCIPsetLongintParam(SWIGTYPE_p_SCIP scip, String name, int value) {
+  public static SCIP_Retcode SCIPsetLongintParam(SWIGTYPE_p_SCIP scip, String name, long value) {
     return SCIP_Retcode.swigToEnum(SCIPJNIJNI.SCIPsetLongintParam(SWIGTYPE_p_SCIP.getCPtr(scip), name, value));
   }
 

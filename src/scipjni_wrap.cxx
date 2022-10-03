@@ -2368,11 +2368,11 @@ SWIGEXPORT jint JNICALL Java_jscip_SCIPJNIJNI_SCIPsetIntParam(JNIEnv *jenv, jcla
 }
 
 
-SWIGEXPORT jint JNICALL Java_jscip_SCIPJNIJNI_SCIPsetLongintParam(JNIEnv *jenv, jclass jcls, jlong jarg1, jstring jarg2, jint jarg3) {
+SWIGEXPORT jint JNICALL Java_jscip_SCIPJNIJNI_SCIPsetLongintParam(JNIEnv *jenv, jclass jcls, jlong jarg1, jstring jarg2, jlong jarg3) {
   jint jresult = 0 ;
   SCIP *arg1 = (SCIP *) 0 ;
   char *arg2 = (char *) 0 ;
-  long arg3 ;
+  long long arg3 ;
   SCIP_RETCODE result;
   
   (void)jenv;
@@ -2383,7 +2383,7 @@ SWIGEXPORT jint JNICALL Java_jscip_SCIPJNIJNI_SCIPsetLongintParam(JNIEnv *jenv, 
     arg2 = (char *)jenv->GetStringUTFChars(jarg2, 0);
     if (!arg2) return 0;
   }
-  arg3 = (long)jarg3; 
+  arg3 = (long long)jarg3; 
   result = (SCIP_RETCODE)SCIPsetLongintParam(arg1,(char const *)arg2,arg3);
   jresult = (jint)result; 
   if (arg2) jenv->ReleaseStringUTFChars(jarg2, (const char *)arg2);

@@ -160,7 +160,7 @@
 
  /* some defines from def.h */
 #define SCIP_Real double
-#define SCIP_Longint long int
+#define SCIP_Longint long long int
 #define SCIP_Bool unsigned int
 
 /* SCIP retcode enum */

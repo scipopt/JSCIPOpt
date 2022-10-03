@@ -93,7 +93,7 @@ public class SCIPJNIJNI {
   public final static native double SCIPfeastol(long jarg1);
   public final static native int SCIPsetBoolParam(long jarg1, String jarg2, long jarg3);
   public final static native int SCIPsetIntParam(long jarg1, String jarg2, int jarg3);
-  public final static native int SCIPsetLongintParam(long jarg1, String jarg2, int jarg3);
+  public final static native int SCIPsetLongintParam(long jarg1, String jarg2, long jarg3);
   public final static native int SCIPsetRealParam(long jarg1, String jarg2, double jarg3);
   public final static native int SCIPsetCharParam(long jarg1, String jarg2, char jarg3);
   public final static native int SCIPsetStringParam(long jarg1, String jarg2, String jarg3);
