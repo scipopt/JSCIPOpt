@@ -148,6 +148,10 @@ public class SCIPJNI {
     SCIPJNIJNI.SCIPsetMessagehdlrQuiet(SWIGTYPE_p_SCIP.getCPtr(scip), quite);
   }
 
+  public static SCIP_Status SCIPgetStatus(SWIGTYPE_p_SCIP scip) {
+    return SCIP_Status.swigToEnum(SCIPJNIJNI.SCIPgetStatus(SWIGTYPE_p_SCIP.getCPtr(scip)));
+  }
+
   public static SWIGTYPE_p_p_SCIP_SOL SCIPgetSols(SWIGTYPE_p_SCIP scip) {
     long cPtr = SCIPJNIJNI.SCIPgetSols(SWIGTYPE_p_SCIP.getCPtr(scip));
     return (cPtr == 0) ? null : new SWIGTYPE_p_p_SCIP_SOL(cPtr, false);

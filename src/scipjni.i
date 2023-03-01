@@ -234,6 +234,28 @@ enum SCIP_Objsense
 };
 typedef enum SCIP_Objsense SCIP_OBJSENSE;
 
+/** SCIP Status enum */
+enum SCIP_Status
+{
+   SCIP_STATUS_UNKNOWN        =  0,
+   SCIP_STATUS_USERINTERRUPT  =  1,
+   SCIP_STATUS_NODELIMIT      =  2,
+   SCIP_STATUS_TOTALNODELIMIT =  3,
+   SCIP_STATUS_STALLNODELIMIT =  4,
+   SCIP_STATUS_TIMELIMIT      =  5,
+   SCIP_STATUS_MEMLIMIT       =  6,
+   SCIP_STATUS_GAPLIMIT       =  7,
+   SCIP_STATUS_SOLLIMIT       =  8,
+   SCIP_STATUS_BESTSOLLIMIT   =  9,
+   SCIP_STATUS_RESTARTLIMIT   = 10,
+   SCIP_STATUS_OPTIMAL        = 11,
+   SCIP_STATUS_INFEASIBLE     = 12,
+   SCIP_STATUS_UNBOUNDED      = 13,
+   SCIP_STATUS_INFORUNBD      = 14,
+   SCIP_STATUS_TERMINATE      = 15
+};
+typedef enum SCIP_Status SCIP_STATUS;
+
 /* from pub_misc.h */
 SCIP_Real      SCIPcalcMachineEpsilon();
 
@@ -255,6 +277,7 @@ SCIP_RETCODE   SCIPwriteTransProblem(SCIP* scip, const char* filename, const cha
 SCIP_RETCODE   SCIPprintStatistics(SCIP* scip, FILE* file);
 SCIP_RETCODE   SCIPprintBestSol(SCIP* scip, FILE* file, SCIP_Bool printzeros);
 void           SCIPsetMessagehdlrQuiet(SCIP* scip, SCIP_Bool quite);
+SCIP_STATUS    SCIPgetStatus(SCIP* scip);
 SCIP_SOL**     SCIPgetSols(SCIP* scip);
 int            SCIPgetNSols(SCIP* scip);
 SCIP_SOL*      SCIPgetBestSol(SCIP* scip);
