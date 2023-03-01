@@ -18,7 +18,7 @@ find_package (Java REQUIRED)
 include (UseJava)
 
 #
-# list of all java sourcse
+# list of all java sources
 #
 set(SWIG_JAVA_SOURCES
   ${PROJECT_SOURCE_DIR}/java/jscip/ObjMessagehdlr.java
@@ -29,6 +29,7 @@ set(SWIG_JAVA_SOURCES
   ${PROJECT_SOURCE_DIR}/java/jscip/SCIP_ParamEmphasis.java
   ${PROJECT_SOURCE_DIR}/java/jscip/SCIP_Objsense.java
   ${PROJECT_SOURCE_DIR}/java/jscip/SCIP_VerbLevel.java
+  ${PROJECT_SOURCE_DIR}/java/jscip/SCIP_Status.java
   ${PROJECT_SOURCE_DIR}/java/jscip/SWIGTYPE_p_double.java
   ${PROJECT_SOURCE_DIR}/java/jscip/SWIGTYPE_p_unsigned_int.java
   ${PROJECT_SOURCE_DIR}/java/jscip/SWIGTYPE_p_FILE.java

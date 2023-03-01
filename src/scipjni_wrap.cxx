@@ -1900,6 +1900,198 @@ SWIGEXPORT jint JNICALL Java_jscip_SCIPJNIJNI_SCIP_1OBJSENSE_1MINIMIZE_1get(JNIE
 }
 
 
+SWIGEXPORT jint JNICALL Java_jscip_SCIPJNIJNI_SCIP_1STATUS_1UNKNOWN_1get(JNIEnv *jenv, jclass jcls) {
+  jint jresult = 0 ;
+  SCIP_Status result;
+  
+  (void)jenv;
+  (void)jcls;
+  result = (SCIP_Status)SCIP_STATUS_UNKNOWN;
+  jresult = (jint)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jint JNICALL Java_jscip_SCIPJNIJNI_SCIP_1STATUS_1USERINTERRUPT_1get(JNIEnv *jenv, jclass jcls) {
+  jint jresult = 0 ;
+  SCIP_Status result;
+  
+  (void)jenv;
+  (void)jcls;
+  result = (SCIP_Status)SCIP_STATUS_USERINTERRUPT;
+  jresult = (jint)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jint JNICALL Java_jscip_SCIPJNIJNI_SCIP_1STATUS_1NODELIMIT_1get(JNIEnv *jenv, jclass jcls) {
+  jint jresult = 0 ;
+  SCIP_Status result;
+  
+  (void)jenv;
+  (void)jcls;
+  result = (SCIP_Status)SCIP_STATUS_NODELIMIT;
+  jresult = (jint)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jint JNICALL Java_jscip_SCIPJNIJNI_SCIP_1STATUS_1TOTALNODELIMIT_1get(JNIEnv *jenv, jclass jcls) {
+  jint jresult = 0 ;
+  SCIP_Status result;
+  
+  (void)jenv;
+  (void)jcls;
+  result = (SCIP_Status)SCIP_STATUS_TOTALNODELIMIT;
+  jresult = (jint)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jint JNICALL Java_jscip_SCIPJNIJNI_SCIP_1STATUS_1STALLNODELIMIT_1get(JNIEnv *jenv, jclass jcls) {
+  jint jresult = 0 ;
+  SCIP_Status result;
+  
+  (void)jenv;
+  (void)jcls;
+  result = (SCIP_Status)SCIP_STATUS_STALLNODELIMIT;
+  jresult = (jint)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jint JNICALL Java_jscip_SCIPJNIJNI_SCIP_1STATUS_1TIMELIMIT_1get(JNIEnv *jenv, jclass jcls) {
+  jint jresult = 0 ;
+  SCIP_Status result;
+  
+  (void)jenv;
+  (void)jcls;
+  result = (SCIP_Status)SCIP_STATUS_TIMELIMIT;
+  jresult = (jint)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jint JNICALL Java_jscip_SCIPJNIJNI_SCIP_1STATUS_1MEMLIMIT_1get(JNIEnv *jenv, jclass jcls) {
+  jint jresult = 0 ;
+  SCIP_Status result;
+  
+  (void)jenv;
+  (void)jcls;
+  result = (SCIP_Status)SCIP_STATUS_MEMLIMIT;
+  jresult = (jint)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jint JNICALL Java_jscip_SCIPJNIJNI_SCIP_1STATUS_1GAPLIMIT_1get(JNIEnv *jenv, jclass jcls) {
+  jint jresult = 0 ;
+  SCIP_Status result;
+  
+  (void)jenv;
+  (void)jcls;
+  result = (SCIP_Status)SCIP_STATUS_GAPLIMIT;
+  jresult = (jint)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jint JNICALL Java_jscip_SCIPJNIJNI_SCIP_1STATUS_1SOLLIMIT_1get(JNIEnv *jenv, jclass jcls) {
+  jint jresult = 0 ;
+  SCIP_Status result;
+  
+  (void)jenv;
+  (void)jcls;
+  result = (SCIP_Status)SCIP_STATUS_SOLLIMIT;
+  jresult = (jint)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jint JNICALL Java_jscip_SCIPJNIJNI_SCIP_1STATUS_1BESTSOLLIMIT_1get(JNIEnv *jenv, jclass jcls) {
+  jint jresult = 0 ;
+  SCIP_Status result;
+  
+  (void)jenv;
+  (void)jcls;
+  result = (SCIP_Status)SCIP_STATUS_BESTSOLLIMIT;
+  jresult = (jint)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jint JNICALL Java_jscip_SCIPJNIJNI_SCIP_1STATUS_1RESTARTLIMIT_1get(JNIEnv *jenv, jclass jcls) {
+  jint jresult = 0 ;
+  SCIP_Status result;
+  
+  (void)jenv;
+  (void)jcls;
+  result = (SCIP_Status)SCIP_STATUS_RESTARTLIMIT;
+  jresult = (jint)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jint JNICALL Java_jscip_SCIPJNIJNI_SCIP_1STATUS_1OPTIMAL_1get(JNIEnv *jenv, jclass jcls) {
+  jint jresult = 0 ;
+  SCIP_Status result;
+  
+  (void)jenv;
+  (void)jcls;
+  result = (SCIP_Status)SCIP_STATUS_OPTIMAL;
+  jresult = (jint)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jint JNICALL Java_jscip_SCIPJNIJNI_SCIP_1STATUS_1INFEASIBLE_1get(JNIEnv *jenv, jclass jcls) {
+  jint jresult = 0 ;
+  SCIP_Status result;
+  
+  (void)jenv;
+  (void)jcls;
+  result = (SCIP_Status)SCIP_STATUS_INFEASIBLE;
+  jresult = (jint)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jint JNICALL Java_jscip_SCIPJNIJNI_SCIP_1STATUS_1UNBOUNDED_1get(JNIEnv *jenv, jclass jcls) {
+  jint jresult = 0 ;
+  SCIP_Status result;
+  
+  (void)jenv;
+  (void)jcls;
+  result = (SCIP_Status)SCIP_STATUS_UNBOUNDED;
+  jresult = (jint)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jint JNICALL Java_jscip_SCIPJNIJNI_SCIP_1STATUS_1INFORUNBD_1get(JNIEnv *jenv, jclass jcls) {
+  jint jresult = 0 ;
+  SCIP_Status result;
+  
+  (void)jenv;
+  (void)jcls;
+  result = (SCIP_Status)SCIP_STATUS_INFORUNBD;
+  jresult = (jint)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jint JNICALL Java_jscip_SCIPJNIJNI_SCIP_1STATUS_1TERMINATE_1get(JNIEnv *jenv, jclass jcls) {
+  jint jresult = 0 ;
+  SCIP_Status result;
+  
+  (void)jenv;
+  (void)jcls;
+  result = (SCIP_Status)SCIP_STATUS_TERMINATE;
+  jresult = (jint)result; 
+  return jresult;
+}
+
+
 SWIGEXPORT jdouble JNICALL Java_jscip_SCIPJNIJNI_SCIPcalcMachineEpsilon(JNIEnv *jenv, jclass jcls) {
   jdouble jresult = 0 ;
   double result;
@@ -2201,6 +2393,20 @@ SWIGEXPORT void JNICALL Java_jscip_SCIPJNIJNI_SCIPsetMessagehdlrQuiet(JNIEnv *je
   arg1 = *(SCIP **)&jarg1; 
   arg2 = (unsigned int)jarg2; 
   SCIPsetMessagehdlrQuiet(arg1,arg2);
+}
+
+
+SWIGEXPORT jint JNICALL Java_jscip_SCIPJNIJNI_SCIPgetStatus(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+  jint jresult = 0 ;
+  SCIP *arg1 = (SCIP *) 0 ;
+  SCIP_STATUS result;
+  
+  (void)jenv;
+  (void)jcls;
+  arg1 = *(SCIP **)&jarg1; 
+  result = (SCIP_STATUS)SCIPgetStatus(arg1);
+  jresult = (jint)result; 
+  return jresult;
 }
 
 

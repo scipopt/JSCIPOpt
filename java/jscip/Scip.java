@@ -45,6 +45,12 @@ public class Scip
       CHECK_RETCODE( SCIPJNI.SCIPsolveConcurrent(_scipptr) );
    }
 
+   /** wraps SCIPgetStatus() */
+   public SCIP_Status getStatus()
+   {
+      return SCIPJNI.SCIPgetStatus(_scipptr);
+   }
+
    /** wraps SCIPsetMessagehdlrQuiet() */
    public void hideOutput(boolean quite)
    {
