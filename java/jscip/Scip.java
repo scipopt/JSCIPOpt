@@ -45,6 +45,18 @@ public class Scip
       CHECK_RETCODE( SCIPJNI.SCIPsolveConcurrent(_scipptr) );
    }
 
+   /** wraps SCIPinterruptSolve() */
+   public void interruptSolve()
+   {
+      CHECK_RETCODE( SCIPJNI.SCIPinterruptSolve(_scipptr) );
+   }
+
+   /** wraps SCIPisSolveInterrupted() */
+   public boolean isSolveInterrupted()
+   {
+      return SCIPJNI.SCIPisSolveInterrupted(_scipptr) != 0;
+   }
+
    /** wraps SCIPgetStatus() */
    public SCIP_Status getStatus()
    {

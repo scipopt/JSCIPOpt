@@ -115,6 +115,14 @@ public class SCIPJNI {
     return SCIP_Retcode.swigToEnum(SCIPJNIJNI.SCIPsolveConcurrent(SWIGTYPE_p_SCIP.getCPtr(scip)));
   }
 
+  public static SCIP_Retcode SCIPinterruptSolve(SWIGTYPE_p_SCIP scip) {
+    return SCIP_Retcode.swigToEnum(SCIPJNIJNI.SCIPinterruptSolve(SWIGTYPE_p_SCIP.getCPtr(scip)));
+  }
+
+  public static long SCIPisSolveInterrupted(SWIGTYPE_p_SCIP scip) {
+    return SCIPJNIJNI.SCIPisSolveInterrupted(SWIGTYPE_p_SCIP.getCPtr(scip));
+  }
+
   public static SCIP_Retcode SCIPaddVar(SWIGTYPE_p_SCIP scip, SWIGTYPE_p_SCIP_VAR var) {
     return SCIP_Retcode.swigToEnum(SCIPJNIJNI.SCIPaddVar(SWIGTYPE_p_SCIP.getCPtr(scip), SWIGTYPE_p_SCIP_VAR.getCPtr(var)));
   }
