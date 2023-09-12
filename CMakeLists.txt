@@ -13,7 +13,7 @@ endif()
 #
 # find JNI and java
 #
-find_package (JNI REQUIRED)
+find_package (JNI REQUIRED JVM)
 find_package (Java REQUIRED)
 include (UseJava)
 
