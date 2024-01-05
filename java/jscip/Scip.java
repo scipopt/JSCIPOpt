@@ -440,6 +440,16 @@ public class Scip
       return sol;
    }
 
+   /** wraps SCIPcreatePartialSol() */
+   public Solution createPartialSol()
+   {
+      SWIGTYPE_p_p_SCIP_SOL solptr = SCIPJNI.new_SCIP_SOL_array(1);
+      CHECK_RETCODE( SCIPJNI.SCIPcreatePartialSol(_scipptr, solptr, null) );
+      Solution sol = new Solution(SCIPJNI.SCIP_SOL_array_getitem(solptr, 0));
+      SCIPJNI.delete_SCIP_SOL_array(solptr);
+      return sol;
+   }
+
    /** wraps SCIPsetSolVal() */
    public void setSolVal(Solution sol, Variable var, double val)
    {

@@ -123,6 +123,7 @@ public class SCIPJNIJNI {
   public final static native int SCIPchgVarObj(long jarg1, long jarg2, double jarg3);
   public final static native int SCIPchgVarBranchPriority(long jarg1, long jarg2, int jarg3);
   public final static native int SCIPcreateSol(long jarg1, long jarg2, long jarg3);
+  public final static native int SCIPcreatePartialSol(long jarg1, long jarg2, long jarg3);
   public final static native int SCIPsetSolVal(long jarg1, long jarg2, long jarg3, double jarg4);
   public final static native int SCIPsetSolVals(long jarg1, long jarg2, int jarg3, long jarg4, long jarg5);
   public final static native int SCIPaddSolFree(long jarg1, long jarg2, long jarg3);
