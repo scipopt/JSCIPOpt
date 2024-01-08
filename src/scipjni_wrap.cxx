@@ -2814,6 +2814,22 @@ SWIGEXPORT jint JNICALL Java_jscip_SCIPJNIJNI_SCIPcreateSol(JNIEnv *jenv, jclass
   return jresult;
 }
 
+SWIGEXPORT jint JNICALL Java_jscip_SCIPJNIJNI_SCIPcreatePartialSol(JNIEnv *jenv, jclass jcls, jlong jarg1, jlong jarg2, jlong jarg3) {
+  jint jresult = 0 ;
+  SCIP *arg1 = (SCIP *) 0 ;
+  SCIP_SOL **arg2 = (SCIP_SOL **) 0 ;
+  SCIP_HEUR *arg3 = (SCIP_HEUR *) 0 ;
+  SCIP_RETCODE result;
+  
+  (void)jenv;
+  (void)jcls;
+  arg1 = *(SCIP **)&jarg1; 
+  arg2 = *(SCIP_SOL ***)&jarg2; 
+  arg3 = *(SCIP_HEUR **)&jarg3; 
+  result = (SCIP_RETCODE)SCIPcreatePartialSol(arg1,arg2,arg3);
+  jresult = (jint)result; 
+  return jresult;
+}
 
 SWIGEXPORT jint JNICALL Java_jscip_SCIPJNIJNI_SCIPsetSolVal(JNIEnv *jenv, jclass jcls, jlong jarg1, jlong jarg2, jlong jarg3, jdouble jarg4) {
   jint jresult = 0 ;
