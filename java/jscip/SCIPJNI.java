@@ -160,6 +160,10 @@ public class SCIPJNI {
     return SCIP_Status.swigToEnum(SCIPJNIJNI.SCIPgetStatus(SWIGTYPE_p_SCIP.getCPtr(scip)));
   }
 
+  public static SCIP_Stage SCIPgetStage(SWIGTYPE_p_SCIP scip) {
+    return SCIP_Stage.swigToEnum(SCIPJNIJNI.SCIPgetStage(SWIGTYPE_p_SCIP.getCPtr(scip)));
+  }
+
   public static SWIGTYPE_p_p_SCIP_SOL SCIPgetSols(SWIGTYPE_p_SCIP scip) {
     long cPtr = SCIPJNIJNI.SCIPgetSols(SWIGTYPE_p_SCIP.getCPtr(scip));
     return (cPtr == 0) ? null : new SWIGTYPE_p_p_SCIP_SOL(cPtr, false);

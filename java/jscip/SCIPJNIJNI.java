@@ -102,6 +102,7 @@ public class SCIPJNIJNI {
   public final static native int SCIPprintBestSol(long jarg1, long jarg2, long jarg3);
   public final static native void SCIPsetMessagehdlrQuiet(long jarg1, long jarg2);
   public final static native int SCIPgetStatus(long jarg1);
+  public final static native int SCIPgetStage(long jarg1);
   public final static native long SCIPgetSols(long jarg1);
   public final static native int SCIPgetNSols(long jarg1);
   public final static native long SCIPgetBestSol(long jarg1);

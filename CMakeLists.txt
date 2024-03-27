@@ -30,6 +30,7 @@ set(SWIG_JAVA_SOURCES
   ${PROJECT_SOURCE_DIR}/java/jscip/SCIP_Objsense.java
   ${PROJECT_SOURCE_DIR}/java/jscip/SCIP_VerbLevel.java
   ${PROJECT_SOURCE_DIR}/java/jscip/SCIP_Status.java
+  ${PROJECT_SOURCE_DIR}/java/jscip/SCIP_Stage.java
   ${PROJECT_SOURCE_DIR}/java/jscip/SWIGTYPE_p_double.java
   ${PROJECT_SOURCE_DIR}/java/jscip/SWIGTYPE_p_unsigned_int.java
   ${PROJECT_SOURCE_DIR}/java/jscip/SWIGTYPE_p_FILE.java

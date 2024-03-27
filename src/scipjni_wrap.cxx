@@ -2438,6 +2438,20 @@ SWIGEXPORT jint JNICALL Java_jscip_SCIPJNIJNI_SCIPgetStatus(JNIEnv *jenv, jclass
 }
 
 
+SWIGEXPORT jint JNICALL Java_jscip_SCIPJNIJNI_SCIPgetStage(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+  jint jresult = 0 ;
+  SCIP *arg1 = (SCIP *) 0 ;
+  SCIP_STAGE result;
+  
+  (void)jenv;
+  (void)jcls;
+  arg1 = *(SCIP **)&jarg1; 
+  result = (SCIP_STAGE)SCIPgetStage(arg1);
+  jresult = (jint)result; 
+  return jresult;
+}
+
+
 SWIGEXPORT jlong JNICALL Java_jscip_SCIPJNIJNI_SCIPgetSols(JNIEnv *jenv, jclass jcls, jlong jarg1) {
   jlong jresult = 0 ;
   SCIP *arg1 = (SCIP *) 0 ;
