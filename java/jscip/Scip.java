@@ -63,6 +63,12 @@ public class Scip
       return SCIPJNI.SCIPgetStatus(_scipptr);
    }
 
+   /** wraps SCIPgetStage() */
+   public SCIP_Stage getStage()
+   {
+      return SCIPJNI.SCIPgetStage(_scipptr);
+   }
+
    /** wraps SCIPsetMessagehdlrQuiet() */
    public void hideOutput(boolean quite)
    {

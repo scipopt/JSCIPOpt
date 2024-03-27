@@ -256,6 +256,26 @@ enum SCIP_Status
 };
 typedef enum SCIP_Status SCIP_STATUS;
 
+/** SCIP operation stage */
+enum SCIP_Stage
+{
+   SCIP_STAGE_INIT         =  0,
+   SCIP_STAGE_PROBLEM      =  1,
+   SCIP_STAGE_TRANSFORMING =  2,
+   SCIP_STAGE_TRANSFORMED  =  3,
+   SCIP_STAGE_INITPRESOLVE =  4,
+   SCIP_STAGE_PRESOLVING   =  5,
+   SCIP_STAGE_EXITPRESOLVE =  6,
+   SCIP_STAGE_PRESOLVED    =  7,
+   SCIP_STAGE_INITSOLVE    =  8,
+   SCIP_STAGE_SOLVING      =  9,
+   SCIP_STAGE_SOLVED       = 10,
+   SCIP_STAGE_EXITSOLVE    = 11,
+   SCIP_STAGE_FREETRANS    = 12,
+   SCIP_STAGE_FREE         = 13
+};
+typedef enum SCIP_Stage SCIP_STAGE;
+
 /* from pub_misc.h */
 SCIP_Real      SCIPcalcMachineEpsilon();
 
@@ -280,6 +300,7 @@ SCIP_RETCODE   SCIPprintStatistics(SCIP* scip, FILE* file);
 SCIP_RETCODE   SCIPprintBestSol(SCIP* scip, FILE* file, SCIP_Bool printzeros);
 void           SCIPsetMessagehdlrQuiet(SCIP* scip, SCIP_Bool quite);
 SCIP_STATUS    SCIPgetStatus(SCIP* scip);
+SCIP_STAGE     SCIPgetStage(SCIP* scip);
 SCIP_SOL**     SCIPgetSols(SCIP* scip);
 int            SCIPgetNSols(SCIP* scip);
 SCIP_SOL*      SCIPgetBestSol(SCIP* scip);
