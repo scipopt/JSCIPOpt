@@ -250,7 +250,7 @@ public class SCIPJNI {
     return SCIP_Retcode.swigToEnum(SCIPJNIJNI.SCIPcreateSol(SWIGTYPE_p_SCIP.getCPtr(scip), SWIGTYPE_p_p_SCIP_SOL.getCPtr(sol), SWIGTYPE_p_SCIP_HEUR.getCPtr(heur)));
   }
 
-    public static SCIP_Retcode SCIPcreatePartialSol(SWIGTYPE_p_SCIP scip, SWIGTYPE_p_p_SCIP_SOL sol, SWIGTYPE_p_SCIP_HEUR heur) {
+  public static SCIP_Retcode SCIPcreatePartialSol(SWIGTYPE_p_SCIP scip, SWIGTYPE_p_p_SCIP_SOL sol, SWIGTYPE_p_SCIP_HEUR heur) {
     return SCIP_Retcode.swigToEnum(SCIPJNIJNI.SCIPcreatePartialSol(SWIGTYPE_p_SCIP.getCPtr(scip), SWIGTYPE_p_p_SCIP_SOL.getCPtr(sol), SWIGTYPE_p_SCIP_HEUR.getCPtr(heur)));
   }
 
