@@ -9,6 +9,23 @@
 package jscip;
 
 public class SCIPJNI {
+  public static SWIGTYPE_p_char new_char_array(int nelements) {
+    long cPtr = SCIPJNIJNI.new_char_array(nelements);
+    return (cPtr == 0) ? null : new SWIGTYPE_p_char(cPtr, false);
+  }
+
+  public static void delete_char_array(SWIGTYPE_p_char ary) {
+    SCIPJNIJNI.delete_char_array(SWIGTYPE_p_char.getCPtr(ary));
+  }
+
+  public static char char_array_getitem(SWIGTYPE_p_char ary, int index) {
+    return SCIPJNIJNI.char_array_getitem(SWIGTYPE_p_char.getCPtr(ary), index);
+  }
+
+  public static void char_array_setitem(SWIGTYPE_p_char ary, int index, char value) {
+    SCIPJNIJNI.char_array_setitem(SWIGTYPE_p_char.getCPtr(ary), index, value);
+  }
+
   public static SWIGTYPE_p_double new_double_array(int nelements) {
     long cPtr = SCIPJNIJNI.new_double_array(nelements);
     return (cPtr == 0) ? null : new SWIGTYPE_p_double(cPtr, false);
@@ -26,6 +43,40 @@ public class SCIPJNI {
     SCIPJNIJNI.double_array_setitem(SWIGTYPE_p_double.getCPtr(ary), index, value);
   }
 
+  public static SWIGTYPE_p_int new_int_array(int nelements) {
+    long cPtr = SCIPJNIJNI.new_int_array(nelements);
+    return (cPtr == 0) ? null : new SWIGTYPE_p_int(cPtr, false);
+  }
+
+  public static void delete_int_array(SWIGTYPE_p_int ary) {
+    SCIPJNIJNI.delete_int_array(SWIGTYPE_p_int.getCPtr(ary));
+  }
+
+  public static int int_array_getitem(SWIGTYPE_p_int ary, int index) {
+    return SCIPJNIJNI.int_array_getitem(SWIGTYPE_p_int.getCPtr(ary), index);
+  }
+
+  public static void int_array_setitem(SWIGTYPE_p_int ary, int index, int value) {
+    SCIPJNIJNI.int_array_setitem(SWIGTYPE_p_int.getCPtr(ary), index, value);
+  }
+
+  public static SWIGTYPE_p_long_long new_long_long_array(int nelements) {
+    long cPtr = SCIPJNIJNI.new_long_long_array(nelements);
+    return (cPtr == 0) ? null : new SWIGTYPE_p_long_long(cPtr, false);
+  }
+
+  public static void delete_long_long_array(SWIGTYPE_p_long_long ary) {
+    SCIPJNIJNI.delete_long_long_array(SWIGTYPE_p_long_long.getCPtr(ary));
+  }
+
+  public static long long_long_array_getitem(SWIGTYPE_p_long_long ary, int index) {
+    return SCIPJNIJNI.long_long_array_getitem(SWIGTYPE_p_long_long.getCPtr(ary), index);
+  }
+
+  public static void long_long_array_setitem(SWIGTYPE_p_long_long ary, int index, long value) {
+    SCIPJNIJNI.long_long_array_setitem(SWIGTYPE_p_long_long.getCPtr(ary), index, value);
+  }
+
   public static SWIGTYPE_p_unsigned_int new_unsigned_int_array(int nelements) {
     long cPtr = SCIPJNIJNI.new_unsigned_int_array(nelements);
     return (cPtr == 0) ? null : new SWIGTYPE_p_unsigned_int(cPtr, false);
@@ -41,6 +92,23 @@ public class SCIPJNI {
 
   public static void unsigned_int_array_setitem(SWIGTYPE_p_unsigned_int ary, int index, long value) {
     SCIPJNIJNI.unsigned_int_array_setitem(SWIGTYPE_p_unsigned_int.getCPtr(ary), index, value);
+  }
+
+  public static SWIGTYPE_p_p_char new_String_array(int nelements) {
+    long cPtr = SCIPJNIJNI.new_String_array(nelements);
+    return (cPtr == 0) ? null : new SWIGTYPE_p_p_char(cPtr, false);
+  }
+
+  public static void delete_String_array(SWIGTYPE_p_p_char ary) {
+    SCIPJNIJNI.delete_String_array(SWIGTYPE_p_p_char.getCPtr(ary));
+  }
+
+  public static String String_array_getitem(SWIGTYPE_p_p_char ary, int index) {
+    return SCIPJNIJNI.String_array_getitem(SWIGTYPE_p_p_char.getCPtr(ary), index);
+  }
+
+  public static void String_array_setitem(SWIGTYPE_p_p_char ary, int index, String value) {
+    SCIPJNIJNI.String_array_setitem(SWIGTYPE_p_p_char.getCPtr(ary), index, value);
   }
 
   public static SWIGTYPE_p_p_SCIP_VAR new_SCIP_VAR_array(int nelements) {
@@ -87,10 +155,6 @@ public class SCIPJNI {
     return SCIP_Retcode.swigToEnum(SCIPJNIJNI.SCIPcreate(SWIGTYPE_p_p_SCIP.getCPtr(scip)));
   }
 
-  public static int SCIPgetNVars(SWIGTYPE_p_SCIP scip) {
-    return SCIPJNIJNI.SCIPgetNVars(SWIGTYPE_p_SCIP.getCPtr(scip));
-  }
-
   public static SCIP_Retcode SCIPreadProb(SWIGTYPE_p_SCIP scip, String filename, String extension) {
     return SCIP_Retcode.swigToEnum(SCIPJNIJNI.SCIPreadProb(SWIGTYPE_p_SCIP.getCPtr(scip), filename, extension));
   }
@@ -127,8 +191,21 @@ public class SCIPJNI {
     return SCIP_Retcode.swigToEnum(SCIPJNIJNI.SCIPaddVar(SWIGTYPE_p_SCIP.getCPtr(scip), SWIGTYPE_p_SCIP_VAR.getCPtr(var)));
   }
 
+  public static int SCIPgetNVars(SWIGTYPE_p_SCIP scip) {
+    return SCIPJNIJNI.SCIPgetNVars(SWIGTYPE_p_SCIP.getCPtr(scip));
+  }
+
   public static SWIGTYPE_p_p_SCIP_VAR SCIPgetVars(SWIGTYPE_p_SCIP scip) {
     long cPtr = SCIPJNIJNI.SCIPgetVars(SWIGTYPE_p_SCIP.getCPtr(scip));
+    return (cPtr == 0) ? null : new SWIGTYPE_p_p_SCIP_VAR(cPtr, false);
+  }
+
+  public static int SCIPgetNOrigVars(SWIGTYPE_p_SCIP scip) {
+    return SCIPJNIJNI.SCIPgetNOrigVars(SWIGTYPE_p_SCIP.getCPtr(scip));
+  }
+
+  public static SWIGTYPE_p_p_SCIP_VAR SCIPgetOrigVars(SWIGTYPE_p_SCIP scip) {
+    long cPtr = SCIPJNIJNI.SCIPgetOrigVars(SWIGTYPE_p_SCIP.getCPtr(scip));
     return (cPtr == 0) ? null : new SWIGTYPE_p_p_SCIP_VAR(cPtr, false);
   }
 
@@ -196,6 +273,30 @@ public class SCIPJNI {
 
   public static double SCIPfeastol(SWIGTYPE_p_SCIP scip) {
     return SCIPJNIJNI.SCIPfeastol(SWIGTYPE_p_SCIP.getCPtr(scip));
+  }
+
+  public static SCIP_Retcode SCIPgetBoolParam(SWIGTYPE_p_SCIP scip, String name, SWIGTYPE_p_unsigned_int p_value) {
+    return SCIP_Retcode.swigToEnum(SCIPJNIJNI.SCIPgetBoolParam(SWIGTYPE_p_SCIP.getCPtr(scip), name, SWIGTYPE_p_unsigned_int.getCPtr(p_value)));
+  }
+
+  public static SCIP_Retcode SCIPgetIntParam(SWIGTYPE_p_SCIP scip, String name, SWIGTYPE_p_int p_value) {
+    return SCIP_Retcode.swigToEnum(SCIPJNIJNI.SCIPgetIntParam(SWIGTYPE_p_SCIP.getCPtr(scip), name, SWIGTYPE_p_int.getCPtr(p_value)));
+  }
+
+  public static SCIP_Retcode SCIPgetLongintParam(SWIGTYPE_p_SCIP scip, String name, SWIGTYPE_p_long_long p_value) {
+    return SCIP_Retcode.swigToEnum(SCIPJNIJNI.SCIPgetLongintParam(SWIGTYPE_p_SCIP.getCPtr(scip), name, SWIGTYPE_p_long_long.getCPtr(p_value)));
+  }
+
+  public static SCIP_Retcode SCIPgetRealParam(SWIGTYPE_p_SCIP scip, String name, SWIGTYPE_p_double p_value) {
+    return SCIP_Retcode.swigToEnum(SCIPJNIJNI.SCIPgetRealParam(SWIGTYPE_p_SCIP.getCPtr(scip), name, SWIGTYPE_p_double.getCPtr(p_value)));
+  }
+
+  public static SCIP_Retcode SCIPgetCharParam(SWIGTYPE_p_SCIP scip, String name, SWIGTYPE_p_char p_value) {
+    return SCIP_Retcode.swigToEnum(SCIPJNIJNI.SCIPgetCharParam(SWIGTYPE_p_SCIP.getCPtr(scip), name, SWIGTYPE_p_char.getCPtr(p_value)));
+  }
+
+  public static SCIP_Retcode SCIPgetStringParam(SWIGTYPE_p_SCIP scip, String name, SWIGTYPE_p_p_char p_value) {
+    return SCIP_Retcode.swigToEnum(SCIPJNIJNI.SCIPgetStringParam(SWIGTYPE_p_SCIP.getCPtr(scip), name, SWIGTYPE_p_p_char.getCPtr(p_value)));
   }
 
   public static SCIP_Retcode SCIPsetBoolParam(SWIGTYPE_p_SCIP scip, String name, long value) {
@@ -266,8 +367,16 @@ public class SCIPJNI {
     return SCIP_Retcode.swigToEnum(SCIPJNIJNI.SCIPaddSolFree(SWIGTYPE_p_SCIP.getCPtr(scip), SWIGTYPE_p_p_SCIP_SOL.getCPtr(sol), SWIGTYPE_p_unsigned_int.getCPtr(stored)));
   }
 
+  public static double SCIPgetPrimalbound(SWIGTYPE_p_SCIP scip) {
+    return SCIPJNIJNI.SCIPgetPrimalbound(SWIGTYPE_p_SCIP.getCPtr(scip));
+  }
+
   public static double SCIPgetDualbound(SWIGTYPE_p_SCIP scip) {
     return SCIPJNIJNI.SCIPgetDualbound(SWIGTYPE_p_SCIP.getCPtr(scip));
+  }
+
+  public static double SCIPgetSolvingTime(SWIGTYPE_p_SCIP scip) {
+    return SCIPJNIJNI.SCIPgetSolvingTime(SWIGTYPE_p_SCIP.getCPtr(scip));
   }
 
   public static void BMScheckEmptyMemory() {

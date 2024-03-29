@@ -31,9 +31,13 @@ set(SWIG_JAVA_SOURCES
   ${PROJECT_SOURCE_DIR}/java/jscip/SCIP_VerbLevel.java
   ${PROJECT_SOURCE_DIR}/java/jscip/SCIP_Status.java
   ${PROJECT_SOURCE_DIR}/java/jscip/SCIP_Stage.java
+  ${PROJECT_SOURCE_DIR}/java/jscip/SWIGTYPE_p_char.java
   ${PROJECT_SOURCE_DIR}/java/jscip/SWIGTYPE_p_double.java
+  ${PROJECT_SOURCE_DIR}/java/jscip/SWIGTYPE_p_int.java
+  ${PROJECT_SOURCE_DIR}/java/jscip/SWIGTYPE_p_long_long.java
   ${PROJECT_SOURCE_DIR}/java/jscip/SWIGTYPE_p_unsigned_int.java
   ${PROJECT_SOURCE_DIR}/java/jscip/SWIGTYPE_p_FILE.java
+  ${PROJECT_SOURCE_DIR}/java/jscip/SWIGTYPE_p_p_char.java
   ${PROJECT_SOURCE_DIR}/java/jscip/SWIGTYPE_p_p_SCIP.java
   ${PROJECT_SOURCE_DIR}/java/jscip/SWIGTYPE_p_p_SCIP_SOL.java
   ${PROJECT_SOURCE_DIR}/java/jscip/SWIGTYPE_p_p_SCIP_VAR.java

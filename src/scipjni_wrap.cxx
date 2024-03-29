@@ -896,6 +896,22 @@ namespace Swig {
    }
 
 
+static char *new_char_array(int nelements) { 
+  return new char[nelements](); 
+}
+
+static void delete_char_array(char *ary) { 
+  delete [] ary; 
+}
+
+static char char_array_getitem(char *ary, int index) {
+    return ary[index];
+}
+static void char_array_setitem(char *ary, int index, char value) {
+    ary[index] = value;
+}
+
+
 static double *new_double_array(int nelements) { 
   return new double[nelements](); 
 }
@@ -912,6 +928,38 @@ static void double_array_setitem(double *ary, int index, double value) {
 }
 
 
+static int *new_int_array(int nelements) { 
+  return new int[nelements](); 
+}
+
+static void delete_int_array(int *ary) { 
+  delete [] ary; 
+}
+
+static int int_array_getitem(int *ary, int index) {
+    return ary[index];
+}
+static void int_array_setitem(int *ary, int index, int value) {
+    ary[index] = value;
+}
+
+
+static long long *new_long_long_array(int nelements) { 
+  return new long long[nelements](); 
+}
+
+static void delete_long_long_array(long long *ary) { 
+  delete [] ary; 
+}
+
+static long long long_long_array_getitem(long long *ary, int index) {
+    return ary[index];
+}
+static void long_long_array_setitem(long long *ary, int index, long long value) {
+    ary[index] = value;
+}
+
+
 static unsigned int *new_unsigned_int_array(int nelements) { 
   return new unsigned int[nelements](); 
 }
@@ -924,6 +972,22 @@ static unsigned int unsigned_int_array_getitem(unsigned int *ary, int index) {
     return ary[index];
 }
 static void unsigned_int_array_setitem(unsigned int *ary, int index, unsigned int value) {
+    ary[index] = value;
+}
+
+
+static char* *new_String_array(int nelements) { 
+  return new char*[nelements](); 
+}
+
+static void delete_String_array(char* *ary) { 
+  delete [] ary; 
+}
+
+static char* String_array_getitem(char* *ary, int index) {
+    return ary[index];
+}
+static void String_array_setitem(char* *ary, int index, char* value) {
     ary[index] = value;
 }
 
@@ -1192,6 +1256,63 @@ void SwigDirector_ObjMessagehdlr::swig_connect_director(JNIEnv *jenv, jobject js
 extern "C" {
 #endif
 
+SWIGEXPORT jlong JNICALL Java_jscip_SCIPJNIJNI_new_1char_1array(JNIEnv *jenv, jclass jcls, jint jarg1) {
+  jlong jresult = 0 ;
+  int arg1 ;
+  char *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  arg1 = (int)jarg1; 
+  result = (char *)new_char_array(arg1);
+  *(char **)&jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_jscip_SCIPJNIJNI_delete_1char_1array(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+  char *arg1 = (char *) 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  arg1 = *(char **)&jarg1; 
+  delete_char_array(arg1);
+  
+}
+
+
+SWIGEXPORT jchar JNICALL Java_jscip_SCIPJNIJNI_char_1array_1getitem(JNIEnv *jenv, jclass jcls, jlong jarg1, jint jarg2) {
+  jchar jresult = 0 ;
+  char *arg1 = (char *) 0 ;
+  int arg2 ;
+  char result;
+  
+  (void)jenv;
+  (void)jcls;
+  arg1 = *(char **)&jarg1; 
+  arg2 = (int)jarg2; 
+  result = (char)char_array_getitem(arg1,arg2);
+  jresult = (jchar)result; 
+  
+  return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_jscip_SCIPJNIJNI_char_1array_1setitem(JNIEnv *jenv, jclass jcls, jlong jarg1, jint jarg2, jchar jarg3) {
+  char *arg1 = (char *) 0 ;
+  int arg2 ;
+  char arg3 ;
+  
+  (void)jenv;
+  (void)jcls;
+  arg1 = *(char **)&jarg1; 
+  arg2 = (int)jarg2; 
+  arg3 = (char)jarg3; 
+  char_array_setitem(arg1,arg2,arg3);
+  
+}
+
+
 SWIGEXPORT jlong JNICALL Java_jscip_SCIPJNIJNI_new_1double_1array(JNIEnv *jenv, jclass jcls, jint jarg1) {
   jlong jresult = 0 ;
   int arg1 ;
@@ -1246,6 +1367,114 @@ SWIGEXPORT void JNICALL Java_jscip_SCIPJNIJNI_double_1array_1setitem(JNIEnv *jen
 }
 
 
+SWIGEXPORT jlong JNICALL Java_jscip_SCIPJNIJNI_new_1int_1array(JNIEnv *jenv, jclass jcls, jint jarg1) {
+  jlong jresult = 0 ;
+  int arg1 ;
+  int *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  arg1 = (int)jarg1; 
+  result = (int *)new_int_array(arg1);
+  *(int **)&jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_jscip_SCIPJNIJNI_delete_1int_1array(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+  int *arg1 = (int *) 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  arg1 = *(int **)&jarg1; 
+  delete_int_array(arg1);
+}
+
+
+SWIGEXPORT jint JNICALL Java_jscip_SCIPJNIJNI_int_1array_1getitem(JNIEnv *jenv, jclass jcls, jlong jarg1, jint jarg2) {
+  jint jresult = 0 ;
+  int *arg1 = (int *) 0 ;
+  int arg2 ;
+  int result;
+  
+  (void)jenv;
+  (void)jcls;
+  arg1 = *(int **)&jarg1; 
+  arg2 = (int)jarg2; 
+  result = (int)int_array_getitem(arg1,arg2);
+  jresult = (jint)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_jscip_SCIPJNIJNI_int_1array_1setitem(JNIEnv *jenv, jclass jcls, jlong jarg1, jint jarg2, jint jarg3) {
+  int *arg1 = (int *) 0 ;
+  int arg2 ;
+  int arg3 ;
+  
+  (void)jenv;
+  (void)jcls;
+  arg1 = *(int **)&jarg1; 
+  arg2 = (int)jarg2; 
+  arg3 = (int)jarg3; 
+  int_array_setitem(arg1,arg2,arg3);
+}
+
+
+SWIGEXPORT jlong JNICALL Java_jscip_SCIPJNIJNI_new_1long_1long_1array(JNIEnv *jenv, jclass jcls, jint jarg1) {
+  jlong jresult = 0 ;
+  int arg1 ;
+  long long *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  arg1 = (int)jarg1; 
+  result = (long long *)new_long_long_array(arg1);
+  *(long long **)&jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_jscip_SCIPJNIJNI_delete_1long_1long_1array(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+  long long *arg1 = (long long *) 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  arg1 = *(long long **)&jarg1; 
+  delete_long_long_array(arg1);
+}
+
+
+SWIGEXPORT jlong JNICALL Java_jscip_SCIPJNIJNI_long_1long_1array_1getitem(JNIEnv *jenv, jclass jcls, jlong jarg1, jint jarg2) {
+  jlong jresult = 0 ;
+  long long *arg1 = (long long *) 0 ;
+  int arg2 ;
+  long long result;
+  
+  (void)jenv;
+  (void)jcls;
+  arg1 = *(long long **)&jarg1; 
+  arg2 = (int)jarg2; 
+  result = (long long)long_long_array_getitem(arg1,arg2);
+  jresult = (jlong)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_jscip_SCIPJNIJNI_long_1long_1array_1setitem(JNIEnv *jenv, jclass jcls, jlong jarg1, jint jarg2, jlong jarg3) {
+  long long *arg1 = (long long *) 0 ;
+  int arg2 ;
+  long long arg3 ;
+  
+  (void)jenv;
+  (void)jcls;
+  arg1 = *(long long **)&jarg1; 
+  arg2 = (int)jarg2; 
+  arg3 = (long long)jarg3; 
+  long_long_array_setitem(arg1,arg2,arg3);
+}
+
+
 SWIGEXPORT jlong JNICALL Java_jscip_SCIPJNIJNI_new_1unsigned_1int_1array(JNIEnv *jenv, jclass jcls, jint jarg1) {
   jlong jresult = 0 ;
   int arg1 ;
@@ -1297,6 +1526,65 @@ SWIGEXPORT void JNICALL Java_jscip_SCIPJNIJNI_unsigned_1int_1array_1setitem(JNIE
   arg2 = (int)jarg2; 
   arg3 = (unsigned int)jarg3; 
   unsigned_int_array_setitem(arg1,arg2,arg3);
+}
+
+
+SWIGEXPORT jlong JNICALL Java_jscip_SCIPJNIJNI_new_1String_1array(JNIEnv *jenv, jclass jcls, jint jarg1) {
+  jlong jresult = 0 ;
+  int arg1 ;
+  char **result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  arg1 = (int)jarg1; 
+  result = (char **)new_String_array(arg1);
+  *(char ***)&jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_jscip_SCIPJNIJNI_delete_1String_1array(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+  char **arg1 = (char **) 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  arg1 = *(char ***)&jarg1; 
+  delete_String_array(arg1);
+}
+
+
+SWIGEXPORT jstring JNICALL Java_jscip_SCIPJNIJNI_String_1array_1getitem(JNIEnv *jenv, jclass jcls, jlong jarg1, jint jarg2) {
+  jstring jresult = 0 ;
+  char **arg1 = (char **) 0 ;
+  int arg2 ;
+  char *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  arg1 = *(char ***)&jarg1; 
+  arg2 = (int)jarg2; 
+  result = (char *)String_array_getitem(arg1,arg2);
+  if (result) jresult = jenv->NewStringUTF((const char *)result);
+  return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_jscip_SCIPJNIJNI_String_1array_1setitem(JNIEnv *jenv, jclass jcls, jlong jarg1, jint jarg2, jstring jarg3) {
+  char **arg1 = (char **) 0 ;
+  int arg2 ;
+  char *arg3 = (char *) 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  arg1 = *(char ***)&jarg1; 
+  arg2 = (int)jarg2; 
+  arg3 = 0;
+  if (jarg3) {
+    arg3 = (char *)jenv->GetStringUTFChars(jarg3, 0);
+    if (!arg3) return ;
+  }
+  String_array_setitem(arg1,arg2,arg3);
+  if (arg3) jenv->ReleaseStringUTFChars(jarg3, (const char *)arg3);
 }
 
 
@@ -2286,20 +2574,6 @@ SWIGEXPORT jint JNICALL Java_jscip_SCIPJNIJNI_SCIPcreate(JNIEnv *jenv, jclass jc
 }
 
 
-SWIGEXPORT jint JNICALL Java_jscip_SCIPJNIJNI_SCIPgetNVars(JNIEnv *jenv, jclass jcls, jlong jarg1) {
-  jint jresult = 0 ;
-  SCIP *arg1 = (SCIP *) 0 ;
-  int result;
-  
-  (void)jenv;
-  (void)jcls;
-  arg1 = *(SCIP **)&jarg1; 
-  result = (int)SCIPgetNVars(arg1);
-  jresult = (jint)result; 
-  return jresult;
-}
-
-
 SWIGEXPORT jint JNICALL Java_jscip_SCIPJNIJNI_SCIPreadProb(JNIEnv *jenv, jclass jcls, jlong jarg1, jstring jarg2, jstring jarg3) {
   jint jresult = 0 ;
   SCIP *arg1 = (SCIP *) 0 ;
@@ -2456,6 +2730,20 @@ SWIGEXPORT jint JNICALL Java_jscip_SCIPJNIJNI_SCIPaddVar(JNIEnv *jenv, jclass jc
 }
 
 
+SWIGEXPORT jint JNICALL Java_jscip_SCIPJNIJNI_SCIPgetNVars(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+  jint jresult = 0 ;
+  SCIP *arg1 = (SCIP *) 0 ;
+  int result;
+  
+  (void)jenv;
+  (void)jcls;
+  arg1 = *(SCIP **)&jarg1; 
+  result = (int)SCIPgetNVars(arg1);
+  jresult = (jint)result; 
+  return jresult;
+}
+
+
 SWIGEXPORT jlong JNICALL Java_jscip_SCIPJNIJNI_SCIPgetVars(JNIEnv *jenv, jclass jcls, jlong jarg1) {
   jlong jresult = 0 ;
   SCIP *arg1 = (SCIP *) 0 ;
@@ -2465,6 +2753,34 @@ SWIGEXPORT jlong JNICALL Java_jscip_SCIPJNIJNI_SCIPgetVars(JNIEnv *jenv, jclass 
   (void)jcls;
   arg1 = *(SCIP **)&jarg1; 
   result = (SCIP_VAR **)SCIPgetVars(arg1);
+  *(SCIP_VAR ***)&jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jint JNICALL Java_jscip_SCIPJNIJNI_SCIPgetNOrigVars(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+  jint jresult = 0 ;
+  SCIP *arg1 = (SCIP *) 0 ;
+  int result;
+  
+  (void)jenv;
+  (void)jcls;
+  arg1 = *(SCIP **)&jarg1; 
+  result = (int)SCIPgetNOrigVars(arg1);
+  jresult = (jint)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_jscip_SCIPJNIJNI_SCIPgetOrigVars(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+  jlong jresult = 0 ;
+  SCIP *arg1 = (SCIP *) 0 ;
+  SCIP_VAR **result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  arg1 = *(SCIP **)&jarg1; 
+  result = (SCIP_VAR **)SCIPgetOrigVars(arg1);
   *(SCIP_VAR ***)&jresult = result; 
   return jresult;
 }
@@ -2734,6 +3050,145 @@ SWIGEXPORT jdouble JNICALL Java_jscip_SCIPJNIJNI_SCIPfeastol(JNIEnv *jenv, jclas
   arg1 = *(SCIP **)&jarg1; 
   result = (double)SCIPfeastol(arg1);
   jresult = (jdouble)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jint JNICALL Java_jscip_SCIPJNIJNI_SCIPgetBoolParam(JNIEnv *jenv, jclass jcls, jlong jarg1, jstring jarg2, jlong jarg3) {
+  jint jresult = 0 ;
+  SCIP *arg1 = (SCIP *) 0 ;
+  char *arg2 = (char *) 0 ;
+  unsigned int *arg3 = (unsigned int *) 0 ;
+  SCIP_RETCODE result;
+  
+  (void)jenv;
+  (void)jcls;
+  arg1 = *(SCIP **)&jarg1; 
+  arg2 = 0;
+  if (jarg2) {
+    arg2 = (char *)jenv->GetStringUTFChars(jarg2, 0);
+    if (!arg2) return 0;
+  }
+  arg3 = *(unsigned int **)&jarg3; 
+  result = (SCIP_RETCODE)SCIPgetBoolParam(arg1,(char const *)arg2,arg3);
+  jresult = (jint)result; 
+  if (arg2) jenv->ReleaseStringUTFChars(jarg2, (const char *)arg2);
+  return jresult;
+}
+
+
+SWIGEXPORT jint JNICALL Java_jscip_SCIPJNIJNI_SCIPgetIntParam(JNIEnv *jenv, jclass jcls, jlong jarg1, jstring jarg2, jlong jarg3) {
+  jint jresult = 0 ;
+  SCIP *arg1 = (SCIP *) 0 ;
+  char *arg2 = (char *) 0 ;
+  int *arg3 = (int *) 0 ;
+  SCIP_RETCODE result;
+  
+  (void)jenv;
+  (void)jcls;
+  arg1 = *(SCIP **)&jarg1; 
+  arg2 = 0;
+  if (jarg2) {
+    arg2 = (char *)jenv->GetStringUTFChars(jarg2, 0);
+    if (!arg2) return 0;
+  }
+  arg3 = *(int **)&jarg3; 
+  result = (SCIP_RETCODE)SCIPgetIntParam(arg1,(char const *)arg2,arg3);
+  jresult = (jint)result; 
+  if (arg2) jenv->ReleaseStringUTFChars(jarg2, (const char *)arg2);
+  return jresult;
+}
+
+
+SWIGEXPORT jint JNICALL Java_jscip_SCIPJNIJNI_SCIPgetLongintParam(JNIEnv *jenv, jclass jcls, jlong jarg1, jstring jarg2, jlong jarg3) {
+  jint jresult = 0 ;
+  SCIP *arg1 = (SCIP *) 0 ;
+  char *arg2 = (char *) 0 ;
+  long long *arg3 = (long long *) 0 ;
+  SCIP_RETCODE result;
+  
+  (void)jenv;
+  (void)jcls;
+  arg1 = *(SCIP **)&jarg1; 
+  arg2 = 0;
+  if (jarg2) {
+    arg2 = (char *)jenv->GetStringUTFChars(jarg2, 0);
+    if (!arg2) return 0;
+  }
+  arg3 = *(long long **)&jarg3; 
+  result = (SCIP_RETCODE)SCIPgetLongintParam(arg1,(char const *)arg2,arg3);
+  jresult = (jint)result; 
+  if (arg2) jenv->ReleaseStringUTFChars(jarg2, (const char *)arg2);
+  return jresult;
+}
+
+
+SWIGEXPORT jint JNICALL Java_jscip_SCIPJNIJNI_SCIPgetRealParam(JNIEnv *jenv, jclass jcls, jlong jarg1, jstring jarg2, jlong jarg3) {
+  jint jresult = 0 ;
+  SCIP *arg1 = (SCIP *) 0 ;
+  char *arg2 = (char *) 0 ;
+  double *arg3 = (double *) 0 ;
+  SCIP_RETCODE result;
+  
+  (void)jenv;
+  (void)jcls;
+  arg1 = *(SCIP **)&jarg1; 
+  arg2 = 0;
+  if (jarg2) {
+    arg2 = (char *)jenv->GetStringUTFChars(jarg2, 0);
+    if (!arg2) return 0;
+  }
+  arg3 = *(double **)&jarg3; 
+  result = (SCIP_RETCODE)SCIPgetRealParam(arg1,(char const *)arg2,arg3);
+  jresult = (jint)result; 
+  if (arg2) jenv->ReleaseStringUTFChars(jarg2, (const char *)arg2);
+  return jresult;
+}
+
+
+SWIGEXPORT jint JNICALL Java_jscip_SCIPJNIJNI_SCIPgetCharParam(JNIEnv *jenv, jclass jcls, jlong jarg1, jstring jarg2, jlong jarg3) {
+  jint jresult = 0 ;
+  SCIP *arg1 = (SCIP *) 0 ;
+  char *arg2 = (char *) 0 ;
+  char *arg3 = (char *) 0 ;
+  SCIP_RETCODE result;
+  
+  (void)jenv;
+  (void)jcls;
+  arg1 = *(SCIP **)&jarg1; 
+  arg2 = 0;
+  if (jarg2) {
+    arg2 = (char *)jenv->GetStringUTFChars(jarg2, 0);
+    if (!arg2) return 0;
+  }
+  arg3 = *(char **)&jarg3; 
+  result = (SCIP_RETCODE)SCIPgetCharParam(arg1,(char const *)arg2,arg3);
+  jresult = (jint)result; 
+  if (arg2) jenv->ReleaseStringUTFChars(jarg2, (const char *)arg2);
+  
+  return jresult;
+}
+
+
+SWIGEXPORT jint JNICALL Java_jscip_SCIPJNIJNI_SCIPgetStringParam(JNIEnv *jenv, jclass jcls, jlong jarg1, jstring jarg2, jlong jarg3) {
+  jint jresult = 0 ;
+  SCIP *arg1 = (SCIP *) 0 ;
+  char *arg2 = (char *) 0 ;
+  char **arg3 = (char **) 0 ;
+  SCIP_RETCODE result;
+  
+  (void)jenv;
+  (void)jcls;
+  arg1 = *(SCIP **)&jarg1; 
+  arg2 = 0;
+  if (jarg2) {
+    arg2 = (char *)jenv->GetStringUTFChars(jarg2, 0);
+    if (!arg2) return 0;
+  }
+  arg3 = *(char ***)&jarg3; 
+  result = (SCIP_RETCODE)SCIPgetStringParam(arg1,(char const *)arg2,arg3);
+  jresult = (jint)result; 
+  if (arg2) jenv->ReleaseStringUTFChars(jarg2, (const char *)arg2);
   return jresult;
 }
 
@@ -3075,6 +3530,20 @@ SWIGEXPORT jint JNICALL Java_jscip_SCIPJNIJNI_SCIPaddSolFree(JNIEnv *jenv, jclas
 }
 
 
+SWIGEXPORT jdouble JNICALL Java_jscip_SCIPJNIJNI_SCIPgetPrimalbound(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+  jdouble jresult = 0 ;
+  SCIP *arg1 = (SCIP *) 0 ;
+  double result;
+  
+  (void)jenv;
+  (void)jcls;
+  arg1 = *(SCIP **)&jarg1; 
+  result = (double)SCIPgetPrimalbound(arg1);
+  jresult = (jdouble)result; 
+  return jresult;
+}
+
+
 SWIGEXPORT jdouble JNICALL Java_jscip_SCIPJNIJNI_SCIPgetDualbound(JNIEnv *jenv, jclass jcls, jlong jarg1) {
   jdouble jresult = 0 ;
   SCIP *arg1 = (SCIP *) 0 ;
@@ -3084,6 +3553,20 @@ SWIGEXPORT jdouble JNICALL Java_jscip_SCIPJNIJNI_SCIPgetDualbound(JNIEnv *jenv, 
   (void)jcls;
   arg1 = *(SCIP **)&jarg1; 
   result = (double)SCIPgetDualbound(arg1);
+  jresult = (jdouble)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jdouble JNICALL Java_jscip_SCIPJNIJNI_SCIPgetSolvingTime(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+  jdouble jresult = 0 ;
+  SCIP *arg1 = (SCIP *) 0 ;
+  double result;
+  
+  (void)jenv;
+  (void)jcls;
+  arg1 = *(SCIP **)&jarg1; 
+  result = (double)SCIPgetSolvingTime(arg1);
   jresult = (jdouble)result; 
   return jresult;
 }

@@ -9,14 +9,30 @@
 package jscip;
 
 public class SCIPJNIJNI {
+  public final static native long new_char_array(int jarg1);
+  public final static native void delete_char_array(long jarg1);
+  public final static native char char_array_getitem(long jarg1, int jarg2);
+  public final static native void char_array_setitem(long jarg1, int jarg2, char jarg3);
   public final static native long new_double_array(int jarg1);
   public final static native void delete_double_array(long jarg1);
   public final static native double double_array_getitem(long jarg1, int jarg2);
   public final static native void double_array_setitem(long jarg1, int jarg2, double jarg3);
+  public final static native long new_int_array(int jarg1);
+  public final static native void delete_int_array(long jarg1);
+  public final static native int int_array_getitem(long jarg1, int jarg2);
+  public final static native void int_array_setitem(long jarg1, int jarg2, int jarg3);
+  public final static native long new_long_long_array(int jarg1);
+  public final static native void delete_long_long_array(long jarg1);
+  public final static native long long_long_array_getitem(long jarg1, int jarg2);
+  public final static native void long_long_array_setitem(long jarg1, int jarg2, long jarg3);
   public final static native long new_unsigned_int_array(int jarg1);
   public final static native void delete_unsigned_int_array(long jarg1);
   public final static native long unsigned_int_array_getitem(long jarg1, int jarg2);
   public final static native void unsigned_int_array_setitem(long jarg1, int jarg2, long jarg3);
+  public final static native long new_String_array(int jarg1);
+  public final static native void delete_String_array(long jarg1);
+  public final static native String String_array_getitem(long jarg1, int jarg2);
+  public final static native void String_array_setitem(long jarg1, int jarg2, String jarg3);
   public final static native long new_SCIP_VAR_array(int jarg1);
   public final static native void delete_SCIP_VAR_array(long jarg1);
   public final static native long SCIP_VAR_array_getitem(long jarg1, int jarg2);
@@ -98,7 +114,6 @@ public class SCIPJNIJNI {
   public final static native int SCIP_STAGE_FREE_get();
   public final static native double SCIPcalcMachineEpsilon();
   public final static native int SCIPcreate(long jarg1);
-  public final static native int SCIPgetNVars(long jarg1);
   public final static native int SCIPreadProb(long jarg1, String jarg2, String jarg3);
   public final static native int SCIPreadParams(long jarg1, String jarg2);
   public final static native int SCIPcreateProbBasic(long jarg1, String jarg2);
@@ -108,7 +123,10 @@ public class SCIPJNIJNI {
   public final static native int SCIPinterruptSolve(long jarg1);
   public final static native long SCIPisSolveInterrupted(long jarg1);
   public final static native int SCIPaddVar(long jarg1, long jarg2);
+  public final static native int SCIPgetNVars(long jarg1);
   public final static native long SCIPgetVars(long jarg1);
+  public final static native int SCIPgetNOrigVars(long jarg1);
+  public final static native long SCIPgetOrigVars(long jarg1);
   public final static native int SCIPaddCons(long jarg1, long jarg2);
   public final static native int SCIPwriteOrigProblem(long jarg1, String jarg2, String jarg3, long jarg4);
   public final static native int SCIPwriteTransProblem(long jarg1, String jarg2, String jarg3, long jarg4);
@@ -125,6 +143,12 @@ public class SCIPJNIJNI {
   public final static native double SCIPinfinity(long jarg1);
   public final static native double SCIPepsilon(long jarg1);
   public final static native double SCIPfeastol(long jarg1);
+  public final static native int SCIPgetBoolParam(long jarg1, String jarg2, long jarg3);
+  public final static native int SCIPgetIntParam(long jarg1, String jarg2, long jarg3);
+  public final static native int SCIPgetLongintParam(long jarg1, String jarg2, long jarg3);
+  public final static native int SCIPgetRealParam(long jarg1, String jarg2, long jarg3);
+  public final static native int SCIPgetCharParam(long jarg1, String jarg2, long jarg3);
+  public final static native int SCIPgetStringParam(long jarg1, String jarg2, long jarg3);
   public final static native int SCIPsetBoolParam(long jarg1, String jarg2, long jarg3);
   public final static native int SCIPsetIntParam(long jarg1, String jarg2, int jarg3);
   public final static native int SCIPsetLongintParam(long jarg1, String jarg2, long jarg3);
@@ -142,7 +166,9 @@ public class SCIPJNIJNI {
   public final static native int SCIPsetSolVal(long jarg1, long jarg2, long jarg3, double jarg4);
   public final static native int SCIPsetSolVals(long jarg1, long jarg2, int jarg3, long jarg4, long jarg5);
   public final static native int SCIPaddSolFree(long jarg1, long jarg2, long jarg3);
+  public final static native double SCIPgetPrimalbound(long jarg1);
   public final static native double SCIPgetDualbound(long jarg1);
+  public final static native double SCIPgetSolvingTime(long jarg1);
   public final static native void BMScheckEmptyMemory();
   public final static native long BMSgetMemoryUsed();
   public final static native String SCIPvarGetName(long jarg1);

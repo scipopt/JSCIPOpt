@@ -90,6 +90,66 @@ public class Scip
       CHECK_RETCODE( SCIPJNI.SCIPreadParams(_scipptr, filename) );
    }
 
+   /** wraps SCIPgetBoolParam() */
+   public boolean getBoolParam(String name)
+   {
+      SWIGTYPE_p_unsigned_int value = SCIPJNI.new_unsigned_int_array(1);
+      CHECK_RETCODE( SCIPJNI.SCIPgetBoolParam(_scipptr, name, value) );
+      long ret = SCIPJNI.unsigned_int_array_getitem(value, 0);
+      SCIPJNI.delete_unsigned_int_array(value);
+      return (ret != 0);
+   }
+
+   /** wraps SCIPgetIntParam() */
+   public int getIntParam(String name)
+   {
+      SWIGTYPE_p_int value = SCIPJNI.new_int_array(1);
+      CHECK_RETCODE( SCIPJNI.SCIPgetIntParam(_scipptr, name, value) );
+      int ret = SCIPJNI.int_array_getitem(value, 0);
+      SCIPJNI.delete_int_array(value);
+      return ret;
+   }
+
+   /** wraps SCIPgetLongintParam() */
+   public long getLongintParam(String name)
+   {
+      SWIGTYPE_p_long_long value = SCIPJNI.new_long_long_array(1);
+      CHECK_RETCODE( SCIPJNI.SCIPgetLongintParam(_scipptr, name, value) );
+      long ret = SCIPJNI.long_long_array_getitem(value, 0);
+      SCIPJNI.delete_long_long_array(value);
+      return ret;
+   }
+
+   /** wraps SCIPgetRealParam() */
+   public double getRealParam(String name)
+   {
+      SWIGTYPE_p_double value = SCIPJNI.new_double_array(1);
+      CHECK_RETCODE( SCIPJNI.SCIPgetRealParam(_scipptr, name, value) );
+      double ret = SCIPJNI.double_array_getitem(value, 0);
+      SCIPJNI.delete_double_array(value);
+      return ret;
+   }
+
+   /** wraps SCIPgetCharParam() */
+   public char getCharParam(String name)
+   {
+      SWIGTYPE_p_char value = SCIPJNI.new_char_array(1);
+      CHECK_RETCODE( SCIPJNI.SCIPgetCharParam(_scipptr, name, value) );
+      char ret = SCIPJNI.char_array_getitem(value, 0);
+      SCIPJNI.delete_char_array(value);
+      return ret;
+   }
+
+   /** wraps SCIPgetStringParam() */
+   public String getStringParam(String name)
+   {
+      SWIGTYPE_p_p_char value = SCIPJNI.new_String_array(1);
+      CHECK_RETCODE( SCIPJNI.SCIPgetStringParam(_scipptr, name, value) );
+      String ret = SCIPJNI.String_array_getitem(value, 0);
+      SCIPJNI.delete_String_array(value);
+      return ret;
+   }
+
    /** wraps SCIPsetBoolParam() */
    public void setBoolParam(String name, boolean value)
    {
@@ -205,6 +265,26 @@ public class Scip
       int nvars = getNVars();
       Variable[] vars = new Variable[nvars];
       SWIGTYPE_p_p_SCIP_VAR varsptr = SCIPJNI.SCIPgetVars(_scipptr);
+
+      for( int i = 0; i < nvars; ++i )
+      {
+         vars[i] = new Variable(SCIPJNI.SCIP_VAR_array_getitem(varsptr, i));
+      }
+      return vars;
+   }
+
+   /** wraps SCIPgetNOrigVars() */
+   public int getNOrigVars()
+   {
+      return SCIPJNI.SCIPgetNOrigVars(_scipptr);
+   }
+
+   /** wraps SCIPgetOrigVars() */
+   public Variable[] getOrigVars()
+   {
+      int nvars = getNOrigVars();
+      Variable[] vars = new Variable[nvars];
+      SWIGTYPE_p_p_SCIP_VAR varsptr = SCIPJNI.SCIPgetOrigVars(_scipptr);
 
       for( int i = 0; i < nvars; ++i )
       {
@@ -500,10 +580,22 @@ public class Scip
       return succ;
    }
 
+   /** wraps SCIPgetPrimalbound() */
+   public double getPrimalbound()
+   {
+      return SCIPJNI.SCIPgetPrimalbound(_scipptr);
+   }
+
    /** wraps SCIPgetDualbound() */
    public double getDualbound()
    {
       return SCIPJNI.SCIPgetDualbound(_scipptr);
+   }
+
+   /** wraps SCIPgetSolvingTime() */
+   public double getSolvingTime()
+   {
+      return SCIPJNI.SCIPgetSolvingTime(_scipptr);
    }
 
    /** wraps SCIPgetGap() */

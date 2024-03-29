@@ -153,8 +153,16 @@
 
 /* use SWIG internal arrays */
 %include carrays.i
+/* char *ary is a pointer to a char, not a string, so override the map */
+%apply SWIGTYPE * {char *new_char_array(int)};
+%apply SWIGTYPE * {char *ary};
+%typemap(freearg, noblock=1) char *ary {}
+%array_functions( char, char_array )
 %array_functions( double, double_array )
+%array_functions( int, int_array )
+%array_functions( long long, long_long_array )
 %array_functions( unsigned int, unsigned_int_array )
+%array_functions( char*, String_array )
 %array_functions( SCIP_VAR*, SCIP_VAR_array )
 %array_functions( SCIP_SOL*, SCIP_SOL_array )
 
@@ -281,7 +289,6 @@ SCIP_Real      SCIPcalcMachineEpsilon();
 
 /* from scip.h*/
 SCIP_RETCODE   SCIPcreate(SCIP** scip);
-int            SCIPgetNVars(SCIP* scip);
 SCIP_RETCODE   SCIPreadProb(SCIP* scip, const char* filename, const char* extension);
 SCIP_RETCODE   SCIPreadParams(SCIP* scip, const char* filename);
 SCIP_RETCODE   SCIPcreateProbBasic(SCIP* scip, const char* probname);
@@ -293,6 +300,8 @@ SCIP_Bool      SCIPisSolveInterrupted(SCIP* scip);
 SCIP_RETCODE   SCIPaddVar(SCIP* scip, SCIP_VAR* var);
 int            SCIPgetNVars(SCIP* scip);
 SCIP_VAR**     SCIPgetVars(SCIP* scip);
+int            SCIPgetNOrigVars(SCIP* scip);
+SCIP_VAR**     SCIPgetOrigVars(SCIP* scip);
 SCIP_RETCODE   SCIPaddCons(SCIP* scip, SCIP_CONS* cons);
 SCIP_RETCODE   SCIPwriteOrigProblem(SCIP* scip, const char* filename, const char* extension, SCIP_Bool genericnames);
 SCIP_RETCODE   SCIPwriteTransProblem(SCIP* scip, const char* filename, const char* extension, SCIP_Bool genericnames);
@@ -309,6 +318,15 @@ SCIP_Real      SCIPgetSolOrigObj(SCIP* scip, SCIP_SOL* sol);
 SCIP_Real      SCIPinfinity(SCIP* scip);
 SCIP_Real      SCIPepsilon(SCIP* scip);
 SCIP_Real      SCIPfeastol(SCIP* scip);
+SCIP_RETCODE   SCIPgetBoolParam(SCIP* scip, const char* name, SCIP_Bool* p_value);
+SCIP_RETCODE   SCIPgetIntParam(SCIP* scip, const char* name, int* p_value);
+SCIP_RETCODE   SCIPgetLongintParam(SCIP* scip, const char* name, SCIP_Longint* p_value);
+SCIP_RETCODE   SCIPgetRealParam(SCIP* scip, const char* name, SCIP_Real* p_value);
+/* char *p_value is a pointer to a char, not a string, so override the map */
+%apply SWIGTYPE * {char *p_value};
+%typemap(freearg, noblock=1) char *p_value {}
+SCIP_RETCODE   SCIPgetCharParam(SCIP* scip, const char* name, char* p_value);
+SCIP_RETCODE   SCIPgetStringParam(SCIP* scip, const char* name, char** p_value);
 SCIP_RETCODE   SCIPsetBoolParam(SCIP* scip, const char* name, SCIP_Bool value);
 SCIP_RETCODE   SCIPsetIntParam(SCIP* scip, const char* name, int value);
 SCIP_RETCODE   SCIPsetLongintParam(SCIP* scip, const char* name, SCIP_Longint value);
@@ -332,7 +350,11 @@ SCIP_RETCODE   SCIPsetSolVals(SCIP* scip, SCIP_SOL* sol, int nvars, SCIP_VAR** v
 SCIP_RETCODE   SCIPaddSolFree(SCIP* scip, SCIP_SOL** sol, SCIP_Bool *stored);
 
 /* from scip_solvingstats.h */
+SCIP_Real      SCIPgetPrimalbound(SCIP* scip);
 SCIP_Real      SCIPgetDualbound(SCIP* scip);
+
+/* from scip_timing.h */
+SCIP_Real      SCIPgetSolvingTime(SCIP* scip);
 
 /* from memory.h */
 void           BMScheckEmptyMemory();
