@@ -7,7 +7,6 @@
 %{
    #include "scip/scip.h"
    #include "scip/scipdefplugins.h"
-   #include "scip/cons_quadratic.h"
    #include "objscip/objmessagehdlr.h"
 
    /* if libscip is a shared library, ensure we use function calls instead of
@@ -119,7 +118,7 @@
    {
       SCIP_CONS* cons;
 
-      SCIP_CALL_ABORT( SCIPcreateConsBasicQuadratic(scip, &cons, name, nlinvars, linvars, lincoefs, nquadvars, quadvars1, quadvars2, quadcoefs, lhs, rhs) );
+      SCIP_CALL_ABORT( SCIPcreateConsBasicQuadraticNonlinear(scip, &cons, name, nlinvars, linvars, lincoefs, nquadvars, quadvars1, quadvars2, quadcoefs, lhs, rhs) );
 
       return cons;
    }
