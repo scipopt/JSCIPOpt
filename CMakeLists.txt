@@ -2,7 +2,7 @@
 #@brief   CMake file for Java interface for the SCIP Optimization Suite
 #@author  Robert Gottwald, Benjamin Mueller
 
-cmake_minimum_required (VERSION 2.8)
+cmake_minimum_required (VERSION 3.3)
 project (JSCIPOpt)
 
 # per default compile a release version
