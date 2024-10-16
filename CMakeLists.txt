@@ -75,9 +75,9 @@ endif()
 if (SCIP_DIR)
   # The user explicitly passed a SCIP_DIR, so only look there and not in some
   # random other path that may contain a binary-incompatible version.
-  find_package(SCIP REQUIRED CONFIG NO_DEFAULT_PATH PATHS ${SCIP_DIR})
+  find_package(SCIP "8.0.0" REQUIRED CONFIG NO_DEFAULT_PATH PATHS ${SCIP_DIR})
 else()
-  find_package(SCIP REQUIRED CONFIG)
+  find_package(SCIP "8.0.0" REQUIRED CONFIG)
 endif()
 include_directories (${JNI_INCLUDE_DIRS} ${SCIP_INCLUDE_DIRS} ${PROJECT_SOURCE_DIR}/src)
 
