@@ -75,9 +75,15 @@ endif()
 if (SCIP_DIR)
   # The user explicitly passed a SCIP_DIR, so only look there and not in some
   # random other path that may contain a binary-incompatible version.
-  find_package(SCIP "8.0.0" REQUIRED CONFIG NO_DEFAULT_PATH PATHS ${SCIP_DIR})
+  find_package(SCIP REQUIRED CONFIG NO_DEFAULT_PATH PATHS ${SCIP_DIR})
 else()
-  find_package(SCIP "8.0.0" REQUIRED CONFIG)
+  find_package(SCIP REQUIRED CONFIG)
+endif()
+# Check the minimum SCIP version here. We cannot just pass it to find_package
+# because that will accept only the same major version. See #52 and scip#116.
+set (SCIP_MINIMUM_VERSION "8.0.0")
+if (SCIP_VERSION VERSION_LESS SCIP_MINIMUM_VERSION)
+  message(FATAL_ERROR "SCIP too old. Found SCIP version ${SCIP_VERSION}, but at least SCIP ${SCIP_MINIMUM_VERSION} is required.")
 endif()
 include_directories (${JNI_INCLUDE_DIRS} ${SCIP_INCLUDE_DIRS} ${PROJECT_SOURCE_DIR}/src)
 
