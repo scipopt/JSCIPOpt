@@ -41,10 +41,12 @@ set(SWIG_JAVA_SOURCES
   ${PROJECT_SOURCE_DIR}/java/jscip/SWIGTYPE_p_p_SCIP.java
   ${PROJECT_SOURCE_DIR}/java/jscip/SWIGTYPE_p_p_SCIP_SOL.java
   ${PROJECT_SOURCE_DIR}/java/jscip/SWIGTYPE_p_p_SCIP_VAR.java
+  ${PROJECT_SOURCE_DIR}/java/jscip/SWIGTYPE_p_p_SCIP_EXPR.java
   ${PROJECT_SOURCE_DIR}/java/jscip/SWIGTYPE_p_SCIP_CONS.java
   ${PROJECT_SOURCE_DIR}/java/jscip/SWIGTYPE_p_SCIP.java
   ${PROJECT_SOURCE_DIR}/java/jscip/SWIGTYPE_p_SCIP_SOL.java
   ${PROJECT_SOURCE_DIR}/java/jscip/SWIGTYPE_p_SCIP_VAR.java
+  ${PROJECT_SOURCE_DIR}/java/jscip/SWIGTYPE_p_SCIP_EXPR.java
   ${PROJECT_SOURCE_DIR}/java/jscip/SWIGTYPE_p_SCIP_HEUR.java
   ${PROJECT_SOURCE_DIR}/java/jscip/SWIGTYPE_p_SCIP_Messagehdlr.java
   )
@@ -54,6 +56,7 @@ set(JAVA_SOURCES
   ${PROJECT_SOURCE_DIR}/java/jscip/Constraint.java
   ${PROJECT_SOURCE_DIR}/java/jscip/Scip.java
   ${PROJECT_SOURCE_DIR}/java/jscip/Variable.java
+  ${PROJECT_SOURCE_DIR}/java/jscip/Expression.java
   ${PROJECT_SOURCE_DIR}/java/jscip/Constraint.java
   ${PROJECT_SOURCE_DIR}/java/jscip/Solution.java
   ${PROJECT_SOURCE_DIR}/java/jscip/MessageHandler.java

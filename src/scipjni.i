@@ -102,6 +102,120 @@
       SCIP_CALL_ABORT( SCIPreleaseVar(scip, &var) );
    }
 
+   /* assist function to create an abs expression */
+   SCIP_EXPR* createExprAbs(SCIP* scip, SCIP_EXPR* child)
+   {
+      SCIP_EXPR* expr;
+
+      SCIP_CALL_ABORT( SCIPcreateExprAbs(scip, &expr, child, NULL, NULL) );
+      return expr;
+   }
+
+   /* assist function to create an entropy expression */
+   SCIP_EXPR* createExprEntropy(SCIP* scip, SCIP_EXPR* child)
+   {
+      SCIP_EXPR* expr;
+
+      SCIP_CALL_ABORT( SCIPcreateExprEntropy(scip, &expr, child, NULL, NULL) );
+      return expr;
+   }
+
+   /* assist function to create an exp expression */
+   SCIP_EXPR* createExprExp(SCIP* scip, SCIP_EXPR* child)
+   {
+      SCIP_EXPR* expr;
+
+      SCIP_CALL_ABORT( SCIPcreateExprExp(scip, &expr, child, NULL, NULL) );
+      return expr;
+   }
+
+   /* assist function to create a log (ln) expression */
+   SCIP_EXPR* createExprLog(SCIP* scip, SCIP_EXPR* child)
+   {
+      SCIP_EXPR* expr;
+
+      SCIP_CALL_ABORT( SCIPcreateExprLog(scip, &expr, child, NULL, NULL) );
+      return expr;
+   }
+
+   /* assist function to create a pow expression */
+   SCIP_EXPR* createExprPow(SCIP* scip, SCIP_EXPR* child, SCIP_Real exponent)
+   {
+      SCIP_EXPR* expr;
+
+      SCIP_CALL_ABORT( SCIPcreateExprPow(scip, &expr, child, exponent, NULL, NULL) );
+      return expr;
+   }
+
+   /* assist function to create a signpower expression */
+   SCIP_EXPR* createExprSignpower(SCIP* scip, SCIP_EXPR* child, SCIP_Real exponent)
+   {
+      SCIP_EXPR* expr;
+
+      SCIP_CALL_ABORT( SCIPcreateExprSignpower(scip, &expr, child, exponent, NULL, NULL) );
+      return expr;
+   }
+
+   /* assist function to create a product expression */
+   SCIP_EXPR* createExprProduct(SCIP* scip, int nchildren, SCIP_EXPR** children, SCIP_Real coefficient)
+   {
+      SCIP_EXPR* expr;
+
+      SCIP_CALL_ABORT( SCIPcreateExprProduct(scip, &expr, nchildren, children, coefficient, NULL, NULL) );
+      return expr;
+   }
+
+   /* assist function to create a sum expression */
+   SCIP_EXPR* createExprSum(SCIP* scip, int nchildren, SCIP_EXPR** children, SCIP_Real* coefficients, SCIP_Real constant)
+   {
+      SCIP_EXPR* expr;
+
+      SCIP_CALL_ABORT( SCIPcreateExprSum(scip, &expr, nchildren, children, coefficients, constant, NULL, NULL) );
+      return expr;
+   }
+
+   /* assist function to create a sin expression */
+   SCIP_EXPR* createExprSin(SCIP* scip, SCIP_EXPR* child)
+   {
+      SCIP_EXPR* expr;
+
+      SCIP_CALL_ABORT( SCIPcreateExprSin(scip, &expr, child, NULL, NULL) );
+      return expr;
+   }
+
+   /* assist function to create a cos expression */
+   SCIP_EXPR* createExprCos(SCIP* scip, SCIP_EXPR* child)
+   {
+      SCIP_EXPR* expr;
+
+      SCIP_CALL_ABORT( SCIPcreateExprCos(scip, &expr, child, NULL, NULL) );
+      return expr;
+   }
+
+   /* assist function to create a (constant) value expression */
+   SCIP_EXPR* createExprValue(SCIP* scip, SCIP_Real value)
+   {
+      SCIP_EXPR* expr;
+
+      SCIP_CALL_ABORT( SCIPcreateExprValue(scip, &expr, value, NULL, NULL) );
+      return expr;
+   }
+
+   /* assist function to create a var(iable) expression */
+   SCIP_EXPR* createExprVar(SCIP* scip, SCIP_VAR *var)
+   {
+      SCIP_EXPR* expr;
+
+      SCIP_CALL_ABORT( SCIPcreateExprVar(scip, &expr, var, NULL, NULL) );
+      return expr;
+   }
+
+   /* assist function to release an expression */
+   void releaseExpr(SCIP* scip, SCIP_EXPR* expr)
+   {
+      SCIP_CALL_ABORT( SCIPreleaseExpr(scip, &expr) );
+   }
+
    /* assist function to create a linear constraint */
    SCIP_CONS* createConsBasicLinear(SCIP* scip, const char* name , int nvars, SCIP_VAR** vars, SCIP_Real* vals, SCIP_Real lhs, SCIP_Real rhs)
    {
@@ -129,6 +243,16 @@
       SCIP_CONS* cons;
 
       SCIP_CALL_ABORT( SCIPcreateConsBasicSuperindicator(scip, &cons, name, binvar, slackcons) );
+
+      return cons;
+   }
+
+   /* assist function to create a nonlinear constraint */
+   SCIP_CONS* createConsBasicNonlinear(SCIP* scip, const char* name, SCIP_EXPR*            expr, SCIP_Real lhs, SCIP_Real rhs)
+   {
+      SCIP_CONS* cons;
+
+      SCIP_CALL_ABORT( SCIPcreateConsBasicNonlinear(scip, &cons, name, expr, lhs, rhs) );
 
       return cons;
    }
@@ -163,6 +287,7 @@
 %array_functions( unsigned int, unsigned_int_array )
 %array_functions( char*, String_array )
 %array_functions( SCIP_VAR*, SCIP_VAR_array )
+%array_functions( SCIP_EXPR*, SCIP_EXPR_array )
 %array_functions( SCIP_SOL*, SCIP_SOL_array )
 
  /* some defines from def.h */
@@ -413,8 +538,22 @@ SCIP*          createSCIP();
 void           freeSCIP(SCIP* scip);
 SCIP_VAR*      createVar(SCIP* scip, const char* name, SCIP_Real lb, SCIP_Real ub, SCIP_Real obj, SCIP_VARTYPE vartype);
 void           releaseVar(SCIP* scip, SCIP_VAR* var);
+SCIP_EXPR*     createExprAbs(SCIP* scip, SCIP_EXPR* child);
+SCIP_EXPR*     createExprEntropy(SCIP* scip, SCIP_EXPR* child);
+SCIP_EXPR*     createExprExp(SCIP* scip, SCIP_EXPR* child);
+SCIP_EXPR*     createExprLog(SCIP* scip, SCIP_EXPR* child);
+SCIP_EXPR*     createExprPow(SCIP* scip, SCIP_EXPR* child, SCIP_Real exponent);
+SCIP_EXPR*     createExprSignpower(SCIP* scip, SCIP_EXPR* child, SCIP_Real exponent);
+SCIP_EXPR*     createExprProduct(SCIP* scip, int nchildren, SCIP_EXPR** children, SCIP_Real coefficient);
+SCIP_EXPR*     createExprSum(SCIP* scip, int nchildren, SCIP_EXPR** children, SCIP_Real* coefficients, SCIP_Real constant);
+SCIP_EXPR*     createExprSin(SCIP* scip, SCIP_EXPR* child);
+SCIP_EXPR*     createExprCos(SCIP* scip, SCIP_EXPR* child);
+SCIP_EXPR*     createExprValue(SCIP* scip, SCIP_Real value);
+SCIP_EXPR*     createExprVar(SCIP* scip, SCIP_VAR *var);
+void           releaseExpr(SCIP* scip, SCIP_EXPR* expr);
 SCIP_CONS*     createConsBasicLinear(SCIP* scip, const char* name , int nvars, SCIP_VAR** vars, SCIP_Real* vals, SCIP_Real lhs, SCIP_Real rhs);
 SCIP_CONS*     createConsBasicQuadratic(SCIP* scip, const char* name, int nlinvars, SCIP_VAR** linvars, SCIP_Real* lincoefs, int nquadvars, SCIP_VAR** quadvars1, SCIP_VAR** quadvars2, SCIP_Real* quadcoefs, SCIP_Real lhs, SCIP_Real rhs);
+SCIP_CONS*     createConsBasicNonlinear(SCIP* scip, const char* name, SCIP_EXPR*            expr, SCIP_Real lhs, SCIP_Real rhs);
 SCIP_CONS*     createConsBasicSuperIndicator(SCIP *scip, const char *name, SCIP_VAR *binvar, SCIP_CONS *slackcons);
 void           releaseCons(SCIP* scip, SCIP_CONS* cons);
 SCIP_MESSAGEHDLR* createObjMessagehdlr(scip::ObjMessagehdlr* objmessagehdlr, SCIP_Bool deleteobject);

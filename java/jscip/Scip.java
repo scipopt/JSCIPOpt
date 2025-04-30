@@ -293,7 +293,173 @@ public class Scip
       return vars;
    }
 
-   /** wraps SCIPcreateConsBasicLinear(); note that the function need to copy the content of the arrays into arrays which are passed to native interface */
+   /** wraps SCIPcreateExprAbs() */
+   public Expression createExprAbs(Expression child)
+   {
+      assert(child != null);
+
+      SWIGTYPE_p_SCIP_EXPR exprptr = SCIPJNI.createExprAbs(_scipptr, child.getPtr());
+      assert(exprptr != null);
+
+      return new Expression(exprptr);
+   }
+
+   /** wraps SCIPcreateExprEntropy() */
+   public Expression createExprEntropy(Expression child)
+   {
+      assert(child != null);
+
+      SWIGTYPE_p_SCIP_EXPR exprptr = SCIPJNI.createExprEntropy(_scipptr, child.getPtr());
+      assert(exprptr != null);
+
+      return new Expression(exprptr);
+   }
+
+   /** wraps SCIPcreateExprExp() */
+   public Expression createExprExp(Expression child)
+   {
+      assert(child != null);
+
+      SWIGTYPE_p_SCIP_EXPR exprptr = SCIPJNI.createExprExp(_scipptr, child.getPtr());
+      assert(exprptr != null);
+
+      return new Expression(exprptr);
+   }
+
+   /** wraps SCIPcreateExprLog() (ln) */
+   public Expression createExprLog(Expression child)
+   {
+      assert(child != null);
+
+      SWIGTYPE_p_SCIP_EXPR exprptr = SCIPJNI.createExprLog(_scipptr, child.getPtr());
+      assert(exprptr != null);
+
+      return new Expression(exprptr);
+   }
+
+   /** wraps SCIPcreateExprPow() */
+   public Expression createExprPow(Expression child, double exponent)
+   {
+      assert(child != null);
+
+      SWIGTYPE_p_SCIP_EXPR exprptr = SCIPJNI.createExprPow(_scipptr, child.getPtr(), exponent);
+      assert(exprptr != null);
+
+      return new Expression(exprptr);
+   }
+
+   /** wraps SCIPcreateExprSignpower() */
+   public Expression createExprSignpower(Expression child, double exponent)
+   {
+      assert(child != null);
+
+      SWIGTYPE_p_SCIP_EXPR exprptr = SCIPJNI.createExprSignpower(_scipptr, child.getPtr(), exponent);
+      assert(exprptr != null);
+
+      return new Expression(exprptr);
+   }
+
+   /** wraps SCIPcreateExprProduct(); note that the function needs to copy the content of the array into an array which is passed to native interface */
+   public Expression createExprProduct(Expression[] children, double coefficient)
+   {
+      assert(children != null);
+      int nchildren = children.length;
+
+      SWIGTYPE_p_p_SCIP_EXPR childrenptr = SCIPJNI.new_SCIP_EXPR_array(nchildren);
+
+      for( int i = 0; i < nchildren; ++i )
+      {
+         SCIPJNI.SCIP_EXPR_array_setitem(childrenptr, i, children[i].getPtr());
+      }
+
+      SWIGTYPE_p_SCIP_EXPR exprptr = SCIPJNI.createExprProduct(_scipptr, nchildren, childrenptr, coefficient);
+      assert(exprptr != null);
+
+      SCIPJNI.delete_SCIP_EXPR_array(childrenptr);
+
+      return new Expression(exprptr);
+   }
+
+   /** wraps SCIPcreateExprSum(); note that the function needs to copy the content of the arrays into arrays which are passed to native interface */
+   public Expression createExprSum(Expression[] children, double[] coefficients, double constant)
+   {
+      assert(children != null);
+      assert(coefficients == null || children.length == coefficients.length);
+      int nchildren = children.length;
+
+      SWIGTYPE_p_p_SCIP_EXPR childrenptr = SCIPJNI.new_SCIP_EXPR_array(nchildren);
+      SWIGTYPE_p_double coefficientsptr = coefficients != null ? SCIPJNI.new_double_array(nchildren) : null;
+
+      for( int i = 0; i < nchildren; ++i )
+      {
+         SCIPJNI.SCIP_EXPR_array_setitem(childrenptr, i, children[i].getPtr());
+         if (coefficients != null) {
+            SCIPJNI.double_array_setitem(coefficientsptr, i, coefficients[i]);
+         }
+      }
+
+      SWIGTYPE_p_SCIP_EXPR exprptr = SCIPJNI.createExprSum(_scipptr, nchildren, childrenptr, coefficientsptr, constant);
+      assert(exprptr != null);
+
+      SCIPJNI.delete_SCIP_EXPR_array(childrenptr);
+      if (coefficientsptr != null) {
+         SCIPJNI.delete_double_array(coefficientsptr);
+      }
+
+      return new Expression(exprptr);
+   }
+
+   /** wraps SCIPcreateExprSin() */
+   public Expression createExprSin(Expression child)
+   {
+      assert(child != null);
+
+      SWIGTYPE_p_SCIP_EXPR exprptr = SCIPJNI.createExprSin(_scipptr, child.getPtr());
+      assert(exprptr != null);
+
+      return new Expression(exprptr);
+   }
+
+   /** wraps SCIPcreateExprCos() */
+   public Expression createExprCos(Expression child)
+   {
+      assert(child != null);
+
+      SWIGTYPE_p_SCIP_EXPR exprptr = SCIPJNI.createExprCos(_scipptr, child.getPtr());
+      assert(exprptr != null);
+
+      return new Expression(exprptr);
+   }
+
+   /** wraps SCIPcreateExprValue() */
+   public Expression createExprValue(double value)
+   {
+      SWIGTYPE_p_SCIP_EXPR exprptr = SCIPJNI.createExprValue(_scipptr, value);
+      assert(exprptr != null);
+
+      return new Expression(exprptr);
+   }
+
+   /** wraps SCIPcreateExprVar() */
+   public Expression createExprVar(Variable var)
+   {
+      assert(var != null);
+
+      SWIGTYPE_p_SCIP_EXPR exprptr = SCIPJNI.createExprVar(_scipptr, var.getPtr());
+      assert(exprptr != null);
+
+      return new Expression(exprptr);
+   }
+
+   /** wraps SCIPreleaseExpr() */
+   public void releaseExpr(Expression expr)
+   {
+      assert(expr.getPtr() != null);
+      SCIPJNI.releaseExpr(_scipptr, expr.getPtr());
+      expr.setPtr(null);
+   }
+
+   /** wraps SCIPcreateConsBasicLinear(); note that the function needs to copy the content of the arrays into arrays which are passed to native interface */
    public Constraint createConsLinear(String name, Variable[] vars, double[] vals, double lhs, double rhs)
    {
       int nvars;
@@ -321,7 +487,7 @@ public class Scip
       return new Constraint(consptr);
    }
 
-   /** wraps SCIPcreateConsBasicQuadratic(); note that the function need to copy the content of the arrays into arrays which are passed to native interface */
+   /** wraps SCIPcreateConsBasicQuadratic(); note that the function needs to copy the content of the arrays into arrays which are passed to native interface */
    public Constraint createConsQuadratic(String name, Variable[] quadvars1, Variable[] quadvars2, double[] quadcoefs, Variable[] linvars, double[] lincoefs, double lhs, double rhs)
    {
       assert(lhs <= rhs);
@@ -396,6 +562,18 @@ public class Scip
    public Constraint createConsBasicSuperIndicator(String name, Variable binVar, Constraint slackCons)
    {
       SWIGTYPE_p_SCIP_CONS consptr = SCIPJNI.createConsBasicSuperIndicator(_scipptr, name, binVar.getPtr(), slackCons.getPtr());
+      assert(consptr != null);
+
+      return new Constraint(consptr);
+   }
+
+   /** wraps SCIPcreateConsBasicNonlinear() */
+   public Constraint createConsNonlinear(String name, Expression expr, double lhs, double rhs)
+   {
+      assert(expr != null);
+      assert(lhs <= rhs);
+
+      SWIGTYPE_p_SCIP_CONS consptr = SCIPJNI.createConsBasicNonlinear(_scipptr, name, expr.getPtr(), lhs, rhs);
       assert(consptr != null);
 
       return new Constraint(consptr);

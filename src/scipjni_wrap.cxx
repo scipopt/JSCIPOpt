@@ -847,6 +847,120 @@ namespace Swig {
       SCIP_CALL_ABORT( SCIPreleaseVar(scip, &var) );
    }
 
+   /* assist function to create an abs expression */
+   SCIP_EXPR* createExprAbs(SCIP* scip, SCIP_EXPR* child)
+   {
+      SCIP_EXPR* expr;
+
+      SCIP_CALL_ABORT( SCIPcreateExprAbs(scip, &expr, child, NULL, NULL) );
+      return expr;
+   }
+
+   /* assist function to create an entropy expression */
+   SCIP_EXPR* createExprEntropy(SCIP* scip, SCIP_EXPR* child)
+   {
+      SCIP_EXPR* expr;
+
+      SCIP_CALL_ABORT( SCIPcreateExprEntropy(scip, &expr, child, NULL, NULL) );
+      return expr;
+   }
+
+   /* assist function to create an exp expression */
+   SCIP_EXPR* createExprExp(SCIP* scip, SCIP_EXPR* child)
+   {
+      SCIP_EXPR* expr;
+
+      SCIP_CALL_ABORT( SCIPcreateExprExp(scip, &expr, child, NULL, NULL) );
+      return expr;
+   }
+
+   /* assist function to create a log (ln) expression */
+   SCIP_EXPR* createExprLog(SCIP* scip, SCIP_EXPR* child)
+   {
+      SCIP_EXPR* expr;
+
+      SCIP_CALL_ABORT( SCIPcreateExprLog(scip, &expr, child, NULL, NULL) );
+      return expr;
+   }
+
+   /* assist function to create a pow expression */
+   SCIP_EXPR* createExprPow(SCIP* scip, SCIP_EXPR* child, SCIP_Real exponent)
+   {
+      SCIP_EXPR* expr;
+
+      SCIP_CALL_ABORT( SCIPcreateExprPow(scip, &expr, child, exponent, NULL, NULL) );
+      return expr;
+   }
+
+   /* assist function to create a signpower expression */
+   SCIP_EXPR* createExprSignpower(SCIP* scip, SCIP_EXPR* child, SCIP_Real exponent)
+   {
+      SCIP_EXPR* expr;
+
+      SCIP_CALL_ABORT( SCIPcreateExprSignpower(scip, &expr, child, exponent, NULL, NULL) );
+      return expr;
+   }
+
+   /* assist function to create a product expression */
+   SCIP_EXPR* createExprProduct(SCIP* scip, int nchildren, SCIP_EXPR** children, SCIP_Real coefficient)
+   {
+      SCIP_EXPR* expr;
+
+      SCIP_CALL_ABORT( SCIPcreateExprProduct(scip, &expr, nchildren, children, coefficient, NULL, NULL) );
+      return expr;
+   }
+
+   /* assist function to create a sum expression */
+   SCIP_EXPR* createExprSum(SCIP* scip, int nchildren, SCIP_EXPR** children, SCIP_Real* coefficients, SCIP_Real constant)
+   {
+      SCIP_EXPR* expr;
+
+      SCIP_CALL_ABORT( SCIPcreateExprSum(scip, &expr, nchildren, children, coefficients, constant, NULL, NULL) );
+      return expr;
+   }
+
+   /* assist function to create a sin expression */
+   SCIP_EXPR* createExprSin(SCIP* scip, SCIP_EXPR* child)
+   {
+      SCIP_EXPR* expr;
+
+      SCIP_CALL_ABORT( SCIPcreateExprSin(scip, &expr, child, NULL, NULL) );
+      return expr;
+   }
+
+   /* assist function to create a cos expression */
+   SCIP_EXPR* createExprCos(SCIP* scip, SCIP_EXPR* child)
+   {
+      SCIP_EXPR* expr;
+
+      SCIP_CALL_ABORT( SCIPcreateExprCos(scip, &expr, child, NULL, NULL) );
+      return expr;
+   }
+
+   /* assist function to create a (constant) value expression */
+   SCIP_EXPR* createExprValue(SCIP* scip, SCIP_Real value)
+   {
+      SCIP_EXPR* expr;
+
+      SCIP_CALL_ABORT( SCIPcreateExprValue(scip, &expr, value, NULL, NULL) );
+      return expr;
+   }
+
+   /* assist function to create a var(iable) expression */
+   SCIP_EXPR* createExprVar(SCIP* scip, SCIP_VAR *var)
+   {
+      SCIP_EXPR* expr;
+
+      SCIP_CALL_ABORT( SCIPcreateExprVar(scip, &expr, var, NULL, NULL) );
+      return expr;
+   }
+
+   /* assist function to release an expression */
+   void releaseExpr(SCIP* scip, SCIP_EXPR* expr)
+   {
+      SCIP_CALL_ABORT( SCIPreleaseExpr(scip, &expr) );
+   }
+
    /* assist function to create a linear constraint */
    SCIP_CONS* createConsBasicLinear(SCIP* scip, const char* name , int nvars, SCIP_VAR** vars, SCIP_Real* vals, SCIP_Real lhs, SCIP_Real rhs)
    {
@@ -874,6 +988,16 @@ namespace Swig {
       SCIP_CONS* cons;
 
       SCIP_CALL_ABORT( SCIPcreateConsBasicSuperindicator(scip, &cons, name, binvar, slackcons) );
+
+      return cons;
+   }
+
+   /* assist function to create a nonlinear constraint */
+   SCIP_CONS* createConsBasicNonlinear(SCIP* scip, const char* name, SCIP_EXPR*            expr, SCIP_Real lhs, SCIP_Real rhs)
+   {
+      SCIP_CONS* cons;
+
+      SCIP_CALL_ABORT( SCIPcreateConsBasicNonlinear(scip, &cons, name, expr, lhs, rhs) );
 
       return cons;
    }
@@ -1003,6 +1127,22 @@ static SCIP_VAR* SCIP_VAR_array_getitem(SCIP_VAR* *ary, int index) {
     return ary[index];
 }
 static void SCIP_VAR_array_setitem(SCIP_VAR* *ary, int index, SCIP_VAR* value) {
+    ary[index] = value;
+}
+
+
+static SCIP_EXPR* *new_SCIP_EXPR_array(int nelements) { 
+  return new SCIP_EXPR*[nelements](); 
+}
+
+static void delete_SCIP_EXPR_array(SCIP_EXPR* *ary) { 
+  delete [] ary; 
+}
+
+static SCIP_EXPR* SCIP_EXPR_array_getitem(SCIP_EXPR* *ary, int index) {
+    return ary[index];
+}
+static void SCIP_EXPR_array_setitem(SCIP_EXPR* *ary, int index, SCIP_EXPR* value) {
     ary[index] = value;
 }
 
@@ -1638,6 +1778,60 @@ SWIGEXPORT void JNICALL Java_jscip_SCIPJNIJNI_SCIP_1VAR_1array_1setitem(JNIEnv *
   arg2 = (int)jarg2; 
   arg3 = *(SCIP_VAR **)&jarg3; 
   SCIP_VAR_array_setitem(arg1,arg2,arg3);
+}
+
+
+SWIGEXPORT jlong JNICALL Java_jscip_SCIPJNIJNI_new_1SCIP_1EXPR_1array(JNIEnv *jenv, jclass jcls, jint jarg1) {
+  jlong jresult = 0 ;
+  int arg1 ;
+  SCIP_EXPR **result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  arg1 = (int)jarg1; 
+  result = (SCIP_EXPR **)new_SCIP_EXPR_array(arg1);
+  *(SCIP_EXPR ***)&jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_jscip_SCIPJNIJNI_delete_1SCIP_1EXPR_1array(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+  SCIP_EXPR **arg1 = (SCIP_EXPR **) 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  arg1 = *(SCIP_EXPR ***)&jarg1; 
+  delete_SCIP_EXPR_array(arg1);
+}
+
+
+SWIGEXPORT jlong JNICALL Java_jscip_SCIPJNIJNI_SCIP_1EXPR_1array_1getitem(JNIEnv *jenv, jclass jcls, jlong jarg1, jint jarg2) {
+  jlong jresult = 0 ;
+  SCIP_EXPR **arg1 = (SCIP_EXPR **) 0 ;
+  int arg2 ;
+  SCIP_EXPR *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  arg1 = *(SCIP_EXPR ***)&jarg1; 
+  arg2 = (int)jarg2; 
+  result = (SCIP_EXPR *)SCIP_EXPR_array_getitem(arg1,arg2);
+  *(SCIP_EXPR **)&jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_jscip_SCIPJNIJNI_SCIP_1EXPR_1array_1setitem(JNIEnv *jenv, jclass jcls, jlong jarg1, jint jarg2, jlong jarg3) {
+  SCIP_EXPR **arg1 = (SCIP_EXPR **) 0 ;
+  int arg2 ;
+  SCIP_EXPR *arg3 = (SCIP_EXPR *) 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  arg1 = *(SCIP_EXPR ***)&jarg1; 
+  arg2 = (int)jarg2; 
+  arg3 = *(SCIP_EXPR **)&jarg3; 
+  SCIP_EXPR_array_setitem(arg1,arg2,arg3);
 }
 
 
@@ -4159,6 +4353,224 @@ SWIGEXPORT void JNICALL Java_jscip_SCIPJNIJNI_releaseVar(JNIEnv *jenv, jclass jc
 }
 
 
+SWIGEXPORT jlong JNICALL Java_jscip_SCIPJNIJNI_createExprAbs(JNIEnv *jenv, jclass jcls, jlong jarg1, jlong jarg2) {
+  jlong jresult = 0 ;
+  SCIP *arg1 = (SCIP *) 0 ;
+  SCIP_EXPR *arg2 = (SCIP_EXPR *) 0 ;
+  SCIP_EXPR *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  arg1 = *(SCIP **)&jarg1; 
+  arg2 = *(SCIP_EXPR **)&jarg2; 
+  result = (SCIP_EXPR *)createExprAbs(arg1,arg2);
+  *(SCIP_EXPR **)&jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_jscip_SCIPJNIJNI_createExprEntropy(JNIEnv *jenv, jclass jcls, jlong jarg1, jlong jarg2) {
+  jlong jresult = 0 ;
+  SCIP *arg1 = (SCIP *) 0 ;
+  SCIP_EXPR *arg2 = (SCIP_EXPR *) 0 ;
+  SCIP_EXPR *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  arg1 = *(SCIP **)&jarg1; 
+  arg2 = *(SCIP_EXPR **)&jarg2; 
+  result = (SCIP_EXPR *)createExprEntropy(arg1,arg2);
+  *(SCIP_EXPR **)&jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_jscip_SCIPJNIJNI_createExprExp(JNIEnv *jenv, jclass jcls, jlong jarg1, jlong jarg2) {
+  jlong jresult = 0 ;
+  SCIP *arg1 = (SCIP *) 0 ;
+  SCIP_EXPR *arg2 = (SCIP_EXPR *) 0 ;
+  SCIP_EXPR *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  arg1 = *(SCIP **)&jarg1; 
+  arg2 = *(SCIP_EXPR **)&jarg2; 
+  result = (SCIP_EXPR *)createExprExp(arg1,arg2);
+  *(SCIP_EXPR **)&jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_jscip_SCIPJNIJNI_createExprLog(JNIEnv *jenv, jclass jcls, jlong jarg1, jlong jarg2) {
+  jlong jresult = 0 ;
+  SCIP *arg1 = (SCIP *) 0 ;
+  SCIP_EXPR *arg2 = (SCIP_EXPR *) 0 ;
+  SCIP_EXPR *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  arg1 = *(SCIP **)&jarg1; 
+  arg2 = *(SCIP_EXPR **)&jarg2; 
+  result = (SCIP_EXPR *)createExprLog(arg1,arg2);
+  *(SCIP_EXPR **)&jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_jscip_SCIPJNIJNI_createExprPow(JNIEnv *jenv, jclass jcls, jlong jarg1, jlong jarg2, jdouble jarg3) {
+  jlong jresult = 0 ;
+  SCIP *arg1 = (SCIP *) 0 ;
+  SCIP_EXPR *arg2 = (SCIP_EXPR *) 0 ;
+  double arg3 ;
+  SCIP_EXPR *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  arg1 = *(SCIP **)&jarg1; 
+  arg2 = *(SCIP_EXPR **)&jarg2; 
+  arg3 = (double)jarg3; 
+  result = (SCIP_EXPR *)createExprPow(arg1,arg2,arg3);
+  *(SCIP_EXPR **)&jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_jscip_SCIPJNIJNI_createExprSignpower(JNIEnv *jenv, jclass jcls, jlong jarg1, jlong jarg2, jdouble jarg3) {
+  jlong jresult = 0 ;
+  SCIP *arg1 = (SCIP *) 0 ;
+  SCIP_EXPR *arg2 = (SCIP_EXPR *) 0 ;
+  double arg3 ;
+  SCIP_EXPR *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  arg1 = *(SCIP **)&jarg1; 
+  arg2 = *(SCIP_EXPR **)&jarg2; 
+  arg3 = (double)jarg3; 
+  result = (SCIP_EXPR *)createExprSignpower(arg1,arg2,arg3);
+  *(SCIP_EXPR **)&jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_jscip_SCIPJNIJNI_createExprProduct(JNIEnv *jenv, jclass jcls, jlong jarg1, jint jarg2, jlong jarg3, jdouble jarg4) {
+  jlong jresult = 0 ;
+  SCIP *arg1 = (SCIP *) 0 ;
+  int arg2 ;
+  SCIP_EXPR **arg3 = (SCIP_EXPR **) 0 ;
+  double arg4 ;
+  SCIP_EXPR *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  arg1 = *(SCIP **)&jarg1; 
+  arg2 = (int)jarg2; 
+  arg3 = *(SCIP_EXPR ***)&jarg3; 
+  arg4 = (double)jarg4; 
+  result = (SCIP_EXPR *)createExprProduct(arg1,arg2,arg3,arg4);
+  *(SCIP_EXPR **)&jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_jscip_SCIPJNIJNI_createExprSum(JNIEnv *jenv, jclass jcls, jlong jarg1, jint jarg2, jlong jarg3, jlong jarg4, jdouble jarg5) {
+  jlong jresult = 0 ;
+  SCIP *arg1 = (SCIP *) 0 ;
+  int arg2 ;
+  SCIP_EXPR **arg3 = (SCIP_EXPR **) 0 ;
+  double *arg4 = (double *) 0 ;
+  double arg5 ;
+  SCIP_EXPR *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  arg1 = *(SCIP **)&jarg1; 
+  arg2 = (int)jarg2; 
+  arg3 = *(SCIP_EXPR ***)&jarg3; 
+  arg4 = *(double **)&jarg4; 
+  arg5 = (double)jarg5; 
+  result = (SCIP_EXPR *)createExprSum(arg1,arg2,arg3,arg4,arg5);
+  *(SCIP_EXPR **)&jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_jscip_SCIPJNIJNI_createExprSin(JNIEnv *jenv, jclass jcls, jlong jarg1, jlong jarg2) {
+  jlong jresult = 0 ;
+  SCIP *arg1 = (SCIP *) 0 ;
+  SCIP_EXPR *arg2 = (SCIP_EXPR *) 0 ;
+  SCIP_EXPR *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  arg1 = *(SCIP **)&jarg1; 
+  arg2 = *(SCIP_EXPR **)&jarg2; 
+  result = (SCIP_EXPR *)createExprSin(arg1,arg2);
+  *(SCIP_EXPR **)&jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_jscip_SCIPJNIJNI_createExprCos(JNIEnv *jenv, jclass jcls, jlong jarg1, jlong jarg2) {
+  jlong jresult = 0 ;
+  SCIP *arg1 = (SCIP *) 0 ;
+  SCIP_EXPR *arg2 = (SCIP_EXPR *) 0 ;
+  SCIP_EXPR *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  arg1 = *(SCIP **)&jarg1; 
+  arg2 = *(SCIP_EXPR **)&jarg2; 
+  result = (SCIP_EXPR *)createExprCos(arg1,arg2);
+  *(SCIP_EXPR **)&jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_jscip_SCIPJNIJNI_createExprValue(JNIEnv *jenv, jclass jcls, jlong jarg1, jdouble jarg2) {
+  jlong jresult = 0 ;
+  SCIP *arg1 = (SCIP *) 0 ;
+  double arg2 ;
+  SCIP_EXPR *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  arg1 = *(SCIP **)&jarg1; 
+  arg2 = (double)jarg2; 
+  result = (SCIP_EXPR *)createExprValue(arg1,arg2);
+  *(SCIP_EXPR **)&jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_jscip_SCIPJNIJNI_createExprVar(JNIEnv *jenv, jclass jcls, jlong jarg1, jlong jarg2) {
+  jlong jresult = 0 ;
+  SCIP *arg1 = (SCIP *) 0 ;
+  SCIP_VAR *arg2 = (SCIP_VAR *) 0 ;
+  SCIP_EXPR *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  arg1 = *(SCIP **)&jarg1; 
+  arg2 = *(SCIP_VAR **)&jarg2; 
+  result = (SCIP_EXPR *)createExprVar(arg1,arg2);
+  *(SCIP_EXPR **)&jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_jscip_SCIPJNIJNI_releaseExpr(JNIEnv *jenv, jclass jcls, jlong jarg1, jlong jarg2) {
+  SCIP *arg1 = (SCIP *) 0 ;
+  SCIP_EXPR *arg2 = (SCIP_EXPR *) 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  arg1 = *(SCIP **)&jarg1; 
+  arg2 = *(SCIP_EXPR **)&jarg2; 
+  releaseExpr(arg1,arg2);
+}
+
+
 SWIGEXPORT jlong JNICALL Java_jscip_SCIPJNIJNI_createConsBasicLinear(JNIEnv *jenv, jclass jcls, jlong jarg1, jstring jarg2, jint jarg3, jlong jarg4, jlong jarg5, jdouble jarg6, jdouble jarg7) {
   jlong jresult = 0 ;
   SCIP *arg1 = (SCIP *) 0 ;
@@ -4223,6 +4635,33 @@ SWIGEXPORT jlong JNICALL Java_jscip_SCIPJNIJNI_createConsBasicQuadratic(JNIEnv *
   arg10 = (double)jarg10; 
   arg11 = (double)jarg11; 
   result = (SCIP_CONS *)createConsBasicQuadratic(arg1,(char const *)arg2,arg3,arg4,arg5,arg6,arg7,arg8,arg9,arg10,arg11);
+  *(SCIP_CONS **)&jresult = result; 
+  if (arg2) jenv->ReleaseStringUTFChars(jarg2, (const char *)arg2);
+  return jresult;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_jscip_SCIPJNIJNI_createConsBasicNonlinear(JNIEnv *jenv, jclass jcls, jlong jarg1, jstring jarg2, jlong jarg3, jdouble jarg4, jdouble jarg5) {
+  jlong jresult = 0 ;
+  SCIP *arg1 = (SCIP *) 0 ;
+  char *arg2 = (char *) 0 ;
+  SCIP_EXPR *arg3 = (SCIP_EXPR *) 0 ;
+  double arg4 ;
+  double arg5 ;
+  SCIP_CONS *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  arg1 = *(SCIP **)&jarg1; 
+  arg2 = 0;
+  if (jarg2) {
+    arg2 = (char *)jenv->GetStringUTFChars(jarg2, 0);
+    if (!arg2) return 0;
+  }
+  arg3 = *(SCIP_EXPR **)&jarg3; 
+  arg4 = (double)jarg4; 
+  arg5 = (double)jarg5; 
+  result = (SCIP_CONS *)createConsBasicNonlinear(arg1,(char const *)arg2,arg3,arg4,arg5);
   *(SCIP_CONS **)&jresult = result; 
   if (arg2) jenv->ReleaseStringUTFChars(jarg2, (const char *)arg2);
   return jresult;
