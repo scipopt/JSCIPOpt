@@ -26,8 +26,10 @@ set(SWIG_JAVA_SOURCES
   ${PROJECT_SOURCE_DIR}/java/jscip/SCIPJNIJNI.java
   ${PROJECT_SOURCE_DIR}/java/jscip/SCIP_Retcode.java
   ${PROJECT_SOURCE_DIR}/java/jscip/SCIP_Vartype.java
+  ${PROJECT_SOURCE_DIR}/java/jscip/SCIP_BoundType.java
   ${PROJECT_SOURCE_DIR}/java/jscip/SCIP_ParamEmphasis.java
   ${PROJECT_SOURCE_DIR}/java/jscip/SCIP_Objsense.java
+  ${PROJECT_SOURCE_DIR}/java/jscip/SCIP_OrbitopeType.java
   ${PROJECT_SOURCE_DIR}/java/jscip/SCIP_VerbLevel.java
   ${PROJECT_SOURCE_DIR}/java/jscip/SCIP_Status.java
   ${PROJECT_SOURCE_DIR}/java/jscip/SCIP_Stage.java
@@ -38,12 +40,15 @@ set(SWIG_JAVA_SOURCES
   ${PROJECT_SOURCE_DIR}/java/jscip/SWIGTYPE_p_unsigned_int.java
   ${PROJECT_SOURCE_DIR}/java/jscip/SWIGTYPE_p_FILE.java
   ${PROJECT_SOURCE_DIR}/java/jscip/SWIGTYPE_p_p_char.java
+  ${PROJECT_SOURCE_DIR}/java/jscip/SWIGTYPE_p_p_p_SCIP_VAR.java
   ${PROJECT_SOURCE_DIR}/java/jscip/SWIGTYPE_p_p_SCIP.java
+  ${PROJECT_SOURCE_DIR}/java/jscip/SWIGTYPE_p_p_SCIP_CONS.java
   ${PROJECT_SOURCE_DIR}/java/jscip/SWIGTYPE_p_p_SCIP_SOL.java
   ${PROJECT_SOURCE_DIR}/java/jscip/SWIGTYPE_p_p_SCIP_VAR.java
   ${PROJECT_SOURCE_DIR}/java/jscip/SWIGTYPE_p_p_SCIP_EXPR.java
   ${PROJECT_SOURCE_DIR}/java/jscip/SWIGTYPE_p_SCIP_CONS.java
   ${PROJECT_SOURCE_DIR}/java/jscip/SWIGTYPE_p_SCIP.java
+  ${PROJECT_SOURCE_DIR}/java/jscip/SWIGTYPE_p_SCIP_BoundType.java
   ${PROJECT_SOURCE_DIR}/java/jscip/SWIGTYPE_p_SCIP_SOL.java
   ${PROJECT_SOURCE_DIR}/java/jscip/SWIGTYPE_p_SCIP_VAR.java
   ${PROJECT_SOURCE_DIR}/java/jscip/SWIGTYPE_p_SCIP_EXPR.java

@@ -982,8 +982,8 @@ namespace Swig {
       return cons;
    }
 
-   /* assist function to create a super indicator constraint */
-   SCIP_CONS* createConsBasicSuperIndicator(SCIP *scip, const char *name, SCIP_VAR *binvar, SCIP_CONS *slackcons)
+   /* assist function to create a superindicator constraint */
+   SCIP_CONS* createConsBasicSuperindicator(SCIP *scip, const char *name, SCIP_VAR *binvar, SCIP_CONS *slackcons)
    {
       SCIP_CONS* cons;
 
@@ -993,11 +993,272 @@ namespace Swig {
    }
 
    /* assist function to create a nonlinear constraint */
-   SCIP_CONS* createConsBasicNonlinear(SCIP* scip, const char* name, SCIP_EXPR*            expr, SCIP_Real lhs, SCIP_Real rhs)
+   SCIP_CONS* createConsBasicNonlinear(SCIP* scip, const char* name, SCIP_EXPR* expr, SCIP_Real lhs, SCIP_Real rhs)
    {
       SCIP_CONS* cons;
 
       SCIP_CALL_ABORT( SCIPcreateConsBasicNonlinear(scip, &cons, name, expr, lhs, rhs) );
+
+      return cons;
+   }
+
+   /* assist function to create a pseudoboolean constraint */
+   SCIP_CONS* createConsBasicPseudoboolean(SCIP* scip, const char* name, SCIP_VAR** linvars, int nlinvars, SCIP_Real* linvals, SCIP_VAR*** terms, int nterms, int* ntermvars, SCIP_Real* termvals, SCIP_VAR* indvar, SCIP_Real weight, SCIP_Bool issoftcons, SCIP_VAR* intvar, SCIP_Real lhs, SCIP_Real rhs)
+   {
+      SCIP_CONS* cons;
+
+      SCIP_CALL_ABORT( SCIPcreateConsBasicPseudoboolean(scip, &cons, name, linvars, nlinvars, linvals, terms, nterms, ntermvars, termvals, indvar, weight, issoftcons, intvar, lhs, rhs) );
+
+      return cons;
+   }
+
+   /* assist function to create a set partitioning constraint */
+   SCIP_CONS* createConsBasicSetpart(SCIP* scip, const char* name, int nvars, SCIP_VAR** vars)
+   {
+      SCIP_CONS* cons;
+
+      SCIP_CALL_ABORT( SCIPcreateConsBasicSetpart(scip, &cons, name, nvars, vars) );
+
+      return cons;
+   }
+
+   /* assist function to create a set packing constraint */
+   SCIP_CONS* createConsBasicSetpack(SCIP* scip, const char* name, int nvars, SCIP_VAR** vars)
+   {
+      SCIP_CONS* cons;
+
+      SCIP_CALL_ABORT( SCIPcreateConsBasicSetpack(scip, &cons, name, nvars, vars) );
+
+      return cons;
+   }
+
+   /* assist function to create a set covering constraint */
+   SCIP_CONS* createConsBasicSetcover(SCIP* scip, const char* name, int nvars, SCIP_VAR** vars)
+   {
+      SCIP_CONS* cons;
+
+      SCIP_CALL_ABORT( SCIPcreateConsBasicSetcover(scip, &cons, name, nvars, vars) );
+
+      return cons;
+   }
+
+   /* assist function to create a second-order cone constraint */
+   SCIP_CONS* createConsBasicSOC(SCIP* scip, const char* name, int nvars, SCIP_VAR** vars, SCIP_Real* coefs, SCIP_Real* offsets, SCIP_Real constant, SCIP_VAR* rhsvar, SCIP_Real rhscoeff, SCIP_Real rhsoffset)
+   {
+      SCIP_CONS* cons;
+
+      SCIP_CALL_ABORT( SCIPcreateConsBasicSOCNonlinear(scip, &cons, name, nvars, vars, coefs, offsets, constant, rhsvar, rhscoeff, rhsoffset) );
+
+      return cons;
+   }
+
+   /* assist function to create a signpower constraint */
+   SCIP_CONS* createConsBasicSignpower(SCIP* scip, const char* name, SCIP_VAR* x, SCIP_VAR* z, SCIP_Real exponent, SCIP_Real xoffset, SCIP_Real zcoef, SCIP_Real lhs, SCIP_Real rhs)
+   {
+      SCIP_CONS* cons;
+
+      SCIP_CALL_ABORT( SCIPcreateConsBasicSignpowerNonlinear(scip, &cons, name, x, z, exponent, xoffset, zcoef, lhs, rhs) );
+
+      return cons;
+   }
+
+   /* assist function to create an and constraint */
+   SCIP_CONS* createConsBasicAnd(SCIP* scip, const char* name, SCIP_VAR* resvar, int nvars, SCIP_VAR** vars)
+   {
+      SCIP_CONS* cons;
+
+      SCIP_CALL_ABORT( SCIPcreateConsBasicAnd(scip, &cons, name, resvar, nvars, vars) );
+
+      return cons;
+   }
+
+   /* assist function to create an or constraint */
+   SCIP_CONS* createConsBasicOr(SCIP* scip, const char* name, SCIP_VAR* resvar, int nvars, SCIP_VAR** vars)
+   {
+      SCIP_CONS* cons;
+
+      SCIP_CALL_ABORT( SCIPcreateConsBasicOr(scip, &cons, name, resvar, nvars, vars) );
+
+      return cons;
+   }
+
+   /* assist function to create a bound disjunction constraint */
+   SCIP_CONS* createConsBasicBounddisjunction(SCIP* scip, const char* name, int nvars, SCIP_VAR** vars, SCIP_BOUNDTYPE* boundtypes, SCIP_Real* bounds)
+   {
+      SCIP_CONS* cons;
+
+      SCIP_CALL_ABORT( SCIPcreateConsBasicBounddisjunction(scip, &cons, name, nvars, vars, boundtypes, bounds) );
+
+      return cons;
+   }
+
+   /* assist function to create a redundant bound disjunction constraint */
+   SCIP_CONS* createConsBasicBounddisjunctionRedundant(SCIP* scip, const char* name, int nvars, SCIP_VAR** vars, SCIP_BOUNDTYPE* boundtypes, SCIP_Real* bounds)
+   {
+      SCIP_CONS* cons;
+
+      SCIP_CALL_ABORT( SCIPcreateConsBasicBounddisjunctionRedundant(scip, &cons, name, nvars, vars, boundtypes, bounds) );
+
+      return cons;
+   }
+
+   /* assist function to create a cardinality constraint */
+   SCIP_CONS* createConsBasicCardinality(SCIP* scip, const char* name, int nvars, SCIP_VAR** vars, int cardval, SCIP_VAR** indvars, SCIP_Real* weights)
+   {
+      SCIP_CONS* cons;
+
+      SCIP_CALL_ABORT( SCIPcreateConsBasicCardinality(scip, &cons, name, nvars, vars, cardval, indvars, weights) );
+
+      return cons;
+   }
+
+   /* assist function to create a conjunction constraint */
+   SCIP_CONS* createConsBasicConjunction(SCIP* scip, const char* name, int nconss, SCIP_CONS** conss)
+   {
+      SCIP_CONS* cons;
+
+      SCIP_CALL_ABORT( SCIPcreateConsBasicConjunction(scip, &cons, name, nconss, conss) );
+
+      return cons;
+   }
+
+   /* assist function to create a disjunction constraint */
+   SCIP_CONS* createConsBasicDisjunction(SCIP* scip, const char* name, int nconss, SCIP_CONS** conss, SCIP_CONS* relaxcons)
+   {
+      SCIP_CONS* cons;
+
+      SCIP_CALL_ABORT( SCIPcreateConsBasicDisjunction(scip, &cons, name, nconss, conss, relaxcons) );
+
+      return cons;
+   }
+
+   /* assist function to create a cumulative constraint */
+   SCIP_CONS* createConsBasicCumulative(SCIP* scip, const char* name, int nvars, SCIP_VAR** vars, int* durations, int* demands, int capacity)
+   {
+      SCIP_CONS* cons;
+
+      SCIP_CALL_ABORT( SCIPcreateConsBasicCumulative(scip, &cons, name, nvars, vars, durations, demands, capacity) );
+
+      return cons;
+   }
+
+   /* assist function to create an indicator constraint */
+   SCIP_CONS* createConsBasicIndicator(SCIP* scip, const char* name, SCIP_VAR* binvar, int nvars, SCIP_VAR** vars, SCIP_Real* vals, SCIP_Real rhs)
+   {
+      SCIP_CONS* cons;
+
+      SCIP_CALL_ABORT( SCIPcreateConsBasicIndicator(scip, &cons, name, binvar, nvars, vars, vals, rhs) );
+
+      return cons;
+   }
+
+   /* assist function to create an indicator constraint with given linear
+      constraint and slack variable*/
+   SCIP_CONS* createConsBasicIndicatorLinCons(SCIP* scip, const char* name, SCIP_VAR* binvar, SCIP_CONS* lincons, SCIP_VAR* slackvar)
+   {
+      SCIP_CONS* cons;
+
+      SCIP_CALL_ABORT( SCIPcreateConsBasicIndicatorLinCons(scip, &cons, name, binvar, lincons, slackvar) );
+
+      return cons;
+   }
+
+   /* assist function to create a knapsack constraint */
+   SCIP_CONS* createConsBasicKnapsack(SCIP* scip, const char* name, int nvars, SCIP_VAR** vars, SCIP_Longint* weights, SCIP_Longint capacity)
+   {
+      SCIP_CONS* cons;
+
+      SCIP_CALL_ABORT( SCIPcreateConsBasicKnapsack(scip, &cons, name, nvars, vars, weights, capacity) );
+
+      return cons;
+   }
+
+   /* assist function to create a linking constraint */
+   SCIP_CONS* createConsBasicLinking(SCIP* scip, const char* name, SCIP_VAR* linkvar, SCIP_VAR** binvars, SCIP_Real* vals, int nbinvars)
+   {
+      SCIP_CONS* cons;
+
+      SCIP_CALL_ABORT( SCIPcreateConsBasicLinking(scip, &cons, name, linkvar, binvars, vals, nbinvars) );
+
+      return cons;
+   }
+
+   /* assist function to create a logicor constraint */
+   SCIP_CONS* createConsBasicLogicor(SCIP* scip, const char* name, int nvars, SCIP_VAR** vars)
+   {
+      SCIP_CONS* cons;
+
+      SCIP_CALL_ABORT( SCIPcreateConsBasicLogicor(scip, &cons, name, nvars, vars) );
+
+      return cons;
+   }
+
+   /* assist function to create an orbisack constraint */
+   SCIP_CONS* createConsBasicOrbisack(SCIP* scip, const char* name, SCIP_VAR** vars1, SCIP_VAR** vars2, int nrows, SCIP_Bool ispporbisack, SCIP_Bool isparttype, SCIP_Bool ismodelcons)
+   {
+      SCIP_CONS* cons;
+
+      SCIP_CALL_ABORT( SCIPcreateConsBasicOrbisack(scip, &cons, name, vars1, vars2, nrows, ispporbisack, isparttype, ismodelcons) );
+
+      return cons;
+   }
+
+   /* assist function to create an orbitope constraint */
+   SCIP_CONS* createConsBasicOrbitope(SCIP* scip, const char* name, SCIP_VAR*** vars, SCIP_ORBITOPETYPE orbitopetype, int nspcons, int nblocks, SCIP_Bool usedynamicprop, SCIP_Bool resolveprop, SCIP_Bool ismodelcons, SCIP_Bool mayinteract)
+   {
+      SCIP_CONS* cons;
+
+      SCIP_CALL_ABORT( SCIPcreateConsBasicOrbitope(scip, &cons, name, vars, orbitopetype, nspcons, nblocks, usedynamicprop, resolveprop, ismodelcons, mayinteract) );
+
+      return cons;
+   }
+
+   /* assist function to create an SOS1 constraint */
+   SCIP_CONS* createConsBasicSOS1(SCIP* scip, const char* name, int nvars, SCIP_VAR** vars, SCIP_Real* weights)
+   {
+      SCIP_CONS* cons;
+
+      SCIP_CALL_ABORT( SCIPcreateConsBasicSOS1(scip, &cons, name, nvars, vars, weights) );
+
+      return cons;
+   }
+
+   /* assist function to create an SOS2 constraint */
+   SCIP_CONS* createConsBasicSOS2(SCIP* scip, const char* name, int nvars, SCIP_VAR** vars, SCIP_Real* weights)
+   {
+      SCIP_CONS* cons;
+
+      SCIP_CALL_ABORT( SCIPcreateConsBasicSOS2(scip, &cons, name, nvars, vars, weights) );
+
+      return cons;
+   }
+
+   /* assist function to create a symresack constraint */
+   SCIP_CONS* createConsBasicSymresack(SCIP* scip, const char* name, int* perm, SCIP_VAR** vars, int nvars, SCIP_Bool ismodelcons)
+   {
+      SCIP_CONS* cons;
+
+      SCIP_CALL_ABORT( SCIPcreateConsBasicSymresack(scip, &cons, name, perm, vars, nvars, ismodelcons) );
+
+      return cons;
+   }
+
+   /* assist function to create a variable bound constraint */
+   SCIP_CONS* createConsBasicVarbound(SCIP* scip, const char* name, SCIP_VAR* var, SCIP_VAR* vbdvar, SCIP_Real vbdcoef, SCIP_Real lhs, SCIP_Real rhs)
+   {
+      SCIP_CONS* cons;
+
+      SCIP_CALL_ABORT( SCIPcreateConsBasicVarbound(scip, &cons, name, var, vbdvar, vbdcoef, lhs, rhs) );
+
+      return cons;
+   }
+
+   /* assist function to create an xor constraint */
+   SCIP_CONS* createConsBasicXor(SCIP* scip, const char* name, SCIP_Bool rhs, int nvars, SCIP_VAR** vars)
+   {
+      SCIP_CONS* cons;
+
+      SCIP_CALL_ABORT( SCIPcreateConsBasicXor(scip, &cons, name, rhs, nvars, vars) );
 
       return cons;
    }
@@ -1099,6 +1360,22 @@ static void unsigned_int_array_setitem(unsigned int *ary, int index, unsigned in
 }
 
 
+static SCIP_BOUNDTYPE *new_SCIP_BoundType_array(int nelements) { 
+  return new SCIP_BOUNDTYPE[nelements](); 
+}
+
+static void delete_SCIP_BoundType_array(SCIP_BOUNDTYPE *ary) { 
+  delete [] ary; 
+}
+
+static SCIP_BOUNDTYPE SCIP_BoundType_array_getitem(SCIP_BOUNDTYPE *ary, int index) {
+    return ary[index];
+}
+static void SCIP_BoundType_array_setitem(SCIP_BOUNDTYPE *ary, int index, SCIP_BOUNDTYPE value) {
+    ary[index] = value;
+}
+
+
 static char* *new_String_array(int nelements) { 
   return new char*[nelements](); 
 }
@@ -1147,6 +1424,22 @@ static void SCIP_EXPR_array_setitem(SCIP_EXPR* *ary, int index, SCIP_EXPR* value
 }
 
 
+static SCIP_CONS* *new_SCIP_CONS_array(int nelements) { 
+  return new SCIP_CONS*[nelements](); 
+}
+
+static void delete_SCIP_CONS_array(SCIP_CONS* *ary) { 
+  delete [] ary; 
+}
+
+static SCIP_CONS* SCIP_CONS_array_getitem(SCIP_CONS* *ary, int index) {
+    return ary[index];
+}
+static void SCIP_CONS_array_setitem(SCIP_CONS* *ary, int index, SCIP_CONS* value) {
+    ary[index] = value;
+}
+
+
 static SCIP_SOL* *new_SCIP_SOL_array(int nelements) { 
   return new SCIP_SOL*[nelements](); 
 }
@@ -1159,6 +1452,22 @@ static SCIP_SOL* SCIP_SOL_array_getitem(SCIP_SOL* *ary, int index) {
     return ary[index];
 }
 static void SCIP_SOL_array_setitem(SCIP_SOL* *ary, int index, SCIP_SOL* value) {
+    ary[index] = value;
+}
+
+
+static SCIP_VAR** *new_SCIP_VAR_array_array(int nelements) { 
+  return new SCIP_VAR**[nelements](); 
+}
+
+static void delete_SCIP_VAR_array_array(SCIP_VAR** *ary) { 
+  delete [] ary; 
+}
+
+static SCIP_VAR** SCIP_VAR_array_array_getitem(SCIP_VAR** *ary, int index) {
+    return ary[index];
+}
+static void SCIP_VAR_array_array_setitem(SCIP_VAR** *ary, int index, SCIP_VAR** value) {
     ary[index] = value;
 }
 
@@ -1668,6 +1977,60 @@ SWIGEXPORT void JNICALL Java_jscip_SCIPJNIJNI_unsigned_1int_1array_1setitem(JNIE
 }
 
 
+SWIGEXPORT jlong JNICALL Java_jscip_SCIPJNIJNI_new_1SCIP_1BoundType_1array(JNIEnv *jenv, jclass jcls, jint jarg1) {
+  jlong jresult = 0 ;
+  int arg1 ;
+  SCIP_BOUNDTYPE *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  arg1 = (int)jarg1; 
+  result = (SCIP_BOUNDTYPE *)new_SCIP_BoundType_array(arg1);
+  *(SCIP_BOUNDTYPE **)&jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_jscip_SCIPJNIJNI_delete_1SCIP_1BoundType_1array(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+  SCIP_BOUNDTYPE *arg1 = (SCIP_BOUNDTYPE *) 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  arg1 = *(SCIP_BOUNDTYPE **)&jarg1; 
+  delete_SCIP_BoundType_array(arg1);
+}
+
+
+SWIGEXPORT jint JNICALL Java_jscip_SCIPJNIJNI_SCIP_1BoundType_1array_1getitem(JNIEnv *jenv, jclass jcls, jlong jarg1, jint jarg2) {
+  jint jresult = 0 ;
+  SCIP_BOUNDTYPE *arg1 = (SCIP_BOUNDTYPE *) 0 ;
+  int arg2 ;
+  SCIP_BOUNDTYPE result;
+  
+  (void)jenv;
+  (void)jcls;
+  arg1 = *(SCIP_BOUNDTYPE **)&jarg1; 
+  arg2 = (int)jarg2; 
+  result = (SCIP_BOUNDTYPE)SCIP_BoundType_array_getitem(arg1,arg2);
+  jresult = (jint)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_jscip_SCIPJNIJNI_SCIP_1BoundType_1array_1setitem(JNIEnv *jenv, jclass jcls, jlong jarg1, jint jarg2, jint jarg3) {
+  SCIP_BOUNDTYPE *arg1 = (SCIP_BOUNDTYPE *) 0 ;
+  int arg2 ;
+  SCIP_BOUNDTYPE arg3 ;
+  
+  (void)jenv;
+  (void)jcls;
+  arg1 = *(SCIP_BOUNDTYPE **)&jarg1; 
+  arg2 = (int)jarg2; 
+  arg3 = (SCIP_BOUNDTYPE)jarg3; 
+  SCIP_BoundType_array_setitem(arg1,arg2,arg3);
+}
+
+
 SWIGEXPORT jlong JNICALL Java_jscip_SCIPJNIJNI_new_1String_1array(JNIEnv *jenv, jclass jcls, jint jarg1) {
   jlong jresult = 0 ;
   int arg1 ;
@@ -1835,6 +2198,60 @@ SWIGEXPORT void JNICALL Java_jscip_SCIPJNIJNI_SCIP_1EXPR_1array_1setitem(JNIEnv 
 }
 
 
+SWIGEXPORT jlong JNICALL Java_jscip_SCIPJNIJNI_new_1SCIP_1CONS_1array(JNIEnv *jenv, jclass jcls, jint jarg1) {
+  jlong jresult = 0 ;
+  int arg1 ;
+  SCIP_CONS **result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  arg1 = (int)jarg1; 
+  result = (SCIP_CONS **)new_SCIP_CONS_array(arg1);
+  *(SCIP_CONS ***)&jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_jscip_SCIPJNIJNI_delete_1SCIP_1CONS_1array(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+  SCIP_CONS **arg1 = (SCIP_CONS **) 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  arg1 = *(SCIP_CONS ***)&jarg1; 
+  delete_SCIP_CONS_array(arg1);
+}
+
+
+SWIGEXPORT jlong JNICALL Java_jscip_SCIPJNIJNI_SCIP_1CONS_1array_1getitem(JNIEnv *jenv, jclass jcls, jlong jarg1, jint jarg2) {
+  jlong jresult = 0 ;
+  SCIP_CONS **arg1 = (SCIP_CONS **) 0 ;
+  int arg2 ;
+  SCIP_CONS *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  arg1 = *(SCIP_CONS ***)&jarg1; 
+  arg2 = (int)jarg2; 
+  result = (SCIP_CONS *)SCIP_CONS_array_getitem(arg1,arg2);
+  *(SCIP_CONS **)&jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_jscip_SCIPJNIJNI_SCIP_1CONS_1array_1setitem(JNIEnv *jenv, jclass jcls, jlong jarg1, jint jarg2, jlong jarg3) {
+  SCIP_CONS **arg1 = (SCIP_CONS **) 0 ;
+  int arg2 ;
+  SCIP_CONS *arg3 = (SCIP_CONS *) 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  arg1 = *(SCIP_CONS ***)&jarg1; 
+  arg2 = (int)jarg2; 
+  arg3 = *(SCIP_CONS **)&jarg3; 
+  SCIP_CONS_array_setitem(arg1,arg2,arg3);
+}
+
+
 SWIGEXPORT jlong JNICALL Java_jscip_SCIPJNIJNI_new_1SCIP_1SOL_1array(JNIEnv *jenv, jclass jcls, jint jarg1) {
   jlong jresult = 0 ;
   int arg1 ;
@@ -1886,6 +2303,60 @@ SWIGEXPORT void JNICALL Java_jscip_SCIPJNIJNI_SCIP_1SOL_1array_1setitem(JNIEnv *
   arg2 = (int)jarg2; 
   arg3 = *(SCIP_SOL **)&jarg3; 
   SCIP_SOL_array_setitem(arg1,arg2,arg3);
+}
+
+
+SWIGEXPORT jlong JNICALL Java_jscip_SCIPJNIJNI_new_1SCIP_1VAR_1array_1array(JNIEnv *jenv, jclass jcls, jint jarg1) {
+  jlong jresult = 0 ;
+  int arg1 ;
+  SCIP_VAR ***result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  arg1 = (int)jarg1; 
+  result = (SCIP_VAR ***)new_SCIP_VAR_array_array(arg1);
+  *(SCIP_VAR ****)&jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_jscip_SCIPJNIJNI_delete_1SCIP_1VAR_1array_1array(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+  SCIP_VAR ***arg1 = (SCIP_VAR ***) 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  arg1 = *(SCIP_VAR ****)&jarg1; 
+  delete_SCIP_VAR_array_array(arg1);
+}
+
+
+SWIGEXPORT jlong JNICALL Java_jscip_SCIPJNIJNI_SCIP_1VAR_1array_1array_1getitem(JNIEnv *jenv, jclass jcls, jlong jarg1, jint jarg2) {
+  jlong jresult = 0 ;
+  SCIP_VAR ***arg1 = (SCIP_VAR ***) 0 ;
+  int arg2 ;
+  SCIP_VAR **result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  arg1 = *(SCIP_VAR ****)&jarg1; 
+  arg2 = (int)jarg2; 
+  result = (SCIP_VAR **)SCIP_VAR_array_array_getitem(arg1,arg2);
+  *(SCIP_VAR ***)&jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_jscip_SCIPJNIJNI_SCIP_1VAR_1array_1array_1setitem(JNIEnv *jenv, jclass jcls, jlong jarg1, jint jarg2, jlong jarg3) {
+  SCIP_VAR ***arg1 = (SCIP_VAR ***) 0 ;
+  int arg2 ;
+  SCIP_VAR **arg3 = (SCIP_VAR **) 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  arg1 = *(SCIP_VAR ****)&jarg1; 
+  arg2 = (int)jarg2; 
+  arg3 = *(SCIP_VAR ***)&jarg3; 
+  SCIP_VAR_array_array_setitem(arg1,arg2,arg3);
 }
 
 
@@ -2160,6 +2631,66 @@ SWIGEXPORT jint JNICALL Java_jscip_SCIPJNIJNI_SCIP_1VARTYPE_1CONTINUOUS_1get(JNI
   (void)jenv;
   (void)jcls;
   result = (SCIP_Vartype)SCIP_VARTYPE_CONTINUOUS;
+  jresult = (jint)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jint JNICALL Java_jscip_SCIPJNIJNI_SCIP_1BOUNDTYPE_1LOWER_1get(JNIEnv *jenv, jclass jcls) {
+  jint jresult = 0 ;
+  SCIP_BoundType result;
+  
+  (void)jenv;
+  (void)jcls;
+  result = (SCIP_BoundType)SCIP_BOUNDTYPE_LOWER;
+  jresult = (jint)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jint JNICALL Java_jscip_SCIPJNIJNI_SCIP_1BOUNDTYPE_1UPPER_1get(JNIEnv *jenv, jclass jcls) {
+  jint jresult = 0 ;
+  SCIP_BoundType result;
+  
+  (void)jenv;
+  (void)jcls;
+  result = (SCIP_BoundType)SCIP_BOUNDTYPE_UPPER;
+  jresult = (jint)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jint JNICALL Java_jscip_SCIPJNIJNI_SCIP_1ORBITOPETYPE_1FULL_1get(JNIEnv *jenv, jclass jcls) {
+  jint jresult = 0 ;
+  SCIP_OrbitopeType result;
+  
+  (void)jenv;
+  (void)jcls;
+  result = (SCIP_OrbitopeType)SCIP_ORBITOPETYPE_FULL;
+  jresult = (jint)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jint JNICALL Java_jscip_SCIPJNIJNI_SCIP_1ORBITOPETYPE_1PARTITIONING_1get(JNIEnv *jenv, jclass jcls) {
+  jint jresult = 0 ;
+  SCIP_OrbitopeType result;
+  
+  (void)jenv;
+  (void)jcls;
+  result = (SCIP_OrbitopeType)SCIP_ORBITOPETYPE_PARTITIONING;
+  jresult = (jint)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jint JNICALL Java_jscip_SCIPJNIJNI_SCIP_1ORBITOPETYPE_1PACKING_1get(JNIEnv *jenv, jclass jcls) {
+  jint jresult = 0 ;
+  SCIP_OrbitopeType result;
+  
+  (void)jenv;
+  (void)jcls;
+  result = (SCIP_OrbitopeType)SCIP_ORBITOPETYPE_PACKING;
   jresult = (jint)result; 
   return jresult;
 }
@@ -4668,7 +5199,7 @@ SWIGEXPORT jlong JNICALL Java_jscip_SCIPJNIJNI_createConsBasicNonlinear(JNIEnv *
 }
 
 
-SWIGEXPORT jlong JNICALL Java_jscip_SCIPJNIJNI_createConsBasicSuperIndicator(JNIEnv *jenv, jclass jcls, jlong jarg1, jstring jarg2, jlong jarg3, jlong jarg4) {
+SWIGEXPORT jlong JNICALL Java_jscip_SCIPJNIJNI_createConsBasicSuperindicator(JNIEnv *jenv, jclass jcls, jlong jarg1, jstring jarg2, jlong jarg3, jlong jarg4) {
   jlong jresult = 0 ;
   SCIP *arg1 = (SCIP *) 0 ;
   char *arg2 = (char *) 0 ;
@@ -4686,7 +5217,779 @@ SWIGEXPORT jlong JNICALL Java_jscip_SCIPJNIJNI_createConsBasicSuperIndicator(JNI
   }
   arg3 = *(SCIP_VAR **)&jarg3; 
   arg4 = *(SCIP_CONS **)&jarg4; 
-  result = (SCIP_CONS *)createConsBasicSuperIndicator(arg1,(char const *)arg2,arg3,arg4);
+  result = (SCIP_CONS *)createConsBasicSuperindicator(arg1,(char const *)arg2,arg3,arg4);
+  *(SCIP_CONS **)&jresult = result; 
+  if (arg2) jenv->ReleaseStringUTFChars(jarg2, (const char *)arg2);
+  return jresult;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_jscip_SCIPJNIJNI_createConsBasicPseudoboolean(JNIEnv *jenv, jclass jcls, jlong jarg1, jstring jarg2, jlong jarg3, jint jarg4, jlong jarg5, jlong jarg6, jint jarg7, jlong jarg8, jlong jarg9, jlong jarg10, jdouble jarg11, jlong jarg12, jlong jarg13, jdouble jarg14, jdouble jarg15) {
+  jlong jresult = 0 ;
+  SCIP *arg1 = (SCIP *) 0 ;
+  char *arg2 = (char *) 0 ;
+  SCIP_VAR **arg3 = (SCIP_VAR **) 0 ;
+  int arg4 ;
+  double *arg5 = (double *) 0 ;
+  SCIP_VAR ***arg6 = (SCIP_VAR ***) 0 ;
+  int arg7 ;
+  int *arg8 = (int *) 0 ;
+  double *arg9 = (double *) 0 ;
+  SCIP_VAR *arg10 = (SCIP_VAR *) 0 ;
+  double arg11 ;
+  unsigned int arg12 ;
+  SCIP_VAR *arg13 = (SCIP_VAR *) 0 ;
+  double arg14 ;
+  double arg15 ;
+  SCIP_CONS *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  arg1 = *(SCIP **)&jarg1; 
+  arg2 = 0;
+  if (jarg2) {
+    arg2 = (char *)jenv->GetStringUTFChars(jarg2, 0);
+    if (!arg2) return 0;
+  }
+  arg3 = *(SCIP_VAR ***)&jarg3; 
+  arg4 = (int)jarg4; 
+  arg5 = *(double **)&jarg5; 
+  arg6 = *(SCIP_VAR ****)&jarg6; 
+  arg7 = (int)jarg7; 
+  arg8 = *(int **)&jarg8; 
+  arg9 = *(double **)&jarg9; 
+  arg10 = *(SCIP_VAR **)&jarg10; 
+  arg11 = (double)jarg11; 
+  arg12 = (unsigned int)jarg12; 
+  arg13 = *(SCIP_VAR **)&jarg13; 
+  arg14 = (double)jarg14; 
+  arg15 = (double)jarg15; 
+  result = (SCIP_CONS *)createConsBasicPseudoboolean(arg1,(char const *)arg2,arg3,arg4,arg5,arg6,arg7,arg8,arg9,arg10,arg11,arg12,arg13,arg14,arg15);
+  *(SCIP_CONS **)&jresult = result; 
+  if (arg2) jenv->ReleaseStringUTFChars(jarg2, (const char *)arg2);
+  return jresult;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_jscip_SCIPJNIJNI_createConsBasicSetpart(JNIEnv *jenv, jclass jcls, jlong jarg1, jstring jarg2, jint jarg3, jlong jarg4) {
+  jlong jresult = 0 ;
+  SCIP *arg1 = (SCIP *) 0 ;
+  char *arg2 = (char *) 0 ;
+  int arg3 ;
+  SCIP_VAR **arg4 = (SCIP_VAR **) 0 ;
+  SCIP_CONS *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  arg1 = *(SCIP **)&jarg1; 
+  arg2 = 0;
+  if (jarg2) {
+    arg2 = (char *)jenv->GetStringUTFChars(jarg2, 0);
+    if (!arg2) return 0;
+  }
+  arg3 = (int)jarg3; 
+  arg4 = *(SCIP_VAR ***)&jarg4; 
+  result = (SCIP_CONS *)createConsBasicSetpart(arg1,(char const *)arg2,arg3,arg4);
+  *(SCIP_CONS **)&jresult = result; 
+  if (arg2) jenv->ReleaseStringUTFChars(jarg2, (const char *)arg2);
+  return jresult;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_jscip_SCIPJNIJNI_createConsBasicSetpack(JNIEnv *jenv, jclass jcls, jlong jarg1, jstring jarg2, jint jarg3, jlong jarg4) {
+  jlong jresult = 0 ;
+  SCIP *arg1 = (SCIP *) 0 ;
+  char *arg2 = (char *) 0 ;
+  int arg3 ;
+  SCIP_VAR **arg4 = (SCIP_VAR **) 0 ;
+  SCIP_CONS *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  arg1 = *(SCIP **)&jarg1; 
+  arg2 = 0;
+  if (jarg2) {
+    arg2 = (char *)jenv->GetStringUTFChars(jarg2, 0);
+    if (!arg2) return 0;
+  }
+  arg3 = (int)jarg3; 
+  arg4 = *(SCIP_VAR ***)&jarg4; 
+  result = (SCIP_CONS *)createConsBasicSetpack(arg1,(char const *)arg2,arg3,arg4);
+  *(SCIP_CONS **)&jresult = result; 
+  if (arg2) jenv->ReleaseStringUTFChars(jarg2, (const char *)arg2);
+  return jresult;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_jscip_SCIPJNIJNI_createConsBasicSetcover(JNIEnv *jenv, jclass jcls, jlong jarg1, jstring jarg2, jint jarg3, jlong jarg4) {
+  jlong jresult = 0 ;
+  SCIP *arg1 = (SCIP *) 0 ;
+  char *arg2 = (char *) 0 ;
+  int arg3 ;
+  SCIP_VAR **arg4 = (SCIP_VAR **) 0 ;
+  SCIP_CONS *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  arg1 = *(SCIP **)&jarg1; 
+  arg2 = 0;
+  if (jarg2) {
+    arg2 = (char *)jenv->GetStringUTFChars(jarg2, 0);
+    if (!arg2) return 0;
+  }
+  arg3 = (int)jarg3; 
+  arg4 = *(SCIP_VAR ***)&jarg4; 
+  result = (SCIP_CONS *)createConsBasicSetcover(arg1,(char const *)arg2,arg3,arg4);
+  *(SCIP_CONS **)&jresult = result; 
+  if (arg2) jenv->ReleaseStringUTFChars(jarg2, (const char *)arg2);
+  return jresult;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_jscip_SCIPJNIJNI_createConsBasicSOC(JNIEnv *jenv, jclass jcls, jlong jarg1, jstring jarg2, jint jarg3, jlong jarg4, jlong jarg5, jlong jarg6, jdouble jarg7, jlong jarg8, jdouble jarg9, jdouble jarg10) {
+  jlong jresult = 0 ;
+  SCIP *arg1 = (SCIP *) 0 ;
+  char *arg2 = (char *) 0 ;
+  int arg3 ;
+  SCIP_VAR **arg4 = (SCIP_VAR **) 0 ;
+  double *arg5 = (double *) 0 ;
+  double *arg6 = (double *) 0 ;
+  double arg7 ;
+  SCIP_VAR *arg8 = (SCIP_VAR *) 0 ;
+  double arg9 ;
+  double arg10 ;
+  SCIP_CONS *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  arg1 = *(SCIP **)&jarg1; 
+  arg2 = 0;
+  if (jarg2) {
+    arg2 = (char *)jenv->GetStringUTFChars(jarg2, 0);
+    if (!arg2) return 0;
+  }
+  arg3 = (int)jarg3; 
+  arg4 = *(SCIP_VAR ***)&jarg4; 
+  arg5 = *(double **)&jarg5; 
+  arg6 = *(double **)&jarg6; 
+  arg7 = (double)jarg7; 
+  arg8 = *(SCIP_VAR **)&jarg8; 
+  arg9 = (double)jarg9; 
+  arg10 = (double)jarg10; 
+  result = (SCIP_CONS *)createConsBasicSOC(arg1,(char const *)arg2,arg3,arg4,arg5,arg6,arg7,arg8,arg9,arg10);
+  *(SCIP_CONS **)&jresult = result; 
+  if (arg2) jenv->ReleaseStringUTFChars(jarg2, (const char *)arg2);
+  return jresult;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_jscip_SCIPJNIJNI_createConsBasicSignpower(JNIEnv *jenv, jclass jcls, jlong jarg1, jstring jarg2, jlong jarg3, jlong jarg4, jdouble jarg5, jdouble jarg6, jdouble jarg7, jdouble jarg8, jdouble jarg9) {
+  jlong jresult = 0 ;
+  SCIP *arg1 = (SCIP *) 0 ;
+  char *arg2 = (char *) 0 ;
+  SCIP_VAR *arg3 = (SCIP_VAR *) 0 ;
+  SCIP_VAR *arg4 = (SCIP_VAR *) 0 ;
+  double arg5 ;
+  double arg6 ;
+  double arg7 ;
+  double arg8 ;
+  double arg9 ;
+  SCIP_CONS *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  arg1 = *(SCIP **)&jarg1; 
+  arg2 = 0;
+  if (jarg2) {
+    arg2 = (char *)jenv->GetStringUTFChars(jarg2, 0);
+    if (!arg2) return 0;
+  }
+  arg3 = *(SCIP_VAR **)&jarg3; 
+  arg4 = *(SCIP_VAR **)&jarg4; 
+  arg5 = (double)jarg5; 
+  arg6 = (double)jarg6; 
+  arg7 = (double)jarg7; 
+  arg8 = (double)jarg8; 
+  arg9 = (double)jarg9; 
+  result = (SCIP_CONS *)createConsBasicSignpower(arg1,(char const *)arg2,arg3,arg4,arg5,arg6,arg7,arg8,arg9);
+  *(SCIP_CONS **)&jresult = result; 
+  if (arg2) jenv->ReleaseStringUTFChars(jarg2, (const char *)arg2);
+  return jresult;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_jscip_SCIPJNIJNI_createConsBasicAnd(JNIEnv *jenv, jclass jcls, jlong jarg1, jstring jarg2, jlong jarg3, jint jarg4, jlong jarg5) {
+  jlong jresult = 0 ;
+  SCIP *arg1 = (SCIP *) 0 ;
+  char *arg2 = (char *) 0 ;
+  SCIP_VAR *arg3 = (SCIP_VAR *) 0 ;
+  int arg4 ;
+  SCIP_VAR **arg5 = (SCIP_VAR **) 0 ;
+  SCIP_CONS *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  arg1 = *(SCIP **)&jarg1; 
+  arg2 = 0;
+  if (jarg2) {
+    arg2 = (char *)jenv->GetStringUTFChars(jarg2, 0);
+    if (!arg2) return 0;
+  }
+  arg3 = *(SCIP_VAR **)&jarg3; 
+  arg4 = (int)jarg4; 
+  arg5 = *(SCIP_VAR ***)&jarg5; 
+  result = (SCIP_CONS *)createConsBasicAnd(arg1,(char const *)arg2,arg3,arg4,arg5);
+  *(SCIP_CONS **)&jresult = result; 
+  if (arg2) jenv->ReleaseStringUTFChars(jarg2, (const char *)arg2);
+  return jresult;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_jscip_SCIPJNIJNI_createConsBasicOr(JNIEnv *jenv, jclass jcls, jlong jarg1, jstring jarg2, jlong jarg3, jint jarg4, jlong jarg5) {
+  jlong jresult = 0 ;
+  SCIP *arg1 = (SCIP *) 0 ;
+  char *arg2 = (char *) 0 ;
+  SCIP_VAR *arg3 = (SCIP_VAR *) 0 ;
+  int arg4 ;
+  SCIP_VAR **arg5 = (SCIP_VAR **) 0 ;
+  SCIP_CONS *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  arg1 = *(SCIP **)&jarg1; 
+  arg2 = 0;
+  if (jarg2) {
+    arg2 = (char *)jenv->GetStringUTFChars(jarg2, 0);
+    if (!arg2) return 0;
+  }
+  arg3 = *(SCIP_VAR **)&jarg3; 
+  arg4 = (int)jarg4; 
+  arg5 = *(SCIP_VAR ***)&jarg5; 
+  result = (SCIP_CONS *)createConsBasicOr(arg1,(char const *)arg2,arg3,arg4,arg5);
+  *(SCIP_CONS **)&jresult = result; 
+  if (arg2) jenv->ReleaseStringUTFChars(jarg2, (const char *)arg2);
+  return jresult;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_jscip_SCIPJNIJNI_createConsBasicBounddisjunction(JNIEnv *jenv, jclass jcls, jlong jarg1, jstring jarg2, jint jarg3, jlong jarg4, jlong jarg5, jlong jarg6) {
+  jlong jresult = 0 ;
+  SCIP *arg1 = (SCIP *) 0 ;
+  char *arg2 = (char *) 0 ;
+  int arg3 ;
+  SCIP_VAR **arg4 = (SCIP_VAR **) 0 ;
+  SCIP_BOUNDTYPE *arg5 = (SCIP_BOUNDTYPE *) 0 ;
+  double *arg6 = (double *) 0 ;
+  SCIP_CONS *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  arg1 = *(SCIP **)&jarg1; 
+  arg2 = 0;
+  if (jarg2) {
+    arg2 = (char *)jenv->GetStringUTFChars(jarg2, 0);
+    if (!arg2) return 0;
+  }
+  arg3 = (int)jarg3; 
+  arg4 = *(SCIP_VAR ***)&jarg4; 
+  arg5 = *(SCIP_BOUNDTYPE **)&jarg5; 
+  arg6 = *(double **)&jarg6; 
+  result = (SCIP_CONS *)createConsBasicBounddisjunction(arg1,(char const *)arg2,arg3,arg4,arg5,arg6);
+  *(SCIP_CONS **)&jresult = result; 
+  if (arg2) jenv->ReleaseStringUTFChars(jarg2, (const char *)arg2);
+  return jresult;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_jscip_SCIPJNIJNI_createConsBasicBounddisjunctionRedundant(JNIEnv *jenv, jclass jcls, jlong jarg1, jstring jarg2, jint jarg3, jlong jarg4, jlong jarg5, jlong jarg6) {
+  jlong jresult = 0 ;
+  SCIP *arg1 = (SCIP *) 0 ;
+  char *arg2 = (char *) 0 ;
+  int arg3 ;
+  SCIP_VAR **arg4 = (SCIP_VAR **) 0 ;
+  SCIP_BOUNDTYPE *arg5 = (SCIP_BOUNDTYPE *) 0 ;
+  double *arg6 = (double *) 0 ;
+  SCIP_CONS *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  arg1 = *(SCIP **)&jarg1; 
+  arg2 = 0;
+  if (jarg2) {
+    arg2 = (char *)jenv->GetStringUTFChars(jarg2, 0);
+    if (!arg2) return 0;
+  }
+  arg3 = (int)jarg3; 
+  arg4 = *(SCIP_VAR ***)&jarg4; 
+  arg5 = *(SCIP_BOUNDTYPE **)&jarg5; 
+  arg6 = *(double **)&jarg6; 
+  result = (SCIP_CONS *)createConsBasicBounddisjunctionRedundant(arg1,(char const *)arg2,arg3,arg4,arg5,arg6);
+  *(SCIP_CONS **)&jresult = result; 
+  if (arg2) jenv->ReleaseStringUTFChars(jarg2, (const char *)arg2);
+  return jresult;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_jscip_SCIPJNIJNI_createConsBasicCardinality(JNIEnv *jenv, jclass jcls, jlong jarg1, jstring jarg2, jint jarg3, jlong jarg4, jint jarg5, jlong jarg6, jlong jarg7) {
+  jlong jresult = 0 ;
+  SCIP *arg1 = (SCIP *) 0 ;
+  char *arg2 = (char *) 0 ;
+  int arg3 ;
+  SCIP_VAR **arg4 = (SCIP_VAR **) 0 ;
+  int arg5 ;
+  SCIP_VAR **arg6 = (SCIP_VAR **) 0 ;
+  double *arg7 = (double *) 0 ;
+  SCIP_CONS *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  arg1 = *(SCIP **)&jarg1; 
+  arg2 = 0;
+  if (jarg2) {
+    arg2 = (char *)jenv->GetStringUTFChars(jarg2, 0);
+    if (!arg2) return 0;
+  }
+  arg3 = (int)jarg3; 
+  arg4 = *(SCIP_VAR ***)&jarg4; 
+  arg5 = (int)jarg5; 
+  arg6 = *(SCIP_VAR ***)&jarg6; 
+  arg7 = *(double **)&jarg7; 
+  result = (SCIP_CONS *)createConsBasicCardinality(arg1,(char const *)arg2,arg3,arg4,arg5,arg6,arg7);
+  *(SCIP_CONS **)&jresult = result; 
+  if (arg2) jenv->ReleaseStringUTFChars(jarg2, (const char *)arg2);
+  return jresult;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_jscip_SCIPJNIJNI_createConsBasicConjunction(JNIEnv *jenv, jclass jcls, jlong jarg1, jstring jarg2, jint jarg3, jlong jarg4) {
+  jlong jresult = 0 ;
+  SCIP *arg1 = (SCIP *) 0 ;
+  char *arg2 = (char *) 0 ;
+  int arg3 ;
+  SCIP_CONS **arg4 = (SCIP_CONS **) 0 ;
+  SCIP_CONS *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  arg1 = *(SCIP **)&jarg1; 
+  arg2 = 0;
+  if (jarg2) {
+    arg2 = (char *)jenv->GetStringUTFChars(jarg2, 0);
+    if (!arg2) return 0;
+  }
+  arg3 = (int)jarg3; 
+  arg4 = *(SCIP_CONS ***)&jarg4; 
+  result = (SCIP_CONS *)createConsBasicConjunction(arg1,(char const *)arg2,arg3,arg4);
+  *(SCIP_CONS **)&jresult = result; 
+  if (arg2) jenv->ReleaseStringUTFChars(jarg2, (const char *)arg2);
+  return jresult;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_jscip_SCIPJNIJNI_createConsBasicDisjunction(JNIEnv *jenv, jclass jcls, jlong jarg1, jstring jarg2, jint jarg3, jlong jarg4, jlong jarg5) {
+  jlong jresult = 0 ;
+  SCIP *arg1 = (SCIP *) 0 ;
+  char *arg2 = (char *) 0 ;
+  int arg3 ;
+  SCIP_CONS **arg4 = (SCIP_CONS **) 0 ;
+  SCIP_CONS *arg5 = (SCIP_CONS *) 0 ;
+  SCIP_CONS *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  arg1 = *(SCIP **)&jarg1; 
+  arg2 = 0;
+  if (jarg2) {
+    arg2 = (char *)jenv->GetStringUTFChars(jarg2, 0);
+    if (!arg2) return 0;
+  }
+  arg3 = (int)jarg3; 
+  arg4 = *(SCIP_CONS ***)&jarg4; 
+  arg5 = *(SCIP_CONS **)&jarg5; 
+  result = (SCIP_CONS *)createConsBasicDisjunction(arg1,(char const *)arg2,arg3,arg4,arg5);
+  *(SCIP_CONS **)&jresult = result; 
+  if (arg2) jenv->ReleaseStringUTFChars(jarg2, (const char *)arg2);
+  return jresult;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_jscip_SCIPJNIJNI_createConsBasicCumulative(JNIEnv *jenv, jclass jcls, jlong jarg1, jstring jarg2, jint jarg3, jlong jarg4, jlong jarg5, jlong jarg6, jint jarg7) {
+  jlong jresult = 0 ;
+  SCIP *arg1 = (SCIP *) 0 ;
+  char *arg2 = (char *) 0 ;
+  int arg3 ;
+  SCIP_VAR **arg4 = (SCIP_VAR **) 0 ;
+  int *arg5 = (int *) 0 ;
+  int *arg6 = (int *) 0 ;
+  int arg7 ;
+  SCIP_CONS *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  arg1 = *(SCIP **)&jarg1; 
+  arg2 = 0;
+  if (jarg2) {
+    arg2 = (char *)jenv->GetStringUTFChars(jarg2, 0);
+    if (!arg2) return 0;
+  }
+  arg3 = (int)jarg3; 
+  arg4 = *(SCIP_VAR ***)&jarg4; 
+  arg5 = *(int **)&jarg5; 
+  arg6 = *(int **)&jarg6; 
+  arg7 = (int)jarg7; 
+  result = (SCIP_CONS *)createConsBasicCumulative(arg1,(char const *)arg2,arg3,arg4,arg5,arg6,arg7);
+  *(SCIP_CONS **)&jresult = result; 
+  if (arg2) jenv->ReleaseStringUTFChars(jarg2, (const char *)arg2);
+  return jresult;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_jscip_SCIPJNIJNI_createConsBasicIndicator(JNIEnv *jenv, jclass jcls, jlong jarg1, jstring jarg2, jlong jarg3, jint jarg4, jlong jarg5, jlong jarg6, jdouble jarg7) {
+  jlong jresult = 0 ;
+  SCIP *arg1 = (SCIP *) 0 ;
+  char *arg2 = (char *) 0 ;
+  SCIP_VAR *arg3 = (SCIP_VAR *) 0 ;
+  int arg4 ;
+  SCIP_VAR **arg5 = (SCIP_VAR **) 0 ;
+  double *arg6 = (double *) 0 ;
+  double arg7 ;
+  SCIP_CONS *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  arg1 = *(SCIP **)&jarg1; 
+  arg2 = 0;
+  if (jarg2) {
+    arg2 = (char *)jenv->GetStringUTFChars(jarg2, 0);
+    if (!arg2) return 0;
+  }
+  arg3 = *(SCIP_VAR **)&jarg3; 
+  arg4 = (int)jarg4; 
+  arg5 = *(SCIP_VAR ***)&jarg5; 
+  arg6 = *(double **)&jarg6; 
+  arg7 = (double)jarg7; 
+  result = (SCIP_CONS *)createConsBasicIndicator(arg1,(char const *)arg2,arg3,arg4,arg5,arg6,arg7);
+  *(SCIP_CONS **)&jresult = result; 
+  if (arg2) jenv->ReleaseStringUTFChars(jarg2, (const char *)arg2);
+  return jresult;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_jscip_SCIPJNIJNI_createConsBasicIndicatorLinCons(JNIEnv *jenv, jclass jcls, jlong jarg1, jstring jarg2, jlong jarg3, jlong jarg4, jlong jarg5) {
+  jlong jresult = 0 ;
+  SCIP *arg1 = (SCIP *) 0 ;
+  char *arg2 = (char *) 0 ;
+  SCIP_VAR *arg3 = (SCIP_VAR *) 0 ;
+  SCIP_CONS *arg4 = (SCIP_CONS *) 0 ;
+  SCIP_VAR *arg5 = (SCIP_VAR *) 0 ;
+  SCIP_CONS *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  arg1 = *(SCIP **)&jarg1; 
+  arg2 = 0;
+  if (jarg2) {
+    arg2 = (char *)jenv->GetStringUTFChars(jarg2, 0);
+    if (!arg2) return 0;
+  }
+  arg3 = *(SCIP_VAR **)&jarg3; 
+  arg4 = *(SCIP_CONS **)&jarg4; 
+  arg5 = *(SCIP_VAR **)&jarg5; 
+  result = (SCIP_CONS *)createConsBasicIndicatorLinCons(arg1,(char const *)arg2,arg3,arg4,arg5);
+  *(SCIP_CONS **)&jresult = result; 
+  if (arg2) jenv->ReleaseStringUTFChars(jarg2, (const char *)arg2);
+  return jresult;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_jscip_SCIPJNIJNI_createConsBasicKnapsack(JNIEnv *jenv, jclass jcls, jlong jarg1, jstring jarg2, jint jarg3, jlong jarg4, jlong jarg5, jlong jarg6) {
+  jlong jresult = 0 ;
+  SCIP *arg1 = (SCIP *) 0 ;
+  char *arg2 = (char *) 0 ;
+  int arg3 ;
+  SCIP_VAR **arg4 = (SCIP_VAR **) 0 ;
+  long long *arg5 = (long long *) 0 ;
+  long long arg6 ;
+  SCIP_CONS *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  arg1 = *(SCIP **)&jarg1; 
+  arg2 = 0;
+  if (jarg2) {
+    arg2 = (char *)jenv->GetStringUTFChars(jarg2, 0);
+    if (!arg2) return 0;
+  }
+  arg3 = (int)jarg3; 
+  arg4 = *(SCIP_VAR ***)&jarg4; 
+  arg5 = *(long long **)&jarg5; 
+  arg6 = (long long)jarg6; 
+  result = (SCIP_CONS *)createConsBasicKnapsack(arg1,(char const *)arg2,arg3,arg4,arg5,arg6);
+  *(SCIP_CONS **)&jresult = result; 
+  if (arg2) jenv->ReleaseStringUTFChars(jarg2, (const char *)arg2);
+  return jresult;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_jscip_SCIPJNIJNI_createConsBasicLinking(JNIEnv *jenv, jclass jcls, jlong jarg1, jstring jarg2, jlong jarg3, jlong jarg4, jlong jarg5, jint jarg6) {
+  jlong jresult = 0 ;
+  SCIP *arg1 = (SCIP *) 0 ;
+  char *arg2 = (char *) 0 ;
+  SCIP_VAR *arg3 = (SCIP_VAR *) 0 ;
+  SCIP_VAR **arg4 = (SCIP_VAR **) 0 ;
+  double *arg5 = (double *) 0 ;
+  int arg6 ;
+  SCIP_CONS *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  arg1 = *(SCIP **)&jarg1; 
+  arg2 = 0;
+  if (jarg2) {
+    arg2 = (char *)jenv->GetStringUTFChars(jarg2, 0);
+    if (!arg2) return 0;
+  }
+  arg3 = *(SCIP_VAR **)&jarg3; 
+  arg4 = *(SCIP_VAR ***)&jarg4; 
+  arg5 = *(double **)&jarg5; 
+  arg6 = (int)jarg6; 
+  result = (SCIP_CONS *)createConsBasicLinking(arg1,(char const *)arg2,arg3,arg4,arg5,arg6);
+  *(SCIP_CONS **)&jresult = result; 
+  if (arg2) jenv->ReleaseStringUTFChars(jarg2, (const char *)arg2);
+  return jresult;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_jscip_SCIPJNIJNI_createConsBasicLogicor(JNIEnv *jenv, jclass jcls, jlong jarg1, jstring jarg2, jint jarg3, jlong jarg4) {
+  jlong jresult = 0 ;
+  SCIP *arg1 = (SCIP *) 0 ;
+  char *arg2 = (char *) 0 ;
+  int arg3 ;
+  SCIP_VAR **arg4 = (SCIP_VAR **) 0 ;
+  SCIP_CONS *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  arg1 = *(SCIP **)&jarg1; 
+  arg2 = 0;
+  if (jarg2) {
+    arg2 = (char *)jenv->GetStringUTFChars(jarg2, 0);
+    if (!arg2) return 0;
+  }
+  arg3 = (int)jarg3; 
+  arg4 = *(SCIP_VAR ***)&jarg4; 
+  result = (SCIP_CONS *)createConsBasicLogicor(arg1,(char const *)arg2,arg3,arg4);
+  *(SCIP_CONS **)&jresult = result; 
+  if (arg2) jenv->ReleaseStringUTFChars(jarg2, (const char *)arg2);
+  return jresult;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_jscip_SCIPJNIJNI_createConsBasicOrbisack(JNIEnv *jenv, jclass jcls, jlong jarg1, jstring jarg2, jlong jarg3, jlong jarg4, jint jarg5, jlong jarg6, jlong jarg7, jlong jarg8) {
+  jlong jresult = 0 ;
+  SCIP *arg1 = (SCIP *) 0 ;
+  char *arg2 = (char *) 0 ;
+  SCIP_VAR **arg3 = (SCIP_VAR **) 0 ;
+  SCIP_VAR **arg4 = (SCIP_VAR **) 0 ;
+  int arg5 ;
+  unsigned int arg6 ;
+  unsigned int arg7 ;
+  unsigned int arg8 ;
+  SCIP_CONS *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  arg1 = *(SCIP **)&jarg1; 
+  arg2 = 0;
+  if (jarg2) {
+    arg2 = (char *)jenv->GetStringUTFChars(jarg2, 0);
+    if (!arg2) return 0;
+  }
+  arg3 = *(SCIP_VAR ***)&jarg3; 
+  arg4 = *(SCIP_VAR ***)&jarg4; 
+  arg5 = (int)jarg5; 
+  arg6 = (unsigned int)jarg6; 
+  arg7 = (unsigned int)jarg7; 
+  arg8 = (unsigned int)jarg8; 
+  result = (SCIP_CONS *)createConsBasicOrbisack(arg1,(char const *)arg2,arg3,arg4,arg5,arg6,arg7,arg8);
+  *(SCIP_CONS **)&jresult = result; 
+  if (arg2) jenv->ReleaseStringUTFChars(jarg2, (const char *)arg2);
+  return jresult;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_jscip_SCIPJNIJNI_createConsBasicOrbitope(JNIEnv *jenv, jclass jcls, jlong jarg1, jstring jarg2, jlong jarg3, jint jarg4, jint jarg5, jint jarg6, jlong jarg7, jlong jarg8, jlong jarg9, jlong jarg10) {
+  jlong jresult = 0 ;
+  SCIP *arg1 = (SCIP *) 0 ;
+  char *arg2 = (char *) 0 ;
+  SCIP_VAR ***arg3 = (SCIP_VAR ***) 0 ;
+  SCIP_ORBITOPETYPE arg4 ;
+  int arg5 ;
+  int arg6 ;
+  unsigned int arg7 ;
+  unsigned int arg8 ;
+  unsigned int arg9 ;
+  unsigned int arg10 ;
+  SCIP_CONS *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  arg1 = *(SCIP **)&jarg1; 
+  arg2 = 0;
+  if (jarg2) {
+    arg2 = (char *)jenv->GetStringUTFChars(jarg2, 0);
+    if (!arg2) return 0;
+  }
+  arg3 = *(SCIP_VAR ****)&jarg3; 
+  arg4 = (SCIP_ORBITOPETYPE)jarg4; 
+  arg5 = (int)jarg5; 
+  arg6 = (int)jarg6; 
+  arg7 = (unsigned int)jarg7; 
+  arg8 = (unsigned int)jarg8; 
+  arg9 = (unsigned int)jarg9; 
+  arg10 = (unsigned int)jarg10; 
+  result = (SCIP_CONS *)createConsBasicOrbitope(arg1,(char const *)arg2,arg3,arg4,arg5,arg6,arg7,arg8,arg9,arg10);
+  *(SCIP_CONS **)&jresult = result; 
+  if (arg2) jenv->ReleaseStringUTFChars(jarg2, (const char *)arg2);
+  return jresult;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_jscip_SCIPJNIJNI_createConsBasicSOS1(JNIEnv *jenv, jclass jcls, jlong jarg1, jstring jarg2, jint jarg3, jlong jarg4, jlong jarg5) {
+  jlong jresult = 0 ;
+  SCIP *arg1 = (SCIP *) 0 ;
+  char *arg2 = (char *) 0 ;
+  int arg3 ;
+  SCIP_VAR **arg4 = (SCIP_VAR **) 0 ;
+  double *arg5 = (double *) 0 ;
+  SCIP_CONS *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  arg1 = *(SCIP **)&jarg1; 
+  arg2 = 0;
+  if (jarg2) {
+    arg2 = (char *)jenv->GetStringUTFChars(jarg2, 0);
+    if (!arg2) return 0;
+  }
+  arg3 = (int)jarg3; 
+  arg4 = *(SCIP_VAR ***)&jarg4; 
+  arg5 = *(double **)&jarg5; 
+  result = (SCIP_CONS *)createConsBasicSOS1(arg1,(char const *)arg2,arg3,arg4,arg5);
+  *(SCIP_CONS **)&jresult = result; 
+  if (arg2) jenv->ReleaseStringUTFChars(jarg2, (const char *)arg2);
+  return jresult;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_jscip_SCIPJNIJNI_createConsBasicSOS2(JNIEnv *jenv, jclass jcls, jlong jarg1, jstring jarg2, jint jarg3, jlong jarg4, jlong jarg5) {
+  jlong jresult = 0 ;
+  SCIP *arg1 = (SCIP *) 0 ;
+  char *arg2 = (char *) 0 ;
+  int arg3 ;
+  SCIP_VAR **arg4 = (SCIP_VAR **) 0 ;
+  double *arg5 = (double *) 0 ;
+  SCIP_CONS *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  arg1 = *(SCIP **)&jarg1; 
+  arg2 = 0;
+  if (jarg2) {
+    arg2 = (char *)jenv->GetStringUTFChars(jarg2, 0);
+    if (!arg2) return 0;
+  }
+  arg3 = (int)jarg3; 
+  arg4 = *(SCIP_VAR ***)&jarg4; 
+  arg5 = *(double **)&jarg5; 
+  result = (SCIP_CONS *)createConsBasicSOS2(arg1,(char const *)arg2,arg3,arg4,arg5);
+  *(SCIP_CONS **)&jresult = result; 
+  if (arg2) jenv->ReleaseStringUTFChars(jarg2, (const char *)arg2);
+  return jresult;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_jscip_SCIPJNIJNI_createConsBasicSymresack(JNIEnv *jenv, jclass jcls, jlong jarg1, jstring jarg2, jlong jarg3, jlong jarg4, jint jarg5, jlong jarg6) {
+  jlong jresult = 0 ;
+  SCIP *arg1 = (SCIP *) 0 ;
+  char *arg2 = (char *) 0 ;
+  int *arg3 = (int *) 0 ;
+  SCIP_VAR **arg4 = (SCIP_VAR **) 0 ;
+  int arg5 ;
+  unsigned int arg6 ;
+  SCIP_CONS *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  arg1 = *(SCIP **)&jarg1; 
+  arg2 = 0;
+  if (jarg2) {
+    arg2 = (char *)jenv->GetStringUTFChars(jarg2, 0);
+    if (!arg2) return 0;
+  }
+  arg3 = *(int **)&jarg3; 
+  arg4 = *(SCIP_VAR ***)&jarg4; 
+  arg5 = (int)jarg5; 
+  arg6 = (unsigned int)jarg6; 
+  result = (SCIP_CONS *)createConsBasicSymresack(arg1,(char const *)arg2,arg3,arg4,arg5,arg6);
+  *(SCIP_CONS **)&jresult = result; 
+  if (arg2) jenv->ReleaseStringUTFChars(jarg2, (const char *)arg2);
+  return jresult;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_jscip_SCIPJNIJNI_createConsBasicVarbound(JNIEnv *jenv, jclass jcls, jlong jarg1, jstring jarg2, jlong jarg3, jlong jarg4, jdouble jarg5, jdouble jarg6, jdouble jarg7) {
+  jlong jresult = 0 ;
+  SCIP *arg1 = (SCIP *) 0 ;
+  char *arg2 = (char *) 0 ;
+  SCIP_VAR *arg3 = (SCIP_VAR *) 0 ;
+  SCIP_VAR *arg4 = (SCIP_VAR *) 0 ;
+  double arg5 ;
+  double arg6 ;
+  double arg7 ;
+  SCIP_CONS *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  arg1 = *(SCIP **)&jarg1; 
+  arg2 = 0;
+  if (jarg2) {
+    arg2 = (char *)jenv->GetStringUTFChars(jarg2, 0);
+    if (!arg2) return 0;
+  }
+  arg3 = *(SCIP_VAR **)&jarg3; 
+  arg4 = *(SCIP_VAR **)&jarg4; 
+  arg5 = (double)jarg5; 
+  arg6 = (double)jarg6; 
+  arg7 = (double)jarg7; 
+  result = (SCIP_CONS *)createConsBasicVarbound(arg1,(char const *)arg2,arg3,arg4,arg5,arg6,arg7);
+  *(SCIP_CONS **)&jresult = result; 
+  if (arg2) jenv->ReleaseStringUTFChars(jarg2, (const char *)arg2);
+  return jresult;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_jscip_SCIPJNIJNI_createConsBasicXor(JNIEnv *jenv, jclass jcls, jlong jarg1, jstring jarg2, jlong jarg3, jint jarg4, jlong jarg5) {
+  jlong jresult = 0 ;
+  SCIP *arg1 = (SCIP *) 0 ;
+  char *arg2 = (char *) 0 ;
+  unsigned int arg3 ;
+  int arg4 ;
+  SCIP_VAR **arg5 = (SCIP_VAR **) 0 ;
+  SCIP_CONS *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  arg1 = *(SCIP **)&jarg1; 
+  arg2 = 0;
+  if (jarg2) {
+    arg2 = (char *)jenv->GetStringUTFChars(jarg2, 0);
+    if (!arg2) return 0;
+  }
+  arg3 = (unsigned int)jarg3; 
+  arg4 = (int)jarg4; 
+  arg5 = *(SCIP_VAR ***)&jarg5; 
+  result = (SCIP_CONS *)createConsBasicXor(arg1,(char const *)arg2,arg3,arg4,arg5);
   *(SCIP_CONS **)&jresult = result; 
   if (arg2) jenv->ReleaseStringUTFChars(jarg2, (const char *)arg2);
   return jresult;

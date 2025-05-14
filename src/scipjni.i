@@ -237,8 +237,8 @@
       return cons;
    }
 
-   /* assist function to create a super indicator constraint */
-   SCIP_CONS* createConsBasicSuperIndicator(SCIP *scip, const char *name, SCIP_VAR *binvar, SCIP_CONS *slackcons)
+   /* assist function to create a superindicator constraint */
+   SCIP_CONS* createConsBasicSuperindicator(SCIP *scip, const char *name, SCIP_VAR *binvar, SCIP_CONS *slackcons)
    {
       SCIP_CONS* cons;
 
@@ -248,11 +248,272 @@
    }
 
    /* assist function to create a nonlinear constraint */
-   SCIP_CONS* createConsBasicNonlinear(SCIP* scip, const char* name, SCIP_EXPR*            expr, SCIP_Real lhs, SCIP_Real rhs)
+   SCIP_CONS* createConsBasicNonlinear(SCIP* scip, const char* name, SCIP_EXPR* expr, SCIP_Real lhs, SCIP_Real rhs)
    {
       SCIP_CONS* cons;
 
       SCIP_CALL_ABORT( SCIPcreateConsBasicNonlinear(scip, &cons, name, expr, lhs, rhs) );
+
+      return cons;
+   }
+
+   /* assist function to create a pseudoboolean constraint */
+   SCIP_CONS* createConsBasicPseudoboolean(SCIP* scip, const char* name, SCIP_VAR** linvars, int nlinvars, SCIP_Real* linvals, SCIP_VAR*** terms, int nterms, int* ntermvars, SCIP_Real* termvals, SCIP_VAR* indvar, SCIP_Real weight, SCIP_Bool issoftcons, SCIP_VAR* intvar, SCIP_Real lhs, SCIP_Real rhs)
+   {
+      SCIP_CONS* cons;
+
+      SCIP_CALL_ABORT( SCIPcreateConsBasicPseudoboolean(scip, &cons, name, linvars, nlinvars, linvals, terms, nterms, ntermvars, termvals, indvar, weight, issoftcons, intvar, lhs, rhs) );
+
+      return cons;
+   }
+
+   /* assist function to create a set partitioning constraint */
+   SCIP_CONS* createConsBasicSetpart(SCIP* scip, const char* name, int nvars, SCIP_VAR** vars)
+   {
+      SCIP_CONS* cons;
+
+      SCIP_CALL_ABORT( SCIPcreateConsBasicSetpart(scip, &cons, name, nvars, vars) );
+
+      return cons;
+   }
+
+   /* assist function to create a set packing constraint */
+   SCIP_CONS* createConsBasicSetpack(SCIP* scip, const char* name, int nvars, SCIP_VAR** vars)
+   {
+      SCIP_CONS* cons;
+
+      SCIP_CALL_ABORT( SCIPcreateConsBasicSetpack(scip, &cons, name, nvars, vars) );
+
+      return cons;
+   }
+
+   /* assist function to create a set covering constraint */
+   SCIP_CONS* createConsBasicSetcover(SCIP* scip, const char* name, int nvars, SCIP_VAR** vars)
+   {
+      SCIP_CONS* cons;
+
+      SCIP_CALL_ABORT( SCIPcreateConsBasicSetcover(scip, &cons, name, nvars, vars) );
+
+      return cons;
+   }
+
+   /* assist function to create a second-order cone constraint */
+   SCIP_CONS* createConsBasicSOC(SCIP* scip, const char* name, int nvars, SCIP_VAR** vars, SCIP_Real* coefs, SCIP_Real* offsets, SCIP_Real constant, SCIP_VAR* rhsvar, SCIP_Real rhscoeff, SCIP_Real rhsoffset)
+   {
+      SCIP_CONS* cons;
+
+      SCIP_CALL_ABORT( SCIPcreateConsBasicSOCNonlinear(scip, &cons, name, nvars, vars, coefs, offsets, constant, rhsvar, rhscoeff, rhsoffset) );
+
+      return cons;
+   }
+
+   /* assist function to create a signpower constraint */
+   SCIP_CONS* createConsBasicSignpower(SCIP* scip, const char* name, SCIP_VAR* x, SCIP_VAR* z, SCIP_Real exponent, SCIP_Real xoffset, SCIP_Real zcoef, SCIP_Real lhs, SCIP_Real rhs)
+   {
+      SCIP_CONS* cons;
+
+      SCIP_CALL_ABORT( SCIPcreateConsBasicSignpowerNonlinear(scip, &cons, name, x, z, exponent, xoffset, zcoef, lhs, rhs) );
+
+      return cons;
+   }
+
+   /* assist function to create an and constraint */
+   SCIP_CONS* createConsBasicAnd(SCIP* scip, const char* name, SCIP_VAR* resvar, int nvars, SCIP_VAR** vars)
+   {
+      SCIP_CONS* cons;
+
+      SCIP_CALL_ABORT( SCIPcreateConsBasicAnd(scip, &cons, name, resvar, nvars, vars) );
+
+      return cons;
+   }
+
+   /* assist function to create an or constraint */
+   SCIP_CONS* createConsBasicOr(SCIP* scip, const char* name, SCIP_VAR* resvar, int nvars, SCIP_VAR** vars)
+   {
+      SCIP_CONS* cons;
+
+      SCIP_CALL_ABORT( SCIPcreateConsBasicOr(scip, &cons, name, resvar, nvars, vars) );
+
+      return cons;
+   }
+
+   /* assist function to create a bound disjunction constraint */
+   SCIP_CONS* createConsBasicBounddisjunction(SCIP* scip, const char* name, int nvars, SCIP_VAR** vars, SCIP_BOUNDTYPE* boundtypes, SCIP_Real* bounds)
+   {
+      SCIP_CONS* cons;
+
+      SCIP_CALL_ABORT( SCIPcreateConsBasicBounddisjunction(scip, &cons, name, nvars, vars, boundtypes, bounds) );
+
+      return cons;
+   }
+
+   /* assist function to create a redundant bound disjunction constraint */
+   SCIP_CONS* createConsBasicBounddisjunctionRedundant(SCIP* scip, const char* name, int nvars, SCIP_VAR** vars, SCIP_BOUNDTYPE* boundtypes, SCIP_Real* bounds)
+   {
+      SCIP_CONS* cons;
+
+      SCIP_CALL_ABORT( SCIPcreateConsBasicBounddisjunctionRedundant(scip, &cons, name, nvars, vars, boundtypes, bounds) );
+
+      return cons;
+   }
+
+   /* assist function to create a cardinality constraint */
+   SCIP_CONS* createConsBasicCardinality(SCIP* scip, const char* name, int nvars, SCIP_VAR** vars, int cardval, SCIP_VAR** indvars, SCIP_Real* weights)
+   {
+      SCIP_CONS* cons;
+
+      SCIP_CALL_ABORT( SCIPcreateConsBasicCardinality(scip, &cons, name, nvars, vars, cardval, indvars, weights) );
+
+      return cons;
+   }
+
+   /* assist function to create a conjunction constraint */
+   SCIP_CONS* createConsBasicConjunction(SCIP* scip, const char* name, int nconss, SCIP_CONS** conss)
+   {
+      SCIP_CONS* cons;
+
+      SCIP_CALL_ABORT( SCIPcreateConsBasicConjunction(scip, &cons, name, nconss, conss) );
+
+      return cons;
+   }
+
+   /* assist function to create a disjunction constraint */
+   SCIP_CONS* createConsBasicDisjunction(SCIP* scip, const char* name, int nconss, SCIP_CONS** conss, SCIP_CONS* relaxcons)
+   {
+      SCIP_CONS* cons;
+
+      SCIP_CALL_ABORT( SCIPcreateConsBasicDisjunction(scip, &cons, name, nconss, conss, relaxcons) );
+
+      return cons;
+   }
+
+   /* assist function to create a cumulative constraint */
+   SCIP_CONS* createConsBasicCumulative(SCIP* scip, const char* name, int nvars, SCIP_VAR** vars, int* durations, int* demands, int capacity)
+   {
+      SCIP_CONS* cons;
+
+      SCIP_CALL_ABORT( SCIPcreateConsBasicCumulative(scip, &cons, name, nvars, vars, durations, demands, capacity) );
+
+      return cons;
+   }
+
+   /* assist function to create an indicator constraint */
+   SCIP_CONS* createConsBasicIndicator(SCIP* scip, const char* name, SCIP_VAR* binvar, int nvars, SCIP_VAR** vars, SCIP_Real* vals, SCIP_Real rhs)
+   {
+      SCIP_CONS* cons;
+
+      SCIP_CALL_ABORT( SCIPcreateConsBasicIndicator(scip, &cons, name, binvar, nvars, vars, vals, rhs) );
+
+      return cons;
+   }
+
+   /* assist function to create an indicator constraint with given linear
+      constraint and slack variable*/
+   SCIP_CONS* createConsBasicIndicatorLinCons(SCIP* scip, const char* name, SCIP_VAR* binvar, SCIP_CONS* lincons, SCIP_VAR* slackvar)
+   {
+      SCIP_CONS* cons;
+
+      SCIP_CALL_ABORT( SCIPcreateConsBasicIndicatorLinCons(scip, &cons, name, binvar, lincons, slackvar) );
+
+      return cons;
+   }
+
+   /* assist function to create a knapsack constraint */
+   SCIP_CONS* createConsBasicKnapsack(SCIP* scip, const char* name, int nvars, SCIP_VAR** vars, SCIP_Longint* weights, SCIP_Longint capacity)
+   {
+      SCIP_CONS* cons;
+
+      SCIP_CALL_ABORT( SCIPcreateConsBasicKnapsack(scip, &cons, name, nvars, vars, weights, capacity) );
+
+      return cons;
+   }
+
+   /* assist function to create a linking constraint */
+   SCIP_CONS* createConsBasicLinking(SCIP* scip, const char* name, SCIP_VAR* linkvar, SCIP_VAR** binvars, SCIP_Real* vals, int nbinvars)
+   {
+      SCIP_CONS* cons;
+
+      SCIP_CALL_ABORT( SCIPcreateConsBasicLinking(scip, &cons, name, linkvar, binvars, vals, nbinvars) );
+
+      return cons;
+   }
+
+   /* assist function to create a logicor constraint */
+   SCIP_CONS* createConsBasicLogicor(SCIP* scip, const char* name, int nvars, SCIP_VAR** vars)
+   {
+      SCIP_CONS* cons;
+
+      SCIP_CALL_ABORT( SCIPcreateConsBasicLogicor(scip, &cons, name, nvars, vars) );
+
+      return cons;
+   }
+
+   /* assist function to create an orbisack constraint */
+   SCIP_CONS* createConsBasicOrbisack(SCIP* scip, const char* name, SCIP_VAR** vars1, SCIP_VAR** vars2, int nrows, SCIP_Bool ispporbisack, SCIP_Bool isparttype, SCIP_Bool ismodelcons)
+   {
+      SCIP_CONS* cons;
+
+      SCIP_CALL_ABORT( SCIPcreateConsBasicOrbisack(scip, &cons, name, vars1, vars2, nrows, ispporbisack, isparttype, ismodelcons) );
+
+      return cons;
+   }
+
+   /* assist function to create an orbitope constraint */
+   SCIP_CONS* createConsBasicOrbitope(SCIP* scip, const char* name, SCIP_VAR*** vars, SCIP_ORBITOPETYPE orbitopetype, int nspcons, int nblocks, SCIP_Bool usedynamicprop, SCIP_Bool resolveprop, SCIP_Bool ismodelcons, SCIP_Bool mayinteract)
+   {
+      SCIP_CONS* cons;
+
+      SCIP_CALL_ABORT( SCIPcreateConsBasicOrbitope(scip, &cons, name, vars, orbitopetype, nspcons, nblocks, usedynamicprop, resolveprop, ismodelcons, mayinteract) );
+
+      return cons;
+   }
+
+   /* assist function to create an SOS1 constraint */
+   SCIP_CONS* createConsBasicSOS1(SCIP* scip, const char* name, int nvars, SCIP_VAR** vars, SCIP_Real* weights)
+   {
+      SCIP_CONS* cons;
+
+      SCIP_CALL_ABORT( SCIPcreateConsBasicSOS1(scip, &cons, name, nvars, vars, weights) );
+
+      return cons;
+   }
+
+   /* assist function to create an SOS2 constraint */
+   SCIP_CONS* createConsBasicSOS2(SCIP* scip, const char* name, int nvars, SCIP_VAR** vars, SCIP_Real* weights)
+   {
+      SCIP_CONS* cons;
+
+      SCIP_CALL_ABORT( SCIPcreateConsBasicSOS2(scip, &cons, name, nvars, vars, weights) );
+
+      return cons;
+   }
+
+   /* assist function to create a symresack constraint */
+   SCIP_CONS* createConsBasicSymresack(SCIP* scip, const char* name, int* perm, SCIP_VAR** vars, int nvars, SCIP_Bool ismodelcons)
+   {
+      SCIP_CONS* cons;
+
+      SCIP_CALL_ABORT( SCIPcreateConsBasicSymresack(scip, &cons, name, perm, vars, nvars, ismodelcons) );
+
+      return cons;
+   }
+
+   /* assist function to create a variable bound constraint */
+   SCIP_CONS* createConsBasicVarbound(SCIP* scip, const char* name, SCIP_VAR* var, SCIP_VAR* vbdvar, SCIP_Real vbdcoef, SCIP_Real lhs, SCIP_Real rhs)
+   {
+      SCIP_CONS* cons;
+
+      SCIP_CALL_ABORT( SCIPcreateConsBasicVarbound(scip, &cons, name, var, vbdvar, vbdcoef, lhs, rhs) );
+
+      return cons;
+   }
+
+   /* assist function to create an xor constraint */
+   SCIP_CONS* createConsBasicXor(SCIP* scip, const char* name, SCIP_Bool rhs, int nvars, SCIP_VAR** vars)
+   {
+      SCIP_CONS* cons;
+
+      SCIP_CALL_ABORT( SCIPcreateConsBasicXor(scip, &cons, name, rhs, nvars, vars) );
 
       return cons;
    }
@@ -285,10 +546,13 @@
 %array_functions( int, int_array )
 %array_functions( long long, long_long_array )
 %array_functions( unsigned int, unsigned_int_array )
+%array_functions( SCIP_BOUNDTYPE, SCIP_BoundType_array )
 %array_functions( char*, String_array )
 %array_functions( SCIP_VAR*, SCIP_VAR_array )
 %array_functions( SCIP_EXPR*, SCIP_EXPR_array )
+%array_functions( SCIP_CONS*, SCIP_CONS_array )
 %array_functions( SCIP_SOL*, SCIP_SOL_array )
+%array_functions( SCIP_VAR**, SCIP_VAR_array_array )
 
  /* some defines from def.h */
 #define SCIP_Real double
@@ -329,6 +593,23 @@ enum SCIP_Vartype
    SCIP_VARTYPE_CONTINUOUS = 3
 };
 typedef enum SCIP_Vartype SCIP_VARTYPE;
+
+/** SCIP_BoundType enum */
+enum SCIP_BoundType
+{
+   SCIP_BOUNDTYPE_LOWER = 0,
+   SCIP_BOUNDTYPE_UPPER = 1
+};
+typedef enum SCIP_BoundType SCIP_BOUNDTYPE;
+
+/** SCIP_OrbitopeType enum */
+enum SCIP_OrbitopeType
+{
+   SCIP_ORBITOPETYPE_FULL         = 0,
+   SCIP_ORBITOPETYPE_PARTITIONING = 1,
+   SCIP_ORBITOPETYPE_PACKING      = 2
+};
+typedef enum SCIP_OrbitopeType SCIP_ORBITOPETYPE;
 
 /* SCIP ParamEmphasis enum */
 enum SCIP_ParamEmphasis 
@@ -553,7 +834,33 @@ SCIP_EXPR*     createExprVar(SCIP* scip, SCIP_VAR *var);
 void           releaseExpr(SCIP* scip, SCIP_EXPR* expr);
 SCIP_CONS*     createConsBasicLinear(SCIP* scip, const char* name , int nvars, SCIP_VAR** vars, SCIP_Real* vals, SCIP_Real lhs, SCIP_Real rhs);
 SCIP_CONS*     createConsBasicQuadratic(SCIP* scip, const char* name, int nlinvars, SCIP_VAR** linvars, SCIP_Real* lincoefs, int nquadvars, SCIP_VAR** quadvars1, SCIP_VAR** quadvars2, SCIP_Real* quadcoefs, SCIP_Real lhs, SCIP_Real rhs);
-SCIP_CONS*     createConsBasicNonlinear(SCIP* scip, const char* name, SCIP_EXPR*            expr, SCIP_Real lhs, SCIP_Real rhs);
-SCIP_CONS*     createConsBasicSuperIndicator(SCIP *scip, const char *name, SCIP_VAR *binvar, SCIP_CONS *slackcons);
+SCIP_CONS*     createConsBasicNonlinear(SCIP* scip, const char* name, SCIP_EXPR* expr, SCIP_Real lhs, SCIP_Real rhs);
+SCIP_CONS*     createConsBasicSuperindicator(SCIP *scip, const char *name, SCIP_VAR *binvar, SCIP_CONS *slackcons);
+SCIP_CONS*     createConsBasicPseudoboolean(SCIP* scip, const char* name, SCIP_VAR** linvars, int nlinvars, SCIP_Real* linvals, SCIP_VAR*** terms, int nterms, int* ntermvars, SCIP_Real* termvals, SCIP_VAR* indvar, SCIP_Real weight, SCIP_Bool issoftcons, SCIP_VAR* intvar, SCIP_Real lhs, SCIP_Real rhs);
+SCIP_CONS*     createConsBasicSetpart(SCIP* scip, const char* name, int nvars, SCIP_VAR** vars);
+SCIP_CONS*     createConsBasicSetpack(SCIP* scip, const char* name, int nvars, SCIP_VAR** vars);
+SCIP_CONS*     createConsBasicSetcover(SCIP* scip, const char* name, int nvars, SCIP_VAR** vars);
+SCIP_CONS*     createConsBasicSOC(SCIP* scip, const char* name, int nvars, SCIP_VAR** vars, SCIP_Real* coefs, SCIP_Real* offsets, SCIP_Real constant, SCIP_VAR* rhsvar, SCIP_Real rhscoeff, SCIP_Real rhsoffset);
+SCIP_CONS*     createConsBasicSignpower(SCIP* scip, const char* name, SCIP_VAR* x, SCIP_VAR* z, SCIP_Real exponent, SCIP_Real xoffset, SCIP_Real zcoef, SCIP_Real lhs, SCIP_Real rhs);
+SCIP_CONS*     createConsBasicAnd(SCIP* scip, const char* name, SCIP_VAR* resvar, int nvars, SCIP_VAR** vars);
+SCIP_CONS*     createConsBasicOr(SCIP* scip, const char* name, SCIP_VAR* resvar, int nvars, SCIP_VAR** vars);
+SCIP_CONS*     createConsBasicBounddisjunction(SCIP* scip, const char* name, int nvars, SCIP_VAR** vars, SCIP_BOUNDTYPE* boundtypes, SCIP_Real* bounds);
+SCIP_CONS*     createConsBasicBounddisjunctionRedundant(SCIP* scip, const char* name, int nvars, SCIP_VAR** vars, SCIP_BOUNDTYPE* boundtypes, SCIP_Real* bounds);
+SCIP_CONS*     createConsBasicCardinality(SCIP* scip, const char* name, int nvars, SCIP_VAR** vars, int cardval, SCIP_VAR** indvars, SCIP_Real* weights);
+SCIP_CONS*     createConsBasicConjunction(SCIP* scip, const char* name, int nconss, SCIP_CONS** conss);
+SCIP_CONS*     createConsBasicDisjunction(SCIP* scip, const char* name, int nconss, SCIP_CONS** conss, SCIP_CONS* relaxcons);
+SCIP_CONS*     createConsBasicCumulative(SCIP* scip, const char* name, int nvars, SCIP_VAR** vars, int* durations, int* demands, int capacity);
+SCIP_CONS*     createConsBasicIndicator(SCIP* scip, const char* name, SCIP_VAR* binvar, int nvars, SCIP_VAR** vars, SCIP_Real* vals, SCIP_Real rhs);
+SCIP_CONS*     createConsBasicIndicatorLinCons(SCIP* scip, const char* name, SCIP_VAR* binvar, SCIP_CONS* lincons, SCIP_VAR* slackvar);
+SCIP_CONS*     createConsBasicKnapsack(SCIP* scip, const char* name, int nvars, SCIP_VAR** vars, SCIP_Longint* weights, SCIP_Longint capacity);
+SCIP_CONS*     createConsBasicLinking(SCIP* scip, const char* name, SCIP_VAR* linkvar, SCIP_VAR** binvars, SCIP_Real* vals, int nbinvars);
+SCIP_CONS*     createConsBasicLogicor(SCIP* scip, const char* name, int nvars, SCIP_VAR** vars);
+SCIP_CONS*     createConsBasicOrbisack(SCIP* scip, const char* name, SCIP_VAR** vars1, SCIP_VAR** vars2, int nrows, SCIP_Bool ispporbisack, SCIP_Bool isparttype, SCIP_Bool ismodelcons);
+SCIP_CONS*     createConsBasicOrbitope(SCIP* scip, const char* name, SCIP_VAR*** vars, SCIP_ORBITOPETYPE orbitopetype, int nspcons, int nblocks, SCIP_Bool usedynamicprop, SCIP_Bool resolveprop, SCIP_Bool ismodelcons, SCIP_Bool mayinteract);
+SCIP_CONS*     createConsBasicSOS1(SCIP* scip, const char* name, int nvars, SCIP_VAR** vars, SCIP_Real* weights);
+SCIP_CONS*     createConsBasicSOS2(SCIP* scip, const char* name, int nvars, SCIP_VAR** vars, SCIP_Real* weights);
+SCIP_CONS*     createConsBasicSymresack(SCIP* scip, const char* name, int* perm, SCIP_VAR** vars, int nvars, SCIP_Bool ismodelcons);
+SCIP_CONS*     createConsBasicVarbound(SCIP* scip, const char* name, SCIP_VAR* var, SCIP_VAR* vbdvar, SCIP_Real vbdcoef, SCIP_Real lhs, SCIP_Real rhs);
+SCIP_CONS*     createConsBasicXor(SCIP* scip, const char* name, SCIP_Bool rhs, int nvars, SCIP_VAR** vars);
 void           releaseCons(SCIP* scip, SCIP_CONS* cons);
 SCIP_MESSAGEHDLR* createObjMessagehdlr(scip::ObjMessagehdlr* objmessagehdlr, SCIP_Bool deleteobject);

@@ -94,6 +94,23 @@ public class SCIPJNI {
     SCIPJNIJNI.unsigned_int_array_setitem(SWIGTYPE_p_unsigned_int.getCPtr(ary), index, value);
   }
 
+  public static SWIGTYPE_p_SCIP_BoundType new_SCIP_BoundType_array(int nelements) {
+    long cPtr = SCIPJNIJNI.new_SCIP_BoundType_array(nelements);
+    return (cPtr == 0) ? null : new SWIGTYPE_p_SCIP_BoundType(cPtr, false);
+  }
+
+  public static void delete_SCIP_BoundType_array(SWIGTYPE_p_SCIP_BoundType ary) {
+    SCIPJNIJNI.delete_SCIP_BoundType_array(SWIGTYPE_p_SCIP_BoundType.getCPtr(ary));
+  }
+
+  public static SCIP_BoundType SCIP_BoundType_array_getitem(SWIGTYPE_p_SCIP_BoundType ary, int index) {
+    return SCIP_BoundType.swigToEnum(SCIPJNIJNI.SCIP_BoundType_array_getitem(SWIGTYPE_p_SCIP_BoundType.getCPtr(ary), index));
+  }
+
+  public static void SCIP_BoundType_array_setitem(SWIGTYPE_p_SCIP_BoundType ary, int index, SCIP_BoundType value) {
+    SCIPJNIJNI.SCIP_BoundType_array_setitem(SWIGTYPE_p_SCIP_BoundType.getCPtr(ary), index, value.swigValue());
+  }
+
   public static SWIGTYPE_p_p_char new_String_array(int nelements) {
     long cPtr = SCIPJNIJNI.new_String_array(nelements);
     return (cPtr == 0) ? null : new SWIGTYPE_p_p_char(cPtr, false);
@@ -147,6 +164,24 @@ public class SCIPJNI {
     SCIPJNIJNI.SCIP_EXPR_array_setitem(SWIGTYPE_p_p_SCIP_EXPR.getCPtr(ary), index, SWIGTYPE_p_SCIP_EXPR.getCPtr(value));
   }
 
+  public static SWIGTYPE_p_p_SCIP_CONS new_SCIP_CONS_array(int nelements) {
+    long cPtr = SCIPJNIJNI.new_SCIP_CONS_array(nelements);
+    return (cPtr == 0) ? null : new SWIGTYPE_p_p_SCIP_CONS(cPtr, false);
+  }
+
+  public static void delete_SCIP_CONS_array(SWIGTYPE_p_p_SCIP_CONS ary) {
+    SCIPJNIJNI.delete_SCIP_CONS_array(SWIGTYPE_p_p_SCIP_CONS.getCPtr(ary));
+  }
+
+  public static SWIGTYPE_p_SCIP_CONS SCIP_CONS_array_getitem(SWIGTYPE_p_p_SCIP_CONS ary, int index) {
+    long cPtr = SCIPJNIJNI.SCIP_CONS_array_getitem(SWIGTYPE_p_p_SCIP_CONS.getCPtr(ary), index);
+    return (cPtr == 0) ? null : new SWIGTYPE_p_SCIP_CONS(cPtr, false);
+  }
+
+  public static void SCIP_CONS_array_setitem(SWIGTYPE_p_p_SCIP_CONS ary, int index, SWIGTYPE_p_SCIP_CONS value) {
+    SCIPJNIJNI.SCIP_CONS_array_setitem(SWIGTYPE_p_p_SCIP_CONS.getCPtr(ary), index, SWIGTYPE_p_SCIP_CONS.getCPtr(value));
+  }
+
   public static SWIGTYPE_p_p_SCIP_SOL new_SCIP_SOL_array(int nelements) {
     long cPtr = SCIPJNIJNI.new_SCIP_SOL_array(nelements);
     return (cPtr == 0) ? null : new SWIGTYPE_p_p_SCIP_SOL(cPtr, false);
@@ -163,6 +198,24 @@ public class SCIPJNI {
 
   public static void SCIP_SOL_array_setitem(SWIGTYPE_p_p_SCIP_SOL ary, int index, SWIGTYPE_p_SCIP_SOL value) {
     SCIPJNIJNI.SCIP_SOL_array_setitem(SWIGTYPE_p_p_SCIP_SOL.getCPtr(ary), index, SWIGTYPE_p_SCIP_SOL.getCPtr(value));
+  }
+
+  public static SWIGTYPE_p_p_p_SCIP_VAR new_SCIP_VAR_array_array(int nelements) {
+    long cPtr = SCIPJNIJNI.new_SCIP_VAR_array_array(nelements);
+    return (cPtr == 0) ? null : new SWIGTYPE_p_p_p_SCIP_VAR(cPtr, false);
+  }
+
+  public static void delete_SCIP_VAR_array_array(SWIGTYPE_p_p_p_SCIP_VAR ary) {
+    SCIPJNIJNI.delete_SCIP_VAR_array_array(SWIGTYPE_p_p_p_SCIP_VAR.getCPtr(ary));
+  }
+
+  public static SWIGTYPE_p_p_SCIP_VAR SCIP_VAR_array_array_getitem(SWIGTYPE_p_p_p_SCIP_VAR ary, int index) {
+    long cPtr = SCIPJNIJNI.SCIP_VAR_array_array_getitem(SWIGTYPE_p_p_p_SCIP_VAR.getCPtr(ary), index);
+    return (cPtr == 0) ? null : new SWIGTYPE_p_p_SCIP_VAR(cPtr, false);
+  }
+
+  public static void SCIP_VAR_array_array_setitem(SWIGTYPE_p_p_p_SCIP_VAR ary, int index, SWIGTYPE_p_p_SCIP_VAR value) {
+    SCIPJNIJNI.SCIP_VAR_array_array_setitem(SWIGTYPE_p_p_p_SCIP_VAR.getCPtr(ary), index, SWIGTYPE_p_p_SCIP_VAR.getCPtr(value));
   }
 
   public static double SCIPcalcMachineEpsilon() {
@@ -572,8 +625,138 @@ public class SCIPJNI {
     return (cPtr == 0) ? null : new SWIGTYPE_p_SCIP_CONS(cPtr, false);
   }
 
-  public static SWIGTYPE_p_SCIP_CONS createConsBasicSuperIndicator(SWIGTYPE_p_SCIP scip, String name, SWIGTYPE_p_SCIP_VAR binvar, SWIGTYPE_p_SCIP_CONS slackcons) {
-    long cPtr = SCIPJNIJNI.createConsBasicSuperIndicator(SWIGTYPE_p_SCIP.getCPtr(scip), name, SWIGTYPE_p_SCIP_VAR.getCPtr(binvar), SWIGTYPE_p_SCIP_CONS.getCPtr(slackcons));
+  public static SWIGTYPE_p_SCIP_CONS createConsBasicSuperindicator(SWIGTYPE_p_SCIP scip, String name, SWIGTYPE_p_SCIP_VAR binvar, SWIGTYPE_p_SCIP_CONS slackcons) {
+    long cPtr = SCIPJNIJNI.createConsBasicSuperindicator(SWIGTYPE_p_SCIP.getCPtr(scip), name, SWIGTYPE_p_SCIP_VAR.getCPtr(binvar), SWIGTYPE_p_SCIP_CONS.getCPtr(slackcons));
+    return (cPtr == 0) ? null : new SWIGTYPE_p_SCIP_CONS(cPtr, false);
+  }
+
+  public static SWIGTYPE_p_SCIP_CONS createConsBasicPseudoboolean(SWIGTYPE_p_SCIP scip, String name, SWIGTYPE_p_p_SCIP_VAR linvars, int nlinvars, SWIGTYPE_p_double linvals, SWIGTYPE_p_p_p_SCIP_VAR terms, int nterms, SWIGTYPE_p_int ntermvars, SWIGTYPE_p_double termvals, SWIGTYPE_p_SCIP_VAR indvar, double weight, long issoftcons, SWIGTYPE_p_SCIP_VAR intvar, double lhs, double rhs) {
+    long cPtr = SCIPJNIJNI.createConsBasicPseudoboolean(SWIGTYPE_p_SCIP.getCPtr(scip), name, SWIGTYPE_p_p_SCIP_VAR.getCPtr(linvars), nlinvars, SWIGTYPE_p_double.getCPtr(linvals), SWIGTYPE_p_p_p_SCIP_VAR.getCPtr(terms), nterms, SWIGTYPE_p_int.getCPtr(ntermvars), SWIGTYPE_p_double.getCPtr(termvals), SWIGTYPE_p_SCIP_VAR.getCPtr(indvar), weight, issoftcons, SWIGTYPE_p_SCIP_VAR.getCPtr(intvar), lhs, rhs);
+    return (cPtr == 0) ? null : new SWIGTYPE_p_SCIP_CONS(cPtr, false);
+  }
+
+  public static SWIGTYPE_p_SCIP_CONS createConsBasicSetpart(SWIGTYPE_p_SCIP scip, String name, int nvars, SWIGTYPE_p_p_SCIP_VAR vars) {
+    long cPtr = SCIPJNIJNI.createConsBasicSetpart(SWIGTYPE_p_SCIP.getCPtr(scip), name, nvars, SWIGTYPE_p_p_SCIP_VAR.getCPtr(vars));
+    return (cPtr == 0) ? null : new SWIGTYPE_p_SCIP_CONS(cPtr, false);
+  }
+
+  public static SWIGTYPE_p_SCIP_CONS createConsBasicSetpack(SWIGTYPE_p_SCIP scip, String name, int nvars, SWIGTYPE_p_p_SCIP_VAR vars) {
+    long cPtr = SCIPJNIJNI.createConsBasicSetpack(SWIGTYPE_p_SCIP.getCPtr(scip), name, nvars, SWIGTYPE_p_p_SCIP_VAR.getCPtr(vars));
+    return (cPtr == 0) ? null : new SWIGTYPE_p_SCIP_CONS(cPtr, false);
+  }
+
+  public static SWIGTYPE_p_SCIP_CONS createConsBasicSetcover(SWIGTYPE_p_SCIP scip, String name, int nvars, SWIGTYPE_p_p_SCIP_VAR vars) {
+    long cPtr = SCIPJNIJNI.createConsBasicSetcover(SWIGTYPE_p_SCIP.getCPtr(scip), name, nvars, SWIGTYPE_p_p_SCIP_VAR.getCPtr(vars));
+    return (cPtr == 0) ? null : new SWIGTYPE_p_SCIP_CONS(cPtr, false);
+  }
+
+  public static SWIGTYPE_p_SCIP_CONS createConsBasicSOC(SWIGTYPE_p_SCIP scip, String name, int nvars, SWIGTYPE_p_p_SCIP_VAR vars, SWIGTYPE_p_double coefs, SWIGTYPE_p_double offsets, double constant, SWIGTYPE_p_SCIP_VAR rhsvar, double rhscoeff, double rhsoffset) {
+    long cPtr = SCIPJNIJNI.createConsBasicSOC(SWIGTYPE_p_SCIP.getCPtr(scip), name, nvars, SWIGTYPE_p_p_SCIP_VAR.getCPtr(vars), SWIGTYPE_p_double.getCPtr(coefs), SWIGTYPE_p_double.getCPtr(offsets), constant, SWIGTYPE_p_SCIP_VAR.getCPtr(rhsvar), rhscoeff, rhsoffset);
+    return (cPtr == 0) ? null : new SWIGTYPE_p_SCIP_CONS(cPtr, false);
+  }
+
+  public static SWIGTYPE_p_SCIP_CONS createConsBasicSignpower(SWIGTYPE_p_SCIP scip, String name, SWIGTYPE_p_SCIP_VAR x, SWIGTYPE_p_SCIP_VAR z, double exponent, double xoffset, double zcoef, double lhs, double rhs) {
+    long cPtr = SCIPJNIJNI.createConsBasicSignpower(SWIGTYPE_p_SCIP.getCPtr(scip), name, SWIGTYPE_p_SCIP_VAR.getCPtr(x), SWIGTYPE_p_SCIP_VAR.getCPtr(z), exponent, xoffset, zcoef, lhs, rhs);
+    return (cPtr == 0) ? null : new SWIGTYPE_p_SCIP_CONS(cPtr, false);
+  }
+
+  public static SWIGTYPE_p_SCIP_CONS createConsBasicAnd(SWIGTYPE_p_SCIP scip, String name, SWIGTYPE_p_SCIP_VAR resvar, int nvars, SWIGTYPE_p_p_SCIP_VAR vars) {
+    long cPtr = SCIPJNIJNI.createConsBasicAnd(SWIGTYPE_p_SCIP.getCPtr(scip), name, SWIGTYPE_p_SCIP_VAR.getCPtr(resvar), nvars, SWIGTYPE_p_p_SCIP_VAR.getCPtr(vars));
+    return (cPtr == 0) ? null : new SWIGTYPE_p_SCIP_CONS(cPtr, false);
+  }
+
+  public static SWIGTYPE_p_SCIP_CONS createConsBasicOr(SWIGTYPE_p_SCIP scip, String name, SWIGTYPE_p_SCIP_VAR resvar, int nvars, SWIGTYPE_p_p_SCIP_VAR vars) {
+    long cPtr = SCIPJNIJNI.createConsBasicOr(SWIGTYPE_p_SCIP.getCPtr(scip), name, SWIGTYPE_p_SCIP_VAR.getCPtr(resvar), nvars, SWIGTYPE_p_p_SCIP_VAR.getCPtr(vars));
+    return (cPtr == 0) ? null : new SWIGTYPE_p_SCIP_CONS(cPtr, false);
+  }
+
+  public static SWIGTYPE_p_SCIP_CONS createConsBasicBounddisjunction(SWIGTYPE_p_SCIP scip, String name, int nvars, SWIGTYPE_p_p_SCIP_VAR vars, SWIGTYPE_p_SCIP_BoundType boundtypes, SWIGTYPE_p_double bounds) {
+    long cPtr = SCIPJNIJNI.createConsBasicBounddisjunction(SWIGTYPE_p_SCIP.getCPtr(scip), name, nvars, SWIGTYPE_p_p_SCIP_VAR.getCPtr(vars), SWIGTYPE_p_SCIP_BoundType.getCPtr(boundtypes), SWIGTYPE_p_double.getCPtr(bounds));
+    return (cPtr == 0) ? null : new SWIGTYPE_p_SCIP_CONS(cPtr, false);
+  }
+
+  public static SWIGTYPE_p_SCIP_CONS createConsBasicBounddisjunctionRedundant(SWIGTYPE_p_SCIP scip, String name, int nvars, SWIGTYPE_p_p_SCIP_VAR vars, SWIGTYPE_p_SCIP_BoundType boundtypes, SWIGTYPE_p_double bounds) {
+    long cPtr = SCIPJNIJNI.createConsBasicBounddisjunctionRedundant(SWIGTYPE_p_SCIP.getCPtr(scip), name, nvars, SWIGTYPE_p_p_SCIP_VAR.getCPtr(vars), SWIGTYPE_p_SCIP_BoundType.getCPtr(boundtypes), SWIGTYPE_p_double.getCPtr(bounds));
+    return (cPtr == 0) ? null : new SWIGTYPE_p_SCIP_CONS(cPtr, false);
+  }
+
+  public static SWIGTYPE_p_SCIP_CONS createConsBasicCardinality(SWIGTYPE_p_SCIP scip, String name, int nvars, SWIGTYPE_p_p_SCIP_VAR vars, int cardval, SWIGTYPE_p_p_SCIP_VAR indvars, SWIGTYPE_p_double weights) {
+    long cPtr = SCIPJNIJNI.createConsBasicCardinality(SWIGTYPE_p_SCIP.getCPtr(scip), name, nvars, SWIGTYPE_p_p_SCIP_VAR.getCPtr(vars), cardval, SWIGTYPE_p_p_SCIP_VAR.getCPtr(indvars), SWIGTYPE_p_double.getCPtr(weights));
+    return (cPtr == 0) ? null : new SWIGTYPE_p_SCIP_CONS(cPtr, false);
+  }
+
+  public static SWIGTYPE_p_SCIP_CONS createConsBasicConjunction(SWIGTYPE_p_SCIP scip, String name, int nconss, SWIGTYPE_p_p_SCIP_CONS conss) {
+    long cPtr = SCIPJNIJNI.createConsBasicConjunction(SWIGTYPE_p_SCIP.getCPtr(scip), name, nconss, SWIGTYPE_p_p_SCIP_CONS.getCPtr(conss));
+    return (cPtr == 0) ? null : new SWIGTYPE_p_SCIP_CONS(cPtr, false);
+  }
+
+  public static SWIGTYPE_p_SCIP_CONS createConsBasicDisjunction(SWIGTYPE_p_SCIP scip, String name, int nconss, SWIGTYPE_p_p_SCIP_CONS conss, SWIGTYPE_p_SCIP_CONS relaxcons) {
+    long cPtr = SCIPJNIJNI.createConsBasicDisjunction(SWIGTYPE_p_SCIP.getCPtr(scip), name, nconss, SWIGTYPE_p_p_SCIP_CONS.getCPtr(conss), SWIGTYPE_p_SCIP_CONS.getCPtr(relaxcons));
+    return (cPtr == 0) ? null : new SWIGTYPE_p_SCIP_CONS(cPtr, false);
+  }
+
+  public static SWIGTYPE_p_SCIP_CONS createConsBasicCumulative(SWIGTYPE_p_SCIP scip, String name, int nvars, SWIGTYPE_p_p_SCIP_VAR vars, SWIGTYPE_p_int durations, SWIGTYPE_p_int demands, int capacity) {
+    long cPtr = SCIPJNIJNI.createConsBasicCumulative(SWIGTYPE_p_SCIP.getCPtr(scip), name, nvars, SWIGTYPE_p_p_SCIP_VAR.getCPtr(vars), SWIGTYPE_p_int.getCPtr(durations), SWIGTYPE_p_int.getCPtr(demands), capacity);
+    return (cPtr == 0) ? null : new SWIGTYPE_p_SCIP_CONS(cPtr, false);
+  }
+
+  public static SWIGTYPE_p_SCIP_CONS createConsBasicIndicator(SWIGTYPE_p_SCIP scip, String name, SWIGTYPE_p_SCIP_VAR binvar, int nvars, SWIGTYPE_p_p_SCIP_VAR vars, SWIGTYPE_p_double vals, double rhs) {
+    long cPtr = SCIPJNIJNI.createConsBasicIndicator(SWIGTYPE_p_SCIP.getCPtr(scip), name, SWIGTYPE_p_SCIP_VAR.getCPtr(binvar), nvars, SWIGTYPE_p_p_SCIP_VAR.getCPtr(vars), SWIGTYPE_p_double.getCPtr(vals), rhs);
+    return (cPtr == 0) ? null : new SWIGTYPE_p_SCIP_CONS(cPtr, false);
+  }
+
+  public static SWIGTYPE_p_SCIP_CONS createConsBasicIndicatorLinCons(SWIGTYPE_p_SCIP scip, String name, SWIGTYPE_p_SCIP_VAR binvar, SWIGTYPE_p_SCIP_CONS lincons, SWIGTYPE_p_SCIP_VAR slackvar) {
+    long cPtr = SCIPJNIJNI.createConsBasicIndicatorLinCons(SWIGTYPE_p_SCIP.getCPtr(scip), name, SWIGTYPE_p_SCIP_VAR.getCPtr(binvar), SWIGTYPE_p_SCIP_CONS.getCPtr(lincons), SWIGTYPE_p_SCIP_VAR.getCPtr(slackvar));
+    return (cPtr == 0) ? null : new SWIGTYPE_p_SCIP_CONS(cPtr, false);
+  }
+
+  public static SWIGTYPE_p_SCIP_CONS createConsBasicKnapsack(SWIGTYPE_p_SCIP scip, String name, int nvars, SWIGTYPE_p_p_SCIP_VAR vars, SWIGTYPE_p_long_long weights, long capacity) {
+    long cPtr = SCIPJNIJNI.createConsBasicKnapsack(SWIGTYPE_p_SCIP.getCPtr(scip), name, nvars, SWIGTYPE_p_p_SCIP_VAR.getCPtr(vars), SWIGTYPE_p_long_long.getCPtr(weights), capacity);
+    return (cPtr == 0) ? null : new SWIGTYPE_p_SCIP_CONS(cPtr, false);
+  }
+
+  public static SWIGTYPE_p_SCIP_CONS createConsBasicLinking(SWIGTYPE_p_SCIP scip, String name, SWIGTYPE_p_SCIP_VAR linkvar, SWIGTYPE_p_p_SCIP_VAR binvars, SWIGTYPE_p_double vals, int nbinvars) {
+    long cPtr = SCIPJNIJNI.createConsBasicLinking(SWIGTYPE_p_SCIP.getCPtr(scip), name, SWIGTYPE_p_SCIP_VAR.getCPtr(linkvar), SWIGTYPE_p_p_SCIP_VAR.getCPtr(binvars), SWIGTYPE_p_double.getCPtr(vals), nbinvars);
+    return (cPtr == 0) ? null : new SWIGTYPE_p_SCIP_CONS(cPtr, false);
+  }
+
+  public static SWIGTYPE_p_SCIP_CONS createConsBasicLogicor(SWIGTYPE_p_SCIP scip, String name, int nvars, SWIGTYPE_p_p_SCIP_VAR vars) {
+    long cPtr = SCIPJNIJNI.createConsBasicLogicor(SWIGTYPE_p_SCIP.getCPtr(scip), name, nvars, SWIGTYPE_p_p_SCIP_VAR.getCPtr(vars));
+    return (cPtr == 0) ? null : new SWIGTYPE_p_SCIP_CONS(cPtr, false);
+  }
+
+  public static SWIGTYPE_p_SCIP_CONS createConsBasicOrbisack(SWIGTYPE_p_SCIP scip, String name, SWIGTYPE_p_p_SCIP_VAR vars1, SWIGTYPE_p_p_SCIP_VAR vars2, int nrows, long ispporbisack, long isparttype, long ismodelcons) {
+    long cPtr = SCIPJNIJNI.createConsBasicOrbisack(SWIGTYPE_p_SCIP.getCPtr(scip), name, SWIGTYPE_p_p_SCIP_VAR.getCPtr(vars1), SWIGTYPE_p_p_SCIP_VAR.getCPtr(vars2), nrows, ispporbisack, isparttype, ismodelcons);
+    return (cPtr == 0) ? null : new SWIGTYPE_p_SCIP_CONS(cPtr, false);
+  }
+
+  public static SWIGTYPE_p_SCIP_CONS createConsBasicOrbitope(SWIGTYPE_p_SCIP scip, String name, SWIGTYPE_p_p_p_SCIP_VAR vars, SCIP_OrbitopeType orbitopetype, int nspcons, int nblocks, long usedynamicprop, long resolveprop, long ismodelcons, long mayinteract) {
+    long cPtr = SCIPJNIJNI.createConsBasicOrbitope(SWIGTYPE_p_SCIP.getCPtr(scip), name, SWIGTYPE_p_p_p_SCIP_VAR.getCPtr(vars), orbitopetype.swigValue(), nspcons, nblocks, usedynamicprop, resolveprop, ismodelcons, mayinteract);
+    return (cPtr == 0) ? null : new SWIGTYPE_p_SCIP_CONS(cPtr, false);
+  }
+
+  public static SWIGTYPE_p_SCIP_CONS createConsBasicSOS1(SWIGTYPE_p_SCIP scip, String name, int nvars, SWIGTYPE_p_p_SCIP_VAR vars, SWIGTYPE_p_double weights) {
+    long cPtr = SCIPJNIJNI.createConsBasicSOS1(SWIGTYPE_p_SCIP.getCPtr(scip), name, nvars, SWIGTYPE_p_p_SCIP_VAR.getCPtr(vars), SWIGTYPE_p_double.getCPtr(weights));
+    return (cPtr == 0) ? null : new SWIGTYPE_p_SCIP_CONS(cPtr, false);
+  }
+
+  public static SWIGTYPE_p_SCIP_CONS createConsBasicSOS2(SWIGTYPE_p_SCIP scip, String name, int nvars, SWIGTYPE_p_p_SCIP_VAR vars, SWIGTYPE_p_double weights) {
+    long cPtr = SCIPJNIJNI.createConsBasicSOS2(SWIGTYPE_p_SCIP.getCPtr(scip), name, nvars, SWIGTYPE_p_p_SCIP_VAR.getCPtr(vars), SWIGTYPE_p_double.getCPtr(weights));
+    return (cPtr == 0) ? null : new SWIGTYPE_p_SCIP_CONS(cPtr, false);
+  }
+
+  public static SWIGTYPE_p_SCIP_CONS createConsBasicSymresack(SWIGTYPE_p_SCIP scip, String name, SWIGTYPE_p_int perm, SWIGTYPE_p_p_SCIP_VAR vars, int nvars, long ismodelcons) {
+    long cPtr = SCIPJNIJNI.createConsBasicSymresack(SWIGTYPE_p_SCIP.getCPtr(scip), name, SWIGTYPE_p_int.getCPtr(perm), SWIGTYPE_p_p_SCIP_VAR.getCPtr(vars), nvars, ismodelcons);
+    return (cPtr == 0) ? null : new SWIGTYPE_p_SCIP_CONS(cPtr, false);
+  }
+
+  public static SWIGTYPE_p_SCIP_CONS createConsBasicVarbound(SWIGTYPE_p_SCIP scip, String name, SWIGTYPE_p_SCIP_VAR var, SWIGTYPE_p_SCIP_VAR vbdvar, double vbdcoef, double lhs, double rhs) {
+    long cPtr = SCIPJNIJNI.createConsBasicVarbound(SWIGTYPE_p_SCIP.getCPtr(scip), name, SWIGTYPE_p_SCIP_VAR.getCPtr(var), SWIGTYPE_p_SCIP_VAR.getCPtr(vbdvar), vbdcoef, lhs, rhs);
+    return (cPtr == 0) ? null : new SWIGTYPE_p_SCIP_CONS(cPtr, false);
+  }
+
+  public static SWIGTYPE_p_SCIP_CONS createConsBasicXor(SWIGTYPE_p_SCIP scip, String name, long rhs, int nvars, SWIGTYPE_p_p_SCIP_VAR vars) {
+    long cPtr = SCIPJNIJNI.createConsBasicXor(SWIGTYPE_p_SCIP.getCPtr(scip), name, rhs, nvars, SWIGTYPE_p_p_SCIP_VAR.getCPtr(vars));
     return (cPtr == 0) ? null : new SWIGTYPE_p_SCIP_CONS(cPtr, false);
   }
 
