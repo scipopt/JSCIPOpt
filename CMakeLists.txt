@@ -21,6 +21,8 @@ include (UseJava)
 # list of all java sources
 #
 set(SWIG_JAVA_SOURCES
+  ${PROJECT_SOURCE_DIR}/java/jscip/ObjCloneable.java
+  ${PROJECT_SOURCE_DIR}/java/jscip/ObjExprhdlr.java
   ${PROJECT_SOURCE_DIR}/java/jscip/ObjMessagehdlr.java
   ${PROJECT_SOURCE_DIR}/java/jscip/SCIPJNI.java
   ${PROJECT_SOURCE_DIR}/java/jscip/SCIPJNIJNI.java
@@ -34,26 +36,43 @@ set(SWIG_JAVA_SOURCES
   ${PROJECT_SOURCE_DIR}/java/jscip/SCIP_VerbLevel.java
   ${PROJECT_SOURCE_DIR}/java/jscip/SCIP_Status.java
   ${PROJECT_SOURCE_DIR}/java/jscip/SCIP_Stage.java
+  ${PROJECT_SOURCE_DIR}/java/jscip/SCIP_ImplintType.java
+  ${PROJECT_SOURCE_DIR}/java/jscip/SCIP_Interval.java
+  ${PROJECT_SOURCE_DIR}/java/jscip/SCIP_EXPRDATA.java
+  ${PROJECT_SOURCE_DIR}/java/jscip/SCIP_EXPRCURV.java
+  ${PROJECT_SOURCE_DIR}/java/jscip/SCIP_MONOTONE.java
+  ${PROJECT_SOURCE_DIR}/java/jscip/SYM_EXPRDATA.java
   ${PROJECT_SOURCE_DIR}/java/jscip/SWIGTYPE_p_char.java
   ${PROJECT_SOURCE_DIR}/java/jscip/SWIGTYPE_p_double.java
   ${PROJECT_SOURCE_DIR}/java/jscip/SWIGTYPE_p_int.java
   ${PROJECT_SOURCE_DIR}/java/jscip/SWIGTYPE_p_long_long.java
   ${PROJECT_SOURCE_DIR}/java/jscip/SWIGTYPE_p_unsigned_int.java
+  ${PROJECT_SOURCE_DIR}/java/jscip/SWIGTYPE_p_void.java
   ${PROJECT_SOURCE_DIR}/java/jscip/SWIGTYPE_p_FILE.java
   ${PROJECT_SOURCE_DIR}/java/jscip/SWIGTYPE_p_p_char.java
+  ${PROJECT_SOURCE_DIR}/java/jscip/SWIGTYPE_p_p_double.java
   ${PROJECT_SOURCE_DIR}/java/jscip/SWIGTYPE_p_p_p_SCIP_VAR.java
   ${PROJECT_SOURCE_DIR}/java/jscip/SWIGTYPE_p_p_SCIP.java
   ${PROJECT_SOURCE_DIR}/java/jscip/SWIGTYPE_p_p_SCIP_CONS.java
   ${PROJECT_SOURCE_DIR}/java/jscip/SWIGTYPE_p_p_SCIP_SOL.java
   ${PROJECT_SOURCE_DIR}/java/jscip/SWIGTYPE_p_p_SCIP_VAR.java
   ${PROJECT_SOURCE_DIR}/java/jscip/SWIGTYPE_p_p_SCIP_EXPR.java
+  ${PROJECT_SOURCE_DIR}/java/jscip/SWIGTYPE_p_p_SCIP_ExprData.java
+  ${PROJECT_SOURCE_DIR}/java/jscip/SWIGTYPE_p_p_SCIP_ExprhdlrData.java
+  ${PROJECT_SOURCE_DIR}/java/jscip/SWIGTYPE_p_p_SYM_ExprData.java
   ${PROJECT_SOURCE_DIR}/java/jscip/SWIGTYPE_p_SCIP_CONS.java
   ${PROJECT_SOURCE_DIR}/java/jscip/SWIGTYPE_p_SCIP.java
   ${PROJECT_SOURCE_DIR}/java/jscip/SWIGTYPE_p_SCIP_BoundType.java
   ${PROJECT_SOURCE_DIR}/java/jscip/SWIGTYPE_p_SCIP_SOL.java
   ${PROJECT_SOURCE_DIR}/java/jscip/SWIGTYPE_p_SCIP_VAR.java
   ${PROJECT_SOURCE_DIR}/java/jscip/SWIGTYPE_p_SCIP_EXPR.java
+  ${PROJECT_SOURCE_DIR}/java/jscip/SWIGTYPE_p_SCIP_EXPR_INTEVALVAR.java
+  ${PROJECT_SOURCE_DIR}/java/jscip/SWIGTYPE_p_SCIP_EXPR_OWNERCREATE.java
+  ${PROJECT_SOURCE_DIR}/java/jscip/SWIGTYPE_p_SCIP_EXPRCURV.java
+  ${PROJECT_SOURCE_DIR}/java/jscip/SWIGTYPE_p_SCIP_Exprhdlr.java
   ${PROJECT_SOURCE_DIR}/java/jscip/SWIGTYPE_p_SCIP_HEUR.java
+  ${PROJECT_SOURCE_DIR}/java/jscip/SWIGTYPE_p_SCIP_MONOTONE.java
+  ${PROJECT_SOURCE_DIR}/java/jscip/SWIGTYPE_p_SCIP_ImplintType.java
   ${PROJECT_SOURCE_DIR}/java/jscip/SWIGTYPE_p_SCIP_Messagehdlr.java
   )
 
@@ -66,6 +85,11 @@ set(JAVA_SOURCES
   ${PROJECT_SOURCE_DIR}/java/jscip/Constraint.java
   ${PROJECT_SOURCE_DIR}/java/jscip/Solution.java
   ${PROJECT_SOURCE_DIR}/java/jscip/MessageHandler.java
+  ${PROJECT_SOURCE_DIR}/java/jscip/ExpressionHandler.java
+  ${PROJECT_SOURCE_DIR}/java/jscip/ExpressionOwnerCreateCallback.java
+  ${PROJECT_SOURCE_DIR}/java/jscip/ExpressionIntEvalVarCallback.java
+  ${PROJECT_SOURCE_DIR}/java/jscip/ByteBuffer.java
+  ${PROJECT_SOURCE_DIR}/java/jscip/Interval.java
   )
 
 #
@@ -90,10 +114,11 @@ else()
 endif()
 # Check the minimum SCIP version here. We cannot just pass it to find_package
 # because that will accept only the same major version. See #52 and scip#116.
-set (SCIP_MINIMUM_VERSION "8.0.0")
+set (SCIP_MINIMUM_VERSION "10.0.0")
 if (SCIP_VERSION VERSION_LESS SCIP_MINIMUM_VERSION)
   message(FATAL_ERROR "SCIP too old. Found SCIP version ${SCIP_VERSION}, but at least SCIP ${SCIP_MINIMUM_VERSION} is required.")
 endif()
+
 include_directories (${JNI_INCLUDE_DIRS} ${SCIP_INCLUDE_DIRS} ${PROJECT_SOURCE_DIR}/src)
 
 #
