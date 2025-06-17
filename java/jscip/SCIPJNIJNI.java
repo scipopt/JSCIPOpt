@@ -29,10 +29,22 @@ public class SCIPJNIJNI {
   public final static native void delete_unsigned_int_array(long jarg1);
   public final static native long unsigned_int_array_getitem(long jarg1, int jarg2);
   public final static native void unsigned_int_array_setitem(long jarg1, int jarg2, long jarg3);
+  public final static native long new_SCIP_INTERVAL_array(int jarg1);
+  public final static native void delete_SCIP_INTERVAL_array(long jarg1, SCIP_Interval jarg1_);
+  public final static native long SCIP_INTERVAL_array_getitem(long jarg1, SCIP_Interval jarg1_, int jarg2);
+  public final static native void SCIP_INTERVAL_array_setitem(long jarg1, SCIP_Interval jarg1_, int jarg2, long jarg3, SCIP_Interval jarg3_);
   public final static native long new_SCIP_BoundType_array(int jarg1);
   public final static native void delete_SCIP_BoundType_array(long jarg1);
   public final static native int SCIP_BoundType_array_getitem(long jarg1, int jarg2);
   public final static native void SCIP_BoundType_array_setitem(long jarg1, int jarg2, int jarg3);
+  public final static native long new_SCIP_EXPRCURV_array(int jarg1);
+  public final static native void delete_SCIP_EXPRCURV_array(long jarg1);
+  public final static native int SCIP_EXPRCURV_array_getitem(long jarg1, int jarg2);
+  public final static native void SCIP_EXPRCURV_array_setitem(long jarg1, int jarg2, int jarg3);
+  public final static native long new_SCIP_MONOTONE_array(int jarg1);
+  public final static native void delete_SCIP_MONOTONE_array(long jarg1);
+  public final static native int SCIP_MONOTONE_array_getitem(long jarg1, int jarg2);
+  public final static native void SCIP_MONOTONE_array_setitem(long jarg1, int jarg2, int jarg3);
   public final static native long new_String_array(int jarg1);
   public final static native void delete_String_array(long jarg1);
   public final static native String String_array_getitem(long jarg1, int jarg2);
@@ -53,6 +65,22 @@ public class SCIPJNIJNI {
   public final static native void delete_SCIP_SOL_array(long jarg1);
   public final static native long SCIP_SOL_array_getitem(long jarg1, int jarg2);
   public final static native void SCIP_SOL_array_setitem(long jarg1, int jarg2, long jarg3);
+  public final static native long new_SCIP_EXPRDATA_array(int jarg1);
+  public final static native void delete_SCIP_EXPRDATA_array(long jarg1);
+  public final static native long SCIP_EXPRDATA_array_getitem(long jarg1, int jarg2);
+  public final static native void SCIP_EXPRDATA_array_setitem(long jarg1, int jarg2, long jarg3, SCIP_EXPRDATA jarg3_);
+  public final static native long new_SYM_EXPRDATA_array(int jarg1);
+  public final static native void delete_SYM_EXPRDATA_array(long jarg1);
+  public final static native long SYM_EXPRDATA_array_getitem(long jarg1, int jarg2);
+  public final static native void SYM_EXPRDATA_array_setitem(long jarg1, int jarg2, long jarg3, SYM_EXPRDATA jarg3_);
+  public final static native long new_char_array_array(int jarg1);
+  public final static native void delete_char_array_array(long jarg1);
+  public final static native long char_array_array_getitem(long jarg1, int jarg2);
+  public final static native void char_array_array_setitem(long jarg1, int jarg2, long jarg3);
+  public final static native long new_double_array_array(int jarg1);
+  public final static native void delete_double_array_array(long jarg1);
+  public final static native long double_array_array_getitem(long jarg1, int jarg2);
+  public final static native void double_array_array_setitem(long jarg1, int jarg2, long jarg3);
   public final static native long new_SCIP_VAR_array_array(int jarg1);
   public final static native void delete_SCIP_VAR_array_array(long jarg1);
   public final static native long SCIP_VAR_array_array_getitem(long jarg1, int jarg2);
@@ -181,6 +209,7 @@ public class SCIPJNIJNI {
   public final static native int SCIPgetObjsense(long jarg1);
   public final static native double SCIPgetGap(long jarg1);
   public final static native int SCIPchgVarObj(long jarg1, long jarg2, double jarg3);
+  public final static native long SCIPparseReal(long jarg1, long jarg2, long jarg3, long jarg4);
   public final static native int SCIPchgVarBranchPriority(long jarg1, long jarg2, int jarg3);
   public final static native int SCIPcreateSol(long jarg1, long jarg2, long jarg3);
   public final static native int SCIPcreatePartialSol(long jarg1, long jarg2, long jarg3);
@@ -192,6 +221,13 @@ public class SCIPJNIJNI {
   public final static native double SCIPgetSolvingTime(long jarg1);
   public final static native void BMScheckEmptyMemory();
   public final static native long BMSgetMemoryUsed();
+  public final static native void SCIPcaptureVar(long jarg1, long jarg2);
+  public final static native void SCIPcaptureExpr(long jarg1);
+  public final static native int SCIPevalExprActivity(long jarg1, long jarg2);
+  public final static native int SCIPcompareExpr(long jarg1, long jarg2, long jarg3);
+  public final static native int SCIPparseExpr(long jarg1, long jarg2, long jarg3, long jarg4, long jarg5, long jarg6);
+  public final static native long SCIPfindExprhdlr(long jarg1, String jarg2);
+  public final static native void SCIPcaptureCons(long jarg1, long jarg2);
   public final static native String SCIPvarGetName(long jarg1);
   public final static native int SCIPvarGetType(long jarg1);
   public final static native double SCIPvarGetLbLocal(long jarg1);
@@ -224,22 +260,122 @@ public class SCIPJNIJNI {
   public final static native long SCIPgetMessagehdlr(long jarg1);
   public final static native void SCIPsetMessagehdlrLogfile(long jarg1, String jarg2);
   public final static native int SCIPgetVerbLevel(long jarg1);
+  public final static native void SCIPinfoMessage(long jarg1, long jarg2, String jarg3);
+  public final static native void delete_ObjCloneable(long jarg1);
+  public final static native long ObjCloneable_clone(long jarg1, ObjCloneable jarg1_, long jarg2);
+  public final static native long ObjCloneable_cloneSwigExplicitObjCloneable(long jarg1, ObjCloneable jarg1_, long jarg2);
+  public final static native long ObjCloneable_iscloneable(long jarg1, ObjCloneable jarg1_);
+  public final static native long ObjCloneable_iscloneableSwigExplicitObjCloneable(long jarg1, ObjCloneable jarg1_);
+  public final static native long new_ObjCloneable();
+  public final static native void ObjCloneable_director_connect(ObjCloneable obj, long cptr, boolean mem_own, boolean weak_global);
+  public final static native void ObjCloneable_change_ownership(ObjCloneable obj, long cptr, boolean take_or_release);
+  public final static native void SCIP_Interval_inf_set(long jarg1, SCIP_Interval jarg1_, double jarg2);
+  public final static native double SCIP_Interval_inf_get(long jarg1, SCIP_Interval jarg1_);
+  public final static native void SCIP_Interval_sup_set(long jarg1, SCIP_Interval jarg1_, double jarg2);
+  public final static native double SCIP_Interval_sup_get(long jarg1, SCIP_Interval jarg1_);
+  public final static native long new_SCIP_Interval();
+  public final static native void delete_SCIP_Interval(long jarg1);
+  public final static native void SCIP_EXPRDATA_jobj_set(long jarg1, SCIP_EXPRDATA jarg1_, java.lang.Object jarg2);
+  public final static native java.lang.Object SCIP_EXPRDATA_jobj_get(long jarg1, SCIP_EXPRDATA jarg1_);
+  public final static native long new_SCIP_EXPRDATA();
+  public final static native void delete_SCIP_EXPRDATA(long jarg1);
+  public final static native int SCIP_EXPRCURV_UNKNOWN_get();
+  public final static native int SCIP_EXPRCURV_CONVEX_get();
+  public final static native int SCIP_EXPRCURV_CONCAVE_get();
+  public final static native int SCIP_EXPRCURV_LINEAR_get();
+  public final static native int SCIP_MONOTONE_UNKNOWN_get();
+  public final static native int SCIP_MONOTONE_INC_get();
+  public final static native int SCIP_MONOTONE_DEC_get();
+  public final static native int SCIP_MONOTONE_CONST_get();
+  public final static native long SCIP_EXPRITER_ENTEREXPR_get();
+  public final static native long SCIP_EXPRITER_VISITINGCHILD_get();
+  public final static native long SCIP_EXPRITER_VISITEDCHILD_get();
+  public final static native long SCIP_EXPRITER_LEAVEEXPR_get();
+  public final static native long SCIP_EXPRITER_ALLSTAGES_get();
+  public final static native int SCIP_EXPR_MAXINITESTIMATES_get();
+  public final static native long SCIPexprGetData(long jarg1);
+  public final static native void SCIPexprSetData(long jarg1, long jarg2, SCIP_EXPRDATA jarg2_);
+  public final static native int SCIPexprGetNChildren(long jarg1);
+  public final static native long SCIPexprGetChildren(long jarg1);
+  public final static native double SCIPexprGetEvalValue(long jarg1);
+  public final static native double SCIPexprGetDot(long jarg1);
+  public final static native long SCIPexprGetActivity(long jarg1);
+  public final static native long SCIPexprIsIntegral(long jarg1);
+  public final static native void SYM_EXPRDATA_constants_set(long jarg1, SYM_EXPRDATA jarg1_, long jarg2);
+  public final static native long SYM_EXPRDATA_constants_get(long jarg1, SYM_EXPRDATA jarg1_);
+  public final static native void SYM_EXPRDATA_nconstants_set(long jarg1, SYM_EXPRDATA jarg1_, int jarg2);
+  public final static native int SYM_EXPRDATA_nconstants_get(long jarg1, SYM_EXPRDATA jarg1_);
+  public final static native void SYM_EXPRDATA_coefficients_set(long jarg1, SYM_EXPRDATA jarg1_, long jarg2);
+  public final static native long SYM_EXPRDATA_coefficients_get(long jarg1, SYM_EXPRDATA jarg1_);
+  public final static native void SYM_EXPRDATA_ncoefficients_set(long jarg1, SYM_EXPRDATA jarg1_, int jarg2);
+  public final static native int SYM_EXPRDATA_ncoefficients_get(long jarg1, SYM_EXPRDATA jarg1_);
+  public final static native void SYM_EXPRDATA_children_set(long jarg1, SYM_EXPRDATA jarg1_, long jarg2);
+  public final static native long SYM_EXPRDATA_children_get(long jarg1, SYM_EXPRDATA jarg1_);
+  public final static native long new_SYM_EXPRDATA();
+  public final static native void delete_SYM_EXPRDATA(long jarg1);
+  public final static native long new_ObjExprhdlr__SWIG_0(long jarg1, String jarg2, String jarg3, long jarg4, long jarg5, long jarg6, long jarg7, long jarg8, long jarg9, long jarg10, long jarg11, long jarg12, long jarg13, long jarg14, long jarg15, long jarg16, long jarg17, long jarg18, long jarg19, long jarg20, long jarg21, long jarg22);
+  public final static native long new_ObjExprhdlr__SWIG_1(long jarg1, ObjExprhdlr jarg1_);
+  public final static native void delete_ObjExprhdlr(long jarg1);
+  public final static native int ObjExprhdlr_scip_freehdlr(long jarg1, ObjExprhdlr jarg1_, long jarg2, long jarg3, long jarg4);
+  public final static native int ObjExprhdlr_scip_freehdlrSwigExplicitObjExprhdlr(long jarg1, ObjExprhdlr jarg1_, long jarg2, long jarg3, long jarg4);
+  public final static native int ObjExprhdlr_scip_eval(long jarg1, ObjExprhdlr jarg1_, long jarg2, long jarg3, long jarg4, long jarg5);
+  public final static native int ObjExprhdlr_scip_copydata(long jarg1, ObjExprhdlr jarg1_, long jarg2, long jarg3, long jarg4, long jarg5, long jarg6);
+  public final static native int ObjExprhdlr_scip_copydataSwigExplicitObjExprhdlr(long jarg1, ObjExprhdlr jarg1_, long jarg2, long jarg3, long jarg4, long jarg5, long jarg6);
+  public final static native int ObjExprhdlr_scip_freedata(long jarg1, ObjExprhdlr jarg1_, long jarg2, long jarg3);
+  public final static native int ObjExprhdlr_scip_freedataSwigExplicitObjExprhdlr(long jarg1, ObjExprhdlr jarg1_, long jarg2, long jarg3);
+  public final static native int ObjExprhdlr_scip_simplify(long jarg1, ObjExprhdlr jarg1_, long jarg2, long jarg3, long jarg4, long jarg5, long jarg6);
+  public final static native int ObjExprhdlr_scip_simplifySwigExplicitObjExprhdlr(long jarg1, ObjExprhdlr jarg1_, long jarg2, long jarg3, long jarg4, long jarg5, long jarg6);
+  public final static native int ObjExprhdlr_scip_compare(long jarg1, ObjExprhdlr jarg1_, long jarg2, long jarg3, long jarg4);
+  public final static native int ObjExprhdlr_scip_compareSwigExplicitObjExprhdlr(long jarg1, ObjExprhdlr jarg1_, long jarg2, long jarg3, long jarg4);
+  public final static native int ObjExprhdlr_scip_print(long jarg1, ObjExprhdlr jarg1_, long jarg2, long jarg3, long jarg4, int jarg5, long jarg6, long jarg7);
+  public final static native int ObjExprhdlr_scip_printSwigExplicitObjExprhdlr(long jarg1, ObjExprhdlr jarg1_, long jarg2, long jarg3, long jarg4, int jarg5, long jarg6, long jarg7);
+  public final static native int ObjExprhdlr_scip_parse(long jarg1, ObjExprhdlr jarg1_, long jarg2, long jarg3, long jarg4, long jarg5, long jarg6, long jarg7, long jarg8, long jarg9);
+  public final static native int ObjExprhdlr_scip_parseSwigExplicitObjExprhdlr(long jarg1, ObjExprhdlr jarg1_, long jarg2, long jarg3, long jarg4, long jarg5, long jarg6, long jarg7, long jarg8, long jarg9);
+  public final static native int ObjExprhdlr_scip_bwdiff(long jarg1, ObjExprhdlr jarg1_, long jarg2, long jarg3, int jarg4, long jarg5);
+  public final static native int ObjExprhdlr_scip_bwdiffSwigExplicitObjExprhdlr(long jarg1, ObjExprhdlr jarg1_, long jarg2, long jarg3, int jarg4, long jarg5);
+  public final static native int ObjExprhdlr_scip_fwdiff(long jarg1, ObjExprhdlr jarg1_, long jarg2, long jarg3, long jarg4, long jarg5);
+  public final static native int ObjExprhdlr_scip_fwdiffSwigExplicitObjExprhdlr(long jarg1, ObjExprhdlr jarg1_, long jarg2, long jarg3, long jarg4, long jarg5);
+  public final static native int ObjExprhdlr_scip_bwfwdiff(long jarg1, ObjExprhdlr jarg1_, long jarg2, long jarg3, int jarg4, long jarg5, long jarg6);
+  public final static native int ObjExprhdlr_scip_bwfwdiffSwigExplicitObjExprhdlr(long jarg1, ObjExprhdlr jarg1_, long jarg2, long jarg3, int jarg4, long jarg5, long jarg6);
+  public final static native int ObjExprhdlr_scip_inteval(long jarg1, ObjExprhdlr jarg1_, long jarg2, long jarg3, long jarg4, SCIP_Interval jarg4_, long jarg5, long jarg6);
+  public final static native int ObjExprhdlr_scip_intevalSwigExplicitObjExprhdlr(long jarg1, ObjExprhdlr jarg1_, long jarg2, long jarg3, long jarg4, SCIP_Interval jarg4_, long jarg5, long jarg6);
+  public final static native int ObjExprhdlr_scip_estimate(long jarg1, ObjExprhdlr jarg1_, long jarg2, long jarg3, long jarg4, SCIP_Interval jarg4_, long jarg5, SCIP_Interval jarg5_, long jarg6, long jarg7, double jarg8, long jarg9, long jarg10, long jarg11, long jarg12, long jarg13);
+  public final static native int ObjExprhdlr_scip_estimateSwigExplicitObjExprhdlr(long jarg1, ObjExprhdlr jarg1_, long jarg2, long jarg3, long jarg4, SCIP_Interval jarg4_, long jarg5, SCIP_Interval jarg5_, long jarg6, long jarg7, double jarg8, long jarg9, long jarg10, long jarg11, long jarg12, long jarg13);
+  public final static native int ObjExprhdlr_scip_initestimates(long jarg1, ObjExprhdlr jarg1_, long jarg2, long jarg3, long jarg4, SCIP_Interval jarg4_, long jarg5, long jarg6, long jarg7, long jarg8);
+  public final static native int ObjExprhdlr_scip_initestimatesSwigExplicitObjExprhdlr(long jarg1, ObjExprhdlr jarg1_, long jarg2, long jarg3, long jarg4, SCIP_Interval jarg4_, long jarg5, long jarg6, long jarg7, long jarg8);
+  public final static native int ObjExprhdlr_scip_reverseprop(long jarg1, ObjExprhdlr jarg1_, long jarg2, long jarg3, long jarg4, SCIP_Interval jarg4_, long jarg5, SCIP_Interval jarg5_, long jarg6);
+  public final static native int ObjExprhdlr_scip_reversepropSwigExplicitObjExprhdlr(long jarg1, ObjExprhdlr jarg1_, long jarg2, long jarg3, long jarg4, SCIP_Interval jarg4_, long jarg5, SCIP_Interval jarg5_, long jarg6);
+  public final static native int ObjExprhdlr_scip_hash(long jarg1, ObjExprhdlr jarg1_, long jarg2, long jarg3, long jarg4, long jarg5);
+  public final static native int ObjExprhdlr_scip_hashSwigExplicitObjExprhdlr(long jarg1, ObjExprhdlr jarg1_, long jarg2, long jarg3, long jarg4, long jarg5);
+  public final static native int ObjExprhdlr_scip_curvature(long jarg1, ObjExprhdlr jarg1_, long jarg2, long jarg3, int jarg4, long jarg5, long jarg6);
+  public final static native int ObjExprhdlr_scip_curvatureSwigExplicitObjExprhdlr(long jarg1, ObjExprhdlr jarg1_, long jarg2, long jarg3, int jarg4, long jarg5, long jarg6);
+  public final static native int ObjExprhdlr_scip_monotonicity(long jarg1, ObjExprhdlr jarg1_, long jarg2, long jarg3, int jarg4, long jarg5);
+  public final static native int ObjExprhdlr_scip_monotonicitySwigExplicitObjExprhdlr(long jarg1, ObjExprhdlr jarg1_, long jarg2, long jarg3, int jarg4, long jarg5);
+  public final static native int ObjExprhdlr_scip_integrality(long jarg1, ObjExprhdlr jarg1_, long jarg2, long jarg3, long jarg4);
+  public final static native int ObjExprhdlr_scip_integralitySwigExplicitObjExprhdlr(long jarg1, ObjExprhdlr jarg1_, long jarg2, long jarg3, long jarg4);
+  public final static native int ObjExprhdlr_scip_getsymdata(long jarg1, ObjExprhdlr jarg1_, long jarg2, long jarg3, long jarg4);
+  public final static native int ObjExprhdlr_scip_getsymdataSwigExplicitObjExprhdlr(long jarg1, ObjExprhdlr jarg1_, long jarg2, long jarg3, long jarg4);
+  public final static native void ObjExprhdlr_director_connect(ObjExprhdlr obj, long cptr, boolean mem_own, boolean weak_global);
+  public final static native void ObjExprhdlr_change_ownership(ObjExprhdlr obj, long cptr, boolean take_or_release);
+  public final static native long SCIPfindObjExprhdlr(long jarg1, String jarg2);
+  public final static native long SCIPgetObjExprhdlr(long jarg1, long jarg2);
   public final static native long createSCIP();
   public final static native void freeSCIP(long jarg1);
   public final static native long createVar(long jarg1, String jarg2, double jarg3, double jarg4, double jarg5, int jarg6);
   public final static native void releaseVar(long jarg1, long jarg2);
-  public final static native long createExprAbs(long jarg1, long jarg2);
-  public final static native long createExprEntropy(long jarg1, long jarg2);
-  public final static native long createExprExp(long jarg1, long jarg2);
-  public final static native long createExprLog(long jarg1, long jarg2);
-  public final static native long createExprPow(long jarg1, long jarg2, double jarg3);
-  public final static native long createExprSignpower(long jarg1, long jarg2, double jarg3);
-  public final static native long createExprProduct(long jarg1, int jarg2, long jarg3, double jarg4);
-  public final static native long createExprSum(long jarg1, int jarg2, long jarg3, long jarg4, double jarg5);
-  public final static native long createExprSin(long jarg1, long jarg2);
-  public final static native long createExprCos(long jarg1, long jarg2);
-  public final static native long createExprValue(long jarg1, double jarg2);
-  public final static native long createExprVar(long jarg1, long jarg2);
+  public final static native long createExpr(long jarg1, long jarg2, long jarg3, SCIP_EXPRDATA jarg3_, int jarg4, long jarg5, long jarg6, long jarg7);
+  public final static native long createExprAbs(long jarg1, long jarg2, long jarg3, long jarg4);
+  public final static native long createExprEntropy(long jarg1, long jarg2, long jarg3, long jarg4);
+  public final static native long createExprExp(long jarg1, long jarg2, long jarg3, long jarg4);
+  public final static native long createExprLog(long jarg1, long jarg2, long jarg3, long jarg4);
+  public final static native long createExprPow(long jarg1, long jarg2, double jarg3, long jarg4, long jarg5);
+  public final static native long createExprSignpower(long jarg1, long jarg2, double jarg3, long jarg4, long jarg5);
+  public final static native long createExprProduct(long jarg1, int jarg2, long jarg3, double jarg4, long jarg5, long jarg6);
+  public final static native long createExprSum(long jarg1, int jarg2, long jarg3, long jarg4, double jarg5, long jarg6, long jarg7);
+  public final static native long createExprSin(long jarg1, long jarg2, long jarg3, long jarg4);
+  public final static native long createExprCos(long jarg1, long jarg2, long jarg3, long jarg4);
+  public final static native long createExprValue(long jarg1, double jarg2, long jarg3, long jarg4);
+  public final static native long createExprVar(long jarg1, long jarg2, long jarg3, long jarg4);
   public final static native void releaseExpr(long jarg1, long jarg2);
   public final static native long createConsBasicLinear(long jarg1, String jarg2, int jarg3, long jarg4, long jarg5, double jarg6, double jarg7);
   public final static native long createConsBasicQuadratic(long jarg1, String jarg2, int jarg3, long jarg4, long jarg5, int jarg6, long jarg7, long jarg8, long jarg9, double jarg10, double jarg11);
@@ -273,6 +409,10 @@ public class SCIPJNIJNI {
   public final static native long createConsBasicXor(long jarg1, String jarg2, long jarg3, int jarg4, long jarg5);
   public final static native void releaseCons(long jarg1, long jarg2);
   public final static native long createObjMessagehdlr(long jarg1, ObjMessagehdlr jarg1_, long jarg2);
+  public final static native long includeObjExprhdlr(long jarg1, long jarg2, ObjExprhdlr jarg2_, long jarg3);
+  public final static native long invokeExprIntevalvar(long jarg1, long jarg2, long jarg3, long jarg4);
+  public final static native long allocSymDataExpr(long jarg1, int jarg2, int jarg3);
+  public final static native long ObjExprhdlr_SWIGUpcast(long jarg1);
 
   public static void SwigDirector_ObjMessagehdlr_scip_error(ObjMessagehdlr jself, long messagehdlr, long file, String msg) {
     jself.scip_error((messagehdlr == 0) ? null : new SWIGTYPE_p_SCIP_Messagehdlr(messagehdlr, false), (file == 0) ? null : new SWIGTYPE_p_FILE(file, false), msg);
@@ -288,6 +428,78 @@ public class SCIPJNIJNI {
   }
   public static int SwigDirector_ObjMessagehdlr_scip_free(ObjMessagehdlr jself, long messagehdlr) {
     return (jself.scip_free((messagehdlr == 0) ? null : new SWIGTYPE_p_SCIP_Messagehdlr(messagehdlr, false))).swigValue();
+  }
+  public static long SwigDirector_ObjCloneable_clone(ObjCloneable jself, long scip) {
+    return ObjCloneable.getCPtr(jself.clone((scip == 0) ? null : new SWIGTYPE_p_SCIP(scip, false)));
+  }
+  public static long SwigDirector_ObjCloneable_iscloneable(ObjCloneable jself) {
+    return jself.iscloneable();
+  }
+  public static long SwigDirector_ObjExprhdlr_clone(ObjExprhdlr jself, long scip) {
+    return ObjCloneable.getCPtr(jself.clone((scip == 0) ? null : new SWIGTYPE_p_SCIP(scip, false)));
+  }
+  public static long SwigDirector_ObjExprhdlr_iscloneable(ObjExprhdlr jself) {
+    return jself.iscloneable();
+  }
+  public static int SwigDirector_ObjExprhdlr_scip_freehdlr(ObjExprhdlr jself, long scip, long exprhdlr, long exprhdlrdata) {
+    return (jself.scip_freehdlr((scip == 0) ? null : new SWIGTYPE_p_SCIP(scip, false), (exprhdlr == 0) ? null : new SWIGTYPE_p_SCIP_Exprhdlr(exprhdlr, false), (exprhdlrdata == 0) ? null : new SWIGTYPE_p_p_SCIP_ExprhdlrData(exprhdlrdata, false))).swigValue();
+  }
+  public static int SwigDirector_ObjExprhdlr_scip_eval(ObjExprhdlr jself, long scip, long expr, long val, long sol) {
+    return (jself.scip_eval((scip == 0) ? null : new SWIGTYPE_p_SCIP(scip, false), (expr == 0) ? null : new SWIGTYPE_p_SCIP_EXPR(expr, false), (val == 0) ? null : new SWIGTYPE_p_double(val, false), (sol == 0) ? null : new SWIGTYPE_p_SCIP_SOL(sol, false))).swigValue();
+  }
+  public static int SwigDirector_ObjExprhdlr_scip_copydata(ObjExprhdlr jself, long targetscip, long targetexprhdlr, long targetexprdata, long sourcescip, long sourceexpr) {
+    return (jself.scip_copydata((targetscip == 0) ? null : new SWIGTYPE_p_SCIP(targetscip, false), (targetexprhdlr == 0) ? null : new SWIGTYPE_p_SCIP_Exprhdlr(targetexprhdlr, false), (targetexprdata == 0) ? null : new SWIGTYPE_p_p_SCIP_ExprData(targetexprdata, false), (sourcescip == 0) ? null : new SWIGTYPE_p_SCIP(sourcescip, false), (sourceexpr == 0) ? null : new SWIGTYPE_p_SCIP_EXPR(sourceexpr, false))).swigValue();
+  }
+  public static int SwigDirector_ObjExprhdlr_scip_freedata(ObjExprhdlr jself, long scip, long expr) {
+    return (jself.scip_freedata((scip == 0) ? null : new SWIGTYPE_p_SCIP(scip, false), (expr == 0) ? null : new SWIGTYPE_p_SCIP_EXPR(expr, false))).swigValue();
+  }
+  public static int SwigDirector_ObjExprhdlr_scip_simplify(ObjExprhdlr jself, long scip, long expr, long simplifiedexpr, long ownercreate, long ownercreatedata) {
+    return (jself.scip_simplify((scip == 0) ? null : new SWIGTYPE_p_SCIP(scip, false), (expr == 0) ? null : new SWIGTYPE_p_SCIP_EXPR(expr, false), (simplifiedexpr == 0) ? null : new SWIGTYPE_p_p_SCIP_EXPR(simplifiedexpr, false), (ownercreate == 0) ? null : new SWIGTYPE_p_SCIP_EXPR_OWNERCREATE(ownercreate, false), (ownercreatedata == 0) ? null : new SWIGTYPE_p_void(ownercreatedata, false))).swigValue();
+  }
+  public static int SwigDirector_ObjExprhdlr_scip_compare(ObjExprhdlr jself, long scip, long expr1, long expr2) {
+    return jself.scip_compare((scip == 0) ? null : new SWIGTYPE_p_SCIP(scip, false), (expr1 == 0) ? null : new SWIGTYPE_p_SCIP_EXPR(expr1, false), (expr2 == 0) ? null : new SWIGTYPE_p_SCIP_EXPR(expr2, false));
+  }
+  public static int SwigDirector_ObjExprhdlr_scip_print(ObjExprhdlr jself, long scip, long expr, long stage, int currentchild, long parentprecedence, long file) {
+    return (jself.scip_print((scip == 0) ? null : new SWIGTYPE_p_SCIP(scip, false), (expr == 0) ? null : new SWIGTYPE_p_SCIP_EXPR(expr, false), stage, currentchild, parentprecedence, (file == 0) ? null : new SWIGTYPE_p_FILE(file, false))).swigValue();
+  }
+  public static int SwigDirector_ObjExprhdlr_scip_parse(ObjExprhdlr jself, long scip, long exprhdlr, long stringptr, long endstring, long expr, long success, long ownercreate, long ownercreatedata) {
+    return (jself.scip_parse((scip == 0) ? null : new SWIGTYPE_p_SCIP(scip, false), (exprhdlr == 0) ? null : new SWIGTYPE_p_SCIP_Exprhdlr(exprhdlr, false), (stringptr == 0) ? null : new SWIGTYPE_p_char(stringptr, false), (endstring == 0) ? null : new SWIGTYPE_p_p_char(endstring, false), (expr == 0) ? null : new SWIGTYPE_p_p_SCIP_EXPR(expr, false), (success == 0) ? null : new SWIGTYPE_p_unsigned_int(success, false), (ownercreate == 0) ? null : new SWIGTYPE_p_SCIP_EXPR_OWNERCREATE(ownercreate, false), (ownercreatedata == 0) ? null : new SWIGTYPE_p_void(ownercreatedata, false))).swigValue();
+  }
+  public static int SwigDirector_ObjExprhdlr_scip_bwdiff(ObjExprhdlr jself, long scip, long expr, int childidx, long val) {
+    return (jself.scip_bwdiff((scip == 0) ? null : new SWIGTYPE_p_SCIP(scip, false), (expr == 0) ? null : new SWIGTYPE_p_SCIP_EXPR(expr, false), childidx, (val == 0) ? null : new SWIGTYPE_p_double(val, false))).swigValue();
+  }
+  public static int SwigDirector_ObjExprhdlr_scip_fwdiff(ObjExprhdlr jself, long scip, long expr, long dot, long direction) {
+    return (jself.scip_fwdiff((scip == 0) ? null : new SWIGTYPE_p_SCIP(scip, false), (expr == 0) ? null : new SWIGTYPE_p_SCIP_EXPR(expr, false), (dot == 0) ? null : new SWIGTYPE_p_double(dot, false), (direction == 0) ? null : new SWIGTYPE_p_SCIP_SOL(direction, false))).swigValue();
+  }
+  public static int SwigDirector_ObjExprhdlr_scip_bwfwdiff(ObjExprhdlr jself, long scip, long expr, int childidx, long bardot, long direction) {
+    return (jself.scip_bwfwdiff((scip == 0) ? null : new SWIGTYPE_p_SCIP(scip, false), (expr == 0) ? null : new SWIGTYPE_p_SCIP_EXPR(expr, false), childidx, (bardot == 0) ? null : new SWIGTYPE_p_double(bardot, false), (direction == 0) ? null : new SWIGTYPE_p_SCIP_SOL(direction, false))).swigValue();
+  }
+  public static int SwigDirector_ObjExprhdlr_scip_inteval(ObjExprhdlr jself, long scip, long expr, long interval, long intevalvar, long intevalvardata) {
+    return (jself.scip_inteval((scip == 0) ? null : new SWIGTYPE_p_SCIP(scip, false), (expr == 0) ? null : new SWIGTYPE_p_SCIP_EXPR(expr, false), (interval == 0) ? null : new SCIP_Interval(interval, false), (intevalvar == 0) ? null : new SWIGTYPE_p_SCIP_EXPR_INTEVALVAR(intevalvar, false), (intevalvardata == 0) ? null : new SWIGTYPE_p_void(intevalvardata, false))).swigValue();
+  }
+  public static int SwigDirector_ObjExprhdlr_scip_estimate(ObjExprhdlr jself, long scip, long expr, long localbounds, long globalbounds, long refpoint, long overestimate, double targetvalue, long coefs, long constant, long islocal, long success, long branchcand) {
+    return (jself.scip_estimate((scip == 0) ? null : new SWIGTYPE_p_SCIP(scip, false), (expr == 0) ? null : new SWIGTYPE_p_SCIP_EXPR(expr, false), (localbounds == 0) ? null : new SCIP_Interval(localbounds, false), (globalbounds == 0) ? null : new SCIP_Interval(globalbounds, false), (refpoint == 0) ? null : new SWIGTYPE_p_double(refpoint, false), overestimate, targetvalue, (coefs == 0) ? null : new SWIGTYPE_p_double(coefs, false), (constant == 0) ? null : new SWIGTYPE_p_double(constant, false), (islocal == 0) ? null : new SWIGTYPE_p_unsigned_int(islocal, false), (success == 0) ? null : new SWIGTYPE_p_unsigned_int(success, false), (branchcand == 0) ? null : new SWIGTYPE_p_unsigned_int(branchcand, false))).swigValue();
+  }
+  public static int SwigDirector_ObjExprhdlr_scip_initestimates(ObjExprhdlr jself, long scip, long expr, long bounds, long overestimate, long coefs, long constant, long nreturned) {
+    return (jself.scip_initestimates((scip == 0) ? null : new SWIGTYPE_p_SCIP(scip, false), (expr == 0) ? null : new SWIGTYPE_p_SCIP_EXPR(expr, false), (bounds == 0) ? null : new SCIP_Interval(bounds, false), overestimate, (coefs == 0) ? null : new SWIGTYPE_p_p_double(coefs, false), (constant == 0) ? null : new SWIGTYPE_p_double(constant, false), (nreturned == 0) ? null : new SWIGTYPE_p_int(nreturned, false))).swigValue();
+  }
+  public static int SwigDirector_ObjExprhdlr_scip_reverseprop(ObjExprhdlr jself, long scip, long expr, long bounds, long childrenbounds, long infeasible) {
+    return (jself.scip_reverseprop((scip == 0) ? null : new SWIGTYPE_p_SCIP(scip, false), (expr == 0) ? null : new SWIGTYPE_p_SCIP_EXPR(expr, false), new SCIP_Interval(bounds, true), (childrenbounds == 0) ? null : new SCIP_Interval(childrenbounds, false), (infeasible == 0) ? null : new SWIGTYPE_p_unsigned_int(infeasible, false))).swigValue();
+  }
+  public static int SwigDirector_ObjExprhdlr_scip_hash(ObjExprhdlr jself, long scip, long expr, long hashkey, long childrenhashes) {
+    return (jself.scip_hash((scip == 0) ? null : new SWIGTYPE_p_SCIP(scip, false), (expr == 0) ? null : new SWIGTYPE_p_SCIP_EXPR(expr, false), (hashkey == 0) ? null : new SWIGTYPE_p_unsigned_int(hashkey, false), (childrenhashes == 0) ? null : new SWIGTYPE_p_unsigned_int(childrenhashes, false))).swigValue();
+  }
+  public static int SwigDirector_ObjExprhdlr_scip_curvature(ObjExprhdlr jself, long scip, long expr, int exprcurvature, long success, long childcurv) {
+    return (jself.scip_curvature((scip == 0) ? null : new SWIGTYPE_p_SCIP(scip, false), (expr == 0) ? null : new SWIGTYPE_p_SCIP_EXPR(expr, false), SCIP_EXPRCURV.swigToEnum(exprcurvature), (success == 0) ? null : new SWIGTYPE_p_unsigned_int(success, false), (childcurv == 0) ? null : new SWIGTYPE_p_SCIP_EXPRCURV(childcurv, false))).swigValue();
+  }
+  public static int SwigDirector_ObjExprhdlr_scip_monotonicity(ObjExprhdlr jself, long scip, long expr, int childidx, long result) {
+    return (jself.scip_monotonicity((scip == 0) ? null : new SWIGTYPE_p_SCIP(scip, false), (expr == 0) ? null : new SWIGTYPE_p_SCIP_EXPR(expr, false), childidx, (result == 0) ? null : new SWIGTYPE_p_SCIP_MONOTONE(result, false))).swigValue();
+  }
+  public static int SwigDirector_ObjExprhdlr_scip_integrality(ObjExprhdlr jself, long scip, long expr, long integrality) {
+    return (jself.scip_integrality((scip == 0) ? null : new SWIGTYPE_p_SCIP(scip, false), (expr == 0) ? null : new SWIGTYPE_p_SCIP_EXPR(expr, false), (integrality == 0) ? null : new SWIGTYPE_p_unsigned_int(integrality, false))).swigValue();
+  }
+  public static int SwigDirector_ObjExprhdlr_scip_getsymdata(ObjExprhdlr jself, long scip, long expr, long symdata) {
+    return (jself.scip_getsymdata((scip == 0) ? null : new SWIGTYPE_p_SCIP(scip, false), (expr == 0) ? null : new SWIGTYPE_p_SCIP_EXPR(expr, false), (symdata == 0) ? null : new SWIGTYPE_p_p_SYM_ExprData(symdata, false))).swigValue();
   }
 
   private final static native void swig_module_init();

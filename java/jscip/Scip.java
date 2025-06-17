@@ -17,6 +17,14 @@ public class Scip
       _scipptr = null;
    }
 
+   /** constructor that should only be used for ObjCloneable.clone and
+       ObjProbCloneable.clone implementations, where a new Scip is introduced
+       into the Java world */
+   Scip(SWIGTYPE_p_SCIP scipptr)
+   {
+      _scipptr = scipptr;
+   }
+
    /** creates the C data for a SCIP; it also creates the problem and incudes all default plug-ins */
    public void create(String probname)
    {
@@ -31,6 +39,12 @@ public class Scip
    {
       assert(_scipptr != null);
       SCIPJNI.freeSCIP(_scipptr);
+   }
+
+   /** returns SWIG object type representing a SCIP pointer */
+   public SWIGTYPE_p_SCIP getPtr()
+   {
+      return _scipptr;
    }
 
    /** wraps SCIPsolve() */
@@ -245,6 +259,13 @@ public class Scip
       CHECK_RETCODE( SCIPJNI.SCIPchgVarObj(_scipptr, var.getPtr(), obj));
    }
 
+   /** wraps SCIPcaptureVar() */
+   public void captureVar(Variable var)
+   {
+      assert(var.getPtr() != null);
+      SCIPJNI.SCIPcaptureVar(_scipptr, var.getPtr());
+   }
+
    /** wraps SCIPreleaseVar() */
    public void releaseVar(Variable var)
    {
@@ -296,9 +317,15 @@ public class Scip
    /** wraps SCIPcreateExprAbs() */
    public Expression createExprAbs(Expression child)
    {
+      return createExprAbs(child, null);
+   }
+
+   /** wraps SCIPcreateExprAbs() */
+   public Expression createExprAbs(Expression child, ExpressionOwnerCreateCallback ownercreate)
+   {
       assert(child != null);
 
-      SWIGTYPE_p_SCIP_EXPR exprptr = SCIPJNI.createExprAbs(_scipptr, child.getPtr());
+      SWIGTYPE_p_SCIP_EXPR exprptr = SCIPJNI.createExprAbs(_scipptr, child.getPtr(), ownercreate != null ? ownercreate.getFuncPtr() : null, ownercreate != null ? ownercreate.getDataPtr() : null);
       assert(exprptr != null);
 
       return new Expression(exprptr);
@@ -307,9 +334,15 @@ public class Scip
    /** wraps SCIPcreateExprEntropy() */
    public Expression createExprEntropy(Expression child)
    {
+      return createExprEntropy(child, null);
+   }
+
+   /** wraps SCIPcreateExprEntropy() */
+   public Expression createExprEntropy(Expression child, ExpressionOwnerCreateCallback ownercreate)
+   {
       assert(child != null);
 
-      SWIGTYPE_p_SCIP_EXPR exprptr = SCIPJNI.createExprEntropy(_scipptr, child.getPtr());
+      SWIGTYPE_p_SCIP_EXPR exprptr = SCIPJNI.createExprEntropy(_scipptr, child.getPtr(), ownercreate != null ? ownercreate.getFuncPtr() : null, ownercreate != null ? ownercreate.getDataPtr() : null);
       assert(exprptr != null);
 
       return new Expression(exprptr);
@@ -318,9 +351,15 @@ public class Scip
    /** wraps SCIPcreateExprExp() */
    public Expression createExprExp(Expression child)
    {
+      return createExprExp(child, null);
+   }
+
+   /** wraps SCIPcreateExprExp() */
+   public Expression createExprExp(Expression child, ExpressionOwnerCreateCallback ownercreate)
+   {
       assert(child != null);
 
-      SWIGTYPE_p_SCIP_EXPR exprptr = SCIPJNI.createExprExp(_scipptr, child.getPtr());
+      SWIGTYPE_p_SCIP_EXPR exprptr = SCIPJNI.createExprExp(_scipptr, child.getPtr(), ownercreate != null ? ownercreate.getFuncPtr() : null, ownercreate != null ? ownercreate.getDataPtr() : null);
       assert(exprptr != null);
 
       return new Expression(exprptr);
@@ -329,9 +368,15 @@ public class Scip
    /** wraps SCIPcreateExprLog() (ln) */
    public Expression createExprLog(Expression child)
    {
+      return createExprLog(child, null);
+   }
+
+   /** wraps SCIPcreateExprLog() (ln) */
+   public Expression createExprLog(Expression child, ExpressionOwnerCreateCallback ownercreate)
+   {
       assert(child != null);
 
-      SWIGTYPE_p_SCIP_EXPR exprptr = SCIPJNI.createExprLog(_scipptr, child.getPtr());
+      SWIGTYPE_p_SCIP_EXPR exprptr = SCIPJNI.createExprLog(_scipptr, child.getPtr(), ownercreate != null ? ownercreate.getFuncPtr() : null, ownercreate != null ? ownercreate.getDataPtr() : null);
       assert(exprptr != null);
 
       return new Expression(exprptr);
@@ -340,9 +385,15 @@ public class Scip
    /** wraps SCIPcreateExprPow() */
    public Expression createExprPow(Expression child, double exponent)
    {
+      return createExprPow(child, exponent, null);
+   }
+
+   /** wraps SCIPcreateExprPow() */
+   public Expression createExprPow(Expression child, double exponent, ExpressionOwnerCreateCallback ownercreate)
+   {
       assert(child != null);
 
-      SWIGTYPE_p_SCIP_EXPR exprptr = SCIPJNI.createExprPow(_scipptr, child.getPtr(), exponent);
+      SWIGTYPE_p_SCIP_EXPR exprptr = SCIPJNI.createExprPow(_scipptr, child.getPtr(), exponent, ownercreate != null ? ownercreate.getFuncPtr() : null, ownercreate != null ? ownercreate.getDataPtr() : null);
       assert(exprptr != null);
 
       return new Expression(exprptr);
@@ -351,9 +402,15 @@ public class Scip
    /** wraps SCIPcreateExprSignpower() */
    public Expression createExprSignpower(Expression child, double exponent)
    {
+      return createExprSignpower(child, exponent, null);
+   }
+
+   /** wraps SCIPcreateExprAbs() */
+   public Expression createExprSignpower(Expression child, double exponent, ExpressionOwnerCreateCallback ownercreate)
+   {
       assert(child != null);
 
-      SWIGTYPE_p_SCIP_EXPR exprptr = SCIPJNI.createExprSignpower(_scipptr, child.getPtr(), exponent);
+      SWIGTYPE_p_SCIP_EXPR exprptr = SCIPJNI.createExprSignpower(_scipptr, child.getPtr(), exponent, ownercreate != null ? ownercreate.getFuncPtr() : null, ownercreate != null ? ownercreate.getDataPtr() : null);
       assert(exprptr != null);
 
       return new Expression(exprptr);
@@ -361,6 +418,12 @@ public class Scip
 
    /** wraps SCIPcreateExprProduct(); note that the function needs to copy the content of the array into an array which is passed to native interface */
    public Expression createExprProduct(Expression[] children, double coefficient)
+   {
+      return createExprProduct(children, coefficient, null);
+   }
+
+   /** wraps SCIPcreateExprProduct(); note that the function needs to copy the content of the array into an array which is passed to native interface */
+   public Expression createExprProduct(Expression[] children, double coefficient, ExpressionOwnerCreateCallback ownercreate)
    {
       assert(children != null);
       int nchildren = children.length;
@@ -372,7 +435,7 @@ public class Scip
          SCIPJNI.SCIP_EXPR_array_setitem(childrenptr, i, children[i].getPtr());
       }
 
-      SWIGTYPE_p_SCIP_EXPR exprptr = SCIPJNI.createExprProduct(_scipptr, nchildren, childrenptr, coefficient);
+      SWIGTYPE_p_SCIP_EXPR exprptr = SCIPJNI.createExprProduct(_scipptr, nchildren, childrenptr, coefficient, ownercreate != null ? ownercreate.getFuncPtr() : null, ownercreate != null ? ownercreate.getDataPtr() : null);
       assert(exprptr != null);
 
       SCIPJNI.delete_SCIP_EXPR_array(childrenptr);
@@ -382,6 +445,12 @@ public class Scip
 
    /** wraps SCIPcreateExprSum(); note that the function needs to copy the content of the arrays into arrays which are passed to native interface */
    public Expression createExprSum(Expression[] children, double[] coefficients, double constant)
+   {
+      return createExprSum(children, coefficients, constant, null);
+   }
+
+   /** wraps SCIPcreateExprSum(); note that the function needs to copy the content of the arrays into arrays which are passed to native interface */
+   public Expression createExprSum(Expression[] children, double[] coefficients, double constant, ExpressionOwnerCreateCallback ownercreate)
    {
       assert(children != null);
       assert(coefficients == null || children.length == coefficients.length);
@@ -398,7 +467,7 @@ public class Scip
          }
       }
 
-      SWIGTYPE_p_SCIP_EXPR exprptr = SCIPJNI.createExprSum(_scipptr, nchildren, childrenptr, coefficientsptr, constant);
+      SWIGTYPE_p_SCIP_EXPR exprptr = SCIPJNI.createExprSum(_scipptr, nchildren, childrenptr, coefficientsptr, constant, ownercreate != null ? ownercreate.getFuncPtr() : null, ownercreate != null ? ownercreate.getDataPtr() : null);
       assert(exprptr != null);
 
       SCIPJNI.delete_SCIP_EXPR_array(childrenptr);
@@ -412,9 +481,15 @@ public class Scip
    /** wraps SCIPcreateExprSin() */
    public Expression createExprSin(Expression child)
    {
+      return createExprSin(child, null);
+   }
+
+   /** wraps SCIPcreateExprSin() */
+   public Expression createExprSin(Expression child, ExpressionOwnerCreateCallback ownercreate)
+   {
       assert(child != null);
 
-      SWIGTYPE_p_SCIP_EXPR exprptr = SCIPJNI.createExprSin(_scipptr, child.getPtr());
+      SWIGTYPE_p_SCIP_EXPR exprptr = SCIPJNI.createExprSin(_scipptr, child.getPtr(), ownercreate != null ? ownercreate.getFuncPtr() : null, ownercreate != null ? ownercreate.getDataPtr() : null);
       assert(exprptr != null);
 
       return new Expression(exprptr);
@@ -423,9 +498,15 @@ public class Scip
    /** wraps SCIPcreateExprCos() */
    public Expression createExprCos(Expression child)
    {
+      return createExprCos(child, null);
+   }
+
+   /** wraps SCIPcreateExprCos() */
+   public Expression createExprCos(Expression child, ExpressionOwnerCreateCallback ownercreate)
+   {
       assert(child != null);
 
-      SWIGTYPE_p_SCIP_EXPR exprptr = SCIPJNI.createExprCos(_scipptr, child.getPtr());
+      SWIGTYPE_p_SCIP_EXPR exprptr = SCIPJNI.createExprCos(_scipptr, child.getPtr(), ownercreate != null ? ownercreate.getFuncPtr() : null, ownercreate != null ? ownercreate.getDataPtr() : null);
       assert(exprptr != null);
 
       return new Expression(exprptr);
@@ -434,7 +515,13 @@ public class Scip
    /** wraps SCIPcreateExprValue() */
    public Expression createExprValue(double value)
    {
-      SWIGTYPE_p_SCIP_EXPR exprptr = SCIPJNI.createExprValue(_scipptr, value);
+      return createExprValue(value, null);
+   }
+
+   /** wraps SCIPcreateExprValue() */
+   public Expression createExprValue(double value, ExpressionOwnerCreateCallback ownercreate)
+   {
+      SWIGTYPE_p_SCIP_EXPR exprptr = SCIPJNI.createExprValue(_scipptr, value, ownercreate != null ? ownercreate.getFuncPtr() : null, ownercreate != null ? ownercreate.getDataPtr() : null);
       assert(exprptr != null);
 
       return new Expression(exprptr);
@@ -443,12 +530,56 @@ public class Scip
    /** wraps SCIPcreateExprVar() */
    public Expression createExprVar(Variable var)
    {
+      return createExprVar(var, null);
+   }
+
+   /** wraps SCIPcreateExprVar() */
+   public Expression createExprVar(Variable var, ExpressionOwnerCreateCallback ownercreate)
+   {
       assert(var != null);
 
-      SWIGTYPE_p_SCIP_EXPR exprptr = SCIPJNI.createExprVar(_scipptr, var.getPtr());
+      SWIGTYPE_p_SCIP_EXPR exprptr = SCIPJNI.createExprVar(_scipptr, var.getPtr(), ownercreate != null ? ownercreate.getFuncPtr() : null, ownercreate != null ? ownercreate.getDataPtr() : null);
       assert(exprptr != null);
 
       return new Expression(exprptr);
+   }
+
+   /** wraps SCIPevalExprActivity() */
+   public void evalExprActivity(Expression expr)
+   {
+      assert(expr != null && expr.getPtr() != null);
+      CHECK_RETCODE(SCIPJNI.SCIPevalExprActivity(_scipptr, expr.getPtr()));
+   }
+
+   /** wraps SCIPcompareExpr() */
+   public int compareExpr(Expression expr1, Expression expr2)
+   {
+      assert(expr1 != null && expr1.getPtr() != null);
+      assert(expr2 != null && expr2.getPtr() != null);
+      return SCIPJNI.SCIPcompareExpr(_scipptr, expr1.getPtr(), expr2.getPtr());
+   }
+
+   /** wraps SCIPparseExpr() */
+   public Expression parseExpr(ByteBuffer exprstr, ExpressionOwnerCreateCallback ownercreate) throws java.text.ParseException {
+      SWIGTYPE_p_p_SCIP_EXPR exprptr = SCIPJNI.new_SCIP_EXPR_array(1);
+      SWIGTYPE_p_p_char finalposptr =  SCIPJNI.new_char_array_array(1);
+      SCIP_Retcode ret = SCIPJNI.SCIPparseExpr(_scipptr, exprptr, exprstr.getPtr(), finalposptr, ownercreate != null ? ownercreate.getFuncPtr() : null, ownercreate != null ? ownercreate.getDataPtr() : null);
+      if (ret != SCIP_Retcode.SCIP_OKAY) {
+         if (ret == SCIP_Retcode.SCIP_READERROR) {
+            throw new java.text.ParseException("SCIPparseExpr returned SCIP_READERROR", (int) exprstr.getOffset());
+         } else {
+            throw new RuntimeException("SCIPparseExpr returned unexpected error code " + ret);
+         }
+      }
+      exprstr.setPtr(SCIPJNI.char_array_array_getitem(finalposptr, 0));
+      return new Expression(SCIPJNI.SCIP_EXPR_array_getitem(exprptr, 0));
+   }
+
+   /** wraps SCIPcaptureExpr() */
+   public void captureExpr(Expression expr)
+   {
+      assert(expr.getPtr() != null);
+      SCIPJNI.SCIPcaptureExpr(expr.getPtr());
    }
 
    /** wraps SCIPreleaseExpr() */
@@ -1432,7 +1563,14 @@ public class Scip
       CHECK_RETCODE( SCIPJNI.SCIPaddCons(_scipptr, cons.getPtr()) );
    }
 
-   /** wraps releaseCons() */
+   /** wraps SCIPcaptureCons() */
+   public void captureCons(Constraint cons)
+   {
+      assert(cons.getPtr() != null);
+      SCIPJNI.SCIPcaptureCons(_scipptr, cons.getPtr());
+   }
+
+   /** wraps SCIPreleaseCons() */
    public void releaseCons(Constraint cons)
    {
       assert(cons.getPtr() != null);
@@ -1628,6 +1766,17 @@ public class Scip
       return SCIPJNI.SCIPgetGap(_scipptr);
    }
 
+   /** wraps SCIPparseReal() */
+   public double parseReal(ByteBuffer string) throws java.text.ParseException {
+      SWIGTYPE_p_double valueptr = SCIPJNI.new_double_array(1);
+      SWIGTYPE_p_p_char finalposptr =  SCIPJNI.new_char_array_array(1);
+      if (SCIPJNI.SCIPparseReal(_scipptr, string.getPtr(), valueptr, finalposptr) == 0) {
+         throw new java.text.ParseException("SCIPparseReal returned FALSE", (int) string.getOffset());
+      }
+      string.setPtr(SCIPJNI.char_array_array_getitem(finalposptr, 0));
+      return SCIPJNI.double_array_getitem(valueptr, 0);
+   }
+
    /** wraps SCIPsetStaticErrorPrintingMessagehdlr() */
    public static void setStaticErrorPrintingMessagehdlr(MessageHandler messagehdlr) {
       SCIPJNI.SCIPsetStaticErrorPrintingMessagehdlr(MessageHandler.getPtr(messagehdlr));
@@ -1652,5 +1801,13 @@ public class Scip
    /** wraps SCIPgetVerbLevel() */
    public SCIP_VerbLevel getVerbLevel() {
       return SCIPJNI.SCIPgetVerbLevel(_scipptr);
+   }
+
+   /** wraps SCIPinfoMessage(); note that file can be null, in which case the
+       message handler will output to stdout, or it can be a pointer coming from
+       the ObjExprhdlr/ExpressionHandler print callback; also note that the
+       format string in the C interface is hardcoded to "%s" here */
+   public void infoMessage(SWIGTYPE_p_FILE file, String message) {
+      SCIPJNI.SCIPinfoMessage(_scipptr, file, message);
    }
 }

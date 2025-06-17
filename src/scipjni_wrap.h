@@ -30,5 +30,58 @@ protected:
     Swig::BoolArray<5> swig_override;
 };
 
+class SwigDirector_ObjCloneable : public scip::ObjCloneable, public Swig::Director {
+
+public:
+    void swig_connect_director(JNIEnv *jenv, jobject jself, jclass jcls, bool swig_mem_own, bool weak_global);
+    SwigDirector_ObjCloneable(JNIEnv *jenv);
+    virtual ~SwigDirector_ObjCloneable();
+    virtual scip::ObjCloneable *clone(SCIP *scip) const;
+    virtual unsigned int iscloneable() const;
+public:
+    bool swig_overrides(int n) {
+      return (n < 2 ? swig_override[n] : false);
+    }
+protected:
+    Swig::BoolArray<2> swig_override;
+};
+
+class SwigDirector_ObjExprhdlr : public scip::ObjExprhdlr, public Swig::Director {
+
+public:
+    void swig_connect_director(JNIEnv *jenv, jobject jself, jclass jcls, bool swig_mem_own, bool weak_global);
+    SwigDirector_ObjExprhdlr(JNIEnv *jenv, SCIP *scip, char const *name, char const *desc, unsigned int precedence, unsigned int has_copydata, unsigned int has_freedata, unsigned int has_simplify, unsigned int has_compare, unsigned int has_print, unsigned int has_parse, unsigned int has_bwdiff, unsigned int has_fwdiff, unsigned int has_bwfwdiff, unsigned int has_inteval, unsigned int has_estimate, unsigned int has_initestimates, unsigned int has_reverseprop, unsigned int has_hash, unsigned int has_curvature, unsigned int has_monotonicity, unsigned int has_integrality, unsigned int has_getsymdata);
+    SwigDirector_ObjExprhdlr(JNIEnv *jenv, scip::ObjExprhdlr const &o);
+    virtual ~SwigDirector_ObjExprhdlr();
+    virtual scip::ObjCloneable *clone(SCIP *scip) const;
+    virtual unsigned int iscloneable() const;
+    virtual SCIP_RETCODE scip_freehdlr(SCIP *scip, SCIP_EXPRHDLR *exprhdlr, SCIP_EXPRHDLRDATA **exprhdlrdata);
+    virtual SCIP_RETCODE scip_eval(SCIP *scip, SCIP_EXPR *expr, double *val, SCIP_SOL *sol);
+    virtual SCIP_RETCODE scip_copydata(SCIP *targetscip, SCIP_EXPRHDLR *targetexprhdlr, SCIP_EXPRDATA **targetexprdata, SCIP *sourcescip, SCIP_EXPR *sourceexpr);
+    virtual SCIP_RETCODE scip_freedata(SCIP *scip, SCIP_EXPR *expr);
+    virtual SCIP_RETCODE scip_simplify(SCIP *scip, SCIP_EXPR *expr, SCIP_EXPR **simplifiedexpr, SCIP_EXPR_OWNERCREATE *ownercreate, void *ownercreatedata);
+    virtual int scip_compare(SCIP *scip, SCIP_EXPR *expr1, SCIP_EXPR *expr2);
+    virtual SCIP_RETCODE scip_print(SCIP *scip, SCIP_EXPR *expr, SCIP_EXPRITER_STAGE stage, int currentchild, unsigned int parentprecedence, FILE *file);
+    virtual SCIP_RETCODE scip_parse(SCIP *scip, SCIP_EXPRHDLR *exprhdlr, char const *stringptr, char const **endstring, SCIP_EXPR **expr, unsigned int *success, SCIP_EXPR_OWNERCREATE *ownercreate, void *ownercreatedata);
+    virtual SCIP_RETCODE scip_bwdiff(SCIP *scip, SCIP_EXPR *expr, int childidx, double *val);
+    virtual SCIP_RETCODE scip_fwdiff(SCIP *scip, SCIP_EXPR *expr, double *dot, SCIP_SOL *direction);
+    virtual SCIP_RETCODE scip_bwfwdiff(SCIP *scip, SCIP_EXPR *expr, int childidx, double *bardot, SCIP_SOL *direction);
+    virtual SCIP_RETCODE scip_inteval(SCIP *scip, SCIP_EXPR *expr, SCIP_INTERVAL *interval, SCIP_EXPR_INTEVALVAR *intevalvar, void *intevalvardata);
+    virtual SCIP_RETCODE scip_estimate(SCIP *scip, SCIP_EXPR *expr, SCIP_INTERVAL *localbounds, SCIP_INTERVAL *globalbounds, double *refpoint, unsigned int overestimate, double targetvalue, double *coefs, double *constant, unsigned int *islocal, unsigned int *success, unsigned int *branchcand);
+    virtual SCIP_RETCODE scip_initestimates(SCIP *scip, SCIP_EXPR *expr, SCIP_INTERVAL *bounds, unsigned int overestimate, double *coefs[SCIP_EXPR_MAXINITESTIMATES], double constant[SCIP_EXPR_MAXINITESTIMATES], int *nreturned);
+    virtual SCIP_RETCODE scip_reverseprop(SCIP *scip, SCIP_EXPR *expr, SCIP_INTERVAL bounds, SCIP_INTERVAL *childrenbounds, unsigned int *infeasible);
+    virtual SCIP_RETCODE scip_hash(SCIP *scip, SCIP_EXPR *expr, unsigned int *hashkey, unsigned int *childrenhashes);
+    virtual SCIP_RETCODE scip_curvature(SCIP *scip, SCIP_EXPR *expr, SCIP_EXPRCURV exprcurvature, unsigned int *success, SCIP_EXPRCURV *childcurv);
+    virtual SCIP_RETCODE scip_monotonicity(SCIP *scip, SCIP_EXPR *expr, int childidx, SCIP_MONOTONE *result);
+    virtual SCIP_RETCODE scip_integrality(SCIP *scip, SCIP_EXPR *expr, unsigned int *integrality);
+    virtual SCIP_RETCODE scip_getsymdata(SCIP *scip, SCIP_EXPR *expr, SYM_EXPRDATA **symdata);
+public:
+    bool swig_overrides(int n) {
+      return (n < 22 ? swig_override[n] : false);
+    }
+protected:
+    Swig::BoolArray<22> swig_override;
+};
+
 
 #endif
