@@ -1497,6 +1497,36 @@ public class Scip
       return SCIPJNI.SCIPgetSolVal(_scipptr, sol.getPtr(), var.getPtr());
    }
 
+   /** wraps SCIPgetSolVals(); use as a more efficient way of reading of many variable values than getSolVal() */
+   public double[] getSolVals(Solution sol, Variable[] vars)
+   {
+      int nvars = vars.length;
+      if (nvars == 0) {
+         return new double[0];
+      }
+
+      SWIGTYPE_p_p_SCIP_VAR varsptr = SCIPJNI.new_SCIP_VAR_array(nvars);
+      SWIGTYPE_p_double valsptr = SCIPJNI.new_double_array(nvars);
+
+      try {
+         for (int i = 0; i < nvars; ++i) {
+            SCIPJNI.SCIP_VAR_array_setitem(varsptr, i, vars[i].getPtr());
+         }
+
+         CHECK_RETCODE(SCIPJNI.SCIPgetSolVals(_scipptr, sol.getPtr(), nvars, varsptr, valsptr));
+
+         double[] vals = new double[nvars];
+         for (int i = 0; i < nvars; ++i) {
+            vals[i] = SCIPJNI.double_array_getitem(valsptr, i);
+         }
+
+         return vals;
+      } finally {
+         SCIPJNI.delete_double_array(valsptr);
+         SCIPJNI.delete_SCIP_VAR_array(varsptr);
+      }
+   }
+
    /** wraps SCIPgetSolOrigObj() */
    public double getSolOrigObj(Solution sol)
    {

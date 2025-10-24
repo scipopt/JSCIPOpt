@@ -738,6 +738,7 @@ SCIP_SOL**     SCIPgetSols(SCIP* scip);
 int            SCIPgetNSols(SCIP* scip);
 SCIP_SOL*      SCIPgetBestSol(SCIP* scip);
 SCIP_Real      SCIPgetSolVal(SCIP* scip, SCIP_SOL* sol, SCIP_VAR* var);
+SCIP_RETCODE   SCIPgetSolVals(SCIP* scip, SCIP_SOL* sol, int nvars, SCIP_VAR** vars, SCIP_Real* vals);
 SCIP_Real      SCIPgetSolOrigObj(SCIP* scip, SCIP_SOL* sol);
 SCIP_Real      SCIPinfinity(SCIP* scip);
 SCIP_Real      SCIPepsilon(SCIP* scip);
