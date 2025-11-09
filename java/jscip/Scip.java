@@ -1689,4 +1689,9 @@ public class Scip
    public SCIP_VerbLevel getVerbLevel() {
       return SCIPJNI.SCIPgetVerbLevel(_scipptr);
    }
+
+   public void addEventHandler(EventHandler eventHandler) {
+       eventHandler.attach(this, _scipptr);
+   }
+
 }

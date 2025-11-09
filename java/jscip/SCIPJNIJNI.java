@@ -282,6 +282,33 @@ public class SCIPJNIJNI {
   public final static native long createConsBasicXor(long jarg1, String jarg2, long jarg3, int jarg4, long jarg5);
   public final static native void releaseCons(long jarg1, long jarg2);
   public final static native long createObjMessagehdlr(long jarg1, ObjMessagehdlr jarg1_, long jarg2);
+  public final static native void ObjEventhdlr_scip__set(long jarg1, ObjEventhdlr jarg1_, long jarg2);
+  public final static native long ObjEventhdlr_scip__get(long jarg1, ObjEventhdlr jarg1_);
+  public final static native void ObjEventhdlr_scip_name__set(long jarg1, ObjEventhdlr jarg1_, String jarg2);
+  public final static native String ObjEventhdlr_scip_name__get(long jarg1, ObjEventhdlr jarg1_);
+  public final static native void ObjEventhdlr_scip_desc__set(long jarg1, ObjEventhdlr jarg1_, String jarg2);
+  public final static native String ObjEventhdlr_scip_desc__get(long jarg1, ObjEventhdlr jarg1_);
+  public final static native long new_ObjEventhdlr(long jarg1, String jarg2, String jarg3);
+  public final static native void delete_ObjEventhdlr(long jarg1);
+  public final static native int ObjEventhdlr_scip_free(long jarg1, ObjEventhdlr jarg1_, long jarg2, long jarg3);
+  public final static native int ObjEventhdlr_scip_freeSwigExplicitObjEventhdlr(long jarg1, ObjEventhdlr jarg1_, long jarg2, long jarg3);
+  public final static native int ObjEventhdlr_scip_init(long jarg1, ObjEventhdlr jarg1_, long jarg2, long jarg3);
+  public final static native int ObjEventhdlr_scip_initSwigExplicitObjEventhdlr(long jarg1, ObjEventhdlr jarg1_, long jarg2, long jarg3);
+  public final static native int ObjEventhdlr_scip_exit(long jarg1, ObjEventhdlr jarg1_, long jarg2, long jarg3);
+  public final static native int ObjEventhdlr_scip_exitSwigExplicitObjEventhdlr(long jarg1, ObjEventhdlr jarg1_, long jarg2, long jarg3);
+  public final static native int ObjEventhdlr_scip_initsol(long jarg1, ObjEventhdlr jarg1_, long jarg2, long jarg3);
+  public final static native int ObjEventhdlr_scip_initsolSwigExplicitObjEventhdlr(long jarg1, ObjEventhdlr jarg1_, long jarg2, long jarg3);
+  public final static native int ObjEventhdlr_scip_exitsol(long jarg1, ObjEventhdlr jarg1_, long jarg2, long jarg3);
+  public final static native int ObjEventhdlr_scip_exitsolSwigExplicitObjEventhdlr(long jarg1, ObjEventhdlr jarg1_, long jarg2, long jarg3);
+  public final static native int ObjEventhdlr_scip_delete(long jarg1, ObjEventhdlr jarg1_, long jarg2, long jarg3, long jarg4);
+  public final static native int ObjEventhdlr_scip_deleteSwigExplicitObjEventhdlr(long jarg1, ObjEventhdlr jarg1_, long jarg2, long jarg3, long jarg4);
+  public final static native int ObjEventhdlr_scip_exec(long jarg1, ObjEventhdlr jarg1_, long jarg2, long jarg3, long jarg4, long jarg5);
+  public final static native int ObjEventhdlr_scip_execSwigExplicitObjEventhdlr(long jarg1, ObjEventhdlr jarg1_, long jarg2, long jarg3, long jarg4, long jarg5);
+  public final static native void ObjEventhdlr_director_connect(ObjEventhdlr obj, long cptr, boolean mem_own, boolean weak_global);
+  public final static native void ObjEventhdlr_change_ownership(ObjEventhdlr obj, long cptr, boolean take_or_release);
+  public final static native int SCIPincludeObjEventhdlr(long jarg1, long jarg2, ObjEventhdlr jarg2_, long jarg3);
+  public final static native long SCIPfindObjEventhdlr(long jarg1, String jarg2);
+  public final static native int SCIPcatchEvent(long jarg1, long jarg2, long jarg3, long jarg4, long jarg5);
 
   public static void SwigDirector_ObjMessagehdlr_scip_error(ObjMessagehdlr jself, long messagehdlr, long file, String msg) {
     jself.scip_error((messagehdlr == 0) ? null : new SWIGTYPE_p_SCIP_Messagehdlr(messagehdlr, false), (file == 0) ? null : new SWIGTYPE_p_FILE(file, false), msg);
@@ -297,6 +324,27 @@ public class SCIPJNIJNI {
   }
   public static int SwigDirector_ObjMessagehdlr_scip_free(ObjMessagehdlr jself, long messagehdlr) {
     return (jself.scip_free((messagehdlr == 0) ? null : new SWIGTYPE_p_SCIP_Messagehdlr(messagehdlr, false))).swigValue();
+  }
+  public static int SwigDirector_ObjEventhdlr_scip_free(ObjEventhdlr jself, long scip, long eventhdlr) {
+    return (jself.scip_free((scip == 0) ? null : new SWIGTYPE_p_SCIP(scip, false), (eventhdlr == 0) ? null : new SWIGTYPE_p_SCIP_EVENTHDLR(eventhdlr, false))).swigValue();
+  }
+  public static int SwigDirector_ObjEventhdlr_scip_init(ObjEventhdlr jself, long scip, long eventhdlr) {
+    return (jself.scip_init((scip == 0) ? null : new SWIGTYPE_p_SCIP(scip, false), (eventhdlr == 0) ? null : new SWIGTYPE_p_SCIP_EVENTHDLR(eventhdlr, false))).swigValue();
+  }
+  public static int SwigDirector_ObjEventhdlr_scip_exit(ObjEventhdlr jself, long scip, long eventhdlr) {
+    return (jself.scip_exit((scip == 0) ? null : new SWIGTYPE_p_SCIP(scip, false), (eventhdlr == 0) ? null : new SWIGTYPE_p_SCIP_EVENTHDLR(eventhdlr, false))).swigValue();
+  }
+  public static int SwigDirector_ObjEventhdlr_scip_initsol(ObjEventhdlr jself, long scip, long eventhdlr) {
+    return (jself.scip_initsol((scip == 0) ? null : new SWIGTYPE_p_SCIP(scip, false), (eventhdlr == 0) ? null : new SWIGTYPE_p_SCIP_EVENTHDLR(eventhdlr, false))).swigValue();
+  }
+  public static int SwigDirector_ObjEventhdlr_scip_exitsol(ObjEventhdlr jself, long scip, long eventhdlr) {
+    return (jself.scip_exitsol((scip == 0) ? null : new SWIGTYPE_p_SCIP(scip, false), (eventhdlr == 0) ? null : new SWIGTYPE_p_SCIP_EVENTHDLR(eventhdlr, false))).swigValue();
+  }
+  public static int SwigDirector_ObjEventhdlr_scip_delete(ObjEventhdlr jself, long scip, long eventhdlr, long eventdata) {
+    return (jself.scip_delete((scip == 0) ? null : new SWIGTYPE_p_SCIP(scip, false), (eventhdlr == 0) ? null : new SWIGTYPE_p_SCIP_EVENTHDLR(eventhdlr, false), (eventdata == 0) ? null : new SWIGTYPE_p_p_SCIP_EVENTDATA(eventdata, false))).swigValue();
+  }
+  public static int SwigDirector_ObjEventhdlr_scip_exec(ObjEventhdlr jself, long scip, long eventhdlr, long event, long eventdata) {
+    return (jself.scip_exec((scip == 0) ? null : new SWIGTYPE_p_SCIP(scip, false), (eventhdlr == 0) ? null : new SWIGTYPE_p_SCIP_EVENTHDLR(eventhdlr, false), (event == 0) ? null : new SWIGTYPE_p_SCIP_EVENT(event, false), (eventdata == 0) ? null : new SWIGTYPE_p_SCIP_EVENTDATA(eventdata, false))).swigValue();
   }
 
   private final static native void swig_module_init();

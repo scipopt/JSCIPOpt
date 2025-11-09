@@ -8,6 +8,7 @@
    #include "scip/scip.h"
    #include "scip/scipdefplugins.h"
    #include "objscip/objmessagehdlr.h"
+   #include "objscip/objeventhdlr.h"
 
    /* if libscip is a shared library, ensure we use function calls instead of
       macros, for better binary compatibility across SCIP versions */
@@ -888,3 +889,28 @@ SCIP_CONS*     createConsBasicVarbound(SCIP* scip, const char* name, SCIP_VAR* v
 SCIP_CONS*     createConsBasicXor(SCIP* scip, const char* name, SCIP_Bool rhs, int nvars, SCIP_VAR** vars);
 void           releaseCons(SCIP* scip, SCIP_CONS* cons);
 SCIP_MESSAGEHDLR* createObjMessagehdlr(scip::ObjMessagehdlr* objmessagehdlr, SCIP_Bool deleteobject);
+
+// from objeventhdlr.h
+namespace scip {
+class ObjEventhdlr {
+public:
+    SCIP* scip_;
+    char* scip_name_;
+    char* scip_desc_;
+
+    ObjEventhdlr(SCIP* scip, const char* name, const char* desc);
+    virtual ~ObjEventhdlr();
+    virtual SCIP_RETCODE scip_free (SCIP* scip, SCIP_EVENTHDLR* eventhdlr);
+    virtual SCIP_RETCODE scip_init (SCIP* scip, SCIP_EVENTHDLR* eventhdlr);
+    virtual SCIP_RETCODE scip_exit (SCIP* scip, SCIP_EVENTHDLR* eventhdlr);
+    virtual SCIP_RETCODE scip_initsol (SCIP* scip, SCIP_EVENTHDLR* eventhdlr);
+    virtual SCIP_RETCODE scip_exitsol (SCIP* scip, SCIP_EVENTHDLR* eventhdlr);
+    virtual SCIP_RETCODE scip_delete (SCIP* scip, SCIP_EVENTHDLR* eventhdlr, SCIP_EVENTDATA** eventdata);
+    virtual SCIP_RETCODE scip_exec (SCIP* scip, SCIP_EVENTHDLR* eventhdlr, SCIP_EVENT* event, SCIP_EVENTDATA* eventdata);
+};
+} /* namespace scip */
+
+SCIP_RETCODE SCIPincludeObjEventhdlr(SCIP* scip, scip::ObjEventhdlr* objeventhdlr, SCIP_Bool deleteobject);
+scip::ObjEventhdlr* SCIPfindObjEventhdlr(SCIP* scip, const char* name);
+typedef long long int SCIP_EVENTTYPE;
+SCIP_RETCODE   SCIPcatchEvent(SCIP* scip, SCIP_EVENTTYPE eventtype, SCIP_EVENTHDLR* eventhdlr, SCIP_EVENTDATA* eventdata, int* filterpos);

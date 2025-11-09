@@ -789,4 +789,17 @@ public class SCIPJNI {
     return (cPtr == 0) ? null : new SWIGTYPE_p_SCIP_Messagehdlr(cPtr, false);
   }
 
+  public static SCIP_Retcode SCIPincludeObjEventhdlr(SWIGTYPE_p_SCIP scip, ObjEventhdlr objeventhdlr, long deleteobject) {
+    return SCIP_Retcode.swigToEnum(SCIPJNIJNI.SCIPincludeObjEventhdlr(SWIGTYPE_p_SCIP.getCPtr(scip), ObjEventhdlr.getCPtr(objeventhdlr), objeventhdlr, deleteobject));
+  }
+
+  public static ObjEventhdlr SCIPfindObjEventhdlr(SWIGTYPE_p_SCIP scip, String name) {
+    long cPtr = SCIPJNIJNI.SCIPfindObjEventhdlr(SWIGTYPE_p_SCIP.getCPtr(scip), name);
+    return (cPtr == 0) ? null : new ObjEventhdlr(cPtr, false);
+  }
+
+  public static SCIP_Retcode SCIPcatchEvent(SWIGTYPE_p_SCIP scip, long eventtype, SWIGTYPE_p_SCIP_EVENTHDLR eventhdlr, SWIGTYPE_p_SCIP_EVENTDATA eventdata, SWIGTYPE_p_int filterpos) {
+    return SCIP_Retcode.swigToEnum(SCIPJNIJNI.SCIPcatchEvent(SWIGTYPE_p_SCIP.getCPtr(scip), eventtype, SWIGTYPE_p_SCIP_EVENTHDLR.getCPtr(eventhdlr), SWIGTYPE_p_SCIP_EVENTDATA.getCPtr(eventdata), SWIGTYPE_p_int.getCPtr(filterpos)));
+  }
+
 }

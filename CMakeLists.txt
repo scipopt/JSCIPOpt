@@ -55,6 +55,14 @@ set(SWIG_JAVA_SOURCES
   ${PROJECT_SOURCE_DIR}/java/jscip/SWIGTYPE_p_SCIP_EXPR.java
   ${PROJECT_SOURCE_DIR}/java/jscip/SWIGTYPE_p_SCIP_HEUR.java
   ${PROJECT_SOURCE_DIR}/java/jscip/SWIGTYPE_p_SCIP_Messagehdlr.java
+  ${PROJECT_SOURCE_DIR}/java/jscip/ObjEventhdlr.java
+  ${PROJECT_SOURCE_DIR}/java/jscip/SWIGTYPE_p_SCIP_EVENT.java
+  ${PROJECT_SOURCE_DIR}/java/jscip/SWIGTYPE_p_p_SCIP_EVENTDATA.java
+  ${PROJECT_SOURCE_DIR}/java/jscip/SWIGTYPE_p_SCIP_EVENTDATA.java
+  ${PROJECT_SOURCE_DIR}/java/jscip/SWIGTYPE_p_SCIP_EVENTHDLR.java
+  ${PROJECT_SOURCE_DIR}/java/jscip/SWIGTYPE_p_SCIP_Eventhdlr.java
+  ${PROJECT_SOURCE_DIR}/java/jscip/SWIGTYPE_p_SCIP_EVENTTYPE.java
+  ${PROJECT_SOURCE_DIR}/java/jscip/SWIGTYPE_p_uint64_t.java
   )
 
 set(JAVA_SOURCES
@@ -66,6 +74,8 @@ set(JAVA_SOURCES
   ${PROJECT_SOURCE_DIR}/java/jscip/Constraint.java
   ${PROJECT_SOURCE_DIR}/java/jscip/Solution.java
   ${PROJECT_SOURCE_DIR}/java/jscip/MessageHandler.java
+  ${PROJECT_SOURCE_DIR}/java/jscip/EventHandler.java
+  ${PROJECT_SOURCE_DIR}/java/jscip/EventType.java
   )
 
 #
