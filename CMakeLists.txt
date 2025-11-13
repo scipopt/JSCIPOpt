@@ -34,6 +34,7 @@ set(SWIG_JAVA_SOURCES
   ${PROJECT_SOURCE_DIR}/java/jscip/SCIP_VerbLevel.java
   ${PROJECT_SOURCE_DIR}/java/jscip/SCIP_Status.java
   ${PROJECT_SOURCE_DIR}/java/jscip/SCIP_Stage.java
+  ${PROJECT_SOURCE_DIR}/java/jscip/SCIP_Result.java
   ${PROJECT_SOURCE_DIR}/java/jscip/SWIGTYPE_p_char.java
   ${PROJECT_SOURCE_DIR}/java/jscip/SWIGTYPE_p_double.java
   ${PROJECT_SOURCE_DIR}/java/jscip/SWIGTYPE_p_int.java
@@ -63,6 +64,17 @@ set(SWIG_JAVA_SOURCES
   ${PROJECT_SOURCE_DIR}/java/jscip/SWIGTYPE_p_SCIP_Eventhdlr.java
   ${PROJECT_SOURCE_DIR}/java/jscip/SWIGTYPE_p_SCIP_EVENTTYPE.java
   ${PROJECT_SOURCE_DIR}/java/jscip/SWIGTYPE_p_uint64_t.java
+  ${PROJECT_SOURCE_DIR}/java/jscip/ObjConshdlr.java
+  ${PROJECT_SOURCE_DIR}/java/jscip/SWIGTYPE_p_p_SCIP_CONSDATA.java
+  ${PROJECT_SOURCE_DIR}/java/jscip/SWIGTYPE_p_SCIP_BDCHGIDX.java
+  ${PROJECT_SOURCE_DIR}/java/jscip/SWIGTYPE_p_SCIP_CONSHDLR.java
+  ${PROJECT_SOURCE_DIR}/java/jscip/SWIGTYPE_p_SCIP_DIVESET.java
+  ${PROJECT_SOURCE_DIR}/java/jscip/SWIGTYPE_p_SCIP_HASHMAP.java
+  ${PROJECT_SOURCE_DIR}/java/jscip/SWIGTYPE_p_SCIP_LOCKTYPE.java
+  ${PROJECT_SOURCE_DIR}/java/jscip/SWIGTYPE_p_SCIP_PRESOLTIMING.java
+  ${PROJECT_SOURCE_DIR}/java/jscip/SWIGTYPE_p_SCIP_PROPTIMING.java
+  ${PROJECT_SOURCE_DIR}/java/jscip/SWIGTYPE_p_SCIP_Result.java
+  ${PROJECT_SOURCE_DIR}/java/jscip/SWIGTYPE_p_SYM_GRAPH.java
   )
 
 set(JAVA_SOURCES
@@ -76,6 +88,11 @@ set(JAVA_SOURCES
   ${PROJECT_SOURCE_DIR}/java/jscip/MessageHandler.java
   ${PROJECT_SOURCE_DIR}/java/jscip/EventHandler.java
   ${PROJECT_SOURCE_DIR}/java/jscip/EventType.java
+  ${PROJECT_SOURCE_DIR}/java/jscip/ResultHolder.java
+  ${PROJECT_SOURCE_DIR}/java/jscip/ConstraintHandler.java
+  ${PROJECT_SOURCE_DIR}/java/jscip/ConstraintHandlerOptions.java
+  ${PROJECT_SOURCE_DIR}/java/jscip/ScipPresolTiming.java
+  ${PROJECT_SOURCE_DIR}/java/jscip/ScipPropTiming.java
   )
 
 #

@@ -1491,10 +1491,10 @@ public class Scip
    /** wraps SCIPgetSolVal() */
    public double getSolVal(Solution sol, Variable var)
    {
-      assert(sol != null && sol.getPtr() != null);
+      //assert(sol != null && sol.getPtr() != null); // it is valid during constraint handler enfops execution to pass null
       assert(var != null && var.getPtr() != null);
 
-      return SCIPJNI.SCIPgetSolVal(_scipptr, sol.getPtr(), var.getPtr());
+      return SCIPJNI.SCIPgetSolVal(_scipptr, sol == null ? null : sol.getPtr(), var.getPtr());
    }
 
    /** wraps SCIPgetSolOrigObj() */
@@ -1692,6 +1692,10 @@ public class Scip
 
    public void addEventHandler(EventHandler eventHandler) {
        eventHandler.attach(this, _scipptr);
+   }
+
+   public void addConstraintHandler(ConstraintHandler constraintHandler) {
+       constraintHandler.attach(this, _scipptr);
    }
 
 }
