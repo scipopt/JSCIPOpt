@@ -100,6 +100,21 @@ public class Tsp {
         scip.solve();
         SCIP_Status status = scip.getStatus();
         System.out.println("Scip status: " + status);
+        List<List<TourPart>> bestSolution = tourFinder.findTours(edges, scip, scip.getBestSol());
+        if (bestSolution != null) {
+            solutionRecorder.encounteredSolutions.add(
+                    bestSolution
+                            .stream()
+                            .map(
+                                    tour -> tour.stream()
+                                            .map(p -> p.node)
+                                            .collect(Collectors.toList())
+                            )
+                            .collect(Collectors.toList())
+            );
+        } else {
+            System.err.println("!!! No best solution.");
+        }
 
         List<List<List<Integer>>> solutions = solutionRecorder.encounteredSolutions;
         String formatName = outputImage.substring(outputImage.lastIndexOf('.') + 1);
