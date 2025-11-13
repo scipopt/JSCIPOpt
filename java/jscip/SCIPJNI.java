@@ -876,4 +876,22 @@ public class SCIPJNI {
     return SCIP_Retcode.swigToEnum(SCIPJNIJNI.SCIPcatchEvent(SWIGTYPE_p_SCIP.getCPtr(scip), eventtype, SWIGTYPE_p_SCIP_EVENTHDLR.getCPtr(eventhdlr), SWIGTYPE_p_SCIP_EVENTDATA.getCPtr(eventdata), SWIGTYPE_p_int.getCPtr(filterpos)));
   }
 
+  public static SCIP_Retcode SCIPincludeObjConshdlr(SWIGTYPE_p_SCIP scip, ObjConshdlr objconshdlr, long deleteobject) {
+    return SCIP_Retcode.swigToEnum(SCIPJNIJNI.SCIPincludeObjConshdlr(SWIGTYPE_p_SCIP.getCPtr(scip), ObjConshdlr.getCPtr(objconshdlr), objconshdlr, deleteobject));
+  }
+
+  public static ObjConshdlr SCIPfindObjConshdlr(SWIGTYPE_p_SCIP scip, String name) {
+    long cPtr = SCIPJNIJNI.SCIPfindObjConshdlr(SWIGTYPE_p_SCIP.getCPtr(scip), name);
+    return (cPtr == 0) ? null : new ObjConshdlr(cPtr, false);
+  }
+
+  public static ObjConshdlr SCIPgetObjConshdlr(SWIGTYPE_p_SCIP scip, SWIGTYPE_p_SCIP_CONSHDLR conshdlr) {
+    long cPtr = SCIPJNIJNI.SCIPgetObjConshdlr(SWIGTYPE_p_SCIP.getCPtr(scip), SWIGTYPE_p_SCIP_CONSHDLR.getCPtr(conshdlr));
+    return (cPtr == 0) ? null : new ObjConshdlr(cPtr, false);
+  }
+
+  public static void setResult(SWIGTYPE_p_SCIP_Result resultPtr, SCIP_Result scipResult) {
+    SCIPJNIJNI.setResult(SWIGTYPE_p_SCIP_Result.getCPtr(resultPtr), scipResult.swigValue());
+  }
+
 }
