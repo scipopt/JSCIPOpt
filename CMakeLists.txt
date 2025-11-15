@@ -70,7 +70,7 @@ set(SWIG_JAVA_SOURCES
   ${PROJECT_SOURCE_DIR}/java/jscip/SWIGTYPE_p_SCIP_CONSHDLR.java
   ${PROJECT_SOURCE_DIR}/java/jscip/SWIGTYPE_p_SCIP_DIVESET.java
   ${PROJECT_SOURCE_DIR}/java/jscip/SWIGTYPE_p_SCIP_HASHMAP.java
-  ${PROJECT_SOURCE_DIR}/java/jscip/SWIGTYPE_p_SCIP_LOCKTYPE.java
+  ${PROJECT_SOURCE_DIR}/java/jscip/SCIP_LockType.java
   ${PROJECT_SOURCE_DIR}/java/jscip/SWIGTYPE_p_SCIP_PRESOLTIMING.java
   ${PROJECT_SOURCE_DIR}/java/jscip/SWIGTYPE_p_SCIP_PROPTIMING.java
   ${PROJECT_SOURCE_DIR}/java/jscip/SWIGTYPE_p_SCIP_Result.java
@@ -90,9 +90,9 @@ set(JAVA_SOURCES
   ${PROJECT_SOURCE_DIR}/java/jscip/EventType.java
   ${PROJECT_SOURCE_DIR}/java/jscip/ResultHolder.java
   ${PROJECT_SOURCE_DIR}/java/jscip/ConstraintHandler.java
-  ${PROJECT_SOURCE_DIR}/java/jscip/ConstraintHandlerOptions.java
   ${PROJECT_SOURCE_DIR}/java/jscip/ScipPresolTiming.java
   ${PROJECT_SOURCE_DIR}/java/jscip/ScipPropTiming.java
+  ${PROJECT_SOURCE_DIR}/java/jscip/IntHolder.java
   )
 
 #

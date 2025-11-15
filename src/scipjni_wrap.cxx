@@ -2748,7 +2748,7 @@ SCIP_RETCODE SwigDirector_ObjConshdlr::scip_resprop(SCIP *scip, SCIP_CONSHDLR *c
   return c_result;
 }
 
-SCIP_RETCODE SwigDirector_ObjConshdlr::scip_lock(SCIP *scip, SCIP_CONSHDLR *conshdlr, SCIP_CONS *cons, SCIP_LOCKTYPE locktype, int nlockspos, int nlocksneg) {
+SCIP_RETCODE SwigDirector_ObjConshdlr::scip_lock(SCIP *scip, SCIP_CONSHDLR *conshdlr, SCIP_CONS *cons, SCIP_LockType locktype, int nlockspos, int nlocksneg) {
   SCIP_RETCODE c_result = SwigValueInit< SCIP_RETCODE >() ;
   jint jresult = 0 ;
   JNIEnvWrapper swigjnienv(this) ;
@@ -2757,7 +2757,7 @@ SCIP_RETCODE SwigDirector_ObjConshdlr::scip_lock(SCIP *scip, SCIP_CONSHDLR *cons
   jlong jscip = 0 ;
   jlong jconshdlr = 0 ;
   jlong jcons = 0 ;
-  jlong jlocktype  ;
+  jint jlocktype  ;
   jint jnlockspos  ;
   jint jnlocksneg  ;
   
@@ -2769,8 +2769,7 @@ SCIP_RETCODE SwigDirector_ObjConshdlr::scip_lock(SCIP *scip, SCIP_CONSHDLR *cons
     *((SCIP **)&jscip) = (SCIP *) scip; 
     *((SCIP_CONSHDLR **)&jconshdlr) = (SCIP_CONSHDLR *) conshdlr; 
     *((SCIP_CONS **)&jcons) = (SCIP_CONS *) cons; 
-    jlocktype = 0;
-    *((SCIP_LOCKTYPE **)&jlocktype) = new SCIP_LOCKTYPE((const SCIP_LOCKTYPE &)locktype); 
+    jlocktype = (jint) locktype;
     jnlockspos = (jint) nlockspos;
     jnlocksneg = (jint) nlocksneg;
     jresult = (jint) jenv->CallStaticIntMethod(Swig::jclass_SCIPJNIJNI, Swig::director_method_ids[31], swigjobj, jscip, jconshdlr, jcons, jlocktype, jnlockspos, jnlocksneg);
@@ -3370,7 +3369,7 @@ void SwigDirector_ObjConshdlr::swig_connect_director(JNIEnv *jenv, jobject jself
       "scip_resprop", "(Ljscip/SWIGTYPE_p_SCIP;Ljscip/SWIGTYPE_p_SCIP_CONSHDLR;Ljscip/SWIGTYPE_p_SCIP_CONS;Ljscip/SWIGTYPE_p_SCIP_VAR;ILjscip/SCIP_BoundType;Ljscip/SWIGTYPE_p_SCIP_BDCHGIDX;DLjscip/SWIGTYPE_p_SCIP_Result;)Ljscip/SCIP_Retcode;", NULL 
     },
     {
-      "scip_lock", "(Ljscip/SWIGTYPE_p_SCIP;Ljscip/SWIGTYPE_p_SCIP_CONSHDLR;Ljscip/SWIGTYPE_p_SCIP_CONS;Ljscip/SWIGTYPE_p_SCIP_LOCKTYPE;II)Ljscip/SCIP_Retcode;", NULL 
+      "scip_lock", "(Ljscip/SWIGTYPE_p_SCIP;Ljscip/SWIGTYPE_p_SCIP_CONSHDLR;Ljscip/SWIGTYPE_p_SCIP_CONS;Ljscip/SCIP_LockType;II)Ljscip/SCIP_Retcode;", NULL 
     },
     {
       "scip_active", "(Ljscip/SWIGTYPE_p_SCIP;Ljscip/SWIGTYPE_p_SCIP_CONSHDLR;Ljscip/SWIGTYPE_p_SCIP_CONS;)Ljscip/SCIP_Retcode;", NULL 
@@ -8622,6 +8621,30 @@ SWIGEXPORT jint JNICALL Java_jscip_SCIPJNIJNI_SCIP_1DELAYNODE_1get(JNIEnv *jenv,
 }
 
 
+SWIGEXPORT jint JNICALL Java_jscip_SCIPJNIJNI_SCIP_1LOCKTYPE_1MODEL_1get(JNIEnv *jenv, jclass jcls) {
+  jint jresult = 0 ;
+  SCIP_LockType result;
+  
+  (void)jenv;
+  (void)jcls;
+  result = (SCIP_LockType)SCIP_LOCKTYPE_MODEL;
+  jresult = (jint)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jint JNICALL Java_jscip_SCIPJNIJNI_SCIP_1LOCKTYPE_1CONFLICT_1get(JNIEnv *jenv, jclass jcls) {
+  jint jresult = 0 ;
+  SCIP_LockType result;
+  
+  (void)jenv;
+  (void)jcls;
+  result = (SCIP_LockType)SCIP_LOCKTYPE_CONFLICT;
+  jresult = (jint)result; 
+  return jresult;
+}
+
+
 SWIGEXPORT void JNICALL Java_jscip_SCIPJNIJNI_ObjConshdlr_1scip_1_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2) {
   scip::ObjConshdlr *arg1 = (scip::ObjConshdlr *) 0 ;
   SCIP *arg2 = (SCIP *) 0 ;
@@ -10088,16 +10111,15 @@ SWIGEXPORT jint JNICALL Java_jscip_SCIPJNIJNI_ObjConshdlr_1scip_1respropSwigExpl
 }
 
 
-SWIGEXPORT jint JNICALL Java_jscip_SCIPJNIJNI_ObjConshdlr_1scip_1lock(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jlong jarg3, jlong jarg4, jlong jarg5, jint jarg6, jint jarg7) {
+SWIGEXPORT jint JNICALL Java_jscip_SCIPJNIJNI_ObjConshdlr_1scip_1lock(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jlong jarg3, jlong jarg4, jint jarg5, jint jarg6, jint jarg7) {
   jint jresult = 0 ;
   scip::ObjConshdlr *arg1 = (scip::ObjConshdlr *) 0 ;
   SCIP *arg2 = (SCIP *) 0 ;
   SCIP_CONSHDLR *arg3 = (SCIP_CONSHDLR *) 0 ;
   SCIP_CONS *arg4 = (SCIP_CONS *) 0 ;
-  SCIP_LOCKTYPE arg5 ;
+  SCIP_LockType arg5 ;
   int arg6 ;
   int arg7 ;
-  SCIP_LOCKTYPE *argp5 ;
   SCIP_RETCODE result;
   
   (void)jenv;
@@ -10107,12 +10129,7 @@ SWIGEXPORT jint JNICALL Java_jscip_SCIPJNIJNI_ObjConshdlr_1scip_1lock(JNIEnv *je
   arg2 = *(SCIP **)&jarg2; 
   arg3 = *(SCIP_CONSHDLR **)&jarg3; 
   arg4 = *(SCIP_CONS **)&jarg4; 
-  argp5 = *(SCIP_LOCKTYPE **)&jarg5; 
-  if (!argp5) {
-    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "Attempt to dereference null SCIP_LOCKTYPE");
-    return 0;
-  }
-  arg5 = *argp5; 
+  arg5 = (SCIP_LockType)jarg5; 
   arg6 = (int)jarg6; 
   arg7 = (int)jarg7; 
   result = (SCIP_RETCODE)(arg1)->scip_lock(arg2,arg3,arg4,arg5,arg6,arg7);
@@ -10121,16 +10138,15 @@ SWIGEXPORT jint JNICALL Java_jscip_SCIPJNIJNI_ObjConshdlr_1scip_1lock(JNIEnv *je
 }
 
 
-SWIGEXPORT jint JNICALL Java_jscip_SCIPJNIJNI_ObjConshdlr_1scip_1lockSwigExplicitObjConshdlr(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jlong jarg3, jlong jarg4, jlong jarg5, jint jarg6, jint jarg7) {
+SWIGEXPORT jint JNICALL Java_jscip_SCIPJNIJNI_ObjConshdlr_1scip_1lockSwigExplicitObjConshdlr(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jlong jarg3, jlong jarg4, jint jarg5, jint jarg6, jint jarg7) {
   jint jresult = 0 ;
   scip::ObjConshdlr *arg1 = (scip::ObjConshdlr *) 0 ;
   SCIP *arg2 = (SCIP *) 0 ;
   SCIP_CONSHDLR *arg3 = (SCIP_CONSHDLR *) 0 ;
   SCIP_CONS *arg4 = (SCIP_CONS *) 0 ;
-  SCIP_LOCKTYPE arg5 ;
+  SCIP_LockType arg5 ;
   int arg6 ;
   int arg7 ;
-  SCIP_LOCKTYPE *argp5 ;
   SCIP_RETCODE result;
   
   (void)jenv;
@@ -10140,12 +10156,7 @@ SWIGEXPORT jint JNICALL Java_jscip_SCIPJNIJNI_ObjConshdlr_1scip_1lockSwigExplici
   arg2 = *(SCIP **)&jarg2; 
   arg3 = *(SCIP_CONSHDLR **)&jarg3; 
   arg4 = *(SCIP_CONS **)&jarg4; 
-  argp5 = *(SCIP_LOCKTYPE **)&jarg5; 
-  if (!argp5) {
-    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "Attempt to dereference null SCIP_LOCKTYPE");
-    return 0;
-  }
-  arg5 = *argp5; 
+  arg5 = (SCIP_LockType)jarg5; 
   arg6 = (int)jarg6; 
   arg7 = (int)jarg7; 
   result = (SCIP_RETCODE)(arg1)->scip::ObjConshdlr::scip_lock(arg2,arg3,arg4,arg5,arg6,arg7);
@@ -10980,6 +10991,50 @@ SWIGEXPORT jlong JNICALL Java_jscip_SCIPJNIJNI_SCIPgetObjConshdlr(JNIEnv *jenv, 
 }
 
 
+SWIGEXPORT jint JNICALL Java_jscip_SCIPJNIJNI_SCIPaddVarLocksType(JNIEnv *jenv, jclass jcls, jlong jarg1, jlong jarg2, jint jarg3, jint jarg4, jint jarg5) {
+  jint jresult = 0 ;
+  SCIP *arg1 = (SCIP *) 0 ;
+  SCIP_VAR *arg2 = (SCIP_VAR *) 0 ;
+  SCIP_LockType arg3 ;
+  int arg4 ;
+  int arg5 ;
+  SCIP_RETCODE result;
+  
+  (void)jenv;
+  (void)jcls;
+  arg1 = *(SCIP **)&jarg1; 
+  arg2 = *(SCIP_VAR **)&jarg2; 
+  arg3 = (SCIP_LockType)jarg3; 
+  arg4 = (int)jarg4; 
+  arg5 = (int)jarg5; 
+  result = (SCIP_RETCODE)SCIPaddVarLocksType(arg1,arg2,arg3,arg4,arg5);
+  jresult = (jint)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jint JNICALL Java_jscip_SCIPJNIJNI_SCIPaddConsLocksType(JNIEnv *jenv, jclass jcls, jlong jarg1, jlong jarg2, jint jarg3, jint jarg4, jint jarg5) {
+  jint jresult = 0 ;
+  SCIP *arg1 = (SCIP *) 0 ;
+  SCIP_CONS *arg2 = (SCIP_CONS *) 0 ;
+  SCIP_LockType arg3 ;
+  int arg4 ;
+  int arg5 ;
+  SCIP_RETCODE result;
+  
+  (void)jenv;
+  (void)jcls;
+  arg1 = *(SCIP **)&jarg1; 
+  arg2 = *(SCIP_CONS **)&jarg2; 
+  arg3 = (SCIP_LockType)jarg3; 
+  arg4 = (int)jarg4; 
+  arg5 = (int)jarg5; 
+  result = (SCIP_RETCODE)SCIPaddConsLocksType(arg1,arg2,arg3,arg4,arg5);
+  jresult = (jint)result; 
+  return jresult;
+}
+
+
 SWIGEXPORT void JNICALL Java_jscip_SCIPJNIJNI_setResult(JNIEnv *jenv, jclass jcls, jlong jarg1, jint jarg2) {
   SCIP_Result *arg1 = (SCIP_Result *) 0 ;
   SCIP_Result arg2 ;
@@ -11093,7 +11148,7 @@ SWIGEXPORT void JNICALL Java_jscip_SCIPJNIJNI_swig_1module_1init(JNIEnv *jenv, j
       "SwigDirector_ObjConshdlr_scip_resprop", "(Ljscip/ObjConshdlr;JJJJIIJDJ)I" 
     },
     {
-      "SwigDirector_ObjConshdlr_scip_lock", "(Ljscip/ObjConshdlr;JJJJII)I" 
+      "SwigDirector_ObjConshdlr_scip_lock", "(Ljscip/ObjConshdlr;JJJIII)I" 
     },
     {
       "SwigDirector_ObjConshdlr_scip_active", "(Ljscip/ObjConshdlr;JJJ)I" 
