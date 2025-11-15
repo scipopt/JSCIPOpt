@@ -15,7 +15,7 @@ public class Tsp {
 
     public static void main(String[] args) {
         if (args.length == 1 && args[0].equals("--help")) {
-            System.out.println("Usage: Tsp [nodeCount] [outputFile.png] [seed]");
+            System.out.println("Usage: Tsp [nodeCount] [outputImage] [seed]");
             return;
         }
         int nodeCount;
@@ -91,40 +91,56 @@ public class Tsp {
             scip.addCons(constraint);
             constraints.add(constraint);
         }
+
         TourFinder tourFinder = new TourFinder();
         SolutionRecorder solutionRecorder = new SolutionRecorder();
+        // adding a constraint handler, that inspects solutions found and adds subtour elimination constraints if
+        // necessary.
         scip.addConstraintHandler(new SubtourConstraintGenerator(nodeCount, tourFinder, edges, solutionRecorder));
+
         scip.setRealParam("limits/time", 3600.0);
         scip.setRealParam("limits/memory", 10000.0);
         scip.setLongintParam("limits/totalnodes", 1000);
         scip.solve();
+
         SCIP_Status status = scip.getStatus();
         System.out.println("Scip status: " + status);
+
+        // extracting the best solution
         List<List<TourPart>> bestSolution = tourFinder.findTours(edges, scip, scip.getBestSol());
+        List<List<Integer>> shortestTourNodes;
         if (bestSolution != null) {
-            solutionRecorder.encounteredSolutions.add(
-                    bestSolution
-                            .stream()
-                            .map(
-                                    tour -> tour.stream()
-                                            .map(p -> p.node)
-                                            .collect(Collectors.toList())
-                            )
-                            .collect(Collectors.toList())
-            );
+            shortestTourNodes = bestSolution
+                    .stream()
+                    .map(
+                            tour -> tour.stream()
+                                    .map(p -> p.node)
+                                    .collect(Collectors.toList())
+                    )
+                    .collect(Collectors.toList());
+            solutionRecorder.encounteredSolutions.add(shortestTourNodes);
         } else {
             System.err.println("!!! No best solution.");
+            return;
         }
 
+        StringBuilder solutionLogMsgBuilder = new StringBuilder("Shortest path: ");
+        for (Integer node : shortestTourNodes.get(0)) {
+            solutionLogMsgBuilder.append(" -> ")
+                    .append(node);
+        }
+        System.out.println(solutionLogMsgBuilder);
+
+        // writing intermediate solutions and best solution as images
         List<List<List<Integer>>> solutions = solutionRecorder.encounteredSolutions;
         String formatName = outputImage.substring(outputImage.lastIndexOf('.') + 1);
         if (outputImage.contains("%d")) {
             for (int i = 0; i != solutions.size(); ++i) {
-                printImage(nodes, solutions.get(i), String.format(outputImage, i), formatName);
+                writeSolutionAsImage(nodes, solutions.get(i), String.format(outputImage, i), formatName);
             }
         } else {
             // only print final solution
-            printImage(nodes, solutions.get(solutions.size() - 1), outputImage, formatName);
+            writeSolutionAsImage(nodes, shortestTourNodes, outputImage, formatName);
         }
         scip.writeTransProblem("tsp.ign.lp");
         constraints.forEach(scip::releaseCons);
@@ -132,7 +148,7 @@ public class Tsp {
         scip.free();
     }
 
-    private static void printImage(
+    private static void writeSolutionAsImage(
             List<Node> nodes,
             List<List<Integer>> tours,
             String outputImage,
@@ -285,7 +301,18 @@ public class Tsp {
             super(
                     "SubtourExclusion",
                     "Creates constraints to exclude subtours",
-                    new ConstraintHandlerOptions()
+                    1_000_000,
+                    -2_000_000,
+                    -2_000_000,
+                    1,
+                    -1,
+                    1,
+                    0,
+                    0L,
+                    0L,
+                    0L,
+                    ScipPropTiming.BEFORELP,
+                    ScipPresolTiming.FAST
             );
             this.nodeCount = nodeCount;
             this.tourFinder = tourFinder;
@@ -298,10 +325,10 @@ public class Tsp {
         }
 
         @Override
-        protected SCIP_Retcode check(Scip scip, Solution solution, ResultHolder resultHolder) {
+        protected SCIP_Retcode check(Scip scip, Solution solution, long checkintegrality, long checklprows, long printreason, long completely, ResultHolder resultHolder) {
             log("check");
             List<List<TourPart>> tours = tourFinder.findTours(edges, scip, solution);
-            resultHolder.setResult(checkFeasibility(tours));
+            resultHolder.setValue(checkFeasibility(tours));
             return SCIP_Retcode.SCIP_OKAY;
         }
 
@@ -309,7 +336,7 @@ public class Tsp {
         protected SCIP_Retcode sepalp(Scip scip, ResultHolder resultHolder) {
             log("sepalp");
             List<List<TourPart>> tours = tourFinder.findTours(edges, scip, null);
-            resultHolder.setResult(separate(scip, tours));
+            resultHolder.setValue(separate(scip, tours));
             recordSolution(tours);
             return SCIP_Retcode.SCIP_OKAY;
         }
@@ -318,7 +345,7 @@ public class Tsp {
         protected SCIP_Retcode sepasol(Scip scip, Solution solution, ResultHolder resultHolder) {
             log("scipExec, stage: " + scip.getStage());
             List<List<TourPart>> subtours = tourFinder.findTours(edges, scip, solution);
-            resultHolder.setResult(separate(scip, subtours));
+            resultHolder.setValue(separate(scip, subtours));
             recordSolution(subtours);
             return SCIP_Retcode.SCIP_OKAY;
         }
@@ -379,187 +406,14 @@ public class Tsp {
         }
 
         @Override
-        protected SCIP_Retcode free(Scip scip) {
-            log("free");
-            return super.free(scip);
-        }
-
-        @Override
-        protected SCIP_Retcode init(Scip scip) {
-            log("init");
-            return super.init(scip);
-        }
-
-        @Override
-        protected SCIP_Retcode exit(Scip scip) {
-            log("exit");
-            return super.exit(scip);
-        }
-
-        @Override
-        protected SCIP_Retcode initpre(Scip scip) {
-            log("initpre");
-            return super.initpre(scip);
-        }
-
-        @Override
-        protected SCIP_Retcode exitpre(Scip scip) {
-            log("exitpre");
-            return super.exitpre(scip);
-        }
-
-        @Override
-        protected SCIP_Retcode initsol(Scip scip) {
-            log("initsol");
-            return super.initsol(scip);
-        }
-
-        @Override
-        protected SCIP_Retcode exitsol(Scip scip) {
-            log("exitsol");
-            return super.exitsol(scip);
-        }
-
-        @Override
-        protected SCIP_Retcode delete(Scip scip) {
-            log("delete");
-            return super.delete(scip);
-        }
-
-        @Override
-        protected SCIP_Retcode trans(Scip scip) {
-            log("trans");
-            return super.trans(scip);
-        }
-
-        @Override
-        protected SCIP_Retcode initlp(Scip scip) {
-            log("initlp");
-            return super.initlp(scip);
-        }
-
-        @Override
         protected SCIP_Retcode enfolp(Scip scip, ResultHolder resultHolder) {
             log("enfolp");
             List<List<TourPart>> tours = tourFinder.findTours(edges, scip, null);
-            resultHolder.setResult(separate(scip, tours));
+            resultHolder.setValue(separate(scip, tours));
             recordSolution(tours);
             return SCIP_Retcode.SCIP_OKAY;
         }
 
-        @Override
-        protected SCIP_Retcode enforelax(Scip scip) {
-            log("enforelax");
-            return super.enforelax(scip);
-        }
-
-        @Override
-        protected SCIP_Retcode enfops(Scip scip) {
-            log("enfops");
-            return super.enfops(scip);
-        }
-
-        @Override
-        protected SCIP_Retcode prop(Scip scip) {
-            log("prop");
-            return super.prop(scip);
-        }
-
-        @Override
-        protected SCIP_Retcode presol(Scip scip) {
-            log("presol");
-            return super.presol(scip);
-        }
-
-        @Override
-        protected SCIP_Retcode resprop(Scip scip) {
-            log("resprop");
-            return super.resprop(scip);
-        }
-
-        @Override
-        protected SCIP_Retcode lock(Scip scip) {
-            log("lock");
-            return super.lock(scip);
-        }
-
-        @Override
-        protected SCIP_Retcode active(Scip scip) {
-            log("active");
-            return super.active(scip);
-        }
-
-        @Override
-        protected SCIP_Retcode deactive(Scip scip) {
-            log("deactive");
-            return super.deactive(scip);
-        }
-
-        @Override
-        protected SCIP_Retcode enable(Scip scip) {
-            log("enable");
-            return super.enable(scip);
-        }
-
-        @Override
-        protected SCIP_Retcode disable(Scip scip) {
-            log("disable");
-            return super.disable(scip);
-        }
-
-        @Override
-        protected SCIP_Retcode delvars(Scip scip) {
-            log("delvars");
-            return super.delvars(scip);
-        }
-
-        @Override
-        protected SCIP_Retcode print(Scip scip) {
-            log("print");
-            return super.print(scip);
-        }
-
-        @Override
-        protected SCIP_Retcode copy(Scip scip) {
-            log("copy");
-            return super.copy(scip);
-        }
-
-        @Override
-        protected SCIP_Retcode parse(Scip scip) {
-            log("parse");
-            return super.parse(scip);
-        }
-
-        @Override
-        protected SCIP_Retcode getvars(Scip scip) {
-            log("getvars");
-            return super.getvars(scip);
-        }
-
-        @Override
-        protected SCIP_Retcode getnvars(Scip scip) {
-            log("getnvars");
-            return super.getnvars(scip);
-        }
-
-        @Override
-        protected SCIP_Retcode getdivebdchgs(Scip scip) {
-            log("getdivebdchgs");
-            return super.getdivebdchgs(scip);
-        }
-
-        @Override
-        protected SCIP_Retcode getpermsymgraph(Scip scip) {
-            log("getpermsymgraph");
-            return super.getpermsymgraph(scip);
-        }
-
-        @Override
-        protected SCIP_Retcode getsignedpermsymgraph(Scip scip) {
-            log("getsignedpermsymgraph");
-            return super.getsignedpermsymgraph(scip);
-        }
     }
 
     private static class TourFinder {

@@ -1166,6 +1166,14 @@ enum SCIP_Result
    SCIP_SUCCESS     =  17,
    SCIP_DELAYNODE   =  18
 };
+
+// from type_var.h
+enum SCIP_LockType
+{
+   SCIP_LOCKTYPE_MODEL    = 0,
+   SCIP_LOCKTYPE_CONFLICT = 1
+};
+
 // from objconshdlr.h
 namespace scip {
 class ObjConshdlr {
@@ -1382,7 +1390,7 @@ public:
       SCIP* scip,
       SCIP_CONSHDLR* conshdlr,
       SCIP_CONS* cons,
-      SCIP_LOCKTYPE locktype,
+      SCIP_LockType locktype,
       int nlockspos,
       int nlocksneg
    );
@@ -1476,5 +1484,7 @@ public:
 SCIP_RETCODE SCIPincludeObjConshdlr(SCIP* scip, scip::ObjConshdlr* objconshdlr, SCIP_Bool deleteobject);
 scip::ObjConshdlr* SCIPfindObjConshdlr(SCIP* scip, const char* name);
 scip::ObjConshdlr* SCIPgetObjConshdlr(SCIP* scip, SCIP_CONSHDLR* conshdlr);
+SCIP_RETCODE SCIPaddVarLocksType(SCIP* scip, SCIP_VAR* var, SCIP_LockType locktype, int nlocksdown, int nlocksup);
+SCIP_RETCODE SCIPaddConsLocksType(SCIP* scip, SCIP_CONS* cons, SCIP_LockType locktype, int nlockspos, int nlocksneg);
 
 void setResult(SCIP_Result* resultPtr, SCIP_Result scipResult);

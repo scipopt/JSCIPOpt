@@ -890,6 +890,14 @@ public class SCIPJNI {
     return (cPtr == 0) ? null : new ObjConshdlr(cPtr, false);
   }
 
+  public static SCIP_Retcode SCIPaddVarLocksType(SWIGTYPE_p_SCIP scip, SWIGTYPE_p_SCIP_VAR var, SCIP_LockType locktype, int nlocksdown, int nlocksup) {
+    return SCIP_Retcode.swigToEnum(SCIPJNIJNI.SCIPaddVarLocksType(SWIGTYPE_p_SCIP.getCPtr(scip), SWIGTYPE_p_SCIP_VAR.getCPtr(var), locktype.swigValue(), nlocksdown, nlocksup));
+  }
+
+  public static SCIP_Retcode SCIPaddConsLocksType(SWIGTYPE_p_SCIP scip, SWIGTYPE_p_SCIP_CONS cons, SCIP_LockType locktype, int nlockspos, int nlocksneg) {
+    return SCIP_Retcode.swigToEnum(SCIPJNIJNI.SCIPaddConsLocksType(SWIGTYPE_p_SCIP.getCPtr(scip), SWIGTYPE_p_SCIP_CONS.getCPtr(cons), locktype.swigValue(), nlockspos, nlocksneg));
+  }
+
   public static void setResult(SWIGTYPE_p_SCIP_Result resultPtr, SCIP_Result scipResult) {
     SCIPJNIJNI.setResult(SWIGTYPE_p_SCIP_Result.getCPtr(resultPtr), scipResult.swigValue());
   }

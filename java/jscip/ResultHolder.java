@@ -4,10 +4,18 @@ import java.util.Objects;
 
 public class ResultHolder {
 
-    SCIP_Result result = SCIP_Result.SCIP_DIDNOTRUN;
+    private SCIP_Result value = SCIP_Result.SCIP_DIDNOTRUN;
 
-    public void setResult(SCIP_Result result) {
-        this.result = Objects.requireNonNull(result, "result");
+    public void setValue(SCIP_Result value) {
+        this.value = Objects.requireNonNull(value, "result");
+    }
+
+    public boolean isSet() {
+        return value != SCIP_Result.SCIP_DIDNOTRUN;
+    }
+
+    public SCIP_Result getValue() {
+        return value;
     }
 
 }

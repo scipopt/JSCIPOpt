@@ -76,7 +76,7 @@ public:
     virtual SCIP_RETCODE scip_prop(SCIP *scip, SCIP_CONSHDLR *conshdlr, SCIP_CONS **conss, int nconss, int nusefulconss, int nmarkedconss, SCIP_PROPTIMING proptiming, SCIP_Result *result);
     virtual SCIP_RETCODE scip_presol(SCIP *scip, SCIP_CONSHDLR *conshdlr, SCIP_CONS **conss, int nconss, int nrounds, SCIP_PRESOLTIMING presoltiming, int nnewfixedvars, int nnewaggrvars, int nnewchgvartypes, int nnewchgbds, int nnewholes, int nnewdelconss, int nnewaddconss, int nnewupgdconss, int nnewchgcoefs, int nnewchgsides, int *nfixedvars, int *naggrvars, int *nchgvartypes, int *nchgbds, int *naddholes, int *ndelconss, int *naddconss, int *nupgdconss, int *nchgcoefs, int *nchgsides, SCIP_Result *result);
     virtual SCIP_RETCODE scip_resprop(SCIP *scip, SCIP_CONSHDLR *conshdlr, SCIP_CONS *cons, SCIP_VAR *infervar, int inferinfo, SCIP_BOUNDTYPE boundtype, SCIP_BDCHGIDX *bdchgidx, double relaxedbd, SCIP_Result *result);
-    virtual SCIP_RETCODE scip_lock(SCIP *scip, SCIP_CONSHDLR *conshdlr, SCIP_CONS *cons, SCIP_LOCKTYPE locktype, int nlockspos, int nlocksneg);
+    virtual SCIP_RETCODE scip_lock(SCIP *scip, SCIP_CONSHDLR *conshdlr, SCIP_CONS *cons, SCIP_LockType locktype, int nlockspos, int nlocksneg);
     virtual SCIP_RETCODE scip_active(SCIP *scip, SCIP_CONSHDLR *conshdlr, SCIP_CONS *cons);
     virtual SCIP_RETCODE scip_deactive(SCIP *scip, SCIP_CONSHDLR *conshdlr, SCIP_CONS *cons);
     virtual SCIP_RETCODE scip_enable(SCIP *scip, SCIP_CONSHDLR *conshdlr, SCIP_CONS *cons);

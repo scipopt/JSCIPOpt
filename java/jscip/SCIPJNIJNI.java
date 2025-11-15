@@ -445,6 +445,8 @@ public class SCIPJNIJNI {
   public final static native int SCIP_SUSPENDED_get();
   public final static native int SCIP_SUCCESS_get();
   public final static native int SCIP_DELAYNODE_get();
+  public final static native int SCIP_LOCKTYPE_MODEL_get();
+  public final static native int SCIP_LOCKTYPE_CONFLICT_get();
   public final static native void ObjConshdlr_scip__set(long jarg1, ObjConshdlr jarg1_, long jarg2);
   public final static native long ObjConshdlr_scip__get(long jarg1, ObjConshdlr jarg1_);
   public final static native void ObjConshdlr_scip_name__set(long jarg1, ObjConshdlr jarg1_, String jarg2);
@@ -503,8 +505,8 @@ public class SCIPJNIJNI {
   public final static native int ObjConshdlr_scip_presolSwigExplicitObjConshdlr(long jarg1, ObjConshdlr jarg1_, long jarg2, long jarg3, long jarg4, int jarg5, int jarg6, long jarg7, int jarg8, int jarg9, int jarg10, int jarg11, int jarg12, int jarg13, int jarg14, int jarg15, int jarg16, int jarg17, long jarg18, long jarg19, long jarg20, long jarg21, long jarg22, long jarg23, long jarg24, long jarg25, long jarg26, long jarg27, long jarg28);
   public final static native int ObjConshdlr_scip_resprop(long jarg1, ObjConshdlr jarg1_, long jarg2, long jarg3, long jarg4, long jarg5, int jarg6, int jarg7, long jarg8, double jarg9, long jarg10);
   public final static native int ObjConshdlr_scip_respropSwigExplicitObjConshdlr(long jarg1, ObjConshdlr jarg1_, long jarg2, long jarg3, long jarg4, long jarg5, int jarg6, int jarg7, long jarg8, double jarg9, long jarg10);
-  public final static native int ObjConshdlr_scip_lock(long jarg1, ObjConshdlr jarg1_, long jarg2, long jarg3, long jarg4, long jarg5, int jarg6, int jarg7);
-  public final static native int ObjConshdlr_scip_lockSwigExplicitObjConshdlr(long jarg1, ObjConshdlr jarg1_, long jarg2, long jarg3, long jarg4, long jarg5, int jarg6, int jarg7);
+  public final static native int ObjConshdlr_scip_lock(long jarg1, ObjConshdlr jarg1_, long jarg2, long jarg3, long jarg4, int jarg5, int jarg6, int jarg7);
+  public final static native int ObjConshdlr_scip_lockSwigExplicitObjConshdlr(long jarg1, ObjConshdlr jarg1_, long jarg2, long jarg3, long jarg4, int jarg5, int jarg6, int jarg7);
   public final static native int ObjConshdlr_scip_active(long jarg1, ObjConshdlr jarg1_, long jarg2, long jarg3, long jarg4);
   public final static native int ObjConshdlr_scip_activeSwigExplicitObjConshdlr(long jarg1, ObjConshdlr jarg1_, long jarg2, long jarg3, long jarg4);
   public final static native int ObjConshdlr_scip_deactive(long jarg1, ObjConshdlr jarg1_, long jarg2, long jarg3, long jarg4);
@@ -536,6 +538,8 @@ public class SCIPJNIJNI {
   public final static native int SCIPincludeObjConshdlr(long jarg1, long jarg2, ObjConshdlr jarg2_, long jarg3);
   public final static native long SCIPfindObjConshdlr(long jarg1, String jarg2);
   public final static native long SCIPgetObjConshdlr(long jarg1, long jarg2);
+  public final static native int SCIPaddVarLocksType(long jarg1, long jarg2, int jarg3, int jarg4, int jarg5);
+  public final static native int SCIPaddConsLocksType(long jarg1, long jarg2, int jarg3, int jarg4, int jarg5);
   public final static native void setResult(long jarg1, int jarg2);
 
   public static void SwigDirector_ObjMessagehdlr_scip_error(ObjMessagehdlr jself, long messagehdlr, long file, String msg) {
@@ -631,8 +635,8 @@ public class SCIPJNIJNI {
   public static int SwigDirector_ObjConshdlr_scip_resprop(ObjConshdlr jself, long scip, long conshdlr, long cons, long infervar, int inferinfo, int boundtype, long bdchgidx, double relaxedbd, long result) {
     return (jself.scip_resprop((scip == 0) ? null : new SWIGTYPE_p_SCIP(scip, false), (conshdlr == 0) ? null : new SWIGTYPE_p_SCIP_CONSHDLR(conshdlr, false), (cons == 0) ? null : new SWIGTYPE_p_SCIP_CONS(cons, false), (infervar == 0) ? null : new SWIGTYPE_p_SCIP_VAR(infervar, false), inferinfo, SCIP_BoundType.swigToEnum(boundtype), (bdchgidx == 0) ? null : new SWIGTYPE_p_SCIP_BDCHGIDX(bdchgidx, false), relaxedbd, (result == 0) ? null : new SWIGTYPE_p_SCIP_Result(result, false))).swigValue();
   }
-  public static int SwigDirector_ObjConshdlr_scip_lock(ObjConshdlr jself, long scip, long conshdlr, long cons, long locktype, int nlockspos, int nlocksneg) {
-    return (jself.scip_lock((scip == 0) ? null : new SWIGTYPE_p_SCIP(scip, false), (conshdlr == 0) ? null : new SWIGTYPE_p_SCIP_CONSHDLR(conshdlr, false), (cons == 0) ? null : new SWIGTYPE_p_SCIP_CONS(cons, false), new SWIGTYPE_p_SCIP_LOCKTYPE(locktype, true), nlockspos, nlocksneg)).swigValue();
+  public static int SwigDirector_ObjConshdlr_scip_lock(ObjConshdlr jself, long scip, long conshdlr, long cons, int locktype, int nlockspos, int nlocksneg) {
+    return (jself.scip_lock((scip == 0) ? null : new SWIGTYPE_p_SCIP(scip, false), (conshdlr == 0) ? null : new SWIGTYPE_p_SCIP_CONSHDLR(conshdlr, false), (cons == 0) ? null : new SWIGTYPE_p_SCIP_CONS(cons, false), SCIP_LockType.swigToEnum(locktype), nlockspos, nlocksneg)).swigValue();
   }
   public static int SwigDirector_ObjConshdlr_scip_active(ObjConshdlr jself, long scip, long conshdlr, long cons) {
     return (jself.scip_active((scip == 0) ? null : new SWIGTYPE_p_SCIP(scip, false), (conshdlr == 0) ? null : new SWIGTYPE_p_SCIP_CONSHDLR(conshdlr, false), (cons == 0) ? null : new SWIGTYPE_p_SCIP_CONS(cons, false))).swigValue();
