@@ -63,6 +63,27 @@ set(SWIG_JAVA_SOURCES
   ${PROJECT_SOURCE_DIR}/java/jscip/SWIGTYPE_p_SCIP_Eventhdlr.java
   ${PROJECT_SOURCE_DIR}/java/jscip/SWIGTYPE_p_SCIP_EVENTTYPE.java
   ${PROJECT_SOURCE_DIR}/java/jscip/SWIGTYPE_p_uint64_t.java
+  ${PROJECT_SOURCE_DIR}/java/jscip/SCIP_Event.java
+  ${PROJECT_SOURCE_DIR}/java/jscip/SCIP_EventVarAdded.java
+  ${PROJECT_SOURCE_DIR}/java/jscip/SCIP_EventVarDeleted.java
+  ${PROJECT_SOURCE_DIR}/java/jscip/SCIP_EventVarFixed.java
+  ${PROJECT_SOURCE_DIR}/java/jscip/SCIP_EventVarUnlocked.java
+  ${PROJECT_SOURCE_DIR}/java/jscip/SCIP_EventObjChg.java
+  ${PROJECT_SOURCE_DIR}/java/jscip/SCIP_EventBdChg.java
+  ${PROJECT_SOURCE_DIR}/java/jscip/SCIP_EventHole.java
+  ${PROJECT_SOURCE_DIR}/java/jscip/SCIP_EventImplAdd.java
+  ${PROJECT_SOURCE_DIR}/java/jscip/SCIP_EventTypeChg.java
+  ${PROJECT_SOURCE_DIR}/java/jscip/SCIP_EventRowAddedSepa.java
+  ${PROJECT_SOURCE_DIR}/java/jscip/SCIP_EventRowDeletedSepa.java
+  ${PROJECT_SOURCE_DIR}/java/jscip/SCIP_EventRowAddedLP.java
+  ${PROJECT_SOURCE_DIR}/java/jscip/SCIP_EventRowDeletedLP.java
+  ${PROJECT_SOURCE_DIR}/java/jscip/SCIP_EventRowCoefChanged.java
+  ${PROJECT_SOURCE_DIR}/java/jscip/SCIP_EventRowConstChanged.java
+  ${PROJECT_SOURCE_DIR}/java/jscip/SCIP_EventRowSideChanged.java
+  ${PROJECT_SOURCE_DIR}/java/jscip/SWIGTYPE_p_SCIP_COL.java
+  ${PROJECT_SOURCE_DIR}/java/jscip/SWIGTYPE_p_SCIP_ROW.java
+  ${PROJECT_SOURCE_DIR}/java/jscip/SWIGTYPE_p_SCIP_NODE.java
+  ${PROJECT_SOURCE_DIR}/java/jscip/SWIGTYPE_p_SCIP_SIDETYPE.java
   )
 
 set(JAVA_SOURCES

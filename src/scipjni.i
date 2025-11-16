@@ -543,6 +543,80 @@
 
       return messagehdlr;
    }
+
+   /* BEGIN assist functions for accessing SCIP_Event data union members */
+   SCIP_EventVarAdded getEventDataVarAdde(SCIP_Event event) {
+      return event.data.eventvaradded;
+   }
+   
+   SCIP_EventVarDeleted getEventDataVarDeleted(SCIP_Event event) {
+      return event.data.eventvardeleted;
+   }
+   
+   SCIP_EventVarFixed getEventDataVarFixed(SCIP_Event event) {
+      return event.data.eventvarfixed;
+   }
+
+   SCIP_EventVarUnlocked getEventDataVarUnlocked(SCIP_Event event) {
+      return event.data.eventvarunlocked;
+   }
+
+   SCIP_EventObjChg getEventDataObjChg(SCIP_Event event) {
+      return event.data.eventobjchg;
+   }
+
+   SCIP_EventBdChg getEventDataBdChg(SCIP_Event event) {
+      return event.data.eventbdchg;
+   }
+
+   SCIP_EventHole getEventDataHole(SCIP_Event event) {
+      return event.data.eventhole;
+   }
+
+   SCIP_EventImplAdd getEventDataImplAdd(SCIP_Event event) {
+      return event.data.eventimpladd;
+   }
+
+   SCIP_EventTypeChg getEventDataTypeChg(SCIP_Event event) {
+      return event.data.eventtypechg;
+   }
+
+   SCIP_EventRowAddedSepa getEventDataRowAddedSepa(SCIP_Event event) {
+      return event.data.eventrowaddedsepa;
+   }
+
+   SCIP_EventRowDeletedSepa getEventDataRowDeletedSepa(SCIP_Event event) {
+      return event.data.eventrowdeletedsepa;
+   }
+
+   SCIP_EventRowAddedLP getEventDataRowAddedLp(SCIP_Event event) {
+      return event.data.eventrowaddedlp;
+   }
+
+   SCIP_EventRowDeletedLP getEventDataRowDeletedLp(SCIP_Event event) {
+      return event.data.eventrowdeletedlp;
+   }
+
+   SCIP_EventRowCoefChanged getEventDataRowCoefChanged(SCIP_Event event) {
+      return event.data.eventrowcoefchanged;
+   }
+
+   SCIP_EventRowConstChanged getEventDataRowConstChanged(SCIP_Event event) {
+      return event.data.eventrowconstchanged;
+   }
+
+   SCIP_EventRowSideChanged getEventDataRowSideChanged(SCIP_Event event) {
+      return event.data.eventrowsidechanged;
+   }
+
+   SCIP_SOL* getEventDataSolution(SCIP_Event event) {
+      return event.data.sol;
+   }
+
+   SCIP_NODE* getEventDataNode(SCIP_Event event) {
+      return event.data.node;
+   }
+   /* END assist functions for accessing SCIP_Event data union members*/
 %}
 
 /* use SWIG internal arrays */
@@ -890,6 +964,148 @@ SCIP_CONS*     createConsBasicXor(SCIP* scip, const char* name, SCIP_Bool rhs, i
 void           releaseCons(SCIP* scip, SCIP_CONS* cons);
 SCIP_MESSAGEHDLR* createObjMessagehdlr(scip::ObjMessagehdlr* objmessagehdlr, SCIP_Bool deleteobject);
 
+// from struct_event.h
+struct SCIP_EventVarAdded
+{
+   SCIP_VAR* var;
+};
+
+struct SCIP_EventVarDeleted
+{
+   SCIP_VAR* var;
+};
+
+struct SCIP_EventVarFixed
+{
+   SCIP_VAR* var;
+};
+
+struct SCIP_EventVarUnlocked
+{
+   SCIP_VAR* var;
+};
+
+struct SCIP_EventObjChg
+{
+   SCIP_Real oldobj;
+   SCIP_Real newobj;
+   SCIP_VAR* var;
+};
+
+struct SCIP_EventBdChg
+{
+   SCIP_Real oldbound;
+   SCIP_Real newbound;
+   SCIP_VAR* var;
+};
+
+struct SCIP_EventHole
+{
+   SCIP_Real left;
+   SCIP_Real right;
+   SCIP_VAR* var;
+};
+
+struct SCIP_EventImplAdd
+{
+   SCIP_VAR* var;
+};
+
+struct SCIP_EventTypeChg
+{
+   SCIP_VARTYPE oldtype;
+   SCIP_VARTYPE newtype;
+   SCIP_VAR* var;
+};
+
+struct SCIP_EventRowAddedSepa
+{
+   SCIP_ROW* row;
+};
+
+struct SCIP_EventRowDeletedSepa
+{
+   SCIP_ROW* row;
+};
+
+struct SCIP_EventRowAddedLP
+{
+   SCIP_ROW* row;
+};
+
+struct SCIP_EventRowDeletedLP
+{
+   SCIP_ROW* row;
+};
+
+struct SCIP_EventRowCoefChanged
+{
+   SCIP_ROW* row;
+   SCIP_COL* col;
+   SCIP_Real oldval;
+   SCIP_Real newval;
+};
+
+struct SCIP_EventRowConstChanged
+{
+   SCIP_ROW* row;
+   SCIP_Real oldval;
+   SCIP_Real newval;
+};
+
+struct SCIP_EventRowSideChanged
+{
+   SCIP_ROW* row;
+   SCIP_SIDETYPE side;
+   SCIP_Real oldval;
+   SCIP_Real newval;
+};
+
+struct SCIP_Event
+{
+   union
+   {
+      SCIP_EventVarAdded eventvaradded;
+      SCIP_EventVarDeleted eventvardeleted;
+      SCIP_EventVarFixed eventvarfixed;
+      SCIP_EventVarUnlocked eventvarunlocked;
+      SCIP_EventObjChg eventobjchg;
+      SCIP_EventBdChg eventbdchg;
+      SCIP_EventHole eventhole;
+      SCIP_EventImplAdd eventimpladd;
+      SCIP_EventTypeChg eventtypechg;
+      SCIP_EventRowAddedSepa eventrowaddedsepa;
+      SCIP_EventRowDeletedSepa eventrowdeletedsepa;
+      SCIP_EventRowAddedLP eventrowaddedlp;
+      SCIP_EventRowDeletedLP eventrowdeletedlp;
+      SCIP_EventRowCoefChanged eventrowcoefchanged;
+      SCIP_EventRowConstChanged eventrowconstchanged;
+      SCIP_EventRowSideChanged eventrowsidechanged;
+      SCIP_NODE* node;
+      SCIP_SOL* sol;
+   } data;
+   SCIP_EVENTTYPE eventtype;
+};
+
+SCIP_EventVarAdded getEventDataVarAdde(SCIP_Event event);
+SCIP_EventVarDeleted getEventDataVarDeleted(SCIP_Event event);
+SCIP_EventVarFixed getEventDataVarFixed(SCIP_Event event);
+SCIP_EventVarUnlocked getEventDataVarUnlocked(SCIP_Event event);
+SCIP_EventObjChg getEventDataObjChg(SCIP_Event event);
+SCIP_EventBdChg getEventDataBdChg(SCIP_Event event);
+SCIP_EventHole getEventDataHole(SCIP_Event event);
+SCIP_EventImplAdd getEventDataImplAdd(SCIP_Event event);
+SCIP_EventTypeChg getEventDataTypeChg(SCIP_Event event);
+SCIP_EventRowAddedSepa getEventDataRowAddedSepa(SCIP_Event event);
+SCIP_EventRowDeletedSepa getEventDataRowDeletedSepa(SCIP_Event event);
+SCIP_EventRowAddedLP getEventDataRowAddedLp(SCIP_Event event);
+SCIP_EventRowDeletedLP getEventDataRowDeletedLp(SCIP_Event event);
+SCIP_EventRowCoefChanged getEventDataRowCoefChanged(SCIP_Event event);
+SCIP_EventRowConstChanged getEventDataRowConstChanged(SCIP_Event event);
+SCIP_EventRowSideChanged getEventDataRowSideChanged(SCIP_Event event);
+SCIP_SOL* getEventDataSolution(SCIP_Event event);
+SCIP_NODE* getEventDataNode(SCIP_Event event);
+
 // from objeventhdlr.h
 namespace scip {
 class ObjEventhdlr {
@@ -906,11 +1122,17 @@ public:
     virtual SCIP_RETCODE scip_initsol (SCIP* scip, SCIP_EVENTHDLR* eventhdlr);
     virtual SCIP_RETCODE scip_exitsol (SCIP* scip, SCIP_EVENTHDLR* eventhdlr);
     virtual SCIP_RETCODE scip_delete (SCIP* scip, SCIP_EVENTHDLR* eventhdlr, SCIP_EVENTDATA** eventdata);
-    virtual SCIP_RETCODE scip_exec (SCIP* scip, SCIP_EVENTHDLR* eventhdlr, SCIP_EVENT* event, SCIP_EVENTDATA* eventdata);
+    virtual SCIP_RETCODE scip_exec (SCIP* scip, SCIP_EVENTHDLR* eventhdlr, SCIP_Event* event, SCIP_EVENTDATA* eventdata);
 };
 } /* namespace scip */
 
 SCIP_RETCODE SCIPincludeObjEventhdlr(SCIP* scip, scip::ObjEventhdlr* objeventhdlr, SCIP_Bool deleteobject);
 scip::ObjEventhdlr* SCIPfindObjEventhdlr(SCIP* scip, const char* name);
 typedef long long int SCIP_EVENTTYPE;
-SCIP_RETCODE   SCIPcatchEvent(SCIP* scip, SCIP_EVENTTYPE eventtype, SCIP_EVENTHDLR* eventhdlr, SCIP_EVENTDATA* eventdata, int* filterpos);
+SCIP_RETCODE   SCIPcatchEvent(
+    SCIP* scip,
+    SCIP_EVENTTYPE eventtype,
+    SCIP_EVENTHDLR* eventhdlr,
+    SCIP_EVENTDATA* eventdata,
+    int* filterpos
+);

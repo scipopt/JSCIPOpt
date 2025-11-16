@@ -37,7 +37,7 @@ public class EventHandler {
         return SCIP_Retcode.SCIP_OKAY;
     }
 
-    protected SCIP_Retcode scipExec(Scip scip) {
+    protected SCIP_Retcode scipExec(Scip scip, SCIP_Event event) {
         return SCIP_Retcode.SCIP_OKAY;
     }
 
@@ -84,17 +84,25 @@ public class EventHandler {
             }
 
             @Override
-            public SCIP_Retcode scip_delete(SWIGTYPE_p_SCIP scipptr, SWIGTYPE_p_SCIP_EVENTHDLR eventhdlr, SWIGTYPE_p_p_SCIP_EVENTDATA eventdata) {
+            public SCIP_Retcode scip_delete(
+                    SWIGTYPE_p_SCIP scipptr,
+                    SWIGTYPE_p_SCIP_EVENTHDLR eventhdlr,
+                    SWIGTYPE_p_p_SCIP_EVENTDATA eventdata
+            ) {
                 return scipDelete(scip);
             }
 
             @Override
-            public SCIP_Retcode scip_exec(SWIGTYPE_p_SCIP scipptr, SWIGTYPE_p_SCIP_EVENTHDLR eventhdlr, SWIGTYPE_p_SCIP_EVENT event, SWIGTYPE_p_SCIP_EVENTDATA eventdata) {
-                return scipExec(scip);
+            public SCIP_Retcode scip_exec(
+                    SWIGTYPE_p_SCIP scipptr,
+                    SWIGTYPE_p_SCIP_EVENTHDLR eventhdlr,
+                    SCIP_Event event,
+                    SWIGTYPE_p_SCIP_EVENTDATA eventdata
+            ) {
+                return scipExec(scip, event);
             }
         };
         SCIPJNI.SCIPincludeObjEventhdlr(scipptr, _objEventhdlr, 1L);
-        //_objEventhdlr.swigReleaseOwnership();
     }
 
 }

@@ -42,7 +42,7 @@ public:
     virtual SCIP_RETCODE scip_initsol(SCIP *scip, SCIP_EVENTHDLR *eventhdlr);
     virtual SCIP_RETCODE scip_exitsol(SCIP *scip, SCIP_EVENTHDLR *eventhdlr);
     virtual SCIP_RETCODE scip_delete(SCIP *scip, SCIP_EVENTHDLR *eventhdlr, SCIP_EVENTDATA **eventdata);
-    virtual SCIP_RETCODE scip_exec(SCIP *scip, SCIP_EVENTHDLR *eventhdlr, SCIP_EVENT *event, SCIP_EVENTDATA *eventdata);
+    virtual SCIP_RETCODE scip_exec(SCIP *scip, SCIP_EVENTHDLR *eventhdlr, SCIP_Event *event, SCIP_EVENTDATA *eventdata);
 public:
     bool swig_overrides(int n) {
       return (n < 7 ? swig_override[n] : false);

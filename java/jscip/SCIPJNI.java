@@ -789,6 +789,80 @@ public class SCIPJNI {
     return (cPtr == 0) ? null : new SWIGTYPE_p_SCIP_Messagehdlr(cPtr, false);
   }
 
+  public static SCIP_EventVarAdded getEventDataVarAdde(SCIP_Event event) {
+    return new SCIP_EventVarAdded(SCIPJNIJNI.getEventDataVarAdde(SCIP_Event.getCPtr(event), event), true);
+  }
+
+  public static SCIP_EventVarDeleted getEventDataVarDeleted(SCIP_Event event) {
+    return new SCIP_EventVarDeleted(SCIPJNIJNI.getEventDataVarDeleted(SCIP_Event.getCPtr(event), event), true);
+  }
+
+  public static SCIP_EventVarFixed getEventDataVarFixed(SCIP_Event event) {
+    return new SCIP_EventVarFixed(SCIPJNIJNI.getEventDataVarFixed(SCIP_Event.getCPtr(event), event), true);
+  }
+
+  public static SCIP_EventVarUnlocked getEventDataVarUnlocked(SCIP_Event event) {
+    return new SCIP_EventVarUnlocked(SCIPJNIJNI.getEventDataVarUnlocked(SCIP_Event.getCPtr(event), event), true);
+  }
+
+  public static SCIP_EventObjChg getEventDataObjChg(SCIP_Event event) {
+    return new SCIP_EventObjChg(SCIPJNIJNI.getEventDataObjChg(SCIP_Event.getCPtr(event), event), true);
+  }
+
+  public static SCIP_EventBdChg getEventDataBdChg(SCIP_Event event) {
+    return new SCIP_EventBdChg(SCIPJNIJNI.getEventDataBdChg(SCIP_Event.getCPtr(event), event), true);
+  }
+
+  public static SCIP_EventHole getEventDataHole(SCIP_Event event) {
+    return new SCIP_EventHole(SCIPJNIJNI.getEventDataHole(SCIP_Event.getCPtr(event), event), true);
+  }
+
+  public static SCIP_EventImplAdd getEventDataImplAdd(SCIP_Event event) {
+    return new SCIP_EventImplAdd(SCIPJNIJNI.getEventDataImplAdd(SCIP_Event.getCPtr(event), event), true);
+  }
+
+  public static SCIP_EventTypeChg getEventDataTypeChg(SCIP_Event event) {
+    return new SCIP_EventTypeChg(SCIPJNIJNI.getEventDataTypeChg(SCIP_Event.getCPtr(event), event), true);
+  }
+
+  public static SCIP_EventRowAddedSepa getEventDataRowAddedSepa(SCIP_Event event) {
+    return new SCIP_EventRowAddedSepa(SCIPJNIJNI.getEventDataRowAddedSepa(SCIP_Event.getCPtr(event), event), true);
+  }
+
+  public static SCIP_EventRowDeletedSepa getEventDataRowDeletedSepa(SCIP_Event event) {
+    return new SCIP_EventRowDeletedSepa(SCIPJNIJNI.getEventDataRowDeletedSepa(SCIP_Event.getCPtr(event), event), true);
+  }
+
+  public static SCIP_EventRowAddedLP getEventDataRowAddedLp(SCIP_Event event) {
+    return new SCIP_EventRowAddedLP(SCIPJNIJNI.getEventDataRowAddedLp(SCIP_Event.getCPtr(event), event), true);
+  }
+
+  public static SCIP_EventRowDeletedLP getEventDataRowDeletedLp(SCIP_Event event) {
+    return new SCIP_EventRowDeletedLP(SCIPJNIJNI.getEventDataRowDeletedLp(SCIP_Event.getCPtr(event), event), true);
+  }
+
+  public static SCIP_EventRowCoefChanged getEventDataRowCoefChanged(SCIP_Event event) {
+    return new SCIP_EventRowCoefChanged(SCIPJNIJNI.getEventDataRowCoefChanged(SCIP_Event.getCPtr(event), event), true);
+  }
+
+  public static SCIP_EventRowConstChanged getEventDataRowConstChanged(SCIP_Event event) {
+    return new SCIP_EventRowConstChanged(SCIPJNIJNI.getEventDataRowConstChanged(SCIP_Event.getCPtr(event), event), true);
+  }
+
+  public static SCIP_EventRowSideChanged getEventDataRowSideChanged(SCIP_Event event) {
+    return new SCIP_EventRowSideChanged(SCIPJNIJNI.getEventDataRowSideChanged(SCIP_Event.getCPtr(event), event), true);
+  }
+
+  public static SWIGTYPE_p_SCIP_SOL getEventDataSolution(SCIP_Event event) {
+    long cPtr = SCIPJNIJNI.getEventDataSolution(SCIP_Event.getCPtr(event), event);
+    return (cPtr == 0) ? null : new SWIGTYPE_p_SCIP_SOL(cPtr, false);
+  }
+
+  public static SWIGTYPE_p_SCIP_NODE getEventDataNode(SCIP_Event event) {
+    long cPtr = SCIPJNIJNI.getEventDataNode(SCIP_Event.getCPtr(event), event);
+    return (cPtr == 0) ? null : new SWIGTYPE_p_SCIP_NODE(cPtr, false);
+  }
+
   public static SCIP_Retcode SCIPincludeObjEventhdlr(SWIGTYPE_p_SCIP scip, ObjEventhdlr objeventhdlr, long deleteobject) {
     return SCIP_Retcode.swigToEnum(SCIPJNIJNI.SCIPincludeObjEventhdlr(SWIGTYPE_p_SCIP.getCPtr(scip), ObjEventhdlr.getCPtr(objeventhdlr), objeventhdlr, deleteobject));
   }

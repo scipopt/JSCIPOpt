@@ -1289,6 +1289,80 @@ namespace Swig {
       return messagehdlr;
    }
 
+   /* BEGIN assist functions for accessing SCIP_Event data union members */
+   SCIP_EventVarAdded getEventDataVarAdde(SCIP_Event event) {
+      return event.data.eventvaradded;
+   }
+   
+   SCIP_EventVarDeleted getEventDataVarDeleted(SCIP_Event event) {
+      return event.data.eventvardeleted;
+   }
+   
+   SCIP_EventVarFixed getEventDataVarFixed(SCIP_Event event) {
+      return event.data.eventvarfixed;
+   }
+
+   SCIP_EventVarUnlocked getEventDataVarUnlocked(SCIP_Event event) {
+      return event.data.eventvarunlocked;
+   }
+
+   SCIP_EventObjChg getEventDataObjChg(SCIP_Event event) {
+      return event.data.eventobjchg;
+   }
+
+   SCIP_EventBdChg getEventDataBdChg(SCIP_Event event) {
+      return event.data.eventbdchg;
+   }
+
+   SCIP_EventHole getEventDataHole(SCIP_Event event) {
+      return event.data.eventhole;
+   }
+
+   SCIP_EventImplAdd getEventDataImplAdd(SCIP_Event event) {
+      return event.data.eventimpladd;
+   }
+
+   SCIP_EventTypeChg getEventDataTypeChg(SCIP_Event event) {
+      return event.data.eventtypechg;
+   }
+
+   SCIP_EventRowAddedSepa getEventDataRowAddedSepa(SCIP_Event event) {
+      return event.data.eventrowaddedsepa;
+   }
+
+   SCIP_EventRowDeletedSepa getEventDataRowDeletedSepa(SCIP_Event event) {
+      return event.data.eventrowdeletedsepa;
+   }
+
+   SCIP_EventRowAddedLP getEventDataRowAddedLp(SCIP_Event event) {
+      return event.data.eventrowaddedlp;
+   }
+
+   SCIP_EventRowDeletedLP getEventDataRowDeletedLp(SCIP_Event event) {
+      return event.data.eventrowdeletedlp;
+   }
+
+   SCIP_EventRowCoefChanged getEventDataRowCoefChanged(SCIP_Event event) {
+      return event.data.eventrowcoefchanged;
+   }
+
+   SCIP_EventRowConstChanged getEventDataRowConstChanged(SCIP_Event event) {
+      return event.data.eventrowconstchanged;
+   }
+
+   SCIP_EventRowSideChanged getEventDataRowSideChanged(SCIP_Event event) {
+      return event.data.eventrowsidechanged;
+   }
+
+   SCIP_SOL* getEventDataSolution(SCIP_Event event) {
+      return event.data.sol;
+   }
+
+   SCIP_NODE* getEventDataNode(SCIP_Event event) {
+      return event.data.node;
+   }
+   /* END assist functions for accessing SCIP_Event data union members*/
+
 
 static char *new_char_array(int nelements) { 
   return new char[nelements](); 
@@ -1899,7 +1973,7 @@ SCIP_RETCODE SwigDirector_ObjEventhdlr::scip_delete(SCIP *scip, SCIP_EVENTHDLR *
   return c_result;
 }
 
-SCIP_RETCODE SwigDirector_ObjEventhdlr::scip_exec(SCIP *scip, SCIP_EVENTHDLR *eventhdlr, SCIP_EVENT *event, SCIP_EVENTDATA *eventdata) {
+SCIP_RETCODE SwigDirector_ObjEventhdlr::scip_exec(SCIP *scip, SCIP_EVENTHDLR *eventhdlr, SCIP_Event *event, SCIP_EVENTDATA *eventdata) {
   SCIP_RETCODE c_result = SwigValueInit< SCIP_RETCODE >() ;
   jint jresult = 0 ;
   JNIEnvWrapper swigjnienv(this) ;
@@ -1917,7 +1991,7 @@ SCIP_RETCODE SwigDirector_ObjEventhdlr::scip_exec(SCIP *scip, SCIP_EVENTHDLR *ev
   if (swigjobj && jenv->IsSameObject(swigjobj, NULL) == JNI_FALSE) {
     *((SCIP **)&jscip) = (SCIP *) scip; 
     *((SCIP_EVENTHDLR **)&jeventhdlr) = (SCIP_EVENTHDLR *) eventhdlr; 
-    *((SCIP_EVENT **)&jevent) = (SCIP_EVENT *) event; 
+    *((SCIP_Event **)&jevent) = (SCIP_Event *) event; 
     *((SCIP_EVENTDATA **)&jeventdata) = (SCIP_EVENTDATA *) eventdata; 
     jresult = (jint) jenv->CallStaticIntMethod(Swig::jclass_SCIPJNIJNI, Swig::director_method_ids[11], swigjobj, jscip, jeventhdlr, jevent, jeventdata);
     jthrowable swigerror = jenv->ExceptionOccurred();
@@ -1958,7 +2032,7 @@ void SwigDirector_ObjEventhdlr::swig_connect_director(JNIEnv *jenv, jobject jsel
       "scip_delete", "(Ljscip/SWIGTYPE_p_SCIP;Ljscip/SWIGTYPE_p_SCIP_EVENTHDLR;Ljscip/SWIGTYPE_p_p_SCIP_EVENTDATA;)Ljscip/SCIP_Retcode;", NULL 
     },
     {
-      "scip_exec", "(Ljscip/SWIGTYPE_p_SCIP;Ljscip/SWIGTYPE_p_SCIP_EVENTHDLR;Ljscip/SWIGTYPE_p_SCIP_EVENT;Ljscip/SWIGTYPE_p_SCIP_EVENTDATA;)Ljscip/SCIP_Retcode;", NULL 
+      "scip_exec", "(Ljscip/SWIGTYPE_p_SCIP;Ljscip/SWIGTYPE_p_SCIP_EVENTHDLR;Ljscip/SCIP_Event;Ljscip/SWIGTYPE_p_SCIP_EVENTDATA;)Ljscip/SCIP_Retcode;", NULL 
     }
   };
   
@@ -6449,6 +6523,1688 @@ SWIGEXPORT jlong JNICALL Java_jscip_SCIPJNIJNI_createObjMessagehdlr(JNIEnv *jenv
 }
 
 
+SWIGEXPORT void JNICALL Java_jscip_SCIPJNIJNI_SCIP_1EventVarAdded_1var_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2) {
+  SCIP_EventVarAdded *arg1 = (SCIP_EventVarAdded *) 0 ;
+  SCIP_VAR *arg2 = (SCIP_VAR *) 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(SCIP_EventVarAdded **)&jarg1; 
+  arg2 = *(SCIP_VAR **)&jarg2; 
+  if (arg1) (arg1)->var = arg2;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_jscip_SCIPJNIJNI_SCIP_1EventVarAdded_1var_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jlong jresult = 0 ;
+  SCIP_EventVarAdded *arg1 = (SCIP_EventVarAdded *) 0 ;
+  SCIP_VAR *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(SCIP_EventVarAdded **)&jarg1; 
+  result = (SCIP_VAR *) ((arg1)->var);
+  *(SCIP_VAR **)&jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_jscip_SCIPJNIJNI_new_1SCIP_1EventVarAdded(JNIEnv *jenv, jclass jcls) {
+  jlong jresult = 0 ;
+  SCIP_EventVarAdded *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  result = (SCIP_EventVarAdded *)new SCIP_EventVarAdded();
+  *(SCIP_EventVarAdded **)&jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_jscip_SCIPJNIJNI_delete_1SCIP_1EventVarAdded(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+  SCIP_EventVarAdded *arg1 = (SCIP_EventVarAdded *) 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  arg1 = *(SCIP_EventVarAdded **)&jarg1; 
+  delete arg1;
+}
+
+
+SWIGEXPORT void JNICALL Java_jscip_SCIPJNIJNI_SCIP_1EventVarDeleted_1var_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2) {
+  SCIP_EventVarDeleted *arg1 = (SCIP_EventVarDeleted *) 0 ;
+  SCIP_VAR *arg2 = (SCIP_VAR *) 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(SCIP_EventVarDeleted **)&jarg1; 
+  arg2 = *(SCIP_VAR **)&jarg2; 
+  if (arg1) (arg1)->var = arg2;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_jscip_SCIPJNIJNI_SCIP_1EventVarDeleted_1var_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jlong jresult = 0 ;
+  SCIP_EventVarDeleted *arg1 = (SCIP_EventVarDeleted *) 0 ;
+  SCIP_VAR *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(SCIP_EventVarDeleted **)&jarg1; 
+  result = (SCIP_VAR *) ((arg1)->var);
+  *(SCIP_VAR **)&jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_jscip_SCIPJNIJNI_new_1SCIP_1EventVarDeleted(JNIEnv *jenv, jclass jcls) {
+  jlong jresult = 0 ;
+  SCIP_EventVarDeleted *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  result = (SCIP_EventVarDeleted *)new SCIP_EventVarDeleted();
+  *(SCIP_EventVarDeleted **)&jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_jscip_SCIPJNIJNI_delete_1SCIP_1EventVarDeleted(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+  SCIP_EventVarDeleted *arg1 = (SCIP_EventVarDeleted *) 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  arg1 = *(SCIP_EventVarDeleted **)&jarg1; 
+  delete arg1;
+}
+
+
+SWIGEXPORT void JNICALL Java_jscip_SCIPJNIJNI_SCIP_1EventVarFixed_1var_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2) {
+  SCIP_EventVarFixed *arg1 = (SCIP_EventVarFixed *) 0 ;
+  SCIP_VAR *arg2 = (SCIP_VAR *) 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(SCIP_EventVarFixed **)&jarg1; 
+  arg2 = *(SCIP_VAR **)&jarg2; 
+  if (arg1) (arg1)->var = arg2;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_jscip_SCIPJNIJNI_SCIP_1EventVarFixed_1var_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jlong jresult = 0 ;
+  SCIP_EventVarFixed *arg1 = (SCIP_EventVarFixed *) 0 ;
+  SCIP_VAR *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(SCIP_EventVarFixed **)&jarg1; 
+  result = (SCIP_VAR *) ((arg1)->var);
+  *(SCIP_VAR **)&jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_jscip_SCIPJNIJNI_new_1SCIP_1EventVarFixed(JNIEnv *jenv, jclass jcls) {
+  jlong jresult = 0 ;
+  SCIP_EventVarFixed *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  result = (SCIP_EventVarFixed *)new SCIP_EventVarFixed();
+  *(SCIP_EventVarFixed **)&jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_jscip_SCIPJNIJNI_delete_1SCIP_1EventVarFixed(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+  SCIP_EventVarFixed *arg1 = (SCIP_EventVarFixed *) 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  arg1 = *(SCIP_EventVarFixed **)&jarg1; 
+  delete arg1;
+}
+
+
+SWIGEXPORT void JNICALL Java_jscip_SCIPJNIJNI_SCIP_1EventVarUnlocked_1var_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2) {
+  SCIP_EventVarUnlocked *arg1 = (SCIP_EventVarUnlocked *) 0 ;
+  SCIP_VAR *arg2 = (SCIP_VAR *) 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(SCIP_EventVarUnlocked **)&jarg1; 
+  arg2 = *(SCIP_VAR **)&jarg2; 
+  if (arg1) (arg1)->var = arg2;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_jscip_SCIPJNIJNI_SCIP_1EventVarUnlocked_1var_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jlong jresult = 0 ;
+  SCIP_EventVarUnlocked *arg1 = (SCIP_EventVarUnlocked *) 0 ;
+  SCIP_VAR *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(SCIP_EventVarUnlocked **)&jarg1; 
+  result = (SCIP_VAR *) ((arg1)->var);
+  *(SCIP_VAR **)&jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_jscip_SCIPJNIJNI_new_1SCIP_1EventVarUnlocked(JNIEnv *jenv, jclass jcls) {
+  jlong jresult = 0 ;
+  SCIP_EventVarUnlocked *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  result = (SCIP_EventVarUnlocked *)new SCIP_EventVarUnlocked();
+  *(SCIP_EventVarUnlocked **)&jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_jscip_SCIPJNIJNI_delete_1SCIP_1EventVarUnlocked(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+  SCIP_EventVarUnlocked *arg1 = (SCIP_EventVarUnlocked *) 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  arg1 = *(SCIP_EventVarUnlocked **)&jarg1; 
+  delete arg1;
+}
+
+
+SWIGEXPORT void JNICALL Java_jscip_SCIPJNIJNI_SCIP_1EventObjChg_1oldobj_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jdouble jarg2) {
+  SCIP_EventObjChg *arg1 = (SCIP_EventObjChg *) 0 ;
+  double arg2 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(SCIP_EventObjChg **)&jarg1; 
+  arg2 = (double)jarg2; 
+  if (arg1) (arg1)->oldobj = arg2;
+}
+
+
+SWIGEXPORT jdouble JNICALL Java_jscip_SCIPJNIJNI_SCIP_1EventObjChg_1oldobj_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jdouble jresult = 0 ;
+  SCIP_EventObjChg *arg1 = (SCIP_EventObjChg *) 0 ;
+  double result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(SCIP_EventObjChg **)&jarg1; 
+  result = (double) ((arg1)->oldobj);
+  jresult = (jdouble)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_jscip_SCIPJNIJNI_SCIP_1EventObjChg_1newobj_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jdouble jarg2) {
+  SCIP_EventObjChg *arg1 = (SCIP_EventObjChg *) 0 ;
+  double arg2 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(SCIP_EventObjChg **)&jarg1; 
+  arg2 = (double)jarg2; 
+  if (arg1) (arg1)->newobj = arg2;
+}
+
+
+SWIGEXPORT jdouble JNICALL Java_jscip_SCIPJNIJNI_SCIP_1EventObjChg_1newobj_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jdouble jresult = 0 ;
+  SCIP_EventObjChg *arg1 = (SCIP_EventObjChg *) 0 ;
+  double result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(SCIP_EventObjChg **)&jarg1; 
+  result = (double) ((arg1)->newobj);
+  jresult = (jdouble)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_jscip_SCIPJNIJNI_SCIP_1EventObjChg_1var_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2) {
+  SCIP_EventObjChg *arg1 = (SCIP_EventObjChg *) 0 ;
+  SCIP_VAR *arg2 = (SCIP_VAR *) 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(SCIP_EventObjChg **)&jarg1; 
+  arg2 = *(SCIP_VAR **)&jarg2; 
+  if (arg1) (arg1)->var = arg2;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_jscip_SCIPJNIJNI_SCIP_1EventObjChg_1var_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jlong jresult = 0 ;
+  SCIP_EventObjChg *arg1 = (SCIP_EventObjChg *) 0 ;
+  SCIP_VAR *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(SCIP_EventObjChg **)&jarg1; 
+  result = (SCIP_VAR *) ((arg1)->var);
+  *(SCIP_VAR **)&jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_jscip_SCIPJNIJNI_new_1SCIP_1EventObjChg(JNIEnv *jenv, jclass jcls) {
+  jlong jresult = 0 ;
+  SCIP_EventObjChg *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  result = (SCIP_EventObjChg *)new SCIP_EventObjChg();
+  *(SCIP_EventObjChg **)&jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_jscip_SCIPJNIJNI_delete_1SCIP_1EventObjChg(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+  SCIP_EventObjChg *arg1 = (SCIP_EventObjChg *) 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  arg1 = *(SCIP_EventObjChg **)&jarg1; 
+  delete arg1;
+}
+
+
+SWIGEXPORT void JNICALL Java_jscip_SCIPJNIJNI_SCIP_1EventBdChg_1oldbound_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jdouble jarg2) {
+  SCIP_EventBdChg *arg1 = (SCIP_EventBdChg *) 0 ;
+  double arg2 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(SCIP_EventBdChg **)&jarg1; 
+  arg2 = (double)jarg2; 
+  if (arg1) (arg1)->oldbound = arg2;
+}
+
+
+SWIGEXPORT jdouble JNICALL Java_jscip_SCIPJNIJNI_SCIP_1EventBdChg_1oldbound_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jdouble jresult = 0 ;
+  SCIP_EventBdChg *arg1 = (SCIP_EventBdChg *) 0 ;
+  double result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(SCIP_EventBdChg **)&jarg1; 
+  result = (double) ((arg1)->oldbound);
+  jresult = (jdouble)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_jscip_SCIPJNIJNI_SCIP_1EventBdChg_1newbound_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jdouble jarg2) {
+  SCIP_EventBdChg *arg1 = (SCIP_EventBdChg *) 0 ;
+  double arg2 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(SCIP_EventBdChg **)&jarg1; 
+  arg2 = (double)jarg2; 
+  if (arg1) (arg1)->newbound = arg2;
+}
+
+
+SWIGEXPORT jdouble JNICALL Java_jscip_SCIPJNIJNI_SCIP_1EventBdChg_1newbound_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jdouble jresult = 0 ;
+  SCIP_EventBdChg *arg1 = (SCIP_EventBdChg *) 0 ;
+  double result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(SCIP_EventBdChg **)&jarg1; 
+  result = (double) ((arg1)->newbound);
+  jresult = (jdouble)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_jscip_SCIPJNIJNI_SCIP_1EventBdChg_1var_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2) {
+  SCIP_EventBdChg *arg1 = (SCIP_EventBdChg *) 0 ;
+  SCIP_VAR *arg2 = (SCIP_VAR *) 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(SCIP_EventBdChg **)&jarg1; 
+  arg2 = *(SCIP_VAR **)&jarg2; 
+  if (arg1) (arg1)->var = arg2;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_jscip_SCIPJNIJNI_SCIP_1EventBdChg_1var_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jlong jresult = 0 ;
+  SCIP_EventBdChg *arg1 = (SCIP_EventBdChg *) 0 ;
+  SCIP_VAR *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(SCIP_EventBdChg **)&jarg1; 
+  result = (SCIP_VAR *) ((arg1)->var);
+  *(SCIP_VAR **)&jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_jscip_SCIPJNIJNI_new_1SCIP_1EventBdChg(JNIEnv *jenv, jclass jcls) {
+  jlong jresult = 0 ;
+  SCIP_EventBdChg *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  result = (SCIP_EventBdChg *)new SCIP_EventBdChg();
+  *(SCIP_EventBdChg **)&jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_jscip_SCIPJNIJNI_delete_1SCIP_1EventBdChg(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+  SCIP_EventBdChg *arg1 = (SCIP_EventBdChg *) 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  arg1 = *(SCIP_EventBdChg **)&jarg1; 
+  delete arg1;
+}
+
+
+SWIGEXPORT void JNICALL Java_jscip_SCIPJNIJNI_SCIP_1EventHole_1left_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jdouble jarg2) {
+  SCIP_EventHole *arg1 = (SCIP_EventHole *) 0 ;
+  double arg2 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(SCIP_EventHole **)&jarg1; 
+  arg2 = (double)jarg2; 
+  if (arg1) (arg1)->left = arg2;
+}
+
+
+SWIGEXPORT jdouble JNICALL Java_jscip_SCIPJNIJNI_SCIP_1EventHole_1left_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jdouble jresult = 0 ;
+  SCIP_EventHole *arg1 = (SCIP_EventHole *) 0 ;
+  double result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(SCIP_EventHole **)&jarg1; 
+  result = (double) ((arg1)->left);
+  jresult = (jdouble)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_jscip_SCIPJNIJNI_SCIP_1EventHole_1right_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jdouble jarg2) {
+  SCIP_EventHole *arg1 = (SCIP_EventHole *) 0 ;
+  double arg2 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(SCIP_EventHole **)&jarg1; 
+  arg2 = (double)jarg2; 
+  if (arg1) (arg1)->right = arg2;
+}
+
+
+SWIGEXPORT jdouble JNICALL Java_jscip_SCIPJNIJNI_SCIP_1EventHole_1right_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jdouble jresult = 0 ;
+  SCIP_EventHole *arg1 = (SCIP_EventHole *) 0 ;
+  double result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(SCIP_EventHole **)&jarg1; 
+  result = (double) ((arg1)->right);
+  jresult = (jdouble)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_jscip_SCIPJNIJNI_SCIP_1EventHole_1var_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2) {
+  SCIP_EventHole *arg1 = (SCIP_EventHole *) 0 ;
+  SCIP_VAR *arg2 = (SCIP_VAR *) 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(SCIP_EventHole **)&jarg1; 
+  arg2 = *(SCIP_VAR **)&jarg2; 
+  if (arg1) (arg1)->var = arg2;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_jscip_SCIPJNIJNI_SCIP_1EventHole_1var_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jlong jresult = 0 ;
+  SCIP_EventHole *arg1 = (SCIP_EventHole *) 0 ;
+  SCIP_VAR *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(SCIP_EventHole **)&jarg1; 
+  result = (SCIP_VAR *) ((arg1)->var);
+  *(SCIP_VAR **)&jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_jscip_SCIPJNIJNI_new_1SCIP_1EventHole(JNIEnv *jenv, jclass jcls) {
+  jlong jresult = 0 ;
+  SCIP_EventHole *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  result = (SCIP_EventHole *)new SCIP_EventHole();
+  *(SCIP_EventHole **)&jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_jscip_SCIPJNIJNI_delete_1SCIP_1EventHole(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+  SCIP_EventHole *arg1 = (SCIP_EventHole *) 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  arg1 = *(SCIP_EventHole **)&jarg1; 
+  delete arg1;
+}
+
+
+SWIGEXPORT void JNICALL Java_jscip_SCIPJNIJNI_SCIP_1EventImplAdd_1var_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2) {
+  SCIP_EventImplAdd *arg1 = (SCIP_EventImplAdd *) 0 ;
+  SCIP_VAR *arg2 = (SCIP_VAR *) 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(SCIP_EventImplAdd **)&jarg1; 
+  arg2 = *(SCIP_VAR **)&jarg2; 
+  if (arg1) (arg1)->var = arg2;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_jscip_SCIPJNIJNI_SCIP_1EventImplAdd_1var_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jlong jresult = 0 ;
+  SCIP_EventImplAdd *arg1 = (SCIP_EventImplAdd *) 0 ;
+  SCIP_VAR *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(SCIP_EventImplAdd **)&jarg1; 
+  result = (SCIP_VAR *) ((arg1)->var);
+  *(SCIP_VAR **)&jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_jscip_SCIPJNIJNI_new_1SCIP_1EventImplAdd(JNIEnv *jenv, jclass jcls) {
+  jlong jresult = 0 ;
+  SCIP_EventImplAdd *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  result = (SCIP_EventImplAdd *)new SCIP_EventImplAdd();
+  *(SCIP_EventImplAdd **)&jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_jscip_SCIPJNIJNI_delete_1SCIP_1EventImplAdd(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+  SCIP_EventImplAdd *arg1 = (SCIP_EventImplAdd *) 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  arg1 = *(SCIP_EventImplAdd **)&jarg1; 
+  delete arg1;
+}
+
+
+SWIGEXPORT void JNICALL Java_jscip_SCIPJNIJNI_SCIP_1EventTypeChg_1oldtype_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2) {
+  SCIP_EventTypeChg *arg1 = (SCIP_EventTypeChg *) 0 ;
+  SCIP_VARTYPE arg2 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(SCIP_EventTypeChg **)&jarg1; 
+  arg2 = (SCIP_VARTYPE)jarg2; 
+  if (arg1) (arg1)->oldtype = arg2;
+}
+
+
+SWIGEXPORT jint JNICALL Java_jscip_SCIPJNIJNI_SCIP_1EventTypeChg_1oldtype_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jint jresult = 0 ;
+  SCIP_EventTypeChg *arg1 = (SCIP_EventTypeChg *) 0 ;
+  SCIP_VARTYPE result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(SCIP_EventTypeChg **)&jarg1; 
+  result = (SCIP_VARTYPE) ((arg1)->oldtype);
+  jresult = (jint)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_jscip_SCIPJNIJNI_SCIP_1EventTypeChg_1newtype_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2) {
+  SCIP_EventTypeChg *arg1 = (SCIP_EventTypeChg *) 0 ;
+  SCIP_VARTYPE arg2 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(SCIP_EventTypeChg **)&jarg1; 
+  arg2 = (SCIP_VARTYPE)jarg2; 
+  if (arg1) (arg1)->newtype = arg2;
+}
+
+
+SWIGEXPORT jint JNICALL Java_jscip_SCIPJNIJNI_SCIP_1EventTypeChg_1newtype_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jint jresult = 0 ;
+  SCIP_EventTypeChg *arg1 = (SCIP_EventTypeChg *) 0 ;
+  SCIP_VARTYPE result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(SCIP_EventTypeChg **)&jarg1; 
+  result = (SCIP_VARTYPE) ((arg1)->newtype);
+  jresult = (jint)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_jscip_SCIPJNIJNI_SCIP_1EventTypeChg_1var_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2) {
+  SCIP_EventTypeChg *arg1 = (SCIP_EventTypeChg *) 0 ;
+  SCIP_VAR *arg2 = (SCIP_VAR *) 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(SCIP_EventTypeChg **)&jarg1; 
+  arg2 = *(SCIP_VAR **)&jarg2; 
+  if (arg1) (arg1)->var = arg2;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_jscip_SCIPJNIJNI_SCIP_1EventTypeChg_1var_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jlong jresult = 0 ;
+  SCIP_EventTypeChg *arg1 = (SCIP_EventTypeChg *) 0 ;
+  SCIP_VAR *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(SCIP_EventTypeChg **)&jarg1; 
+  result = (SCIP_VAR *) ((arg1)->var);
+  *(SCIP_VAR **)&jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_jscip_SCIPJNIJNI_new_1SCIP_1EventTypeChg(JNIEnv *jenv, jclass jcls) {
+  jlong jresult = 0 ;
+  SCIP_EventTypeChg *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  result = (SCIP_EventTypeChg *)new SCIP_EventTypeChg();
+  *(SCIP_EventTypeChg **)&jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_jscip_SCIPJNIJNI_delete_1SCIP_1EventTypeChg(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+  SCIP_EventTypeChg *arg1 = (SCIP_EventTypeChg *) 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  arg1 = *(SCIP_EventTypeChg **)&jarg1; 
+  delete arg1;
+}
+
+
+SWIGEXPORT void JNICALL Java_jscip_SCIPJNIJNI_SCIP_1EventRowAddedSepa_1row_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2) {
+  SCIP_EventRowAddedSepa *arg1 = (SCIP_EventRowAddedSepa *) 0 ;
+  SCIP_ROW *arg2 = (SCIP_ROW *) 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(SCIP_EventRowAddedSepa **)&jarg1; 
+  arg2 = *(SCIP_ROW **)&jarg2; 
+  if (arg1) (arg1)->row = arg2;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_jscip_SCIPJNIJNI_SCIP_1EventRowAddedSepa_1row_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jlong jresult = 0 ;
+  SCIP_EventRowAddedSepa *arg1 = (SCIP_EventRowAddedSepa *) 0 ;
+  SCIP_ROW *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(SCIP_EventRowAddedSepa **)&jarg1; 
+  result = (SCIP_ROW *) ((arg1)->row);
+  *(SCIP_ROW **)&jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_jscip_SCIPJNIJNI_new_1SCIP_1EventRowAddedSepa(JNIEnv *jenv, jclass jcls) {
+  jlong jresult = 0 ;
+  SCIP_EventRowAddedSepa *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  result = (SCIP_EventRowAddedSepa *)new SCIP_EventRowAddedSepa();
+  *(SCIP_EventRowAddedSepa **)&jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_jscip_SCIPJNIJNI_delete_1SCIP_1EventRowAddedSepa(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+  SCIP_EventRowAddedSepa *arg1 = (SCIP_EventRowAddedSepa *) 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  arg1 = *(SCIP_EventRowAddedSepa **)&jarg1; 
+  delete arg1;
+}
+
+
+SWIGEXPORT void JNICALL Java_jscip_SCIPJNIJNI_SCIP_1EventRowDeletedSepa_1row_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2) {
+  SCIP_EventRowDeletedSepa *arg1 = (SCIP_EventRowDeletedSepa *) 0 ;
+  SCIP_ROW *arg2 = (SCIP_ROW *) 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(SCIP_EventRowDeletedSepa **)&jarg1; 
+  arg2 = *(SCIP_ROW **)&jarg2; 
+  if (arg1) (arg1)->row = arg2;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_jscip_SCIPJNIJNI_SCIP_1EventRowDeletedSepa_1row_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jlong jresult = 0 ;
+  SCIP_EventRowDeletedSepa *arg1 = (SCIP_EventRowDeletedSepa *) 0 ;
+  SCIP_ROW *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(SCIP_EventRowDeletedSepa **)&jarg1; 
+  result = (SCIP_ROW *) ((arg1)->row);
+  *(SCIP_ROW **)&jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_jscip_SCIPJNIJNI_new_1SCIP_1EventRowDeletedSepa(JNIEnv *jenv, jclass jcls) {
+  jlong jresult = 0 ;
+  SCIP_EventRowDeletedSepa *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  result = (SCIP_EventRowDeletedSepa *)new SCIP_EventRowDeletedSepa();
+  *(SCIP_EventRowDeletedSepa **)&jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_jscip_SCIPJNIJNI_delete_1SCIP_1EventRowDeletedSepa(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+  SCIP_EventRowDeletedSepa *arg1 = (SCIP_EventRowDeletedSepa *) 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  arg1 = *(SCIP_EventRowDeletedSepa **)&jarg1; 
+  delete arg1;
+}
+
+
+SWIGEXPORT void JNICALL Java_jscip_SCIPJNIJNI_SCIP_1EventRowAddedLP_1row_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2) {
+  SCIP_EventRowAddedLP *arg1 = (SCIP_EventRowAddedLP *) 0 ;
+  SCIP_ROW *arg2 = (SCIP_ROW *) 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(SCIP_EventRowAddedLP **)&jarg1; 
+  arg2 = *(SCIP_ROW **)&jarg2; 
+  if (arg1) (arg1)->row = arg2;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_jscip_SCIPJNIJNI_SCIP_1EventRowAddedLP_1row_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jlong jresult = 0 ;
+  SCIP_EventRowAddedLP *arg1 = (SCIP_EventRowAddedLP *) 0 ;
+  SCIP_ROW *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(SCIP_EventRowAddedLP **)&jarg1; 
+  result = (SCIP_ROW *) ((arg1)->row);
+  *(SCIP_ROW **)&jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_jscip_SCIPJNIJNI_new_1SCIP_1EventRowAddedLP(JNIEnv *jenv, jclass jcls) {
+  jlong jresult = 0 ;
+  SCIP_EventRowAddedLP *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  result = (SCIP_EventRowAddedLP *)new SCIP_EventRowAddedLP();
+  *(SCIP_EventRowAddedLP **)&jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_jscip_SCIPJNIJNI_delete_1SCIP_1EventRowAddedLP(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+  SCIP_EventRowAddedLP *arg1 = (SCIP_EventRowAddedLP *) 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  arg1 = *(SCIP_EventRowAddedLP **)&jarg1; 
+  delete arg1;
+}
+
+
+SWIGEXPORT void JNICALL Java_jscip_SCIPJNIJNI_SCIP_1EventRowDeletedLP_1row_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2) {
+  SCIP_EventRowDeletedLP *arg1 = (SCIP_EventRowDeletedLP *) 0 ;
+  SCIP_ROW *arg2 = (SCIP_ROW *) 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(SCIP_EventRowDeletedLP **)&jarg1; 
+  arg2 = *(SCIP_ROW **)&jarg2; 
+  if (arg1) (arg1)->row = arg2;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_jscip_SCIPJNIJNI_SCIP_1EventRowDeletedLP_1row_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jlong jresult = 0 ;
+  SCIP_EventRowDeletedLP *arg1 = (SCIP_EventRowDeletedLP *) 0 ;
+  SCIP_ROW *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(SCIP_EventRowDeletedLP **)&jarg1; 
+  result = (SCIP_ROW *) ((arg1)->row);
+  *(SCIP_ROW **)&jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_jscip_SCIPJNIJNI_new_1SCIP_1EventRowDeletedLP(JNIEnv *jenv, jclass jcls) {
+  jlong jresult = 0 ;
+  SCIP_EventRowDeletedLP *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  result = (SCIP_EventRowDeletedLP *)new SCIP_EventRowDeletedLP();
+  *(SCIP_EventRowDeletedLP **)&jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_jscip_SCIPJNIJNI_delete_1SCIP_1EventRowDeletedLP(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+  SCIP_EventRowDeletedLP *arg1 = (SCIP_EventRowDeletedLP *) 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  arg1 = *(SCIP_EventRowDeletedLP **)&jarg1; 
+  delete arg1;
+}
+
+
+SWIGEXPORT void JNICALL Java_jscip_SCIPJNIJNI_SCIP_1EventRowCoefChanged_1row_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2) {
+  SCIP_EventRowCoefChanged *arg1 = (SCIP_EventRowCoefChanged *) 0 ;
+  SCIP_ROW *arg2 = (SCIP_ROW *) 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(SCIP_EventRowCoefChanged **)&jarg1; 
+  arg2 = *(SCIP_ROW **)&jarg2; 
+  if (arg1) (arg1)->row = arg2;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_jscip_SCIPJNIJNI_SCIP_1EventRowCoefChanged_1row_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jlong jresult = 0 ;
+  SCIP_EventRowCoefChanged *arg1 = (SCIP_EventRowCoefChanged *) 0 ;
+  SCIP_ROW *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(SCIP_EventRowCoefChanged **)&jarg1; 
+  result = (SCIP_ROW *) ((arg1)->row);
+  *(SCIP_ROW **)&jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_jscip_SCIPJNIJNI_SCIP_1EventRowCoefChanged_1col_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2) {
+  SCIP_EventRowCoefChanged *arg1 = (SCIP_EventRowCoefChanged *) 0 ;
+  SCIP_COL *arg2 = (SCIP_COL *) 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(SCIP_EventRowCoefChanged **)&jarg1; 
+  arg2 = *(SCIP_COL **)&jarg2; 
+  if (arg1) (arg1)->col = arg2;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_jscip_SCIPJNIJNI_SCIP_1EventRowCoefChanged_1col_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jlong jresult = 0 ;
+  SCIP_EventRowCoefChanged *arg1 = (SCIP_EventRowCoefChanged *) 0 ;
+  SCIP_COL *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(SCIP_EventRowCoefChanged **)&jarg1; 
+  result = (SCIP_COL *) ((arg1)->col);
+  *(SCIP_COL **)&jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_jscip_SCIPJNIJNI_SCIP_1EventRowCoefChanged_1oldval_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jdouble jarg2) {
+  SCIP_EventRowCoefChanged *arg1 = (SCIP_EventRowCoefChanged *) 0 ;
+  double arg2 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(SCIP_EventRowCoefChanged **)&jarg1; 
+  arg2 = (double)jarg2; 
+  if (arg1) (arg1)->oldval = arg2;
+}
+
+
+SWIGEXPORT jdouble JNICALL Java_jscip_SCIPJNIJNI_SCIP_1EventRowCoefChanged_1oldval_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jdouble jresult = 0 ;
+  SCIP_EventRowCoefChanged *arg1 = (SCIP_EventRowCoefChanged *) 0 ;
+  double result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(SCIP_EventRowCoefChanged **)&jarg1; 
+  result = (double) ((arg1)->oldval);
+  jresult = (jdouble)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_jscip_SCIPJNIJNI_SCIP_1EventRowCoefChanged_1newval_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jdouble jarg2) {
+  SCIP_EventRowCoefChanged *arg1 = (SCIP_EventRowCoefChanged *) 0 ;
+  double arg2 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(SCIP_EventRowCoefChanged **)&jarg1; 
+  arg2 = (double)jarg2; 
+  if (arg1) (arg1)->newval = arg2;
+}
+
+
+SWIGEXPORT jdouble JNICALL Java_jscip_SCIPJNIJNI_SCIP_1EventRowCoefChanged_1newval_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jdouble jresult = 0 ;
+  SCIP_EventRowCoefChanged *arg1 = (SCIP_EventRowCoefChanged *) 0 ;
+  double result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(SCIP_EventRowCoefChanged **)&jarg1; 
+  result = (double) ((arg1)->newval);
+  jresult = (jdouble)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_jscip_SCIPJNIJNI_new_1SCIP_1EventRowCoefChanged(JNIEnv *jenv, jclass jcls) {
+  jlong jresult = 0 ;
+  SCIP_EventRowCoefChanged *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  result = (SCIP_EventRowCoefChanged *)new SCIP_EventRowCoefChanged();
+  *(SCIP_EventRowCoefChanged **)&jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_jscip_SCIPJNIJNI_delete_1SCIP_1EventRowCoefChanged(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+  SCIP_EventRowCoefChanged *arg1 = (SCIP_EventRowCoefChanged *) 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  arg1 = *(SCIP_EventRowCoefChanged **)&jarg1; 
+  delete arg1;
+}
+
+
+SWIGEXPORT void JNICALL Java_jscip_SCIPJNIJNI_SCIP_1EventRowConstChanged_1row_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2) {
+  SCIP_EventRowConstChanged *arg1 = (SCIP_EventRowConstChanged *) 0 ;
+  SCIP_ROW *arg2 = (SCIP_ROW *) 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(SCIP_EventRowConstChanged **)&jarg1; 
+  arg2 = *(SCIP_ROW **)&jarg2; 
+  if (arg1) (arg1)->row = arg2;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_jscip_SCIPJNIJNI_SCIP_1EventRowConstChanged_1row_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jlong jresult = 0 ;
+  SCIP_EventRowConstChanged *arg1 = (SCIP_EventRowConstChanged *) 0 ;
+  SCIP_ROW *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(SCIP_EventRowConstChanged **)&jarg1; 
+  result = (SCIP_ROW *) ((arg1)->row);
+  *(SCIP_ROW **)&jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_jscip_SCIPJNIJNI_SCIP_1EventRowConstChanged_1oldval_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jdouble jarg2) {
+  SCIP_EventRowConstChanged *arg1 = (SCIP_EventRowConstChanged *) 0 ;
+  double arg2 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(SCIP_EventRowConstChanged **)&jarg1; 
+  arg2 = (double)jarg2; 
+  if (arg1) (arg1)->oldval = arg2;
+}
+
+
+SWIGEXPORT jdouble JNICALL Java_jscip_SCIPJNIJNI_SCIP_1EventRowConstChanged_1oldval_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jdouble jresult = 0 ;
+  SCIP_EventRowConstChanged *arg1 = (SCIP_EventRowConstChanged *) 0 ;
+  double result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(SCIP_EventRowConstChanged **)&jarg1; 
+  result = (double) ((arg1)->oldval);
+  jresult = (jdouble)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_jscip_SCIPJNIJNI_SCIP_1EventRowConstChanged_1newval_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jdouble jarg2) {
+  SCIP_EventRowConstChanged *arg1 = (SCIP_EventRowConstChanged *) 0 ;
+  double arg2 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(SCIP_EventRowConstChanged **)&jarg1; 
+  arg2 = (double)jarg2; 
+  if (arg1) (arg1)->newval = arg2;
+}
+
+
+SWIGEXPORT jdouble JNICALL Java_jscip_SCIPJNIJNI_SCIP_1EventRowConstChanged_1newval_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jdouble jresult = 0 ;
+  SCIP_EventRowConstChanged *arg1 = (SCIP_EventRowConstChanged *) 0 ;
+  double result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(SCIP_EventRowConstChanged **)&jarg1; 
+  result = (double) ((arg1)->newval);
+  jresult = (jdouble)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_jscip_SCIPJNIJNI_new_1SCIP_1EventRowConstChanged(JNIEnv *jenv, jclass jcls) {
+  jlong jresult = 0 ;
+  SCIP_EventRowConstChanged *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  result = (SCIP_EventRowConstChanged *)new SCIP_EventRowConstChanged();
+  *(SCIP_EventRowConstChanged **)&jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_jscip_SCIPJNIJNI_delete_1SCIP_1EventRowConstChanged(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+  SCIP_EventRowConstChanged *arg1 = (SCIP_EventRowConstChanged *) 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  arg1 = *(SCIP_EventRowConstChanged **)&jarg1; 
+  delete arg1;
+}
+
+
+SWIGEXPORT void JNICALL Java_jscip_SCIPJNIJNI_SCIP_1EventRowSideChanged_1row_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2) {
+  SCIP_EventRowSideChanged *arg1 = (SCIP_EventRowSideChanged *) 0 ;
+  SCIP_ROW *arg2 = (SCIP_ROW *) 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(SCIP_EventRowSideChanged **)&jarg1; 
+  arg2 = *(SCIP_ROW **)&jarg2; 
+  if (arg1) (arg1)->row = arg2;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_jscip_SCIPJNIJNI_SCIP_1EventRowSideChanged_1row_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jlong jresult = 0 ;
+  SCIP_EventRowSideChanged *arg1 = (SCIP_EventRowSideChanged *) 0 ;
+  SCIP_ROW *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(SCIP_EventRowSideChanged **)&jarg1; 
+  result = (SCIP_ROW *) ((arg1)->row);
+  *(SCIP_ROW **)&jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_jscip_SCIPJNIJNI_SCIP_1EventRowSideChanged_1side_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2) {
+  SCIP_EventRowSideChanged *arg1 = (SCIP_EventRowSideChanged *) 0 ;
+  SCIP_SIDETYPE arg2 ;
+  SCIP_SIDETYPE *argp2 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(SCIP_EventRowSideChanged **)&jarg1; 
+  argp2 = *(SCIP_SIDETYPE **)&jarg2; 
+  if (!argp2) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "Attempt to dereference null SCIP_SIDETYPE");
+    return ;
+  }
+  arg2 = *argp2; 
+  if (arg1) (arg1)->side = arg2;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_jscip_SCIPJNIJNI_SCIP_1EventRowSideChanged_1side_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jlong jresult = 0 ;
+  SCIP_EventRowSideChanged *arg1 = (SCIP_EventRowSideChanged *) 0 ;
+  SCIP_SIDETYPE result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(SCIP_EventRowSideChanged **)&jarg1; 
+  result =  ((arg1)->side);
+  *(SCIP_SIDETYPE **)&jresult = new SCIP_SIDETYPE((const SCIP_SIDETYPE &)result); 
+  return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_jscip_SCIPJNIJNI_SCIP_1EventRowSideChanged_1oldval_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jdouble jarg2) {
+  SCIP_EventRowSideChanged *arg1 = (SCIP_EventRowSideChanged *) 0 ;
+  double arg2 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(SCIP_EventRowSideChanged **)&jarg1; 
+  arg2 = (double)jarg2; 
+  if (arg1) (arg1)->oldval = arg2;
+}
+
+
+SWIGEXPORT jdouble JNICALL Java_jscip_SCIPJNIJNI_SCIP_1EventRowSideChanged_1oldval_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jdouble jresult = 0 ;
+  SCIP_EventRowSideChanged *arg1 = (SCIP_EventRowSideChanged *) 0 ;
+  double result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(SCIP_EventRowSideChanged **)&jarg1; 
+  result = (double) ((arg1)->oldval);
+  jresult = (jdouble)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_jscip_SCIPJNIJNI_SCIP_1EventRowSideChanged_1newval_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jdouble jarg2) {
+  SCIP_EventRowSideChanged *arg1 = (SCIP_EventRowSideChanged *) 0 ;
+  double arg2 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(SCIP_EventRowSideChanged **)&jarg1; 
+  arg2 = (double)jarg2; 
+  if (arg1) (arg1)->newval = arg2;
+}
+
+
+SWIGEXPORT jdouble JNICALL Java_jscip_SCIPJNIJNI_SCIP_1EventRowSideChanged_1newval_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jdouble jresult = 0 ;
+  SCIP_EventRowSideChanged *arg1 = (SCIP_EventRowSideChanged *) 0 ;
+  double result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(SCIP_EventRowSideChanged **)&jarg1; 
+  result = (double) ((arg1)->newval);
+  jresult = (jdouble)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_jscip_SCIPJNIJNI_new_1SCIP_1EventRowSideChanged(JNIEnv *jenv, jclass jcls) {
+  jlong jresult = 0 ;
+  SCIP_EventRowSideChanged *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  result = (SCIP_EventRowSideChanged *)new SCIP_EventRowSideChanged();
+  *(SCIP_EventRowSideChanged **)&jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_jscip_SCIPJNIJNI_delete_1SCIP_1EventRowSideChanged(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+  SCIP_EventRowSideChanged *arg1 = (SCIP_EventRowSideChanged *) 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  arg1 = *(SCIP_EventRowSideChanged **)&jarg1; 
+  delete arg1;
+}
+
+
+SWIGEXPORT void JNICALL Java_jscip_SCIPJNIJNI_SCIP_1Event_1eventtype_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2) {
+  SCIP_Event *arg1 = (SCIP_Event *) 0 ;
+  SCIP_EVENTTYPE arg2 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(SCIP_Event **)&jarg1; 
+  arg2 = (SCIP_EVENTTYPE)jarg2; 
+  if (arg1) (arg1)->eventtype = arg2;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_jscip_SCIPJNIJNI_SCIP_1Event_1eventtype_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jlong jresult = 0 ;
+  SCIP_Event *arg1 = (SCIP_Event *) 0 ;
+  SCIP_EVENTTYPE result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(SCIP_Event **)&jarg1; 
+  result = (SCIP_EVENTTYPE) ((arg1)->eventtype);
+  jresult = (jlong)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_jscip_SCIPJNIJNI_new_1SCIP_1Event(JNIEnv *jenv, jclass jcls) {
+  jlong jresult = 0 ;
+  SCIP_Event *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  result = (SCIP_Event *)new SCIP_Event();
+  *(SCIP_Event **)&jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_jscip_SCIPJNIJNI_delete_1SCIP_1Event(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+  SCIP_Event *arg1 = (SCIP_Event *) 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  arg1 = *(SCIP_Event **)&jarg1; 
+  delete arg1;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_jscip_SCIPJNIJNI_getEventDataVarAdde(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jlong jresult = 0 ;
+  SCIP_Event arg1 ;
+  SCIP_Event *argp1 ;
+  SCIP_EventVarAdded result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  argp1 = *(SCIP_Event **)&jarg1; 
+  if (!argp1) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "Attempt to dereference null SCIP_Event");
+    return 0;
+  }
+  arg1 = *argp1; 
+  result = getEventDataVarAdde(arg1);
+  *(SCIP_EventVarAdded **)&jresult = new SCIP_EventVarAdded((const SCIP_EventVarAdded &)result); 
+  return jresult;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_jscip_SCIPJNIJNI_getEventDataVarDeleted(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jlong jresult = 0 ;
+  SCIP_Event arg1 ;
+  SCIP_Event *argp1 ;
+  SCIP_EventVarDeleted result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  argp1 = *(SCIP_Event **)&jarg1; 
+  if (!argp1) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "Attempt to dereference null SCIP_Event");
+    return 0;
+  }
+  arg1 = *argp1; 
+  result = getEventDataVarDeleted(arg1);
+  *(SCIP_EventVarDeleted **)&jresult = new SCIP_EventVarDeleted((const SCIP_EventVarDeleted &)result); 
+  return jresult;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_jscip_SCIPJNIJNI_getEventDataVarFixed(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jlong jresult = 0 ;
+  SCIP_Event arg1 ;
+  SCIP_Event *argp1 ;
+  SCIP_EventVarFixed result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  argp1 = *(SCIP_Event **)&jarg1; 
+  if (!argp1) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "Attempt to dereference null SCIP_Event");
+    return 0;
+  }
+  arg1 = *argp1; 
+  result = getEventDataVarFixed(arg1);
+  *(SCIP_EventVarFixed **)&jresult = new SCIP_EventVarFixed((const SCIP_EventVarFixed &)result); 
+  return jresult;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_jscip_SCIPJNIJNI_getEventDataVarUnlocked(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jlong jresult = 0 ;
+  SCIP_Event arg1 ;
+  SCIP_Event *argp1 ;
+  SCIP_EventVarUnlocked result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  argp1 = *(SCIP_Event **)&jarg1; 
+  if (!argp1) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "Attempt to dereference null SCIP_Event");
+    return 0;
+  }
+  arg1 = *argp1; 
+  result = getEventDataVarUnlocked(arg1);
+  *(SCIP_EventVarUnlocked **)&jresult = new SCIP_EventVarUnlocked((const SCIP_EventVarUnlocked &)result); 
+  return jresult;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_jscip_SCIPJNIJNI_getEventDataObjChg(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jlong jresult = 0 ;
+  SCIP_Event arg1 ;
+  SCIP_Event *argp1 ;
+  SCIP_EventObjChg result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  argp1 = *(SCIP_Event **)&jarg1; 
+  if (!argp1) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "Attempt to dereference null SCIP_Event");
+    return 0;
+  }
+  arg1 = *argp1; 
+  result = getEventDataObjChg(arg1);
+  *(SCIP_EventObjChg **)&jresult = new SCIP_EventObjChg((const SCIP_EventObjChg &)result); 
+  return jresult;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_jscip_SCIPJNIJNI_getEventDataBdChg(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jlong jresult = 0 ;
+  SCIP_Event arg1 ;
+  SCIP_Event *argp1 ;
+  SCIP_EventBdChg result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  argp1 = *(SCIP_Event **)&jarg1; 
+  if (!argp1) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "Attempt to dereference null SCIP_Event");
+    return 0;
+  }
+  arg1 = *argp1; 
+  result = getEventDataBdChg(arg1);
+  *(SCIP_EventBdChg **)&jresult = new SCIP_EventBdChg((const SCIP_EventBdChg &)result); 
+  return jresult;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_jscip_SCIPJNIJNI_getEventDataHole(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jlong jresult = 0 ;
+  SCIP_Event arg1 ;
+  SCIP_Event *argp1 ;
+  SCIP_EventHole result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  argp1 = *(SCIP_Event **)&jarg1; 
+  if (!argp1) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "Attempt to dereference null SCIP_Event");
+    return 0;
+  }
+  arg1 = *argp1; 
+  result = getEventDataHole(arg1);
+  *(SCIP_EventHole **)&jresult = new SCIP_EventHole((const SCIP_EventHole &)result); 
+  return jresult;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_jscip_SCIPJNIJNI_getEventDataImplAdd(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jlong jresult = 0 ;
+  SCIP_Event arg1 ;
+  SCIP_Event *argp1 ;
+  SCIP_EventImplAdd result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  argp1 = *(SCIP_Event **)&jarg1; 
+  if (!argp1) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "Attempt to dereference null SCIP_Event");
+    return 0;
+  }
+  arg1 = *argp1; 
+  result = getEventDataImplAdd(arg1);
+  *(SCIP_EventImplAdd **)&jresult = new SCIP_EventImplAdd((const SCIP_EventImplAdd &)result); 
+  return jresult;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_jscip_SCIPJNIJNI_getEventDataTypeChg(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jlong jresult = 0 ;
+  SCIP_Event arg1 ;
+  SCIP_Event *argp1 ;
+  SCIP_EventTypeChg result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  argp1 = *(SCIP_Event **)&jarg1; 
+  if (!argp1) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "Attempt to dereference null SCIP_Event");
+    return 0;
+  }
+  arg1 = *argp1; 
+  result = getEventDataTypeChg(arg1);
+  *(SCIP_EventTypeChg **)&jresult = new SCIP_EventTypeChg((const SCIP_EventTypeChg &)result); 
+  return jresult;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_jscip_SCIPJNIJNI_getEventDataRowAddedSepa(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jlong jresult = 0 ;
+  SCIP_Event arg1 ;
+  SCIP_Event *argp1 ;
+  SCIP_EventRowAddedSepa result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  argp1 = *(SCIP_Event **)&jarg1; 
+  if (!argp1) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "Attempt to dereference null SCIP_Event");
+    return 0;
+  }
+  arg1 = *argp1; 
+  result = getEventDataRowAddedSepa(arg1);
+  *(SCIP_EventRowAddedSepa **)&jresult = new SCIP_EventRowAddedSepa((const SCIP_EventRowAddedSepa &)result); 
+  return jresult;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_jscip_SCIPJNIJNI_getEventDataRowDeletedSepa(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jlong jresult = 0 ;
+  SCIP_Event arg1 ;
+  SCIP_Event *argp1 ;
+  SCIP_EventRowDeletedSepa result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  argp1 = *(SCIP_Event **)&jarg1; 
+  if (!argp1) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "Attempt to dereference null SCIP_Event");
+    return 0;
+  }
+  arg1 = *argp1; 
+  result = getEventDataRowDeletedSepa(arg1);
+  *(SCIP_EventRowDeletedSepa **)&jresult = new SCIP_EventRowDeletedSepa((const SCIP_EventRowDeletedSepa &)result); 
+  return jresult;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_jscip_SCIPJNIJNI_getEventDataRowAddedLp(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jlong jresult = 0 ;
+  SCIP_Event arg1 ;
+  SCIP_Event *argp1 ;
+  SCIP_EventRowAddedLP result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  argp1 = *(SCIP_Event **)&jarg1; 
+  if (!argp1) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "Attempt to dereference null SCIP_Event");
+    return 0;
+  }
+  arg1 = *argp1; 
+  result = getEventDataRowAddedLp(arg1);
+  *(SCIP_EventRowAddedLP **)&jresult = new SCIP_EventRowAddedLP((const SCIP_EventRowAddedLP &)result); 
+  return jresult;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_jscip_SCIPJNIJNI_getEventDataRowDeletedLp(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jlong jresult = 0 ;
+  SCIP_Event arg1 ;
+  SCIP_Event *argp1 ;
+  SCIP_EventRowDeletedLP result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  argp1 = *(SCIP_Event **)&jarg1; 
+  if (!argp1) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "Attempt to dereference null SCIP_Event");
+    return 0;
+  }
+  arg1 = *argp1; 
+  result = getEventDataRowDeletedLp(arg1);
+  *(SCIP_EventRowDeletedLP **)&jresult = new SCIP_EventRowDeletedLP((const SCIP_EventRowDeletedLP &)result); 
+  return jresult;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_jscip_SCIPJNIJNI_getEventDataRowCoefChanged(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jlong jresult = 0 ;
+  SCIP_Event arg1 ;
+  SCIP_Event *argp1 ;
+  SCIP_EventRowCoefChanged result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  argp1 = *(SCIP_Event **)&jarg1; 
+  if (!argp1) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "Attempt to dereference null SCIP_Event");
+    return 0;
+  }
+  arg1 = *argp1; 
+  result = getEventDataRowCoefChanged(arg1);
+  *(SCIP_EventRowCoefChanged **)&jresult = new SCIP_EventRowCoefChanged((const SCIP_EventRowCoefChanged &)result); 
+  return jresult;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_jscip_SCIPJNIJNI_getEventDataRowConstChanged(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jlong jresult = 0 ;
+  SCIP_Event arg1 ;
+  SCIP_Event *argp1 ;
+  SCIP_EventRowConstChanged result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  argp1 = *(SCIP_Event **)&jarg1; 
+  if (!argp1) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "Attempt to dereference null SCIP_Event");
+    return 0;
+  }
+  arg1 = *argp1; 
+  result = getEventDataRowConstChanged(arg1);
+  *(SCIP_EventRowConstChanged **)&jresult = new SCIP_EventRowConstChanged((const SCIP_EventRowConstChanged &)result); 
+  return jresult;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_jscip_SCIPJNIJNI_getEventDataRowSideChanged(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jlong jresult = 0 ;
+  SCIP_Event arg1 ;
+  SCIP_Event *argp1 ;
+  SCIP_EventRowSideChanged result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  argp1 = *(SCIP_Event **)&jarg1; 
+  if (!argp1) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "Attempt to dereference null SCIP_Event");
+    return 0;
+  }
+  arg1 = *argp1; 
+  result = getEventDataRowSideChanged(arg1);
+  *(SCIP_EventRowSideChanged **)&jresult = new SCIP_EventRowSideChanged((const SCIP_EventRowSideChanged &)result); 
+  return jresult;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_jscip_SCIPJNIJNI_getEventDataSolution(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jlong jresult = 0 ;
+  SCIP_Event arg1 ;
+  SCIP_Event *argp1 ;
+  SCIP_SOL *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  argp1 = *(SCIP_Event **)&jarg1; 
+  if (!argp1) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "Attempt to dereference null SCIP_Event");
+    return 0;
+  }
+  arg1 = *argp1; 
+  result = (SCIP_SOL *)getEventDataSolution(arg1);
+  *(SCIP_SOL **)&jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_jscip_SCIPJNIJNI_getEventDataNode(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jlong jresult = 0 ;
+  SCIP_Event arg1 ;
+  SCIP_Event *argp1 ;
+  SCIP_NODE *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  argp1 = *(SCIP_Event **)&jarg1; 
+  if (!argp1) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "Attempt to dereference null SCIP_Event");
+    return 0;
+  }
+  arg1 = *argp1; 
+  result = (SCIP_NODE *)getEventDataNode(arg1);
+  *(SCIP_NODE **)&jresult = result; 
+  return jresult;
+}
+
+
 SWIGEXPORT void JNICALL Java_jscip_SCIPJNIJNI_ObjEventhdlr_1scip_1_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2) {
   scip::ObjEventhdlr *arg1 = (scip::ObjEventhdlr *) 0 ;
   SCIP *arg2 = (SCIP *) 0 ;
@@ -6829,22 +8585,23 @@ SWIGEXPORT jint JNICALL Java_jscip_SCIPJNIJNI_ObjEventhdlr_1scip_1deleteSwigExpl
 }
 
 
-SWIGEXPORT jint JNICALL Java_jscip_SCIPJNIJNI_ObjEventhdlr_1scip_1exec(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jlong jarg3, jlong jarg4, jlong jarg5) {
+SWIGEXPORT jint JNICALL Java_jscip_SCIPJNIJNI_ObjEventhdlr_1scip_1exec(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jlong jarg3, jlong jarg4, jobject jarg4_, jlong jarg5) {
   jint jresult = 0 ;
   scip::ObjEventhdlr *arg1 = (scip::ObjEventhdlr *) 0 ;
   SCIP *arg2 = (SCIP *) 0 ;
   SCIP_EVENTHDLR *arg3 = (SCIP_EVENTHDLR *) 0 ;
-  SCIP_EVENT *arg4 = (SCIP_EVENT *) 0 ;
+  SCIP_Event *arg4 = (SCIP_Event *) 0 ;
   SCIP_EVENTDATA *arg5 = (SCIP_EVENTDATA *) 0 ;
   SCIP_RETCODE result;
   
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
+  (void)jarg4_;
   arg1 = *(scip::ObjEventhdlr **)&jarg1; 
   arg2 = *(SCIP **)&jarg2; 
   arg3 = *(SCIP_EVENTHDLR **)&jarg3; 
-  arg4 = *(SCIP_EVENT **)&jarg4; 
+  arg4 = *(SCIP_Event **)&jarg4; 
   arg5 = *(SCIP_EVENTDATA **)&jarg5; 
   result = (SCIP_RETCODE)(arg1)->scip_exec(arg2,arg3,arg4,arg5);
   jresult = (jint)result; 
@@ -6852,22 +8609,23 @@ SWIGEXPORT jint JNICALL Java_jscip_SCIPJNIJNI_ObjEventhdlr_1scip_1exec(JNIEnv *j
 }
 
 
-SWIGEXPORT jint JNICALL Java_jscip_SCIPJNIJNI_ObjEventhdlr_1scip_1execSwigExplicitObjEventhdlr(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jlong jarg3, jlong jarg4, jlong jarg5) {
+SWIGEXPORT jint JNICALL Java_jscip_SCIPJNIJNI_ObjEventhdlr_1scip_1execSwigExplicitObjEventhdlr(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jlong jarg3, jlong jarg4, jobject jarg4_, jlong jarg5) {
   jint jresult = 0 ;
   scip::ObjEventhdlr *arg1 = (scip::ObjEventhdlr *) 0 ;
   SCIP *arg2 = (SCIP *) 0 ;
   SCIP_EVENTHDLR *arg3 = (SCIP_EVENTHDLR *) 0 ;
-  SCIP_EVENT *arg4 = (SCIP_EVENT *) 0 ;
+  SCIP_Event *arg4 = (SCIP_Event *) 0 ;
   SCIP_EVENTDATA *arg5 = (SCIP_EVENTDATA *) 0 ;
   SCIP_RETCODE result;
   
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
+  (void)jarg4_;
   arg1 = *(scip::ObjEventhdlr **)&jarg1; 
   arg2 = *(SCIP **)&jarg2; 
   arg3 = *(SCIP_EVENTHDLR **)&jarg3; 
-  arg4 = *(SCIP_EVENT **)&jarg4; 
+  arg4 = *(SCIP_Event **)&jarg4; 
   arg5 = *(SCIP_EVENTDATA **)&jarg5; 
   result = (SCIP_RETCODE)(arg1)->scip::ObjEventhdlr::scip_exec(arg2,arg3,arg4,arg5);
   jresult = (jint)result; 

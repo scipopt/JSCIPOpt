@@ -105,8 +105,8 @@ public class ObjEventhdlr {
     return SCIP_Retcode.swigToEnum((getClass() == ObjEventhdlr.class) ? SCIPJNIJNI.ObjEventhdlr_scip_delete(swigCPtr, this, SWIGTYPE_p_SCIP.getCPtr(scip), SWIGTYPE_p_SCIP_EVENTHDLR.getCPtr(eventhdlr), SWIGTYPE_p_p_SCIP_EVENTDATA.getCPtr(eventdata)) : SCIPJNIJNI.ObjEventhdlr_scip_deleteSwigExplicitObjEventhdlr(swigCPtr, this, SWIGTYPE_p_SCIP.getCPtr(scip), SWIGTYPE_p_SCIP_EVENTHDLR.getCPtr(eventhdlr), SWIGTYPE_p_p_SCIP_EVENTDATA.getCPtr(eventdata)));
   }
 
-  public SCIP_Retcode scip_exec(SWIGTYPE_p_SCIP scip, SWIGTYPE_p_SCIP_EVENTHDLR eventhdlr, SWIGTYPE_p_SCIP_EVENT event, SWIGTYPE_p_SCIP_EVENTDATA eventdata) {
-    return SCIP_Retcode.swigToEnum((getClass() == ObjEventhdlr.class) ? SCIPJNIJNI.ObjEventhdlr_scip_exec(swigCPtr, this, SWIGTYPE_p_SCIP.getCPtr(scip), SWIGTYPE_p_SCIP_EVENTHDLR.getCPtr(eventhdlr), SWIGTYPE_p_SCIP_EVENT.getCPtr(event), SWIGTYPE_p_SCIP_EVENTDATA.getCPtr(eventdata)) : SCIPJNIJNI.ObjEventhdlr_scip_execSwigExplicitObjEventhdlr(swigCPtr, this, SWIGTYPE_p_SCIP.getCPtr(scip), SWIGTYPE_p_SCIP_EVENTHDLR.getCPtr(eventhdlr), SWIGTYPE_p_SCIP_EVENT.getCPtr(event), SWIGTYPE_p_SCIP_EVENTDATA.getCPtr(eventdata)));
+  public SCIP_Retcode scip_exec(SWIGTYPE_p_SCIP scip, SWIGTYPE_p_SCIP_EVENTHDLR eventhdlr, SCIP_Event event, SWIGTYPE_p_SCIP_EVENTDATA eventdata) {
+    return SCIP_Retcode.swigToEnum((getClass() == ObjEventhdlr.class) ? SCIPJNIJNI.ObjEventhdlr_scip_exec(swigCPtr, this, SWIGTYPE_p_SCIP.getCPtr(scip), SWIGTYPE_p_SCIP_EVENTHDLR.getCPtr(eventhdlr), SCIP_Event.getCPtr(event), event, SWIGTYPE_p_SCIP_EVENTDATA.getCPtr(eventdata)) : SCIPJNIJNI.ObjEventhdlr_scip_execSwigExplicitObjEventhdlr(swigCPtr, this, SWIGTYPE_p_SCIP.getCPtr(scip), SWIGTYPE_p_SCIP_EVENTHDLR.getCPtr(eventhdlr), SCIP_Event.getCPtr(event), event, SWIGTYPE_p_SCIP_EVENTDATA.getCPtr(eventdata)));
   }
 
 }
