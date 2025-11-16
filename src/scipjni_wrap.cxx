@@ -1997,7 +1997,7 @@ SCIP_RETCODE SwigDirector_ObjEventhdlr::scip_exec(SCIP *scip, SCIP_EVENTHDLR *ev
   if (swigjobj && jenv->IsSameObject(swigjobj, NULL) == JNI_FALSE) {
     *((SCIP **)&jscip) = (SCIP *) scip; 
     *((SCIP_EVENTHDLR **)&jeventhdlr) = (SCIP_EVENTHDLR *) eventhdlr; 
-    *((SCIP_Event **)&jevent) = (SCIP_Event *) event;
+    *((SCIP_Event **)&jevent) = (SCIP_Event *) event; 
     *((SCIP_EVENTDATA **)&jeventdata) = (SCIP_EVENTDATA *) eventdata; 
     jresult = (jint) jenv->CallStaticIntMethod(Swig::jclass_SCIPJNIJNI, Swig::director_method_ids[11], swigjobj, jscip, jeventhdlr, jevent, jeventdata);
     jthrowable swigerror = jenv->ExceptionOccurred();
@@ -2038,7 +2038,7 @@ void SwigDirector_ObjEventhdlr::swig_connect_director(JNIEnv *jenv, jobject jsel
       "scip_delete", "(Ljscip/SWIGTYPE_p_SCIP;Ljscip/SWIGTYPE_p_SCIP_EVENTHDLR;Ljscip/SWIGTYPE_p_p_SCIP_EVENTDATA;)Ljscip/SCIP_Retcode;", NULL 
     },
     {
-      "scip_exec", "(Ljscip/SWIGTYPE_p_SCIP;Ljscip/SWIGTYPE_p_SCIP_EVENTHDLR;Ljscip/SCIP_Event;Ljscip/SWIGTYPE_p_SCIP_EVENTDATA;)Ljscip/SCIP_Retcode;", NULL
+      "scip_exec", "(Ljscip/SWIGTYPE_p_SCIP;Ljscip/SWIGTYPE_p_SCIP_EVENTHDLR;Ljscip/SCIP_Event;Ljscip/SWIGTYPE_p_SCIP_EVENTDATA;)Ljscip/SCIP_Retcode;", NULL 
     }
   };
   
@@ -2083,21 +2083,21 @@ SCIP_RETCODE SwigDirector_ObjConshdlr::scip_free(SCIP *scip, SCIP_CONSHDLR *cons
   jobject swigjobj = (jobject) NULL ;
   jlong jscip = 0 ;
   jlong jconshdlr = 0 ;
-
+  
   if (!swig_override[0]) {
     return scip::ObjConshdlr::scip_free(scip,conshdlr);
   }
   swigjobj = swig_get_self(jenv);
   if (swigjobj && jenv->IsSameObject(swigjobj, NULL) == JNI_FALSE) {
-    *((SCIP **)&jscip) = (SCIP *) scip;
-    *((SCIP_CONSHDLR **)&jconshdlr) = (SCIP_CONSHDLR *) conshdlr;
+    *((SCIP **)&jscip) = (SCIP *) scip; 
+    *((SCIP_CONSHDLR **)&jconshdlr) = (SCIP_CONSHDLR *) conshdlr; 
     jresult = (jint) jenv->CallStaticIntMethod(Swig::jclass_SCIPJNIJNI, Swig::director_method_ids[12], swigjobj, jscip, jconshdlr);
     jthrowable swigerror = jenv->ExceptionOccurred();
     if (swigerror) {
       Swig::DirectorException::raise(jenv, swigerror);
     }
-
-    c_result = (SCIP_RETCODE)jresult;
+    
+    c_result = (SCIP_RETCODE)jresult; 
   } else {
     SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null upcall object in scip::ObjConshdlr::scip_free ");
   }
@@ -2115,23 +2115,23 @@ SCIP_RETCODE SwigDirector_ObjConshdlr::scip_init(SCIP *scip, SCIP_CONSHDLR *cons
   jlong jconshdlr = 0 ;
   jlong jconss = 0 ;
   jint jnconss  ;
-
+  
   if (!swig_override[1]) {
     return scip::ObjConshdlr::scip_init(scip,conshdlr,conss,nconss);
   }
   swigjobj = swig_get_self(jenv);
   if (swigjobj && jenv->IsSameObject(swigjobj, NULL) == JNI_FALSE) {
-    *((SCIP **)&jscip) = (SCIP *) scip;
-    *((SCIP_CONSHDLR **)&jconshdlr) = (SCIP_CONSHDLR *) conshdlr;
-    *((SCIP_CONS ***)&jconss) = (SCIP_CONS **) conss;
+    *((SCIP **)&jscip) = (SCIP *) scip; 
+    *((SCIP_CONSHDLR **)&jconshdlr) = (SCIP_CONSHDLR *) conshdlr; 
+    *((SCIP_CONS ***)&jconss) = (SCIP_CONS **) conss; 
     jnconss = (jint) nconss;
     jresult = (jint) jenv->CallStaticIntMethod(Swig::jclass_SCIPJNIJNI, Swig::director_method_ids[13], swigjobj, jscip, jconshdlr, jconss, jnconss);
     jthrowable swigerror = jenv->ExceptionOccurred();
     if (swigerror) {
       Swig::DirectorException::raise(jenv, swigerror);
     }
-
-    c_result = (SCIP_RETCODE)jresult;
+    
+    c_result = (SCIP_RETCODE)jresult; 
   } else {
     SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null upcall object in scip::ObjConshdlr::scip_init ");
   }
@@ -2149,23 +2149,23 @@ SCIP_RETCODE SwigDirector_ObjConshdlr::scip_exit(SCIP *scip, SCIP_CONSHDLR *cons
   jlong jconshdlr = 0 ;
   jlong jconss = 0 ;
   jint jnconss  ;
-
+  
   if (!swig_override[2]) {
     return scip::ObjConshdlr::scip_exit(scip,conshdlr,conss,nconss);
   }
   swigjobj = swig_get_self(jenv);
   if (swigjobj && jenv->IsSameObject(swigjobj, NULL) == JNI_FALSE) {
-    *((SCIP **)&jscip) = (SCIP *) scip;
-    *((SCIP_CONSHDLR **)&jconshdlr) = (SCIP_CONSHDLR *) conshdlr;
-    *((SCIP_CONS ***)&jconss) = (SCIP_CONS **) conss;
+    *((SCIP **)&jscip) = (SCIP *) scip; 
+    *((SCIP_CONSHDLR **)&jconshdlr) = (SCIP_CONSHDLR *) conshdlr; 
+    *((SCIP_CONS ***)&jconss) = (SCIP_CONS **) conss; 
     jnconss = (jint) nconss;
     jresult = (jint) jenv->CallStaticIntMethod(Swig::jclass_SCIPJNIJNI, Swig::director_method_ids[14], swigjobj, jscip, jconshdlr, jconss, jnconss);
     jthrowable swigerror = jenv->ExceptionOccurred();
     if (swigerror) {
       Swig::DirectorException::raise(jenv, swigerror);
     }
-
-    c_result = (SCIP_RETCODE)jresult;
+    
+    c_result = (SCIP_RETCODE)jresult; 
   } else {
     SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null upcall object in scip::ObjConshdlr::scip_exit ");
   }
@@ -2183,23 +2183,23 @@ SCIP_RETCODE SwigDirector_ObjConshdlr::scip_initpre(SCIP *scip, SCIP_CONSHDLR *c
   jlong jconshdlr = 0 ;
   jlong jconss = 0 ;
   jint jnconss  ;
-
+  
   if (!swig_override[3]) {
     return scip::ObjConshdlr::scip_initpre(scip,conshdlr,conss,nconss);
   }
   swigjobj = swig_get_self(jenv);
   if (swigjobj && jenv->IsSameObject(swigjobj, NULL) == JNI_FALSE) {
-    *((SCIP **)&jscip) = (SCIP *) scip;
-    *((SCIP_CONSHDLR **)&jconshdlr) = (SCIP_CONSHDLR *) conshdlr;
-    *((SCIP_CONS ***)&jconss) = (SCIP_CONS **) conss;
+    *((SCIP **)&jscip) = (SCIP *) scip; 
+    *((SCIP_CONSHDLR **)&jconshdlr) = (SCIP_CONSHDLR *) conshdlr; 
+    *((SCIP_CONS ***)&jconss) = (SCIP_CONS **) conss; 
     jnconss = (jint) nconss;
     jresult = (jint) jenv->CallStaticIntMethod(Swig::jclass_SCIPJNIJNI, Swig::director_method_ids[15], swigjobj, jscip, jconshdlr, jconss, jnconss);
     jthrowable swigerror = jenv->ExceptionOccurred();
     if (swigerror) {
       Swig::DirectorException::raise(jenv, swigerror);
     }
-
-    c_result = (SCIP_RETCODE)jresult;
+    
+    c_result = (SCIP_RETCODE)jresult; 
   } else {
     SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null upcall object in scip::ObjConshdlr::scip_initpre ");
   }
@@ -2217,23 +2217,23 @@ SCIP_RETCODE SwigDirector_ObjConshdlr::scip_exitpre(SCIP *scip, SCIP_CONSHDLR *c
   jlong jconshdlr = 0 ;
   jlong jconss = 0 ;
   jint jnconss  ;
-
+  
   if (!swig_override[4]) {
     return scip::ObjConshdlr::scip_exitpre(scip,conshdlr,conss,nconss);
   }
   swigjobj = swig_get_self(jenv);
   if (swigjobj && jenv->IsSameObject(swigjobj, NULL) == JNI_FALSE) {
-    *((SCIP **)&jscip) = (SCIP *) scip;
-    *((SCIP_CONSHDLR **)&jconshdlr) = (SCIP_CONSHDLR *) conshdlr;
-    *((SCIP_CONS ***)&jconss) = (SCIP_CONS **) conss;
+    *((SCIP **)&jscip) = (SCIP *) scip; 
+    *((SCIP_CONSHDLR **)&jconshdlr) = (SCIP_CONSHDLR *) conshdlr; 
+    *((SCIP_CONS ***)&jconss) = (SCIP_CONS **) conss; 
     jnconss = (jint) nconss;
     jresult = (jint) jenv->CallStaticIntMethod(Swig::jclass_SCIPJNIJNI, Swig::director_method_ids[16], swigjobj, jscip, jconshdlr, jconss, jnconss);
     jthrowable swigerror = jenv->ExceptionOccurred();
     if (swigerror) {
       Swig::DirectorException::raise(jenv, swigerror);
     }
-
-    c_result = (SCIP_RETCODE)jresult;
+    
+    c_result = (SCIP_RETCODE)jresult; 
   } else {
     SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null upcall object in scip::ObjConshdlr::scip_exitpre ");
   }
@@ -2251,23 +2251,23 @@ SCIP_RETCODE SwigDirector_ObjConshdlr::scip_initsol(SCIP *scip, SCIP_CONSHDLR *c
   jlong jconshdlr = 0 ;
   jlong jconss = 0 ;
   jint jnconss  ;
-
+  
   if (!swig_override[5]) {
     return scip::ObjConshdlr::scip_initsol(scip,conshdlr,conss,nconss);
   }
   swigjobj = swig_get_self(jenv);
   if (swigjobj && jenv->IsSameObject(swigjobj, NULL) == JNI_FALSE) {
-    *((SCIP **)&jscip) = (SCIP *) scip;
-    *((SCIP_CONSHDLR **)&jconshdlr) = (SCIP_CONSHDLR *) conshdlr;
-    *((SCIP_CONS ***)&jconss) = (SCIP_CONS **) conss;
+    *((SCIP **)&jscip) = (SCIP *) scip; 
+    *((SCIP_CONSHDLR **)&jconshdlr) = (SCIP_CONSHDLR *) conshdlr; 
+    *((SCIP_CONS ***)&jconss) = (SCIP_CONS **) conss; 
     jnconss = (jint) nconss;
     jresult = (jint) jenv->CallStaticIntMethod(Swig::jclass_SCIPJNIJNI, Swig::director_method_ids[17], swigjobj, jscip, jconshdlr, jconss, jnconss);
     jthrowable swigerror = jenv->ExceptionOccurred();
     if (swigerror) {
       Swig::DirectorException::raise(jenv, swigerror);
     }
-
-    c_result = (SCIP_RETCODE)jresult;
+    
+    c_result = (SCIP_RETCODE)jresult; 
   } else {
     SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null upcall object in scip::ObjConshdlr::scip_initsol ");
   }
@@ -2286,15 +2286,15 @@ SCIP_RETCODE SwigDirector_ObjConshdlr::scip_exitsol(SCIP *scip, SCIP_CONSHDLR *c
   jlong jconss = 0 ;
   jint jnconss  ;
   jlong jrestart  ;
-
+  
   if (!swig_override[6]) {
     return scip::ObjConshdlr::scip_exitsol(scip,conshdlr,conss,nconss,restart);
   }
   swigjobj = swig_get_self(jenv);
   if (swigjobj && jenv->IsSameObject(swigjobj, NULL) == JNI_FALSE) {
-    *((SCIP **)&jscip) = (SCIP *) scip;
-    *((SCIP_CONSHDLR **)&jconshdlr) = (SCIP_CONSHDLR *) conshdlr;
-    *((SCIP_CONS ***)&jconss) = (SCIP_CONS **) conss;
+    *((SCIP **)&jscip) = (SCIP *) scip; 
+    *((SCIP_CONSHDLR **)&jconshdlr) = (SCIP_CONSHDLR *) conshdlr; 
+    *((SCIP_CONS ***)&jconss) = (SCIP_CONS **) conss; 
     jnconss = (jint) nconss;
     jrestart = (jlong) restart;
     jresult = (jint) jenv->CallStaticIntMethod(Swig::jclass_SCIPJNIJNI, Swig::director_method_ids[18], swigjobj, jscip, jconshdlr, jconss, jnconss, jrestart);
@@ -2302,8 +2302,8 @@ SCIP_RETCODE SwigDirector_ObjConshdlr::scip_exitsol(SCIP *scip, SCIP_CONSHDLR *c
     if (swigerror) {
       Swig::DirectorException::raise(jenv, swigerror);
     }
-
-    c_result = (SCIP_RETCODE)jresult;
+    
+    c_result = (SCIP_RETCODE)jresult; 
   } else {
     SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null upcall object in scip::ObjConshdlr::scip_exitsol ");
   }
@@ -2321,23 +2321,23 @@ SCIP_RETCODE SwigDirector_ObjConshdlr::scip_delete(SCIP *scip, SCIP_CONSHDLR *co
   jlong jconshdlr = 0 ;
   jlong jcons = 0 ;
   jlong jconsdata = 0 ;
-
+  
   if (!swig_override[7]) {
     return scip::ObjConshdlr::scip_delete(scip,conshdlr,cons,consdata);
   }
   swigjobj = swig_get_self(jenv);
   if (swigjobj && jenv->IsSameObject(swigjobj, NULL) == JNI_FALSE) {
-    *((SCIP **)&jscip) = (SCIP *) scip;
-    *((SCIP_CONSHDLR **)&jconshdlr) = (SCIP_CONSHDLR *) conshdlr;
-    *((SCIP_CONS **)&jcons) = (SCIP_CONS *) cons;
-    *((SCIP_CONSDATA ***)&jconsdata) = (SCIP_CONSDATA **) consdata;
+    *((SCIP **)&jscip) = (SCIP *) scip; 
+    *((SCIP_CONSHDLR **)&jconshdlr) = (SCIP_CONSHDLR *) conshdlr; 
+    *((SCIP_CONS **)&jcons) = (SCIP_CONS *) cons; 
+    *((SCIP_CONSDATA ***)&jconsdata) = (SCIP_CONSDATA **) consdata; 
     jresult = (jint) jenv->CallStaticIntMethod(Swig::jclass_SCIPJNIJNI, Swig::director_method_ids[19], swigjobj, jscip, jconshdlr, jcons, jconsdata);
     jthrowable swigerror = jenv->ExceptionOccurred();
     if (swigerror) {
       Swig::DirectorException::raise(jenv, swigerror);
     }
-
-    c_result = (SCIP_RETCODE)jresult;
+    
+    c_result = (SCIP_RETCODE)jresult; 
   } else {
     SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null upcall object in scip::ObjConshdlr::scip_delete ");
   }
@@ -2355,23 +2355,23 @@ SCIP_RETCODE SwigDirector_ObjConshdlr::scip_trans(SCIP *scip, SCIP_CONSHDLR *con
   jlong jconshdlr = 0 ;
   jlong jsourcecons = 0 ;
   jlong jtargetcons = 0 ;
-
+  
   if (!swig_override[8]) {
     return scip::ObjConshdlr::scip_trans(scip,conshdlr,sourcecons,targetcons);
   }
   swigjobj = swig_get_self(jenv);
   if (swigjobj && jenv->IsSameObject(swigjobj, NULL) == JNI_FALSE) {
-    *((SCIP **)&jscip) = (SCIP *) scip;
-    *((SCIP_CONSHDLR **)&jconshdlr) = (SCIP_CONSHDLR *) conshdlr;
-    *((SCIP_CONS **)&jsourcecons) = (SCIP_CONS *) sourcecons;
-    *((SCIP_CONS ***)&jtargetcons) = (SCIP_CONS **) targetcons;
+    *((SCIP **)&jscip) = (SCIP *) scip; 
+    *((SCIP_CONSHDLR **)&jconshdlr) = (SCIP_CONSHDLR *) conshdlr; 
+    *((SCIP_CONS **)&jsourcecons) = (SCIP_CONS *) sourcecons; 
+    *((SCIP_CONS ***)&jtargetcons) = (SCIP_CONS **) targetcons; 
     jresult = (jint) jenv->CallStaticIntMethod(Swig::jclass_SCIPJNIJNI, Swig::director_method_ids[20], swigjobj, jscip, jconshdlr, jsourcecons, jtargetcons);
     jthrowable swigerror = jenv->ExceptionOccurred();
     if (swigerror) {
       Swig::DirectorException::raise(jenv, swigerror);
     }
-
-    c_result = (SCIP_RETCODE)jresult;
+    
+    c_result = (SCIP_RETCODE)jresult; 
   } else {
     SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null upcall object in scip::ObjConshdlr::scip_trans ");
   }
@@ -2390,24 +2390,24 @@ SCIP_RETCODE SwigDirector_ObjConshdlr::scip_initlp(SCIP *scip, SCIP_CONSHDLR *co
   jlong jconss = 0 ;
   jint jnconss  ;
   jlong jinfeasible = 0 ;
-
+  
   if (!swig_override[9]) {
     return scip::ObjConshdlr::scip_initlp(scip,conshdlr,conss,nconss,infeasible);
   }
   swigjobj = swig_get_self(jenv);
   if (swigjobj && jenv->IsSameObject(swigjobj, NULL) == JNI_FALSE) {
-    *((SCIP **)&jscip) = (SCIP *) scip;
-    *((SCIP_CONSHDLR **)&jconshdlr) = (SCIP_CONSHDLR *) conshdlr;
-    *((SCIP_CONS ***)&jconss) = (SCIP_CONS **) conss;
+    *((SCIP **)&jscip) = (SCIP *) scip; 
+    *((SCIP_CONSHDLR **)&jconshdlr) = (SCIP_CONSHDLR *) conshdlr; 
+    *((SCIP_CONS ***)&jconss) = (SCIP_CONS **) conss; 
     jnconss = (jint) nconss;
-    *((unsigned int **)&jinfeasible) = (unsigned int *) infeasible;
+    *((unsigned int **)&jinfeasible) = (unsigned int *) infeasible; 
     jresult = (jint) jenv->CallStaticIntMethod(Swig::jclass_SCIPJNIJNI, Swig::director_method_ids[21], swigjobj, jscip, jconshdlr, jconss, jnconss, jinfeasible);
     jthrowable swigerror = jenv->ExceptionOccurred();
     if (swigerror) {
       Swig::DirectorException::raise(jenv, swigerror);
     }
-
-    c_result = (SCIP_RETCODE)jresult;
+    
+    c_result = (SCIP_RETCODE)jresult; 
   } else {
     SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null upcall object in scip::ObjConshdlr::scip_initlp ");
   }
@@ -2426,25 +2426,25 @@ SCIP_RETCODE SwigDirector_ObjConshdlr::scip_sepalp(SCIP *scip, SCIP_CONSHDLR *co
   jlong jconss = 0 ;
   jint jnconss  ;
   jint jnusefulconss  ;
-
+  
   if (!swig_override[10]) {
     return scip::ObjConshdlr::scip_sepalp(scip,conshdlr,conss,nconss,nusefulconss,result);
   }
   swigjobj = swig_get_self(jenv);
   if (swigjobj && jenv->IsSameObject(swigjobj, NULL) == JNI_FALSE) {
-    *((SCIP **)&jscip) = (SCIP *) scip;
-    *((SCIP_CONSHDLR **)&jconshdlr) = (SCIP_CONSHDLR *) conshdlr;
-    *((SCIP_CONS ***)&jconss) = (SCIP_CONS **) conss;
+    *((SCIP **)&jscip) = (SCIP *) scip; 
+    *((SCIP_CONSHDLR **)&jconshdlr) = (SCIP_CONSHDLR *) conshdlr; 
+    *((SCIP_CONS ***)&jconss) = (SCIP_CONS **) conss; 
     jnconss = (jint) nconss;
     jnusefulconss = (jint) nusefulconss;
-    *((SCIP_Result **)&jresult) = (SCIP_Result *) result;
+    *((SCIP_Result **)&jresult) = (SCIP_Result *) result; 
     jresult = (jint) jenv->CallStaticIntMethod(Swig::jclass_SCIPJNIJNI, Swig::director_method_ids[22], swigjobj, jscip, jconshdlr, jconss, jnconss, jnusefulconss, jresult);
     jthrowable swigerror = jenv->ExceptionOccurred();
     if (swigerror) {
       Swig::DirectorException::raise(jenv, swigerror);
     }
-
-    c_result = (SCIP_RETCODE)jresult;
+    
+    c_result = (SCIP_RETCODE)jresult; 
   } else {
     SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null upcall object in scip::ObjConshdlr::scip_sepalp ");
   }
@@ -2464,26 +2464,26 @@ SCIP_RETCODE SwigDirector_ObjConshdlr::scip_sepasol(SCIP *scip, SCIP_CONSHDLR *c
   jint jnconss  ;
   jint jnusefulconss  ;
   jlong jsol = 0 ;
-
+  
   if (!swig_override[11]) {
     return scip::ObjConshdlr::scip_sepasol(scip,conshdlr,conss,nconss,nusefulconss,sol,result);
   }
   swigjobj = swig_get_self(jenv);
   if (swigjobj && jenv->IsSameObject(swigjobj, NULL) == JNI_FALSE) {
-    *((SCIP **)&jscip) = (SCIP *) scip;
-    *((SCIP_CONSHDLR **)&jconshdlr) = (SCIP_CONSHDLR *) conshdlr;
-    *((SCIP_CONS ***)&jconss) = (SCIP_CONS **) conss;
+    *((SCIP **)&jscip) = (SCIP *) scip; 
+    *((SCIP_CONSHDLR **)&jconshdlr) = (SCIP_CONSHDLR *) conshdlr; 
+    *((SCIP_CONS ***)&jconss) = (SCIP_CONS **) conss; 
     jnconss = (jint) nconss;
     jnusefulconss = (jint) nusefulconss;
-    *((SCIP_SOL **)&jsol) = (SCIP_SOL *) sol;
-    *((SCIP_Result **)&jresult) = (SCIP_Result *) result;
+    *((SCIP_SOL **)&jsol) = (SCIP_SOL *) sol; 
+    *((SCIP_Result **)&jresult) = (SCIP_Result *) result; 
     jresult = (jint) jenv->CallStaticIntMethod(Swig::jclass_SCIPJNIJNI, Swig::director_method_ids[23], swigjobj, jscip, jconshdlr, jconss, jnconss, jnusefulconss, jsol, jresult);
     jthrowable swigerror = jenv->ExceptionOccurred();
     if (swigerror) {
       Swig::DirectorException::raise(jenv, swigerror);
     }
-
-    c_result = (SCIP_RETCODE)jresult;
+    
+    c_result = (SCIP_RETCODE)jresult; 
   } else {
     SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null upcall object in scip::ObjConshdlr::scip_sepasol ");
   }
@@ -2503,26 +2503,26 @@ SCIP_RETCODE SwigDirector_ObjConshdlr::scip_enfolp(SCIP *scip, SCIP_CONSHDLR *co
   jint jnconss  ;
   jint jnusefulconss  ;
   jlong jsolinfeasible  ;
-
+  
   if (!swig_override[12]) {
     return scip::ObjConshdlr::scip_enfolp(scip,conshdlr,conss,nconss,nusefulconss,solinfeasible,result);
   }
   swigjobj = swig_get_self(jenv);
   if (swigjobj && jenv->IsSameObject(swigjobj, NULL) == JNI_FALSE) {
-    *((SCIP **)&jscip) = (SCIP *) scip;
-    *((SCIP_CONSHDLR **)&jconshdlr) = (SCIP_CONSHDLR *) conshdlr;
-    *((SCIP_CONS ***)&jconss) = (SCIP_CONS **) conss;
+    *((SCIP **)&jscip) = (SCIP *) scip; 
+    *((SCIP_CONSHDLR **)&jconshdlr) = (SCIP_CONSHDLR *) conshdlr; 
+    *((SCIP_CONS ***)&jconss) = (SCIP_CONS **) conss; 
     jnconss = (jint) nconss;
     jnusefulconss = (jint) nusefulconss;
     jsolinfeasible = (jlong) solinfeasible;
-    *((SCIP_Result **)&jresult) = (SCIP_Result *) result;
+    *((SCIP_Result **)&jresult) = (SCIP_Result *) result; 
     jresult = (jint) jenv->CallStaticIntMethod(Swig::jclass_SCIPJNIJNI, Swig::director_method_ids[24], swigjobj, jscip, jconshdlr, jconss, jnconss, jnusefulconss, jsolinfeasible, jresult);
     jthrowable swigerror = jenv->ExceptionOccurred();
     if (swigerror) {
       Swig::DirectorException::raise(jenv, swigerror);
     }
-
-    c_result = (SCIP_RETCODE)jresult;
+    
+    c_result = (SCIP_RETCODE)jresult; 
   } else {
     SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null upcall object in scip::ObjConshdlr::scip_enfolp ");
   }
@@ -2543,27 +2543,27 @@ SCIP_RETCODE SwigDirector_ObjConshdlr::scip_enforelax(SCIP *scip, SCIP_SOL *sol,
   jint jnconss  ;
   jint jnusefulconss  ;
   jlong jsolinfeasible  ;
-
+  
   if (!swig_override[13]) {
     return scip::ObjConshdlr::scip_enforelax(scip,sol,conshdlr,conss,nconss,nusefulconss,solinfeasible,result);
   }
   swigjobj = swig_get_self(jenv);
   if (swigjobj && jenv->IsSameObject(swigjobj, NULL) == JNI_FALSE) {
-    *((SCIP **)&jscip) = (SCIP *) scip;
-    *((SCIP_SOL **)&jsol) = (SCIP_SOL *) sol;
-    *((SCIP_CONSHDLR **)&jconshdlr) = (SCIP_CONSHDLR *) conshdlr;
-    *((SCIP_CONS ***)&jconss) = (SCIP_CONS **) conss;
+    *((SCIP **)&jscip) = (SCIP *) scip; 
+    *((SCIP_SOL **)&jsol) = (SCIP_SOL *) sol; 
+    *((SCIP_CONSHDLR **)&jconshdlr) = (SCIP_CONSHDLR *) conshdlr; 
+    *((SCIP_CONS ***)&jconss) = (SCIP_CONS **) conss; 
     jnconss = (jint) nconss;
     jnusefulconss = (jint) nusefulconss;
     jsolinfeasible = (jlong) solinfeasible;
-    *((SCIP_Result **)&jresult) = (SCIP_Result *) result;
+    *((SCIP_Result **)&jresult) = (SCIP_Result *) result; 
     jresult = (jint) jenv->CallStaticIntMethod(Swig::jclass_SCIPJNIJNI, Swig::director_method_ids[25], swigjobj, jscip, jsol, jconshdlr, jconss, jnconss, jnusefulconss, jsolinfeasible, jresult);
     jthrowable swigerror = jenv->ExceptionOccurred();
     if (swigerror) {
       Swig::DirectorException::raise(jenv, swigerror);
     }
-
-    c_result = (SCIP_RETCODE)jresult;
+    
+    c_result = (SCIP_RETCODE)jresult; 
   } else {
     SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null upcall object in scip::ObjConshdlr::scip_enforelax ");
   }
@@ -2584,27 +2584,27 @@ SCIP_RETCODE SwigDirector_ObjConshdlr::scip_enfops(SCIP *scip, SCIP_CONSHDLR *co
   jint jnusefulconss  ;
   jlong jsolinfeasible  ;
   jlong jobjinfeasible  ;
-
+  
   if (!swig_override[14]) {
     return scip::ObjConshdlr::scip_enfops(scip,conshdlr,conss,nconss,nusefulconss,solinfeasible,objinfeasible,result);
   }
   swigjobj = swig_get_self(jenv);
   if (swigjobj && jenv->IsSameObject(swigjobj, NULL) == JNI_FALSE) {
-    *((SCIP **)&jscip) = (SCIP *) scip;
-    *((SCIP_CONSHDLR **)&jconshdlr) = (SCIP_CONSHDLR *) conshdlr;
-    *((SCIP_CONS ***)&jconss) = (SCIP_CONS **) conss;
+    *((SCIP **)&jscip) = (SCIP *) scip; 
+    *((SCIP_CONSHDLR **)&jconshdlr) = (SCIP_CONSHDLR *) conshdlr; 
+    *((SCIP_CONS ***)&jconss) = (SCIP_CONS **) conss; 
     jnconss = (jint) nconss;
     jnusefulconss = (jint) nusefulconss;
     jsolinfeasible = (jlong) solinfeasible;
     jobjinfeasible = (jlong) objinfeasible;
-    *((SCIP_Result **)&jresult) = (SCIP_Result *) result;
+    *((SCIP_Result **)&jresult) = (SCIP_Result *) result; 
     jresult = (jint) jenv->CallStaticIntMethod(Swig::jclass_SCIPJNIJNI, Swig::director_method_ids[26], swigjobj, jscip, jconshdlr, jconss, jnconss, jnusefulconss, jsolinfeasible, jobjinfeasible, jresult);
     jthrowable swigerror = jenv->ExceptionOccurred();
     if (swigerror) {
       Swig::DirectorException::raise(jenv, swigerror);
     }
-
-    c_result = (SCIP_RETCODE)jresult;
+    
+    c_result = (SCIP_RETCODE)jresult; 
   } else {
     SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null upcall object in scip::ObjConshdlr::scip_enfops ");
   }
@@ -2627,29 +2627,29 @@ SCIP_RETCODE SwigDirector_ObjConshdlr::scip_check(SCIP *scip, SCIP_CONSHDLR *con
   jlong jchecklprows  ;
   jlong jprintreason  ;
   jlong jcompletely  ;
-
+  
   if (!swig_override[15]) {
     return scip::ObjConshdlr::scip_check(scip,conshdlr,conss,nconss,sol,checkintegrality,checklprows,printreason,completely,result);
   }
   swigjobj = swig_get_self(jenv);
   if (swigjobj && jenv->IsSameObject(swigjobj, NULL) == JNI_FALSE) {
-    *((SCIP **)&jscip) = (SCIP *) scip;
-    *((SCIP_CONSHDLR **)&jconshdlr) = (SCIP_CONSHDLR *) conshdlr;
-    *((SCIP_CONS ***)&jconss) = (SCIP_CONS **) conss;
+    *((SCIP **)&jscip) = (SCIP *) scip; 
+    *((SCIP_CONSHDLR **)&jconshdlr) = (SCIP_CONSHDLR *) conshdlr; 
+    *((SCIP_CONS ***)&jconss) = (SCIP_CONS **) conss; 
     jnconss = (jint) nconss;
-    *((SCIP_SOL **)&jsol) = (SCIP_SOL *) sol;
+    *((SCIP_SOL **)&jsol) = (SCIP_SOL *) sol; 
     jcheckintegrality = (jlong) checkintegrality;
     jchecklprows = (jlong) checklprows;
     jprintreason = (jlong) printreason;
     jcompletely = (jlong) completely;
-    *((SCIP_Result **)&jresult) = (SCIP_Result *) result;
+    *((SCIP_Result **)&jresult) = (SCIP_Result *) result; 
     jresult = (jint) jenv->CallStaticIntMethod(Swig::jclass_SCIPJNIJNI, Swig::director_method_ids[27], swigjobj, jscip, jconshdlr, jconss, jnconss, jsol, jcheckintegrality, jchecklprows, jprintreason, jcompletely, jresult);
     jthrowable swigerror = jenv->ExceptionOccurred();
     if (swigerror) {
       Swig::DirectorException::raise(jenv, swigerror);
     }
-
-    c_result = (SCIP_RETCODE)jresult;
+    
+    c_result = (SCIP_RETCODE)jresult; 
   } else {
     SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null upcall object in scip::ObjConshdlr::scip_check ");
   }
@@ -2670,28 +2670,28 @@ SCIP_RETCODE SwigDirector_ObjConshdlr::scip_prop(SCIP *scip, SCIP_CONSHDLR *cons
   jint jnusefulconss  ;
   jint jnmarkedconss  ;
   jlong jproptiming  ;
-
+  
   if (!swig_override[16]) {
     return scip::ObjConshdlr::scip_prop(scip,conshdlr,conss,nconss,nusefulconss,nmarkedconss,proptiming,result);
   }
   swigjobj = swig_get_self(jenv);
   if (swigjobj && jenv->IsSameObject(swigjobj, NULL) == JNI_FALSE) {
-    *((SCIP **)&jscip) = (SCIP *) scip;
-    *((SCIP_CONSHDLR **)&jconshdlr) = (SCIP_CONSHDLR *) conshdlr;
-    *((SCIP_CONS ***)&jconss) = (SCIP_CONS **) conss;
+    *((SCIP **)&jscip) = (SCIP *) scip; 
+    *((SCIP_CONSHDLR **)&jconshdlr) = (SCIP_CONSHDLR *) conshdlr; 
+    *((SCIP_CONS ***)&jconss) = (SCIP_CONS **) conss; 
     jnconss = (jint) nconss;
     jnusefulconss = (jint) nusefulconss;
     jnmarkedconss = (jint) nmarkedconss;
     jproptiming = 0;
-    *((SCIP_PROPTIMING **)&jproptiming) = new SCIP_PROPTIMING((const SCIP_PROPTIMING &)proptiming);
-    *((SCIP_Result **)&jresult) = (SCIP_Result *) result;
+    *((SCIP_PROPTIMING **)&jproptiming) = new SCIP_PROPTIMING((const SCIP_PROPTIMING &)proptiming); 
+    *((SCIP_Result **)&jresult) = (SCIP_Result *) result; 
     jresult = (jint) jenv->CallStaticIntMethod(Swig::jclass_SCIPJNIJNI, Swig::director_method_ids[28], swigjobj, jscip, jconshdlr, jconss, jnconss, jnusefulconss, jnmarkedconss, jproptiming, jresult);
     jthrowable swigerror = jenv->ExceptionOccurred();
     if (swigerror) {
       Swig::DirectorException::raise(jenv, swigerror);
     }
-
-    c_result = (SCIP_RETCODE)jresult;
+    
+    c_result = (SCIP_RETCODE)jresult; 
   } else {
     SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null upcall object in scip::ObjConshdlr::scip_prop ");
   }
@@ -2731,19 +2731,19 @@ SCIP_RETCODE SwigDirector_ObjConshdlr::scip_presol(SCIP *scip, SCIP_CONSHDLR *co
   jlong jnupgdconss = 0 ;
   jlong jnchgcoefs = 0 ;
   jlong jnchgsides = 0 ;
-
+  
   if (!swig_override[17]) {
     return scip::ObjConshdlr::scip_presol(scip,conshdlr,conss,nconss,nrounds,presoltiming,nnewfixedvars,nnewaggrvars,nnewchgvartypes,nnewchgbds,nnewholes,nnewdelconss,nnewaddconss,nnewupgdconss,nnewchgcoefs,nnewchgsides,nfixedvars,naggrvars,nchgvartypes,nchgbds,naddholes,ndelconss,naddconss,nupgdconss,nchgcoefs,nchgsides,result);
   }
   swigjobj = swig_get_self(jenv);
   if (swigjobj && jenv->IsSameObject(swigjobj, NULL) == JNI_FALSE) {
-    *((SCIP **)&jscip) = (SCIP *) scip;
-    *((SCIP_CONSHDLR **)&jconshdlr) = (SCIP_CONSHDLR *) conshdlr;
-    *((SCIP_CONS ***)&jconss) = (SCIP_CONS **) conss;
+    *((SCIP **)&jscip) = (SCIP *) scip; 
+    *((SCIP_CONSHDLR **)&jconshdlr) = (SCIP_CONSHDLR *) conshdlr; 
+    *((SCIP_CONS ***)&jconss) = (SCIP_CONS **) conss; 
     jnconss = (jint) nconss;
     jnrounds = (jint) nrounds;
     jpresoltiming = 0;
-    *((SCIP_PRESOLTIMING **)&jpresoltiming) = new SCIP_PRESOLTIMING((const SCIP_PRESOLTIMING &)presoltiming);
+    *((SCIP_PRESOLTIMING **)&jpresoltiming) = new SCIP_PRESOLTIMING((const SCIP_PRESOLTIMING &)presoltiming); 
     jnnewfixedvars = (jint) nnewfixedvars;
     jnnewaggrvars = (jint) nnewaggrvars;
     jnnewchgvartypes = (jint) nnewchgvartypes;
@@ -2754,24 +2754,24 @@ SCIP_RETCODE SwigDirector_ObjConshdlr::scip_presol(SCIP *scip, SCIP_CONSHDLR *co
     jnnewupgdconss = (jint) nnewupgdconss;
     jnnewchgcoefs = (jint) nnewchgcoefs;
     jnnewchgsides = (jint) nnewchgsides;
-    *((int **)&jnfixedvars) = (int *) nfixedvars;
-    *((int **)&jnaggrvars) = (int *) naggrvars;
-    *((int **)&jnchgvartypes) = (int *) nchgvartypes;
-    *((int **)&jnchgbds) = (int *) nchgbds;
-    *((int **)&jnaddholes) = (int *) naddholes;
-    *((int **)&jndelconss) = (int *) ndelconss;
-    *((int **)&jnaddconss) = (int *) naddconss;
-    *((int **)&jnupgdconss) = (int *) nupgdconss;
-    *((int **)&jnchgcoefs) = (int *) nchgcoefs;
-    *((int **)&jnchgsides) = (int *) nchgsides;
-    *((SCIP_Result **)&jresult) = (SCIP_Result *) result;
+    *((int **)&jnfixedvars) = (int *) nfixedvars; 
+    *((int **)&jnaggrvars) = (int *) naggrvars; 
+    *((int **)&jnchgvartypes) = (int *) nchgvartypes; 
+    *((int **)&jnchgbds) = (int *) nchgbds; 
+    *((int **)&jnaddholes) = (int *) naddholes; 
+    *((int **)&jndelconss) = (int *) ndelconss; 
+    *((int **)&jnaddconss) = (int *) naddconss; 
+    *((int **)&jnupgdconss) = (int *) nupgdconss; 
+    *((int **)&jnchgcoefs) = (int *) nchgcoefs; 
+    *((int **)&jnchgsides) = (int *) nchgsides; 
+    *((SCIP_Result **)&jresult) = (SCIP_Result *) result; 
     jresult = (jint) jenv->CallStaticIntMethod(Swig::jclass_SCIPJNIJNI, Swig::director_method_ids[29], swigjobj, jscip, jconshdlr, jconss, jnconss, jnrounds, jpresoltiming, jnnewfixedvars, jnnewaggrvars, jnnewchgvartypes, jnnewchgbds, jnnewholes, jnnewdelconss, jnnewaddconss, jnnewupgdconss, jnnewchgcoefs, jnnewchgsides, jnfixedvars, jnaggrvars, jnchgvartypes, jnchgbds, jnaddholes, jndelconss, jnaddconss, jnupgdconss, jnchgcoefs, jnchgsides, jresult);
     jthrowable swigerror = jenv->ExceptionOccurred();
     if (swigerror) {
       Swig::DirectorException::raise(jenv, swigerror);
     }
-
-    c_result = (SCIP_RETCODE)jresult;
+    
+    c_result = (SCIP_RETCODE)jresult; 
   } else {
     SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null upcall object in scip::ObjConshdlr::scip_presol ");
   }
@@ -2793,28 +2793,28 @@ SCIP_RETCODE SwigDirector_ObjConshdlr::scip_resprop(SCIP *scip, SCIP_CONSHDLR *c
   jint jboundtype  ;
   jlong jbdchgidx = 0 ;
   jdouble jrelaxedbd  ;
-
+  
   if (!swig_override[18]) {
     return scip::ObjConshdlr::scip_resprop(scip,conshdlr,cons,infervar,inferinfo,boundtype,bdchgidx,relaxedbd,result);
   }
   swigjobj = swig_get_self(jenv);
   if (swigjobj && jenv->IsSameObject(swigjobj, NULL) == JNI_FALSE) {
-    *((SCIP **)&jscip) = (SCIP *) scip;
-    *((SCIP_CONSHDLR **)&jconshdlr) = (SCIP_CONSHDLR *) conshdlr;
-    *((SCIP_CONS **)&jcons) = (SCIP_CONS *) cons;
-    *((SCIP_VAR **)&jinfervar) = (SCIP_VAR *) infervar;
+    *((SCIP **)&jscip) = (SCIP *) scip; 
+    *((SCIP_CONSHDLR **)&jconshdlr) = (SCIP_CONSHDLR *) conshdlr; 
+    *((SCIP_CONS **)&jcons) = (SCIP_CONS *) cons; 
+    *((SCIP_VAR **)&jinfervar) = (SCIP_VAR *) infervar; 
     jinferinfo = (jint) inferinfo;
     jboundtype = (jint) boundtype;
-    *((SCIP_BDCHGIDX **)&jbdchgidx) = (SCIP_BDCHGIDX *) bdchgidx;
+    *((SCIP_BDCHGIDX **)&jbdchgidx) = (SCIP_BDCHGIDX *) bdchgidx; 
     jrelaxedbd = (jdouble) relaxedbd;
-    *((SCIP_Result **)&jresult) = (SCIP_Result *) result;
+    *((SCIP_Result **)&jresult) = (SCIP_Result *) result; 
     jresult = (jint) jenv->CallStaticIntMethod(Swig::jclass_SCIPJNIJNI, Swig::director_method_ids[30], swigjobj, jscip, jconshdlr, jcons, jinfervar, jinferinfo, jboundtype, jbdchgidx, jrelaxedbd, jresult);
     jthrowable swigerror = jenv->ExceptionOccurred();
     if (swigerror) {
       Swig::DirectorException::raise(jenv, swigerror);
     }
-
-    c_result = (SCIP_RETCODE)jresult;
+    
+    c_result = (SCIP_RETCODE)jresult; 
   } else {
     SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null upcall object in scip::ObjConshdlr::scip_resprop ");
   }
@@ -2834,17 +2834,16 @@ SCIP_RETCODE SwigDirector_ObjConshdlr::scip_lock(SCIP *scip, SCIP_CONSHDLR *cons
   jint jlocktype  ;
   jint jnlockspos  ;
   jint jnlocksneg  ;
-
+  
   if (!swig_override[19]) {
     return scip::ObjConshdlr::scip_lock(scip,conshdlr,cons,locktype,nlockspos,nlocksneg);
   }
   swigjobj = swig_get_self(jenv);
   if (swigjobj && jenv->IsSameObject(swigjobj, NULL) == JNI_FALSE) {
-    *((SCIP **)&jscip) = (SCIP *) scip;
-    *((SCIP_CONSHDLR **)&jconshdlr) = (SCIP_CONSHDLR *) conshdlr;
-    *((SCIP_CONS **)&jcons) = (SCIP_CONS *) cons;
-    jlocktype = 0;
-    *((SCIP_LOCKTYPE **)&jlocktype) = new SCIP_LOCKTYPE((const SCIP_LOCKTYPE &)locktype);
+    *((SCIP **)&jscip) = (SCIP *) scip; 
+    *((SCIP_CONSHDLR **)&jconshdlr) = (SCIP_CONSHDLR *) conshdlr; 
+    *((SCIP_CONS **)&jcons) = (SCIP_CONS *) cons; 
+    jlocktype = (jint) locktype;
     jnlockspos = (jint) nlockspos;
     jnlocksneg = (jint) nlocksneg;
     jresult = (jint) jenv->CallStaticIntMethod(Swig::jclass_SCIPJNIJNI, Swig::director_method_ids[31], swigjobj, jscip, jconshdlr, jcons, jlocktype, jnlockspos, jnlocksneg);
@@ -2852,8 +2851,8 @@ SCIP_RETCODE SwigDirector_ObjConshdlr::scip_lock(SCIP *scip, SCIP_CONSHDLR *cons
     if (swigerror) {
       Swig::DirectorException::raise(jenv, swigerror);
     }
-
-    c_result = (SCIP_RETCODE)jresult;
+    
+    c_result = (SCIP_RETCODE)jresult; 
   } else {
     SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null upcall object in scip::ObjConshdlr::scip_lock ");
   }
@@ -2870,22 +2869,22 @@ SCIP_RETCODE SwigDirector_ObjConshdlr::scip_active(SCIP *scip, SCIP_CONSHDLR *co
   jlong jscip = 0 ;
   jlong jconshdlr = 0 ;
   jlong jcons = 0 ;
-
+  
   if (!swig_override[20]) {
     return scip::ObjConshdlr::scip_active(scip,conshdlr,cons);
   }
   swigjobj = swig_get_self(jenv);
   if (swigjobj && jenv->IsSameObject(swigjobj, NULL) == JNI_FALSE) {
-    *((SCIP **)&jscip) = (SCIP *) scip;
-    *((SCIP_CONSHDLR **)&jconshdlr) = (SCIP_CONSHDLR *) conshdlr;
-    *((SCIP_CONS **)&jcons) = (SCIP_CONS *) cons;
+    *((SCIP **)&jscip) = (SCIP *) scip; 
+    *((SCIP_CONSHDLR **)&jconshdlr) = (SCIP_CONSHDLR *) conshdlr; 
+    *((SCIP_CONS **)&jcons) = (SCIP_CONS *) cons; 
     jresult = (jint) jenv->CallStaticIntMethod(Swig::jclass_SCIPJNIJNI, Swig::director_method_ids[32], swigjobj, jscip, jconshdlr, jcons);
     jthrowable swigerror = jenv->ExceptionOccurred();
     if (swigerror) {
       Swig::DirectorException::raise(jenv, swigerror);
     }
-
-    c_result = (SCIP_RETCODE)jresult;
+    
+    c_result = (SCIP_RETCODE)jresult; 
   } else {
     SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null upcall object in scip::ObjConshdlr::scip_active ");
   }
@@ -2902,22 +2901,22 @@ SCIP_RETCODE SwigDirector_ObjConshdlr::scip_deactive(SCIP *scip, SCIP_CONSHDLR *
   jlong jscip = 0 ;
   jlong jconshdlr = 0 ;
   jlong jcons = 0 ;
-
+  
   if (!swig_override[21]) {
     return scip::ObjConshdlr::scip_deactive(scip,conshdlr,cons);
   }
   swigjobj = swig_get_self(jenv);
   if (swigjobj && jenv->IsSameObject(swigjobj, NULL) == JNI_FALSE) {
-    *((SCIP **)&jscip) = (SCIP *) scip;
-    *((SCIP_CONSHDLR **)&jconshdlr) = (SCIP_CONSHDLR *) conshdlr;
-    *((SCIP_CONS **)&jcons) = (SCIP_CONS *) cons;
+    *((SCIP **)&jscip) = (SCIP *) scip; 
+    *((SCIP_CONSHDLR **)&jconshdlr) = (SCIP_CONSHDLR *) conshdlr; 
+    *((SCIP_CONS **)&jcons) = (SCIP_CONS *) cons; 
     jresult = (jint) jenv->CallStaticIntMethod(Swig::jclass_SCIPJNIJNI, Swig::director_method_ids[33], swigjobj, jscip, jconshdlr, jcons);
     jthrowable swigerror = jenv->ExceptionOccurred();
     if (swigerror) {
       Swig::DirectorException::raise(jenv, swigerror);
     }
-
-    c_result = (SCIP_RETCODE)jresult;
+    
+    c_result = (SCIP_RETCODE)jresult; 
   } else {
     SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null upcall object in scip::ObjConshdlr::scip_deactive ");
   }
@@ -2934,22 +2933,22 @@ SCIP_RETCODE SwigDirector_ObjConshdlr::scip_enable(SCIP *scip, SCIP_CONSHDLR *co
   jlong jscip = 0 ;
   jlong jconshdlr = 0 ;
   jlong jcons = 0 ;
-
+  
   if (!swig_override[22]) {
     return scip::ObjConshdlr::scip_enable(scip,conshdlr,cons);
   }
   swigjobj = swig_get_self(jenv);
   if (swigjobj && jenv->IsSameObject(swigjobj, NULL) == JNI_FALSE) {
-    *((SCIP **)&jscip) = (SCIP *) scip;
-    *((SCIP_CONSHDLR **)&jconshdlr) = (SCIP_CONSHDLR *) conshdlr;
-    *((SCIP_CONS **)&jcons) = (SCIP_CONS *) cons;
+    *((SCIP **)&jscip) = (SCIP *) scip; 
+    *((SCIP_CONSHDLR **)&jconshdlr) = (SCIP_CONSHDLR *) conshdlr; 
+    *((SCIP_CONS **)&jcons) = (SCIP_CONS *) cons; 
     jresult = (jint) jenv->CallStaticIntMethod(Swig::jclass_SCIPJNIJNI, Swig::director_method_ids[34], swigjobj, jscip, jconshdlr, jcons);
     jthrowable swigerror = jenv->ExceptionOccurred();
     if (swigerror) {
       Swig::DirectorException::raise(jenv, swigerror);
     }
-
-    c_result = (SCIP_RETCODE)jresult;
+    
+    c_result = (SCIP_RETCODE)jresult; 
   } else {
     SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null upcall object in scip::ObjConshdlr::scip_enable ");
   }
@@ -2966,22 +2965,22 @@ SCIP_RETCODE SwigDirector_ObjConshdlr::scip_disable(SCIP *scip, SCIP_CONSHDLR *c
   jlong jscip = 0 ;
   jlong jconshdlr = 0 ;
   jlong jcons = 0 ;
-
+  
   if (!swig_override[23]) {
     return scip::ObjConshdlr::scip_disable(scip,conshdlr,cons);
   }
   swigjobj = swig_get_self(jenv);
   if (swigjobj && jenv->IsSameObject(swigjobj, NULL) == JNI_FALSE) {
-    *((SCIP **)&jscip) = (SCIP *) scip;
-    *((SCIP_CONSHDLR **)&jconshdlr) = (SCIP_CONSHDLR *) conshdlr;
-    *((SCIP_CONS **)&jcons) = (SCIP_CONS *) cons;
+    *((SCIP **)&jscip) = (SCIP *) scip; 
+    *((SCIP_CONSHDLR **)&jconshdlr) = (SCIP_CONSHDLR *) conshdlr; 
+    *((SCIP_CONS **)&jcons) = (SCIP_CONS *) cons; 
     jresult = (jint) jenv->CallStaticIntMethod(Swig::jclass_SCIPJNIJNI, Swig::director_method_ids[35], swigjobj, jscip, jconshdlr, jcons);
     jthrowable swigerror = jenv->ExceptionOccurred();
     if (swigerror) {
       Swig::DirectorException::raise(jenv, swigerror);
     }
-
-    c_result = (SCIP_RETCODE)jresult;
+    
+    c_result = (SCIP_RETCODE)jresult; 
   } else {
     SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null upcall object in scip::ObjConshdlr::scip_disable ");
   }
@@ -2999,23 +2998,23 @@ SCIP_RETCODE SwigDirector_ObjConshdlr::scip_delvars(SCIP *scip, SCIP_CONSHDLR *c
   jlong jconshdlr = 0 ;
   jlong jconss = 0 ;
   jint jnconss  ;
-
+  
   if (!swig_override[24]) {
     return scip::ObjConshdlr::scip_delvars(scip,conshdlr,conss,nconss);
   }
   swigjobj = swig_get_self(jenv);
   if (swigjobj && jenv->IsSameObject(swigjobj, NULL) == JNI_FALSE) {
-    *((SCIP **)&jscip) = (SCIP *) scip;
-    *((SCIP_CONSHDLR **)&jconshdlr) = (SCIP_CONSHDLR *) conshdlr;
-    *((SCIP_CONS ***)&jconss) = (SCIP_CONS **) conss;
+    *((SCIP **)&jscip) = (SCIP *) scip; 
+    *((SCIP_CONSHDLR **)&jconshdlr) = (SCIP_CONSHDLR *) conshdlr; 
+    *((SCIP_CONS ***)&jconss) = (SCIP_CONS **) conss; 
     jnconss = (jint) nconss;
     jresult = (jint) jenv->CallStaticIntMethod(Swig::jclass_SCIPJNIJNI, Swig::director_method_ids[36], swigjobj, jscip, jconshdlr, jconss, jnconss);
     jthrowable swigerror = jenv->ExceptionOccurred();
     if (swigerror) {
       Swig::DirectorException::raise(jenv, swigerror);
     }
-
-    c_result = (SCIP_RETCODE)jresult;
+    
+    c_result = (SCIP_RETCODE)jresult; 
   } else {
     SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null upcall object in scip::ObjConshdlr::scip_delvars ");
   }
@@ -3033,23 +3032,23 @@ SCIP_RETCODE SwigDirector_ObjConshdlr::scip_print(SCIP *scip, SCIP_CONSHDLR *con
   jlong jconshdlr = 0 ;
   jlong jcons = 0 ;
   jlong jfile = 0 ;
-
+  
   if (!swig_override[25]) {
     return scip::ObjConshdlr::scip_print(scip,conshdlr,cons,file);
   }
   swigjobj = swig_get_self(jenv);
   if (swigjobj && jenv->IsSameObject(swigjobj, NULL) == JNI_FALSE) {
-    *((SCIP **)&jscip) = (SCIP *) scip;
-    *((SCIP_CONSHDLR **)&jconshdlr) = (SCIP_CONSHDLR *) conshdlr;
-    *((SCIP_CONS **)&jcons) = (SCIP_CONS *) cons;
-    *((FILE **)&jfile) = (FILE *) file;
+    *((SCIP **)&jscip) = (SCIP *) scip; 
+    *((SCIP_CONSHDLR **)&jconshdlr) = (SCIP_CONSHDLR *) conshdlr; 
+    *((SCIP_CONS **)&jcons) = (SCIP_CONS *) cons; 
+    *((FILE **)&jfile) = (FILE *) file; 
     jresult = (jint) jenv->CallStaticIntMethod(Swig::jclass_SCIPJNIJNI, Swig::director_method_ids[37], swigjobj, jscip, jconshdlr, jcons, jfile);
     jthrowable swigerror = jenv->ExceptionOccurred();
     if (swigerror) {
       Swig::DirectorException::raise(jenv, swigerror);
     }
-
-    c_result = (SCIP_RETCODE)jresult;
+    
+    c_result = (SCIP_RETCODE)jresult; 
   } else {
     SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null upcall object in scip::ObjConshdlr::scip_print ");
   }
@@ -3083,25 +3082,25 @@ SCIP_RETCODE SwigDirector_ObjConshdlr::scip_copy(SCIP *scip, SCIP_CONS **cons, c
   jlong jstickingatnode  ;
   jlong jglobal  ;
   jlong jvalid = 0 ;
-
+  
   if (!swig_override[26]) {
     return scip::ObjConshdlr::scip_copy(scip,cons,name,sourcescip,sourceconshdlr,sourcecons,varmap,consmap,initial,separate,enforce,check,propagate,local,modifiable,dynamic,removable,stickingatnode,global,valid);
   }
   swigjobj = swig_get_self(jenv);
   if (swigjobj && jenv->IsSameObject(swigjobj, NULL) == JNI_FALSE) {
-    *((SCIP **)&jscip) = (SCIP *) scip;
-    *((SCIP_CONS ***)&jcons) = (SCIP_CONS **) cons;
+    *((SCIP **)&jscip) = (SCIP *) scip; 
+    *((SCIP_CONS ***)&jcons) = (SCIP_CONS **) cons; 
     jname = 0;
     if (name) {
       jname = jenv->NewStringUTF((const char *)name);
       if (!jname) return c_result;
     }
     Swig::LocalRefGuard name_refguard(jenv, jname);
-    *((SCIP **)&jsourcescip) = (SCIP *) sourcescip;
-    *((SCIP_CONSHDLR **)&jsourceconshdlr) = (SCIP_CONSHDLR *) sourceconshdlr;
-    *((SCIP_CONS **)&jsourcecons) = (SCIP_CONS *) sourcecons;
-    *((SCIP_HASHMAP **)&jvarmap) = (SCIP_HASHMAP *) varmap;
-    *((SCIP_HASHMAP **)&jconsmap) = (SCIP_HASHMAP *) consmap;
+    *((SCIP **)&jsourcescip) = (SCIP *) sourcescip; 
+    *((SCIP_CONSHDLR **)&jsourceconshdlr) = (SCIP_CONSHDLR *) sourceconshdlr; 
+    *((SCIP_CONS **)&jsourcecons) = (SCIP_CONS *) sourcecons; 
+    *((SCIP_HASHMAP **)&jvarmap) = (SCIP_HASHMAP *) varmap; 
+    *((SCIP_HASHMAP **)&jconsmap) = (SCIP_HASHMAP *) consmap; 
     jinitial = (jlong) initial;
     jseparate = (jlong) separate;
     jenforce = (jlong) enforce;
@@ -3113,14 +3112,14 @@ SCIP_RETCODE SwigDirector_ObjConshdlr::scip_copy(SCIP *scip, SCIP_CONS **cons, c
     jremovable = (jlong) removable;
     jstickingatnode = (jlong) stickingatnode;
     jglobal = (jlong) global;
-    *((unsigned int **)&jvalid) = (unsigned int *) valid;
+    *((unsigned int **)&jvalid) = (unsigned int *) valid; 
     jresult = (jint) jenv->CallStaticIntMethod(Swig::jclass_SCIPJNIJNI, Swig::director_method_ids[38], swigjobj, jscip, jcons, jname, jsourcescip, jsourceconshdlr, jsourcecons, jvarmap, jconsmap, jinitial, jseparate, jenforce, jcheck, jpropagate, jlocal, jmodifiable, jdynamic, jremovable, jstickingatnode, jglobal, jvalid);
     jthrowable swigerror = jenv->ExceptionOccurred();
     if (swigerror) {
       Swig::DirectorException::raise(jenv, swigerror);
     }
-
-    c_result = (SCIP_RETCODE)jresult;
+    
+    c_result = (SCIP_RETCODE)jresult; 
   } else {
     SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null upcall object in scip::ObjConshdlr::scip_copy ");
   }
@@ -3150,15 +3149,15 @@ SCIP_RETCODE SwigDirector_ObjConshdlr::scip_parse(SCIP *scip, SCIP_CONSHDLR *con
   jlong jremovable  ;
   jlong jstickingatnode  ;
   jlong jsuccess = 0 ;
-
+  
   if (!swig_override[27]) {
     return scip::ObjConshdlr::scip_parse(scip,conshdlr,cons,name,str,initial,separate,enforce,check,propagate,local,modifiable,dynamic,removable,stickingatnode,success);
   }
   swigjobj = swig_get_self(jenv);
   if (swigjobj && jenv->IsSameObject(swigjobj, NULL) == JNI_FALSE) {
-    *((SCIP **)&jscip) = (SCIP *) scip;
-    *((SCIP_CONSHDLR **)&jconshdlr) = (SCIP_CONSHDLR *) conshdlr;
-    *((SCIP_CONS ***)&jcons) = (SCIP_CONS **) cons;
+    *((SCIP **)&jscip) = (SCIP *) scip; 
+    *((SCIP_CONSHDLR **)&jconshdlr) = (SCIP_CONSHDLR *) conshdlr; 
+    *((SCIP_CONS ***)&jcons) = (SCIP_CONS **) cons; 
     jname = 0;
     if (name) {
       jname = jenv->NewStringUTF((const char *)name);
@@ -3181,14 +3180,14 @@ SCIP_RETCODE SwigDirector_ObjConshdlr::scip_parse(SCIP *scip, SCIP_CONSHDLR *con
     jdynamic = (jlong) dynamic;
     jremovable = (jlong) removable;
     jstickingatnode = (jlong) stickingatnode;
-    *((unsigned int **)&jsuccess) = (unsigned int *) success;
+    *((unsigned int **)&jsuccess) = (unsigned int *) success; 
     jresult = (jint) jenv->CallStaticIntMethod(Swig::jclass_SCIPJNIJNI, Swig::director_method_ids[39], swigjobj, jscip, jconshdlr, jcons, jname, jstr, jinitial, jseparate, jenforce, jcheck, jpropagate, jlocal, jmodifiable, jdynamic, jremovable, jstickingatnode, jsuccess);
     jthrowable swigerror = jenv->ExceptionOccurred();
     if (swigerror) {
       Swig::DirectorException::raise(jenv, swigerror);
     }
-
-    c_result = (SCIP_RETCODE)jresult;
+    
+    c_result = (SCIP_RETCODE)jresult; 
   } else {
     SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null upcall object in scip::ObjConshdlr::scip_parse ");
   }
@@ -3208,25 +3207,25 @@ SCIP_RETCODE SwigDirector_ObjConshdlr::scip_getvars(SCIP *scip, SCIP_CONSHDLR *c
   jlong jvars = 0 ;
   jint jvarssize  ;
   jlong jsuccess = 0 ;
-
+  
   if (!swig_override[28]) {
     return scip::ObjConshdlr::scip_getvars(scip,conshdlr,cons,vars,varssize,success);
   }
   swigjobj = swig_get_self(jenv);
   if (swigjobj && jenv->IsSameObject(swigjobj, NULL) == JNI_FALSE) {
-    *((SCIP **)&jscip) = (SCIP *) scip;
-    *((SCIP_CONSHDLR **)&jconshdlr) = (SCIP_CONSHDLR *) conshdlr;
-    *((SCIP_CONS **)&jcons) = (SCIP_CONS *) cons;
-    *((SCIP_VAR ***)&jvars) = (SCIP_VAR **) vars;
+    *((SCIP **)&jscip) = (SCIP *) scip; 
+    *((SCIP_CONSHDLR **)&jconshdlr) = (SCIP_CONSHDLR *) conshdlr; 
+    *((SCIP_CONS **)&jcons) = (SCIP_CONS *) cons; 
+    *((SCIP_VAR ***)&jvars) = (SCIP_VAR **) vars; 
     jvarssize = (jint) varssize;
-    *((unsigned int **)&jsuccess) = (unsigned int *) success;
+    *((unsigned int **)&jsuccess) = (unsigned int *) success; 
     jresult = (jint) jenv->CallStaticIntMethod(Swig::jclass_SCIPJNIJNI, Swig::director_method_ids[40], swigjobj, jscip, jconshdlr, jcons, jvars, jvarssize, jsuccess);
     jthrowable swigerror = jenv->ExceptionOccurred();
     if (swigerror) {
       Swig::DirectorException::raise(jenv, swigerror);
     }
-
-    c_result = (SCIP_RETCODE)jresult;
+    
+    c_result = (SCIP_RETCODE)jresult; 
   } else {
     SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null upcall object in scip::ObjConshdlr::scip_getvars ");
   }
@@ -3245,24 +3244,24 @@ SCIP_RETCODE SwigDirector_ObjConshdlr::scip_getnvars(SCIP *scip, SCIP_CONSHDLR *
   jlong jcons = 0 ;
   jlong jnvars = 0 ;
   jlong jsuccess = 0 ;
-
+  
   if (!swig_override[29]) {
     return scip::ObjConshdlr::scip_getnvars(scip,conshdlr,cons,nvars,success);
   }
   swigjobj = swig_get_self(jenv);
   if (swigjobj && jenv->IsSameObject(swigjobj, NULL) == JNI_FALSE) {
-    *((SCIP **)&jscip) = (SCIP *) scip;
-    *((SCIP_CONSHDLR **)&jconshdlr) = (SCIP_CONSHDLR *) conshdlr;
-    *((SCIP_CONS **)&jcons) = (SCIP_CONS *) cons;
-    *((int **)&jnvars) = (int *) nvars;
-    *((unsigned int **)&jsuccess) = (unsigned int *) success;
+    *((SCIP **)&jscip) = (SCIP *) scip; 
+    *((SCIP_CONSHDLR **)&jconshdlr) = (SCIP_CONSHDLR *) conshdlr; 
+    *((SCIP_CONS **)&jcons) = (SCIP_CONS *) cons; 
+    *((int **)&jnvars) = (int *) nvars; 
+    *((unsigned int **)&jsuccess) = (unsigned int *) success; 
     jresult = (jint) jenv->CallStaticIntMethod(Swig::jclass_SCIPJNIJNI, Swig::director_method_ids[41], swigjobj, jscip, jconshdlr, jcons, jnvars, jsuccess);
     jthrowable swigerror = jenv->ExceptionOccurred();
     if (swigerror) {
       Swig::DirectorException::raise(jenv, swigerror);
     }
-
-    c_result = (SCIP_RETCODE)jresult;
+    
+    c_result = (SCIP_RETCODE)jresult; 
   } else {
     SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null upcall object in scip::ObjConshdlr::scip_getnvars ");
   }
@@ -3282,25 +3281,25 @@ SCIP_RETCODE SwigDirector_ObjConshdlr::scip_getdivebdchgs(SCIP *scip, SCIP_CONSH
   jlong jsol = 0 ;
   jlong jsuccess = 0 ;
   jlong jinfeasible = 0 ;
-
+  
   if (!swig_override[30]) {
     return scip::ObjConshdlr::scip_getdivebdchgs(scip,conshdlr,diveset,sol,success,infeasible);
   }
   swigjobj = swig_get_self(jenv);
   if (swigjobj && jenv->IsSameObject(swigjobj, NULL) == JNI_FALSE) {
-    *((SCIP **)&jscip) = (SCIP *) scip;
-    *((SCIP_CONSHDLR **)&jconshdlr) = (SCIP_CONSHDLR *) conshdlr;
-    *((SCIP_DIVESET **)&jdiveset) = (SCIP_DIVESET *) diveset;
-    *((SCIP_SOL **)&jsol) = (SCIP_SOL *) sol;
-    *((unsigned int **)&jsuccess) = (unsigned int *) success;
-    *((unsigned int **)&jinfeasible) = (unsigned int *) infeasible;
+    *((SCIP **)&jscip) = (SCIP *) scip; 
+    *((SCIP_CONSHDLR **)&jconshdlr) = (SCIP_CONSHDLR *) conshdlr; 
+    *((SCIP_DIVESET **)&jdiveset) = (SCIP_DIVESET *) diveset; 
+    *((SCIP_SOL **)&jsol) = (SCIP_SOL *) sol; 
+    *((unsigned int **)&jsuccess) = (unsigned int *) success; 
+    *((unsigned int **)&jinfeasible) = (unsigned int *) infeasible; 
     jresult = (jint) jenv->CallStaticIntMethod(Swig::jclass_SCIPJNIJNI, Swig::director_method_ids[42], swigjobj, jscip, jconshdlr, jdiveset, jsol, jsuccess, jinfeasible);
     jthrowable swigerror = jenv->ExceptionOccurred();
     if (swigerror) {
       Swig::DirectorException::raise(jenv, swigerror);
     }
-
-    c_result = (SCIP_RETCODE)jresult;
+    
+    c_result = (SCIP_RETCODE)jresult; 
   } else {
     SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null upcall object in scip::ObjConshdlr::scip_getdivebdchgs ");
   }
@@ -3319,24 +3318,24 @@ SCIP_RETCODE SwigDirector_ObjConshdlr::scip_getpermsymgraph(SCIP *scip, SCIP_CON
   jlong jcons = 0 ;
   jlong jgraph = 0 ;
   jlong jsuccess = 0 ;
-
+  
   if (!swig_override[31]) {
     return scip::ObjConshdlr::scip_getpermsymgraph(scip,conshdlr,cons,graph,success);
   }
   swigjobj = swig_get_self(jenv);
   if (swigjobj && jenv->IsSameObject(swigjobj, NULL) == JNI_FALSE) {
-    *((SCIP **)&jscip) = (SCIP *) scip;
-    *((SCIP_CONSHDLR **)&jconshdlr) = (SCIP_CONSHDLR *) conshdlr;
-    *((SCIP_CONS **)&jcons) = (SCIP_CONS *) cons;
-    *((SYM_GRAPH **)&jgraph) = (SYM_GRAPH *) graph;
-    *((unsigned int **)&jsuccess) = (unsigned int *) success;
+    *((SCIP **)&jscip) = (SCIP *) scip; 
+    *((SCIP_CONSHDLR **)&jconshdlr) = (SCIP_CONSHDLR *) conshdlr; 
+    *((SCIP_CONS **)&jcons) = (SCIP_CONS *) cons; 
+    *((SYM_GRAPH **)&jgraph) = (SYM_GRAPH *) graph; 
+    *((unsigned int **)&jsuccess) = (unsigned int *) success; 
     jresult = (jint) jenv->CallStaticIntMethod(Swig::jclass_SCIPJNIJNI, Swig::director_method_ids[43], swigjobj, jscip, jconshdlr, jcons, jgraph, jsuccess);
     jthrowable swigerror = jenv->ExceptionOccurred();
     if (swigerror) {
       Swig::DirectorException::raise(jenv, swigerror);
     }
-
-    c_result = (SCIP_RETCODE)jresult;
+    
+    c_result = (SCIP_RETCODE)jresult; 
   } else {
     SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null upcall object in scip::ObjConshdlr::scip_getpermsymgraph ");
   }
@@ -3355,24 +3354,24 @@ SCIP_RETCODE SwigDirector_ObjConshdlr::scip_getsignedpermsymgraph(SCIP *scip, SC
   jlong jcons = 0 ;
   jlong jgraph = 0 ;
   jlong jsuccess = 0 ;
-
+  
   if (!swig_override[32]) {
     return scip::ObjConshdlr::scip_getsignedpermsymgraph(scip,conshdlr,cons,graph,success);
   }
   swigjobj = swig_get_self(jenv);
   if (swigjobj && jenv->IsSameObject(swigjobj, NULL) == JNI_FALSE) {
-    *((SCIP **)&jscip) = (SCIP *) scip;
-    *((SCIP_CONSHDLR **)&jconshdlr) = (SCIP_CONSHDLR *) conshdlr;
-    *((SCIP_CONS **)&jcons) = (SCIP_CONS *) cons;
-    *((SYM_GRAPH **)&jgraph) = (SYM_GRAPH *) graph;
-    *((unsigned int **)&jsuccess) = (unsigned int *) success;
+    *((SCIP **)&jscip) = (SCIP *) scip; 
+    *((SCIP_CONSHDLR **)&jconshdlr) = (SCIP_CONSHDLR *) conshdlr; 
+    *((SCIP_CONS **)&jcons) = (SCIP_CONS *) cons; 
+    *((SYM_GRAPH **)&jgraph) = (SYM_GRAPH *) graph; 
+    *((unsigned int **)&jsuccess) = (unsigned int *) success; 
     jresult = (jint) jenv->CallStaticIntMethod(Swig::jclass_SCIPJNIJNI, Swig::director_method_ids[44], swigjobj, jscip, jconshdlr, jcons, jgraph, jsuccess);
     jthrowable swigerror = jenv->ExceptionOccurred();
     if (swigerror) {
       Swig::DirectorException::raise(jenv, swigerror);
     }
-
-    c_result = (SCIP_RETCODE)jresult;
+    
+    c_result = (SCIP_RETCODE)jresult; 
   } else {
     SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null upcall object in scip::ObjConshdlr::scip_getsignedpermsymgraph ");
   }
@@ -3387,108 +3386,108 @@ void SwigDirector_ObjConshdlr::swig_connect_director(JNIEnv *jenv, jobject jself
     jmethodID base_methid;
   } methods[] = {
     {
-      "scip_free", "(Ljscip/SWIGTYPE_p_SCIP;Ljscip/SWIGTYPE_p_SCIP_CONSHDLR;)Ljscip/SCIP_Retcode;", NULL
+      "scip_free", "(Ljscip/SWIGTYPE_p_SCIP;Ljscip/SWIGTYPE_p_SCIP_CONSHDLR;)Ljscip/SCIP_Retcode;", NULL 
     },
     {
-      "scip_init", "(Ljscip/SWIGTYPE_p_SCIP;Ljscip/SWIGTYPE_p_SCIP_CONSHDLR;Ljscip/SWIGTYPE_p_p_SCIP_CONS;I)Ljscip/SCIP_Retcode;", NULL
+      "scip_init", "(Ljscip/SWIGTYPE_p_SCIP;Ljscip/SWIGTYPE_p_SCIP_CONSHDLR;Ljscip/SWIGTYPE_p_p_SCIP_CONS;I)Ljscip/SCIP_Retcode;", NULL 
     },
     {
-      "scip_exit", "(Ljscip/SWIGTYPE_p_SCIP;Ljscip/SWIGTYPE_p_SCIP_CONSHDLR;Ljscip/SWIGTYPE_p_p_SCIP_CONS;I)Ljscip/SCIP_Retcode;", NULL
+      "scip_exit", "(Ljscip/SWIGTYPE_p_SCIP;Ljscip/SWIGTYPE_p_SCIP_CONSHDLR;Ljscip/SWIGTYPE_p_p_SCIP_CONS;I)Ljscip/SCIP_Retcode;", NULL 
     },
     {
-      "scip_initpre", "(Ljscip/SWIGTYPE_p_SCIP;Ljscip/SWIGTYPE_p_SCIP_CONSHDLR;Ljscip/SWIGTYPE_p_p_SCIP_CONS;I)Ljscip/SCIP_Retcode;", NULL
+      "scip_initpre", "(Ljscip/SWIGTYPE_p_SCIP;Ljscip/SWIGTYPE_p_SCIP_CONSHDLR;Ljscip/SWIGTYPE_p_p_SCIP_CONS;I)Ljscip/SCIP_Retcode;", NULL 
     },
     {
-      "scip_exitpre", "(Ljscip/SWIGTYPE_p_SCIP;Ljscip/SWIGTYPE_p_SCIP_CONSHDLR;Ljscip/SWIGTYPE_p_p_SCIP_CONS;I)Ljscip/SCIP_Retcode;", NULL
+      "scip_exitpre", "(Ljscip/SWIGTYPE_p_SCIP;Ljscip/SWIGTYPE_p_SCIP_CONSHDLR;Ljscip/SWIGTYPE_p_p_SCIP_CONS;I)Ljscip/SCIP_Retcode;", NULL 
     },
     {
-      "scip_initsol", "(Ljscip/SWIGTYPE_p_SCIP;Ljscip/SWIGTYPE_p_SCIP_CONSHDLR;Ljscip/SWIGTYPE_p_p_SCIP_CONS;I)Ljscip/SCIP_Retcode;", NULL
+      "scip_initsol", "(Ljscip/SWIGTYPE_p_SCIP;Ljscip/SWIGTYPE_p_SCIP_CONSHDLR;Ljscip/SWIGTYPE_p_p_SCIP_CONS;I)Ljscip/SCIP_Retcode;", NULL 
     },
     {
-      "scip_exitsol", "(Ljscip/SWIGTYPE_p_SCIP;Ljscip/SWIGTYPE_p_SCIP_CONSHDLR;Ljscip/SWIGTYPE_p_p_SCIP_CONS;IJ)Ljscip/SCIP_Retcode;", NULL
+      "scip_exitsol", "(Ljscip/SWIGTYPE_p_SCIP;Ljscip/SWIGTYPE_p_SCIP_CONSHDLR;Ljscip/SWIGTYPE_p_p_SCIP_CONS;IJ)Ljscip/SCIP_Retcode;", NULL 
     },
     {
-      "scip_delete", "(Ljscip/SWIGTYPE_p_SCIP;Ljscip/SWIGTYPE_p_SCIP_CONSHDLR;Ljscip/SWIGTYPE_p_SCIP_CONS;Ljscip/SWIGTYPE_p_p_SCIP_CONSDATA;)Ljscip/SCIP_Retcode;", NULL
+      "scip_delete", "(Ljscip/SWIGTYPE_p_SCIP;Ljscip/SWIGTYPE_p_SCIP_CONSHDLR;Ljscip/SWIGTYPE_p_SCIP_CONS;Ljscip/SWIGTYPE_p_p_SCIP_CONSDATA;)Ljscip/SCIP_Retcode;", NULL 
     },
     {
-      "scip_trans", "(Ljscip/SWIGTYPE_p_SCIP;Ljscip/SWIGTYPE_p_SCIP_CONSHDLR;Ljscip/SWIGTYPE_p_SCIP_CONS;Ljscip/SWIGTYPE_p_p_SCIP_CONS;)Ljscip/SCIP_Retcode;", NULL
+      "scip_trans", "(Ljscip/SWIGTYPE_p_SCIP;Ljscip/SWIGTYPE_p_SCIP_CONSHDLR;Ljscip/SWIGTYPE_p_SCIP_CONS;Ljscip/SWIGTYPE_p_p_SCIP_CONS;)Ljscip/SCIP_Retcode;", NULL 
     },
     {
-      "scip_initlp", "(Ljscip/SWIGTYPE_p_SCIP;Ljscip/SWIGTYPE_p_SCIP_CONSHDLR;Ljscip/SWIGTYPE_p_p_SCIP_CONS;ILjscip/SWIGTYPE_p_unsigned_int;)Ljscip/SCIP_Retcode;", NULL
+      "scip_initlp", "(Ljscip/SWIGTYPE_p_SCIP;Ljscip/SWIGTYPE_p_SCIP_CONSHDLR;Ljscip/SWIGTYPE_p_p_SCIP_CONS;ILjscip/SWIGTYPE_p_unsigned_int;)Ljscip/SCIP_Retcode;", NULL 
     },
     {
-      "scip_sepalp", "(Ljscip/SWIGTYPE_p_SCIP;Ljscip/SWIGTYPE_p_SCIP_CONSHDLR;Ljscip/SWIGTYPE_p_p_SCIP_CONS;IILjscip/SWIGTYPE_p_SCIP_Result;)Ljscip/SCIP_Retcode;", NULL
+      "scip_sepalp", "(Ljscip/SWIGTYPE_p_SCIP;Ljscip/SWIGTYPE_p_SCIP_CONSHDLR;Ljscip/SWIGTYPE_p_p_SCIP_CONS;IILjscip/SWIGTYPE_p_SCIP_Result;)Ljscip/SCIP_Retcode;", NULL 
     },
     {
-      "scip_sepasol", "(Ljscip/SWIGTYPE_p_SCIP;Ljscip/SWIGTYPE_p_SCIP_CONSHDLR;Ljscip/SWIGTYPE_p_p_SCIP_CONS;IILjscip/SWIGTYPE_p_SCIP_SOL;Ljscip/SWIGTYPE_p_SCIP_Result;)Ljscip/SCIP_Retcode;", NULL
+      "scip_sepasol", "(Ljscip/SWIGTYPE_p_SCIP;Ljscip/SWIGTYPE_p_SCIP_CONSHDLR;Ljscip/SWIGTYPE_p_p_SCIP_CONS;IILjscip/SWIGTYPE_p_SCIP_SOL;Ljscip/SWIGTYPE_p_SCIP_Result;)Ljscip/SCIP_Retcode;", NULL 
     },
     {
-      "scip_enfolp", "(Ljscip/SWIGTYPE_p_SCIP;Ljscip/SWIGTYPE_p_SCIP_CONSHDLR;Ljscip/SWIGTYPE_p_p_SCIP_CONS;IIJLjscip/SWIGTYPE_p_SCIP_Result;)Ljscip/SCIP_Retcode;", NULL
+      "scip_enfolp", "(Ljscip/SWIGTYPE_p_SCIP;Ljscip/SWIGTYPE_p_SCIP_CONSHDLR;Ljscip/SWIGTYPE_p_p_SCIP_CONS;IIJLjscip/SWIGTYPE_p_SCIP_Result;)Ljscip/SCIP_Retcode;", NULL 
     },
     {
-      "scip_enforelax", "(Ljscip/SWIGTYPE_p_SCIP;Ljscip/SWIGTYPE_p_SCIP_SOL;Ljscip/SWIGTYPE_p_SCIP_CONSHDLR;Ljscip/SWIGTYPE_p_p_SCIP_CONS;IIJLjscip/SWIGTYPE_p_SCIP_Result;)Ljscip/SCIP_Retcode;", NULL
+      "scip_enforelax", "(Ljscip/SWIGTYPE_p_SCIP;Ljscip/SWIGTYPE_p_SCIP_SOL;Ljscip/SWIGTYPE_p_SCIP_CONSHDLR;Ljscip/SWIGTYPE_p_p_SCIP_CONS;IIJLjscip/SWIGTYPE_p_SCIP_Result;)Ljscip/SCIP_Retcode;", NULL 
     },
     {
-      "scip_enfops", "(Ljscip/SWIGTYPE_p_SCIP;Ljscip/SWIGTYPE_p_SCIP_CONSHDLR;Ljscip/SWIGTYPE_p_p_SCIP_CONS;IIJJLjscip/SWIGTYPE_p_SCIP_Result;)Ljscip/SCIP_Retcode;", NULL
+      "scip_enfops", "(Ljscip/SWIGTYPE_p_SCIP;Ljscip/SWIGTYPE_p_SCIP_CONSHDLR;Ljscip/SWIGTYPE_p_p_SCIP_CONS;IIJJLjscip/SWIGTYPE_p_SCIP_Result;)Ljscip/SCIP_Retcode;", NULL 
     },
     {
-      "scip_check", "(Ljscip/SWIGTYPE_p_SCIP;Ljscip/SWIGTYPE_p_SCIP_CONSHDLR;Ljscip/SWIGTYPE_p_p_SCIP_CONS;ILjscip/SWIGTYPE_p_SCIP_SOL;JJJJLjscip/SWIGTYPE_p_SCIP_Result;)Ljscip/SCIP_Retcode;", NULL
+      "scip_check", "(Ljscip/SWIGTYPE_p_SCIP;Ljscip/SWIGTYPE_p_SCIP_CONSHDLR;Ljscip/SWIGTYPE_p_p_SCIP_CONS;ILjscip/SWIGTYPE_p_SCIP_SOL;JJJJLjscip/SWIGTYPE_p_SCIP_Result;)Ljscip/SCIP_Retcode;", NULL 
     },
     {
-      "scip_prop", "(Ljscip/SWIGTYPE_p_SCIP;Ljscip/SWIGTYPE_p_SCIP_CONSHDLR;Ljscip/SWIGTYPE_p_p_SCIP_CONS;IIILjscip/SWIGTYPE_p_SCIP_PROPTIMING;Ljscip/SWIGTYPE_p_SCIP_Result;)Ljscip/SCIP_Retcode;", NULL
+      "scip_prop", "(Ljscip/SWIGTYPE_p_SCIP;Ljscip/SWIGTYPE_p_SCIP_CONSHDLR;Ljscip/SWIGTYPE_p_p_SCIP_CONS;IIILjscip/SWIGTYPE_p_SCIP_PROPTIMING;Ljscip/SWIGTYPE_p_SCIP_Result;)Ljscip/SCIP_Retcode;", NULL 
     },
     {
-      "scip_presol", "(Ljscip/SWIGTYPE_p_SCIP;Ljscip/SWIGTYPE_p_SCIP_CONSHDLR;Ljscip/SWIGTYPE_p_p_SCIP_CONS;IILjscip/SWIGTYPE_p_SCIP_PRESOLTIMING;IIIIIIIIIILjscip/SWIGTYPE_p_int;Ljscip/SWIGTYPE_p_int;Ljscip/SWIGTYPE_p_int;Ljscip/SWIGTYPE_p_int;Ljscip/SWIGTYPE_p_int;Ljscip/SWIGTYPE_p_int;Ljscip/SWIGTYPE_p_int;Ljscip/SWIGTYPE_p_int;Ljscip/SWIGTYPE_p_int;Ljscip/SWIGTYPE_p_int;Ljscip/SWIGTYPE_p_SCIP_Result;)Ljscip/SCIP_Retcode;", NULL
+      "scip_presol", "(Ljscip/SWIGTYPE_p_SCIP;Ljscip/SWIGTYPE_p_SCIP_CONSHDLR;Ljscip/SWIGTYPE_p_p_SCIP_CONS;IILjscip/SWIGTYPE_p_SCIP_PRESOLTIMING;IIIIIIIIIILjscip/SWIGTYPE_p_int;Ljscip/SWIGTYPE_p_int;Ljscip/SWIGTYPE_p_int;Ljscip/SWIGTYPE_p_int;Ljscip/SWIGTYPE_p_int;Ljscip/SWIGTYPE_p_int;Ljscip/SWIGTYPE_p_int;Ljscip/SWIGTYPE_p_int;Ljscip/SWIGTYPE_p_int;Ljscip/SWIGTYPE_p_int;Ljscip/SWIGTYPE_p_SCIP_Result;)Ljscip/SCIP_Retcode;", NULL 
     },
     {
-      "scip_resprop", "(Ljscip/SWIGTYPE_p_SCIP;Ljscip/SWIGTYPE_p_SCIP_CONSHDLR;Ljscip/SWIGTYPE_p_SCIP_CONS;Ljscip/SWIGTYPE_p_SCIP_VAR;ILjscip/SCIP_BoundType;Ljscip/SWIGTYPE_p_SCIP_BDCHGIDX;DLjscip/SWIGTYPE_p_SCIP_Result;)Ljscip/SCIP_Retcode;", NULL
+      "scip_resprop", "(Ljscip/SWIGTYPE_p_SCIP;Ljscip/SWIGTYPE_p_SCIP_CONSHDLR;Ljscip/SWIGTYPE_p_SCIP_CONS;Ljscip/SWIGTYPE_p_SCIP_VAR;ILjscip/SCIP_BoundType;Ljscip/SWIGTYPE_p_SCIP_BDCHGIDX;DLjscip/SWIGTYPE_p_SCIP_Result;)Ljscip/SCIP_Retcode;", NULL 
     },
     {
-      "scip_lock", "(Ljscip/SWIGTYPE_p_SCIP;Ljscip/SWIGTYPE_p_SCIP_CONSHDLR;Ljscip/SWIGTYPE_p_SCIP_CONS;Ljscip/SWIGTYPE_p_SCIP_LOCKTYPE;II)Ljscip/SCIP_Retcode;", NULL
+      "scip_lock", "(Ljscip/SWIGTYPE_p_SCIP;Ljscip/SWIGTYPE_p_SCIP_CONSHDLR;Ljscip/SWIGTYPE_p_SCIP_CONS;Ljscip/SCIP_LockType;II)Ljscip/SCIP_Retcode;", NULL 
     },
     {
-      "scip_active", "(Ljscip/SWIGTYPE_p_SCIP;Ljscip/SWIGTYPE_p_SCIP_CONSHDLR;Ljscip/SWIGTYPE_p_SCIP_CONS;)Ljscip/SCIP_Retcode;", NULL
+      "scip_active", "(Ljscip/SWIGTYPE_p_SCIP;Ljscip/SWIGTYPE_p_SCIP_CONSHDLR;Ljscip/SWIGTYPE_p_SCIP_CONS;)Ljscip/SCIP_Retcode;", NULL 
     },
     {
-      "scip_deactive", "(Ljscip/SWIGTYPE_p_SCIP;Ljscip/SWIGTYPE_p_SCIP_CONSHDLR;Ljscip/SWIGTYPE_p_SCIP_CONS;)Ljscip/SCIP_Retcode;", NULL
+      "scip_deactive", "(Ljscip/SWIGTYPE_p_SCIP;Ljscip/SWIGTYPE_p_SCIP_CONSHDLR;Ljscip/SWIGTYPE_p_SCIP_CONS;)Ljscip/SCIP_Retcode;", NULL 
     },
     {
-      "scip_enable", "(Ljscip/SWIGTYPE_p_SCIP;Ljscip/SWIGTYPE_p_SCIP_CONSHDLR;Ljscip/SWIGTYPE_p_SCIP_CONS;)Ljscip/SCIP_Retcode;", NULL
+      "scip_enable", "(Ljscip/SWIGTYPE_p_SCIP;Ljscip/SWIGTYPE_p_SCIP_CONSHDLR;Ljscip/SWIGTYPE_p_SCIP_CONS;)Ljscip/SCIP_Retcode;", NULL 
     },
     {
-      "scip_disable", "(Ljscip/SWIGTYPE_p_SCIP;Ljscip/SWIGTYPE_p_SCIP_CONSHDLR;Ljscip/SWIGTYPE_p_SCIP_CONS;)Ljscip/SCIP_Retcode;", NULL
+      "scip_disable", "(Ljscip/SWIGTYPE_p_SCIP;Ljscip/SWIGTYPE_p_SCIP_CONSHDLR;Ljscip/SWIGTYPE_p_SCIP_CONS;)Ljscip/SCIP_Retcode;", NULL 
     },
     {
-      "scip_delvars", "(Ljscip/SWIGTYPE_p_SCIP;Ljscip/SWIGTYPE_p_SCIP_CONSHDLR;Ljscip/SWIGTYPE_p_p_SCIP_CONS;I)Ljscip/SCIP_Retcode;", NULL
+      "scip_delvars", "(Ljscip/SWIGTYPE_p_SCIP;Ljscip/SWIGTYPE_p_SCIP_CONSHDLR;Ljscip/SWIGTYPE_p_p_SCIP_CONS;I)Ljscip/SCIP_Retcode;", NULL 
     },
     {
-      "scip_print", "(Ljscip/SWIGTYPE_p_SCIP;Ljscip/SWIGTYPE_p_SCIP_CONSHDLR;Ljscip/SWIGTYPE_p_SCIP_CONS;Ljscip/SWIGTYPE_p_FILE;)Ljscip/SCIP_Retcode;", NULL
+      "scip_print", "(Ljscip/SWIGTYPE_p_SCIP;Ljscip/SWIGTYPE_p_SCIP_CONSHDLR;Ljscip/SWIGTYPE_p_SCIP_CONS;Ljscip/SWIGTYPE_p_FILE;)Ljscip/SCIP_Retcode;", NULL 
     },
     {
-      "scip_copy", "(Ljscip/SWIGTYPE_p_SCIP;Ljscip/SWIGTYPE_p_p_SCIP_CONS;Ljava/lang/String;Ljscip/SWIGTYPE_p_SCIP;Ljscip/SWIGTYPE_p_SCIP_CONSHDLR;Ljscip/SWIGTYPE_p_SCIP_CONS;Ljscip/SWIGTYPE_p_SCIP_HASHMAP;Ljscip/SWIGTYPE_p_SCIP_HASHMAP;JJJJJJJJJJJLjscip/SWIGTYPE_p_unsigned_int;)Ljscip/SCIP_Retcode;", NULL
+      "scip_copy", "(Ljscip/SWIGTYPE_p_SCIP;Ljscip/SWIGTYPE_p_p_SCIP_CONS;Ljava/lang/String;Ljscip/SWIGTYPE_p_SCIP;Ljscip/SWIGTYPE_p_SCIP_CONSHDLR;Ljscip/SWIGTYPE_p_SCIP_CONS;Ljscip/SWIGTYPE_p_SCIP_HASHMAP;Ljscip/SWIGTYPE_p_SCIP_HASHMAP;JJJJJJJJJJJLjscip/SWIGTYPE_p_unsigned_int;)Ljscip/SCIP_Retcode;", NULL 
     },
     {
-      "scip_parse", "(Ljscip/SWIGTYPE_p_SCIP;Ljscip/SWIGTYPE_p_SCIP_CONSHDLR;Ljscip/SWIGTYPE_p_p_SCIP_CONS;Ljava/lang/String;Ljava/lang/String;JJJJJJJJJJLjscip/SWIGTYPE_p_unsigned_int;)Ljscip/SCIP_Retcode;", NULL
+      "scip_parse", "(Ljscip/SWIGTYPE_p_SCIP;Ljscip/SWIGTYPE_p_SCIP_CONSHDLR;Ljscip/SWIGTYPE_p_p_SCIP_CONS;Ljava/lang/String;Ljava/lang/String;JJJJJJJJJJLjscip/SWIGTYPE_p_unsigned_int;)Ljscip/SCIP_Retcode;", NULL 
     },
     {
-      "scip_getvars", "(Ljscip/SWIGTYPE_p_SCIP;Ljscip/SWIGTYPE_p_SCIP_CONSHDLR;Ljscip/SWIGTYPE_p_SCIP_CONS;Ljscip/SWIGTYPE_p_p_SCIP_VAR;ILjscip/SWIGTYPE_p_unsigned_int;)Ljscip/SCIP_Retcode;", NULL
+      "scip_getvars", "(Ljscip/SWIGTYPE_p_SCIP;Ljscip/SWIGTYPE_p_SCIP_CONSHDLR;Ljscip/SWIGTYPE_p_SCIP_CONS;Ljscip/SWIGTYPE_p_p_SCIP_VAR;ILjscip/SWIGTYPE_p_unsigned_int;)Ljscip/SCIP_Retcode;", NULL 
     },
     {
-      "scip_getnvars", "(Ljscip/SWIGTYPE_p_SCIP;Ljscip/SWIGTYPE_p_SCIP_CONSHDLR;Ljscip/SWIGTYPE_p_SCIP_CONS;Ljscip/SWIGTYPE_p_int;Ljscip/SWIGTYPE_p_unsigned_int;)Ljscip/SCIP_Retcode;", NULL
+      "scip_getnvars", "(Ljscip/SWIGTYPE_p_SCIP;Ljscip/SWIGTYPE_p_SCIP_CONSHDLR;Ljscip/SWIGTYPE_p_SCIP_CONS;Ljscip/SWIGTYPE_p_int;Ljscip/SWIGTYPE_p_unsigned_int;)Ljscip/SCIP_Retcode;", NULL 
     },
     {
-      "scip_getdivebdchgs", "(Ljscip/SWIGTYPE_p_SCIP;Ljscip/SWIGTYPE_p_SCIP_CONSHDLR;Ljscip/SWIGTYPE_p_SCIP_DIVESET;Ljscip/SWIGTYPE_p_SCIP_SOL;Ljscip/SWIGTYPE_p_unsigned_int;Ljscip/SWIGTYPE_p_unsigned_int;)Ljscip/SCIP_Retcode;", NULL
+      "scip_getdivebdchgs", "(Ljscip/SWIGTYPE_p_SCIP;Ljscip/SWIGTYPE_p_SCIP_CONSHDLR;Ljscip/SWIGTYPE_p_SCIP_DIVESET;Ljscip/SWIGTYPE_p_SCIP_SOL;Ljscip/SWIGTYPE_p_unsigned_int;Ljscip/SWIGTYPE_p_unsigned_int;)Ljscip/SCIP_Retcode;", NULL 
     },
     {
-      "scip_getpermsymgraph", "(Ljscip/SWIGTYPE_p_SCIP;Ljscip/SWIGTYPE_p_SCIP_CONSHDLR;Ljscip/SWIGTYPE_p_SCIP_CONS;Ljscip/SWIGTYPE_p_SYM_GRAPH;Ljscip/SWIGTYPE_p_unsigned_int;)Ljscip/SCIP_Retcode;", NULL
+      "scip_getpermsymgraph", "(Ljscip/SWIGTYPE_p_SCIP;Ljscip/SWIGTYPE_p_SCIP_CONSHDLR;Ljscip/SWIGTYPE_p_SCIP_CONS;Ljscip/SWIGTYPE_p_SYM_GRAPH;Ljscip/SWIGTYPE_p_unsigned_int;)Ljscip/SCIP_Retcode;", NULL 
     },
     {
-      "scip_getsignedpermsymgraph", "(Ljscip/SWIGTYPE_p_SCIP;Ljscip/SWIGTYPE_p_SCIP_CONSHDLR;Ljscip/SWIGTYPE_p_SCIP_CONS;Ljscip/SWIGTYPE_p_SYM_GRAPH;Ljscip/SWIGTYPE_p_unsigned_int;)Ljscip/SCIP_Retcode;", NULL
+      "scip_getsignedpermsymgraph", "(Ljscip/SWIGTYPE_p_SCIP;Ljscip/SWIGTYPE_p_SCIP_CONSHDLR;Ljscip/SWIGTYPE_p_SCIP_CONS;Ljscip/SWIGTYPE_p_SYM_GRAPH;Ljscip/SWIGTYPE_p_unsigned_int;)Ljscip/SCIP_Retcode;", NULL 
     }
   };
-
+  
   static jclass baseclass = 0 ;
-
+  
   if (swig_set_self(jenv, jself, swig_mem_own, weak_global)) {
     if (!baseclass) {
       baseclass = jenv->FindClass("jscip/ObjConshdlr");
@@ -7977,12 +7976,12 @@ SWIGEXPORT jlong JNICALL Java_jscip_SCIPJNIJNI_createObjMessagehdlr(JNIEnv *jenv
 SWIGEXPORT void JNICALL Java_jscip_SCIPJNIJNI_SCIP_1EventVarAdded_1var_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2) {
   SCIP_EventVarAdded *arg1 = (SCIP_EventVarAdded *) 0 ;
   SCIP_VAR *arg2 = (SCIP_VAR *) 0 ;
-
+  
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(SCIP_EventVarAdded **)&jarg1;
-  arg2 = *(SCIP_VAR **)&jarg2;
+  arg1 = *(SCIP_EventVarAdded **)&jarg1; 
+  arg2 = *(SCIP_VAR **)&jarg2; 
   if (arg1) (arg1)->var = arg2;
 }
 
@@ -7991,13 +7990,13 @@ SWIGEXPORT jlong JNICALL Java_jscip_SCIPJNIJNI_SCIP_1EventVarAdded_1var_1get(JNI
   jlong jresult = 0 ;
   SCIP_EventVarAdded *arg1 = (SCIP_EventVarAdded *) 0 ;
   SCIP_VAR *result = 0 ;
-
+  
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(SCIP_EventVarAdded **)&jarg1;
+  arg1 = *(SCIP_EventVarAdded **)&jarg1; 
   result = (SCIP_VAR *) ((arg1)->var);
-  *(SCIP_VAR **)&jresult = result;
+  *(SCIP_VAR **)&jresult = result; 
   return jresult;
 }
 
@@ -8005,21 +8004,21 @@ SWIGEXPORT jlong JNICALL Java_jscip_SCIPJNIJNI_SCIP_1EventVarAdded_1var_1get(JNI
 SWIGEXPORT jlong JNICALL Java_jscip_SCIPJNIJNI_new_1SCIP_1EventVarAdded(JNIEnv *jenv, jclass jcls) {
   jlong jresult = 0 ;
   SCIP_EventVarAdded *result = 0 ;
-
+  
   (void)jenv;
   (void)jcls;
   result = (SCIP_EventVarAdded *)new SCIP_EventVarAdded();
-  *(SCIP_EventVarAdded **)&jresult = result;
+  *(SCIP_EventVarAdded **)&jresult = result; 
   return jresult;
 }
 
 
 SWIGEXPORT void JNICALL Java_jscip_SCIPJNIJNI_delete_1SCIP_1EventVarAdded(JNIEnv *jenv, jclass jcls, jlong jarg1) {
   SCIP_EventVarAdded *arg1 = (SCIP_EventVarAdded *) 0 ;
-
+  
   (void)jenv;
   (void)jcls;
-  arg1 = *(SCIP_EventVarAdded **)&jarg1;
+  arg1 = *(SCIP_EventVarAdded **)&jarg1; 
   delete arg1;
 }
 
@@ -8027,12 +8026,12 @@ SWIGEXPORT void JNICALL Java_jscip_SCIPJNIJNI_delete_1SCIP_1EventVarAdded(JNIEnv
 SWIGEXPORT void JNICALL Java_jscip_SCIPJNIJNI_SCIP_1EventVarDeleted_1var_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2) {
   SCIP_EventVarDeleted *arg1 = (SCIP_EventVarDeleted *) 0 ;
   SCIP_VAR *arg2 = (SCIP_VAR *) 0 ;
-
+  
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(SCIP_EventVarDeleted **)&jarg1;
-  arg2 = *(SCIP_VAR **)&jarg2;
+  arg1 = *(SCIP_EventVarDeleted **)&jarg1; 
+  arg2 = *(SCIP_VAR **)&jarg2; 
   if (arg1) (arg1)->var = arg2;
 }
 
@@ -8041,13 +8040,13 @@ SWIGEXPORT jlong JNICALL Java_jscip_SCIPJNIJNI_SCIP_1EventVarDeleted_1var_1get(J
   jlong jresult = 0 ;
   SCIP_EventVarDeleted *arg1 = (SCIP_EventVarDeleted *) 0 ;
   SCIP_VAR *result = 0 ;
-
+  
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(SCIP_EventVarDeleted **)&jarg1;
+  arg1 = *(SCIP_EventVarDeleted **)&jarg1; 
   result = (SCIP_VAR *) ((arg1)->var);
-  *(SCIP_VAR **)&jresult = result;
+  *(SCIP_VAR **)&jresult = result; 
   return jresult;
 }
 
@@ -8055,21 +8054,21 @@ SWIGEXPORT jlong JNICALL Java_jscip_SCIPJNIJNI_SCIP_1EventVarDeleted_1var_1get(J
 SWIGEXPORT jlong JNICALL Java_jscip_SCIPJNIJNI_new_1SCIP_1EventVarDeleted(JNIEnv *jenv, jclass jcls) {
   jlong jresult = 0 ;
   SCIP_EventVarDeleted *result = 0 ;
-
+  
   (void)jenv;
   (void)jcls;
   result = (SCIP_EventVarDeleted *)new SCIP_EventVarDeleted();
-  *(SCIP_EventVarDeleted **)&jresult = result;
+  *(SCIP_EventVarDeleted **)&jresult = result; 
   return jresult;
 }
 
 
 SWIGEXPORT void JNICALL Java_jscip_SCIPJNIJNI_delete_1SCIP_1EventVarDeleted(JNIEnv *jenv, jclass jcls, jlong jarg1) {
   SCIP_EventVarDeleted *arg1 = (SCIP_EventVarDeleted *) 0 ;
-
+  
   (void)jenv;
   (void)jcls;
-  arg1 = *(SCIP_EventVarDeleted **)&jarg1;
+  arg1 = *(SCIP_EventVarDeleted **)&jarg1; 
   delete arg1;
 }
 
@@ -8077,12 +8076,12 @@ SWIGEXPORT void JNICALL Java_jscip_SCIPJNIJNI_delete_1SCIP_1EventVarDeleted(JNIE
 SWIGEXPORT void JNICALL Java_jscip_SCIPJNIJNI_SCIP_1EventVarFixed_1var_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2) {
   SCIP_EventVarFixed *arg1 = (SCIP_EventVarFixed *) 0 ;
   SCIP_VAR *arg2 = (SCIP_VAR *) 0 ;
-
+  
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(SCIP_EventVarFixed **)&jarg1;
-  arg2 = *(SCIP_VAR **)&jarg2;
+  arg1 = *(SCIP_EventVarFixed **)&jarg1; 
+  arg2 = *(SCIP_VAR **)&jarg2; 
   if (arg1) (arg1)->var = arg2;
 }
 
@@ -8091,13 +8090,13 @@ SWIGEXPORT jlong JNICALL Java_jscip_SCIPJNIJNI_SCIP_1EventVarFixed_1var_1get(JNI
   jlong jresult = 0 ;
   SCIP_EventVarFixed *arg1 = (SCIP_EventVarFixed *) 0 ;
   SCIP_VAR *result = 0 ;
-
+  
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(SCIP_EventVarFixed **)&jarg1;
+  arg1 = *(SCIP_EventVarFixed **)&jarg1; 
   result = (SCIP_VAR *) ((arg1)->var);
-  *(SCIP_VAR **)&jresult = result;
+  *(SCIP_VAR **)&jresult = result; 
   return jresult;
 }
 
@@ -8105,21 +8104,21 @@ SWIGEXPORT jlong JNICALL Java_jscip_SCIPJNIJNI_SCIP_1EventVarFixed_1var_1get(JNI
 SWIGEXPORT jlong JNICALL Java_jscip_SCIPJNIJNI_new_1SCIP_1EventVarFixed(JNIEnv *jenv, jclass jcls) {
   jlong jresult = 0 ;
   SCIP_EventVarFixed *result = 0 ;
-
+  
   (void)jenv;
   (void)jcls;
   result = (SCIP_EventVarFixed *)new SCIP_EventVarFixed();
-  *(SCIP_EventVarFixed **)&jresult = result;
+  *(SCIP_EventVarFixed **)&jresult = result; 
   return jresult;
 }
 
 
 SWIGEXPORT void JNICALL Java_jscip_SCIPJNIJNI_delete_1SCIP_1EventVarFixed(JNIEnv *jenv, jclass jcls, jlong jarg1) {
   SCIP_EventVarFixed *arg1 = (SCIP_EventVarFixed *) 0 ;
-
+  
   (void)jenv;
   (void)jcls;
-  arg1 = *(SCIP_EventVarFixed **)&jarg1;
+  arg1 = *(SCIP_EventVarFixed **)&jarg1; 
   delete arg1;
 }
 
@@ -8127,12 +8126,12 @@ SWIGEXPORT void JNICALL Java_jscip_SCIPJNIJNI_delete_1SCIP_1EventVarFixed(JNIEnv
 SWIGEXPORT void JNICALL Java_jscip_SCIPJNIJNI_SCIP_1EventVarUnlocked_1var_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2) {
   SCIP_EventVarUnlocked *arg1 = (SCIP_EventVarUnlocked *) 0 ;
   SCIP_VAR *arg2 = (SCIP_VAR *) 0 ;
-
+  
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(SCIP_EventVarUnlocked **)&jarg1;
-  arg2 = *(SCIP_VAR **)&jarg2;
+  arg1 = *(SCIP_EventVarUnlocked **)&jarg1; 
+  arg2 = *(SCIP_VAR **)&jarg2; 
   if (arg1) (arg1)->var = arg2;
 }
 
@@ -8141,13 +8140,13 @@ SWIGEXPORT jlong JNICALL Java_jscip_SCIPJNIJNI_SCIP_1EventVarUnlocked_1var_1get(
   jlong jresult = 0 ;
   SCIP_EventVarUnlocked *arg1 = (SCIP_EventVarUnlocked *) 0 ;
   SCIP_VAR *result = 0 ;
-
+  
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(SCIP_EventVarUnlocked **)&jarg1;
+  arg1 = *(SCIP_EventVarUnlocked **)&jarg1; 
   result = (SCIP_VAR *) ((arg1)->var);
-  *(SCIP_VAR **)&jresult = result;
+  *(SCIP_VAR **)&jresult = result; 
   return jresult;
 }
 
@@ -8155,21 +8154,21 @@ SWIGEXPORT jlong JNICALL Java_jscip_SCIPJNIJNI_SCIP_1EventVarUnlocked_1var_1get(
 SWIGEXPORT jlong JNICALL Java_jscip_SCIPJNIJNI_new_1SCIP_1EventVarUnlocked(JNIEnv *jenv, jclass jcls) {
   jlong jresult = 0 ;
   SCIP_EventVarUnlocked *result = 0 ;
-
+  
   (void)jenv;
   (void)jcls;
   result = (SCIP_EventVarUnlocked *)new SCIP_EventVarUnlocked();
-  *(SCIP_EventVarUnlocked **)&jresult = result;
+  *(SCIP_EventVarUnlocked **)&jresult = result; 
   return jresult;
 }
 
 
 SWIGEXPORT void JNICALL Java_jscip_SCIPJNIJNI_delete_1SCIP_1EventVarUnlocked(JNIEnv *jenv, jclass jcls, jlong jarg1) {
   SCIP_EventVarUnlocked *arg1 = (SCIP_EventVarUnlocked *) 0 ;
-
+  
   (void)jenv;
   (void)jcls;
-  arg1 = *(SCIP_EventVarUnlocked **)&jarg1;
+  arg1 = *(SCIP_EventVarUnlocked **)&jarg1; 
   delete arg1;
 }
 
@@ -8177,12 +8176,12 @@ SWIGEXPORT void JNICALL Java_jscip_SCIPJNIJNI_delete_1SCIP_1EventVarUnlocked(JNI
 SWIGEXPORT void JNICALL Java_jscip_SCIPJNIJNI_SCIP_1EventObjChg_1oldobj_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jdouble jarg2) {
   SCIP_EventObjChg *arg1 = (SCIP_EventObjChg *) 0 ;
   double arg2 ;
-
+  
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(SCIP_EventObjChg **)&jarg1;
-  arg2 = (double)jarg2;
+  arg1 = *(SCIP_EventObjChg **)&jarg1; 
+  arg2 = (double)jarg2; 
   if (arg1) (arg1)->oldobj = arg2;
 }
 
@@ -8191,13 +8190,13 @@ SWIGEXPORT jdouble JNICALL Java_jscip_SCIPJNIJNI_SCIP_1EventObjChg_1oldobj_1get(
   jdouble jresult = 0 ;
   SCIP_EventObjChg *arg1 = (SCIP_EventObjChg *) 0 ;
   double result;
-
+  
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(SCIP_EventObjChg **)&jarg1;
+  arg1 = *(SCIP_EventObjChg **)&jarg1; 
   result = (double) ((arg1)->oldobj);
-  jresult = (jdouble)result;
+  jresult = (jdouble)result; 
   return jresult;
 }
 
@@ -8205,12 +8204,12 @@ SWIGEXPORT jdouble JNICALL Java_jscip_SCIPJNIJNI_SCIP_1EventObjChg_1oldobj_1get(
 SWIGEXPORT void JNICALL Java_jscip_SCIPJNIJNI_SCIP_1EventObjChg_1newobj_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jdouble jarg2) {
   SCIP_EventObjChg *arg1 = (SCIP_EventObjChg *) 0 ;
   double arg2 ;
-
+  
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(SCIP_EventObjChg **)&jarg1;
-  arg2 = (double)jarg2;
+  arg1 = *(SCIP_EventObjChg **)&jarg1; 
+  arg2 = (double)jarg2; 
   if (arg1) (arg1)->newobj = arg2;
 }
 
@@ -8219,13 +8218,13 @@ SWIGEXPORT jdouble JNICALL Java_jscip_SCIPJNIJNI_SCIP_1EventObjChg_1newobj_1get(
   jdouble jresult = 0 ;
   SCIP_EventObjChg *arg1 = (SCIP_EventObjChg *) 0 ;
   double result;
-
+  
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(SCIP_EventObjChg **)&jarg1;
+  arg1 = *(SCIP_EventObjChg **)&jarg1; 
   result = (double) ((arg1)->newobj);
-  jresult = (jdouble)result;
+  jresult = (jdouble)result; 
   return jresult;
 }
 
@@ -8233,12 +8232,12 @@ SWIGEXPORT jdouble JNICALL Java_jscip_SCIPJNIJNI_SCIP_1EventObjChg_1newobj_1get(
 SWIGEXPORT void JNICALL Java_jscip_SCIPJNIJNI_SCIP_1EventObjChg_1var_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2) {
   SCIP_EventObjChg *arg1 = (SCIP_EventObjChg *) 0 ;
   SCIP_VAR *arg2 = (SCIP_VAR *) 0 ;
-
+  
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(SCIP_EventObjChg **)&jarg1;
-  arg2 = *(SCIP_VAR **)&jarg2;
+  arg1 = *(SCIP_EventObjChg **)&jarg1; 
+  arg2 = *(SCIP_VAR **)&jarg2; 
   if (arg1) (arg1)->var = arg2;
 }
 
@@ -8247,13 +8246,13 @@ SWIGEXPORT jlong JNICALL Java_jscip_SCIPJNIJNI_SCIP_1EventObjChg_1var_1get(JNIEn
   jlong jresult = 0 ;
   SCIP_EventObjChg *arg1 = (SCIP_EventObjChg *) 0 ;
   SCIP_VAR *result = 0 ;
-
+  
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(SCIP_EventObjChg **)&jarg1;
+  arg1 = *(SCIP_EventObjChg **)&jarg1; 
   result = (SCIP_VAR *) ((arg1)->var);
-  *(SCIP_VAR **)&jresult = result;
+  *(SCIP_VAR **)&jresult = result; 
   return jresult;
 }
 
@@ -8261,21 +8260,21 @@ SWIGEXPORT jlong JNICALL Java_jscip_SCIPJNIJNI_SCIP_1EventObjChg_1var_1get(JNIEn
 SWIGEXPORT jlong JNICALL Java_jscip_SCIPJNIJNI_new_1SCIP_1EventObjChg(JNIEnv *jenv, jclass jcls) {
   jlong jresult = 0 ;
   SCIP_EventObjChg *result = 0 ;
-
+  
   (void)jenv;
   (void)jcls;
   result = (SCIP_EventObjChg *)new SCIP_EventObjChg();
-  *(SCIP_EventObjChg **)&jresult = result;
+  *(SCIP_EventObjChg **)&jresult = result; 
   return jresult;
 }
 
 
 SWIGEXPORT void JNICALL Java_jscip_SCIPJNIJNI_delete_1SCIP_1EventObjChg(JNIEnv *jenv, jclass jcls, jlong jarg1) {
   SCIP_EventObjChg *arg1 = (SCIP_EventObjChg *) 0 ;
-
+  
   (void)jenv;
   (void)jcls;
-  arg1 = *(SCIP_EventObjChg **)&jarg1;
+  arg1 = *(SCIP_EventObjChg **)&jarg1; 
   delete arg1;
 }
 
@@ -8283,12 +8282,12 @@ SWIGEXPORT void JNICALL Java_jscip_SCIPJNIJNI_delete_1SCIP_1EventObjChg(JNIEnv *
 SWIGEXPORT void JNICALL Java_jscip_SCIPJNIJNI_SCIP_1EventBdChg_1oldbound_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jdouble jarg2) {
   SCIP_EventBdChg *arg1 = (SCIP_EventBdChg *) 0 ;
   double arg2 ;
-
+  
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(SCIP_EventBdChg **)&jarg1;
-  arg2 = (double)jarg2;
+  arg1 = *(SCIP_EventBdChg **)&jarg1; 
+  arg2 = (double)jarg2; 
   if (arg1) (arg1)->oldbound = arg2;
 }
 
@@ -8297,13 +8296,13 @@ SWIGEXPORT jdouble JNICALL Java_jscip_SCIPJNIJNI_SCIP_1EventBdChg_1oldbound_1get
   jdouble jresult = 0 ;
   SCIP_EventBdChg *arg1 = (SCIP_EventBdChg *) 0 ;
   double result;
-
+  
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(SCIP_EventBdChg **)&jarg1;
+  arg1 = *(SCIP_EventBdChg **)&jarg1; 
   result = (double) ((arg1)->oldbound);
-  jresult = (jdouble)result;
+  jresult = (jdouble)result; 
   return jresult;
 }
 
@@ -8311,12 +8310,12 @@ SWIGEXPORT jdouble JNICALL Java_jscip_SCIPJNIJNI_SCIP_1EventBdChg_1oldbound_1get
 SWIGEXPORT void JNICALL Java_jscip_SCIPJNIJNI_SCIP_1EventBdChg_1newbound_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jdouble jarg2) {
   SCIP_EventBdChg *arg1 = (SCIP_EventBdChg *) 0 ;
   double arg2 ;
-
+  
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(SCIP_EventBdChg **)&jarg1;
-  arg2 = (double)jarg2;
+  arg1 = *(SCIP_EventBdChg **)&jarg1; 
+  arg2 = (double)jarg2; 
   if (arg1) (arg1)->newbound = arg2;
 }
 
@@ -8325,13 +8324,13 @@ SWIGEXPORT jdouble JNICALL Java_jscip_SCIPJNIJNI_SCIP_1EventBdChg_1newbound_1get
   jdouble jresult = 0 ;
   SCIP_EventBdChg *arg1 = (SCIP_EventBdChg *) 0 ;
   double result;
-
+  
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(SCIP_EventBdChg **)&jarg1;
+  arg1 = *(SCIP_EventBdChg **)&jarg1; 
   result = (double) ((arg1)->newbound);
-  jresult = (jdouble)result;
+  jresult = (jdouble)result; 
   return jresult;
 }
 
@@ -8339,12 +8338,12 @@ SWIGEXPORT jdouble JNICALL Java_jscip_SCIPJNIJNI_SCIP_1EventBdChg_1newbound_1get
 SWIGEXPORT void JNICALL Java_jscip_SCIPJNIJNI_SCIP_1EventBdChg_1var_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2) {
   SCIP_EventBdChg *arg1 = (SCIP_EventBdChg *) 0 ;
   SCIP_VAR *arg2 = (SCIP_VAR *) 0 ;
-
+  
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(SCIP_EventBdChg **)&jarg1;
-  arg2 = *(SCIP_VAR **)&jarg2;
+  arg1 = *(SCIP_EventBdChg **)&jarg1; 
+  arg2 = *(SCIP_VAR **)&jarg2; 
   if (arg1) (arg1)->var = arg2;
 }
 
@@ -8353,13 +8352,13 @@ SWIGEXPORT jlong JNICALL Java_jscip_SCIPJNIJNI_SCIP_1EventBdChg_1var_1get(JNIEnv
   jlong jresult = 0 ;
   SCIP_EventBdChg *arg1 = (SCIP_EventBdChg *) 0 ;
   SCIP_VAR *result = 0 ;
-
+  
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(SCIP_EventBdChg **)&jarg1;
+  arg1 = *(SCIP_EventBdChg **)&jarg1; 
   result = (SCIP_VAR *) ((arg1)->var);
-  *(SCIP_VAR **)&jresult = result;
+  *(SCIP_VAR **)&jresult = result; 
   return jresult;
 }
 
@@ -8367,21 +8366,21 @@ SWIGEXPORT jlong JNICALL Java_jscip_SCIPJNIJNI_SCIP_1EventBdChg_1var_1get(JNIEnv
 SWIGEXPORT jlong JNICALL Java_jscip_SCIPJNIJNI_new_1SCIP_1EventBdChg(JNIEnv *jenv, jclass jcls) {
   jlong jresult = 0 ;
   SCIP_EventBdChg *result = 0 ;
-
+  
   (void)jenv;
   (void)jcls;
   result = (SCIP_EventBdChg *)new SCIP_EventBdChg();
-  *(SCIP_EventBdChg **)&jresult = result;
+  *(SCIP_EventBdChg **)&jresult = result; 
   return jresult;
 }
 
 
 SWIGEXPORT void JNICALL Java_jscip_SCIPJNIJNI_delete_1SCIP_1EventBdChg(JNIEnv *jenv, jclass jcls, jlong jarg1) {
   SCIP_EventBdChg *arg1 = (SCIP_EventBdChg *) 0 ;
-
+  
   (void)jenv;
   (void)jcls;
-  arg1 = *(SCIP_EventBdChg **)&jarg1;
+  arg1 = *(SCIP_EventBdChg **)&jarg1; 
   delete arg1;
 }
 
@@ -8389,12 +8388,12 @@ SWIGEXPORT void JNICALL Java_jscip_SCIPJNIJNI_delete_1SCIP_1EventBdChg(JNIEnv *j
 SWIGEXPORT void JNICALL Java_jscip_SCIPJNIJNI_SCIP_1EventHole_1left_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jdouble jarg2) {
   SCIP_EventHole *arg1 = (SCIP_EventHole *) 0 ;
   double arg2 ;
-
+  
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(SCIP_EventHole **)&jarg1;
-  arg2 = (double)jarg2;
+  arg1 = *(SCIP_EventHole **)&jarg1; 
+  arg2 = (double)jarg2; 
   if (arg1) (arg1)->left = arg2;
 }
 
@@ -8403,13 +8402,13 @@ SWIGEXPORT jdouble JNICALL Java_jscip_SCIPJNIJNI_SCIP_1EventHole_1left_1get(JNIE
   jdouble jresult = 0 ;
   SCIP_EventHole *arg1 = (SCIP_EventHole *) 0 ;
   double result;
-
+  
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(SCIP_EventHole **)&jarg1;
+  arg1 = *(SCIP_EventHole **)&jarg1; 
   result = (double) ((arg1)->left);
-  jresult = (jdouble)result;
+  jresult = (jdouble)result; 
   return jresult;
 }
 
@@ -8417,12 +8416,12 @@ SWIGEXPORT jdouble JNICALL Java_jscip_SCIPJNIJNI_SCIP_1EventHole_1left_1get(JNIE
 SWIGEXPORT void JNICALL Java_jscip_SCIPJNIJNI_SCIP_1EventHole_1right_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jdouble jarg2) {
   SCIP_EventHole *arg1 = (SCIP_EventHole *) 0 ;
   double arg2 ;
-
+  
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(SCIP_EventHole **)&jarg1;
-  arg2 = (double)jarg2;
+  arg1 = *(SCIP_EventHole **)&jarg1; 
+  arg2 = (double)jarg2; 
   if (arg1) (arg1)->right = arg2;
 }
 
@@ -8431,13 +8430,13 @@ SWIGEXPORT jdouble JNICALL Java_jscip_SCIPJNIJNI_SCIP_1EventHole_1right_1get(JNI
   jdouble jresult = 0 ;
   SCIP_EventHole *arg1 = (SCIP_EventHole *) 0 ;
   double result;
-
+  
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(SCIP_EventHole **)&jarg1;
+  arg1 = *(SCIP_EventHole **)&jarg1; 
   result = (double) ((arg1)->right);
-  jresult = (jdouble)result;
+  jresult = (jdouble)result; 
   return jresult;
 }
 
@@ -8445,12 +8444,12 @@ SWIGEXPORT jdouble JNICALL Java_jscip_SCIPJNIJNI_SCIP_1EventHole_1right_1get(JNI
 SWIGEXPORT void JNICALL Java_jscip_SCIPJNIJNI_SCIP_1EventHole_1var_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2) {
   SCIP_EventHole *arg1 = (SCIP_EventHole *) 0 ;
   SCIP_VAR *arg2 = (SCIP_VAR *) 0 ;
-
+  
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(SCIP_EventHole **)&jarg1;
-  arg2 = *(SCIP_VAR **)&jarg2;
+  arg1 = *(SCIP_EventHole **)&jarg1; 
+  arg2 = *(SCIP_VAR **)&jarg2; 
   if (arg1) (arg1)->var = arg2;
 }
 
@@ -8459,13 +8458,13 @@ SWIGEXPORT jlong JNICALL Java_jscip_SCIPJNIJNI_SCIP_1EventHole_1var_1get(JNIEnv 
   jlong jresult = 0 ;
   SCIP_EventHole *arg1 = (SCIP_EventHole *) 0 ;
   SCIP_VAR *result = 0 ;
-
+  
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(SCIP_EventHole **)&jarg1;
+  arg1 = *(SCIP_EventHole **)&jarg1; 
   result = (SCIP_VAR *) ((arg1)->var);
-  *(SCIP_VAR **)&jresult = result;
+  *(SCIP_VAR **)&jresult = result; 
   return jresult;
 }
 
@@ -8473,21 +8472,21 @@ SWIGEXPORT jlong JNICALL Java_jscip_SCIPJNIJNI_SCIP_1EventHole_1var_1get(JNIEnv 
 SWIGEXPORT jlong JNICALL Java_jscip_SCIPJNIJNI_new_1SCIP_1EventHole(JNIEnv *jenv, jclass jcls) {
   jlong jresult = 0 ;
   SCIP_EventHole *result = 0 ;
-
+  
   (void)jenv;
   (void)jcls;
   result = (SCIP_EventHole *)new SCIP_EventHole();
-  *(SCIP_EventHole **)&jresult = result;
+  *(SCIP_EventHole **)&jresult = result; 
   return jresult;
 }
 
 
 SWIGEXPORT void JNICALL Java_jscip_SCIPJNIJNI_delete_1SCIP_1EventHole(JNIEnv *jenv, jclass jcls, jlong jarg1) {
   SCIP_EventHole *arg1 = (SCIP_EventHole *) 0 ;
-
+  
   (void)jenv;
   (void)jcls;
-  arg1 = *(SCIP_EventHole **)&jarg1;
+  arg1 = *(SCIP_EventHole **)&jarg1; 
   delete arg1;
 }
 
@@ -8495,12 +8494,12 @@ SWIGEXPORT void JNICALL Java_jscip_SCIPJNIJNI_delete_1SCIP_1EventHole(JNIEnv *je
 SWIGEXPORT void JNICALL Java_jscip_SCIPJNIJNI_SCIP_1EventImplAdd_1var_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2) {
   SCIP_EventImplAdd *arg1 = (SCIP_EventImplAdd *) 0 ;
   SCIP_VAR *arg2 = (SCIP_VAR *) 0 ;
-
+  
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(SCIP_EventImplAdd **)&jarg1;
-  arg2 = *(SCIP_VAR **)&jarg2;
+  arg1 = *(SCIP_EventImplAdd **)&jarg1; 
+  arg2 = *(SCIP_VAR **)&jarg2; 
   if (arg1) (arg1)->var = arg2;
 }
 
@@ -8509,13 +8508,13 @@ SWIGEXPORT jlong JNICALL Java_jscip_SCIPJNIJNI_SCIP_1EventImplAdd_1var_1get(JNIE
   jlong jresult = 0 ;
   SCIP_EventImplAdd *arg1 = (SCIP_EventImplAdd *) 0 ;
   SCIP_VAR *result = 0 ;
-
+  
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(SCIP_EventImplAdd **)&jarg1;
+  arg1 = *(SCIP_EventImplAdd **)&jarg1; 
   result = (SCIP_VAR *) ((arg1)->var);
-  *(SCIP_VAR **)&jresult = result;
+  *(SCIP_VAR **)&jresult = result; 
   return jresult;
 }
 
@@ -8523,21 +8522,21 @@ SWIGEXPORT jlong JNICALL Java_jscip_SCIPJNIJNI_SCIP_1EventImplAdd_1var_1get(JNIE
 SWIGEXPORT jlong JNICALL Java_jscip_SCIPJNIJNI_new_1SCIP_1EventImplAdd(JNIEnv *jenv, jclass jcls) {
   jlong jresult = 0 ;
   SCIP_EventImplAdd *result = 0 ;
-
+  
   (void)jenv;
   (void)jcls;
   result = (SCIP_EventImplAdd *)new SCIP_EventImplAdd();
-  *(SCIP_EventImplAdd **)&jresult = result;
+  *(SCIP_EventImplAdd **)&jresult = result; 
   return jresult;
 }
 
 
 SWIGEXPORT void JNICALL Java_jscip_SCIPJNIJNI_delete_1SCIP_1EventImplAdd(JNIEnv *jenv, jclass jcls, jlong jarg1) {
   SCIP_EventImplAdd *arg1 = (SCIP_EventImplAdd *) 0 ;
-
+  
   (void)jenv;
   (void)jcls;
-  arg1 = *(SCIP_EventImplAdd **)&jarg1;
+  arg1 = *(SCIP_EventImplAdd **)&jarg1; 
   delete arg1;
 }
 
@@ -8545,12 +8544,12 @@ SWIGEXPORT void JNICALL Java_jscip_SCIPJNIJNI_delete_1SCIP_1EventImplAdd(JNIEnv 
 SWIGEXPORT void JNICALL Java_jscip_SCIPJNIJNI_SCIP_1EventTypeChg_1oldtype_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2) {
   SCIP_EventTypeChg *arg1 = (SCIP_EventTypeChg *) 0 ;
   SCIP_VARTYPE arg2 ;
-
+  
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(SCIP_EventTypeChg **)&jarg1;
-  arg2 = (SCIP_VARTYPE)jarg2;
+  arg1 = *(SCIP_EventTypeChg **)&jarg1; 
+  arg2 = (SCIP_VARTYPE)jarg2; 
   if (arg1) (arg1)->oldtype = arg2;
 }
 
@@ -8559,13 +8558,13 @@ SWIGEXPORT jint JNICALL Java_jscip_SCIPJNIJNI_SCIP_1EventTypeChg_1oldtype_1get(J
   jint jresult = 0 ;
   SCIP_EventTypeChg *arg1 = (SCIP_EventTypeChg *) 0 ;
   SCIP_VARTYPE result;
-
+  
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(SCIP_EventTypeChg **)&jarg1;
+  arg1 = *(SCIP_EventTypeChg **)&jarg1; 
   result = (SCIP_VARTYPE) ((arg1)->oldtype);
-  jresult = (jint)result;
+  jresult = (jint)result; 
   return jresult;
 }
 
@@ -8573,12 +8572,12 @@ SWIGEXPORT jint JNICALL Java_jscip_SCIPJNIJNI_SCIP_1EventTypeChg_1oldtype_1get(J
 SWIGEXPORT void JNICALL Java_jscip_SCIPJNIJNI_SCIP_1EventTypeChg_1newtype_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2) {
   SCIP_EventTypeChg *arg1 = (SCIP_EventTypeChg *) 0 ;
   SCIP_VARTYPE arg2 ;
-
+  
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(SCIP_EventTypeChg **)&jarg1;
-  arg2 = (SCIP_VARTYPE)jarg2;
+  arg1 = *(SCIP_EventTypeChg **)&jarg1; 
+  arg2 = (SCIP_VARTYPE)jarg2; 
   if (arg1) (arg1)->newtype = arg2;
 }
 
@@ -8587,13 +8586,13 @@ SWIGEXPORT jint JNICALL Java_jscip_SCIPJNIJNI_SCIP_1EventTypeChg_1newtype_1get(J
   jint jresult = 0 ;
   SCIP_EventTypeChg *arg1 = (SCIP_EventTypeChg *) 0 ;
   SCIP_VARTYPE result;
-
+  
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(SCIP_EventTypeChg **)&jarg1;
+  arg1 = *(SCIP_EventTypeChg **)&jarg1; 
   result = (SCIP_VARTYPE) ((arg1)->newtype);
-  jresult = (jint)result;
+  jresult = (jint)result; 
   return jresult;
 }
 
@@ -8601,12 +8600,12 @@ SWIGEXPORT jint JNICALL Java_jscip_SCIPJNIJNI_SCIP_1EventTypeChg_1newtype_1get(J
 SWIGEXPORT void JNICALL Java_jscip_SCIPJNIJNI_SCIP_1EventTypeChg_1var_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2) {
   SCIP_EventTypeChg *arg1 = (SCIP_EventTypeChg *) 0 ;
   SCIP_VAR *arg2 = (SCIP_VAR *) 0 ;
-
+  
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(SCIP_EventTypeChg **)&jarg1;
-  arg2 = *(SCIP_VAR **)&jarg2;
+  arg1 = *(SCIP_EventTypeChg **)&jarg1; 
+  arg2 = *(SCIP_VAR **)&jarg2; 
   if (arg1) (arg1)->var = arg2;
 }
 
@@ -8615,13 +8614,13 @@ SWIGEXPORT jlong JNICALL Java_jscip_SCIPJNIJNI_SCIP_1EventTypeChg_1var_1get(JNIE
   jlong jresult = 0 ;
   SCIP_EventTypeChg *arg1 = (SCIP_EventTypeChg *) 0 ;
   SCIP_VAR *result = 0 ;
-
+  
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(SCIP_EventTypeChg **)&jarg1;
+  arg1 = *(SCIP_EventTypeChg **)&jarg1; 
   result = (SCIP_VAR *) ((arg1)->var);
-  *(SCIP_VAR **)&jresult = result;
+  *(SCIP_VAR **)&jresult = result; 
   return jresult;
 }
 
@@ -8629,21 +8628,21 @@ SWIGEXPORT jlong JNICALL Java_jscip_SCIPJNIJNI_SCIP_1EventTypeChg_1var_1get(JNIE
 SWIGEXPORT jlong JNICALL Java_jscip_SCIPJNIJNI_new_1SCIP_1EventTypeChg(JNIEnv *jenv, jclass jcls) {
   jlong jresult = 0 ;
   SCIP_EventTypeChg *result = 0 ;
-
+  
   (void)jenv;
   (void)jcls;
   result = (SCIP_EventTypeChg *)new SCIP_EventTypeChg();
-  *(SCIP_EventTypeChg **)&jresult = result;
+  *(SCIP_EventTypeChg **)&jresult = result; 
   return jresult;
 }
 
 
 SWIGEXPORT void JNICALL Java_jscip_SCIPJNIJNI_delete_1SCIP_1EventTypeChg(JNIEnv *jenv, jclass jcls, jlong jarg1) {
   SCIP_EventTypeChg *arg1 = (SCIP_EventTypeChg *) 0 ;
-
+  
   (void)jenv;
   (void)jcls;
-  arg1 = *(SCIP_EventTypeChg **)&jarg1;
+  arg1 = *(SCIP_EventTypeChg **)&jarg1; 
   delete arg1;
 }
 
@@ -8651,12 +8650,12 @@ SWIGEXPORT void JNICALL Java_jscip_SCIPJNIJNI_delete_1SCIP_1EventTypeChg(JNIEnv 
 SWIGEXPORT void JNICALL Java_jscip_SCIPJNIJNI_SCIP_1EventRowAddedSepa_1row_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2) {
   SCIP_EventRowAddedSepa *arg1 = (SCIP_EventRowAddedSepa *) 0 ;
   SCIP_ROW *arg2 = (SCIP_ROW *) 0 ;
-
+  
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(SCIP_EventRowAddedSepa **)&jarg1;
-  arg2 = *(SCIP_ROW **)&jarg2;
+  arg1 = *(SCIP_EventRowAddedSepa **)&jarg1; 
+  arg2 = *(SCIP_ROW **)&jarg2; 
   if (arg1) (arg1)->row = arg2;
 }
 
@@ -8665,13 +8664,13 @@ SWIGEXPORT jlong JNICALL Java_jscip_SCIPJNIJNI_SCIP_1EventRowAddedSepa_1row_1get
   jlong jresult = 0 ;
   SCIP_EventRowAddedSepa *arg1 = (SCIP_EventRowAddedSepa *) 0 ;
   SCIP_ROW *result = 0 ;
-
+  
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(SCIP_EventRowAddedSepa **)&jarg1;
+  arg1 = *(SCIP_EventRowAddedSepa **)&jarg1; 
   result = (SCIP_ROW *) ((arg1)->row);
-  *(SCIP_ROW **)&jresult = result;
+  *(SCIP_ROW **)&jresult = result; 
   return jresult;
 }
 
@@ -8679,21 +8678,21 @@ SWIGEXPORT jlong JNICALL Java_jscip_SCIPJNIJNI_SCIP_1EventRowAddedSepa_1row_1get
 SWIGEXPORT jlong JNICALL Java_jscip_SCIPJNIJNI_new_1SCIP_1EventRowAddedSepa(JNIEnv *jenv, jclass jcls) {
   jlong jresult = 0 ;
   SCIP_EventRowAddedSepa *result = 0 ;
-
+  
   (void)jenv;
   (void)jcls;
   result = (SCIP_EventRowAddedSepa *)new SCIP_EventRowAddedSepa();
-  *(SCIP_EventRowAddedSepa **)&jresult = result;
+  *(SCIP_EventRowAddedSepa **)&jresult = result; 
   return jresult;
 }
 
 
 SWIGEXPORT void JNICALL Java_jscip_SCIPJNIJNI_delete_1SCIP_1EventRowAddedSepa(JNIEnv *jenv, jclass jcls, jlong jarg1) {
   SCIP_EventRowAddedSepa *arg1 = (SCIP_EventRowAddedSepa *) 0 ;
-
+  
   (void)jenv;
   (void)jcls;
-  arg1 = *(SCIP_EventRowAddedSepa **)&jarg1;
+  arg1 = *(SCIP_EventRowAddedSepa **)&jarg1; 
   delete arg1;
 }
 
@@ -8701,12 +8700,12 @@ SWIGEXPORT void JNICALL Java_jscip_SCIPJNIJNI_delete_1SCIP_1EventRowAddedSepa(JN
 SWIGEXPORT void JNICALL Java_jscip_SCIPJNIJNI_SCIP_1EventRowDeletedSepa_1row_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2) {
   SCIP_EventRowDeletedSepa *arg1 = (SCIP_EventRowDeletedSepa *) 0 ;
   SCIP_ROW *arg2 = (SCIP_ROW *) 0 ;
-
+  
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(SCIP_EventRowDeletedSepa **)&jarg1;
-  arg2 = *(SCIP_ROW **)&jarg2;
+  arg1 = *(SCIP_EventRowDeletedSepa **)&jarg1; 
+  arg2 = *(SCIP_ROW **)&jarg2; 
   if (arg1) (arg1)->row = arg2;
 }
 
@@ -8715,13 +8714,13 @@ SWIGEXPORT jlong JNICALL Java_jscip_SCIPJNIJNI_SCIP_1EventRowDeletedSepa_1row_1g
   jlong jresult = 0 ;
   SCIP_EventRowDeletedSepa *arg1 = (SCIP_EventRowDeletedSepa *) 0 ;
   SCIP_ROW *result = 0 ;
-
+  
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(SCIP_EventRowDeletedSepa **)&jarg1;
+  arg1 = *(SCIP_EventRowDeletedSepa **)&jarg1; 
   result = (SCIP_ROW *) ((arg1)->row);
-  *(SCIP_ROW **)&jresult = result;
+  *(SCIP_ROW **)&jresult = result; 
   return jresult;
 }
 
@@ -8729,21 +8728,21 @@ SWIGEXPORT jlong JNICALL Java_jscip_SCIPJNIJNI_SCIP_1EventRowDeletedSepa_1row_1g
 SWIGEXPORT jlong JNICALL Java_jscip_SCIPJNIJNI_new_1SCIP_1EventRowDeletedSepa(JNIEnv *jenv, jclass jcls) {
   jlong jresult = 0 ;
   SCIP_EventRowDeletedSepa *result = 0 ;
-
+  
   (void)jenv;
   (void)jcls;
   result = (SCIP_EventRowDeletedSepa *)new SCIP_EventRowDeletedSepa();
-  *(SCIP_EventRowDeletedSepa **)&jresult = result;
+  *(SCIP_EventRowDeletedSepa **)&jresult = result; 
   return jresult;
 }
 
 
 SWIGEXPORT void JNICALL Java_jscip_SCIPJNIJNI_delete_1SCIP_1EventRowDeletedSepa(JNIEnv *jenv, jclass jcls, jlong jarg1) {
   SCIP_EventRowDeletedSepa *arg1 = (SCIP_EventRowDeletedSepa *) 0 ;
-
+  
   (void)jenv;
   (void)jcls;
-  arg1 = *(SCIP_EventRowDeletedSepa **)&jarg1;
+  arg1 = *(SCIP_EventRowDeletedSepa **)&jarg1; 
   delete arg1;
 }
 
@@ -8751,12 +8750,12 @@ SWIGEXPORT void JNICALL Java_jscip_SCIPJNIJNI_delete_1SCIP_1EventRowDeletedSepa(
 SWIGEXPORT void JNICALL Java_jscip_SCIPJNIJNI_SCIP_1EventRowAddedLP_1row_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2) {
   SCIP_EventRowAddedLP *arg1 = (SCIP_EventRowAddedLP *) 0 ;
   SCIP_ROW *arg2 = (SCIP_ROW *) 0 ;
-
+  
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(SCIP_EventRowAddedLP **)&jarg1;
-  arg2 = *(SCIP_ROW **)&jarg2;
+  arg1 = *(SCIP_EventRowAddedLP **)&jarg1; 
+  arg2 = *(SCIP_ROW **)&jarg2; 
   if (arg1) (arg1)->row = arg2;
 }
 
@@ -8765,13 +8764,13 @@ SWIGEXPORT jlong JNICALL Java_jscip_SCIPJNIJNI_SCIP_1EventRowAddedLP_1row_1get(J
   jlong jresult = 0 ;
   SCIP_EventRowAddedLP *arg1 = (SCIP_EventRowAddedLP *) 0 ;
   SCIP_ROW *result = 0 ;
-
+  
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(SCIP_EventRowAddedLP **)&jarg1;
+  arg1 = *(SCIP_EventRowAddedLP **)&jarg1; 
   result = (SCIP_ROW *) ((arg1)->row);
-  *(SCIP_ROW **)&jresult = result;
+  *(SCIP_ROW **)&jresult = result; 
   return jresult;
 }
 
@@ -8779,21 +8778,21 @@ SWIGEXPORT jlong JNICALL Java_jscip_SCIPJNIJNI_SCIP_1EventRowAddedLP_1row_1get(J
 SWIGEXPORT jlong JNICALL Java_jscip_SCIPJNIJNI_new_1SCIP_1EventRowAddedLP(JNIEnv *jenv, jclass jcls) {
   jlong jresult = 0 ;
   SCIP_EventRowAddedLP *result = 0 ;
-
+  
   (void)jenv;
   (void)jcls;
   result = (SCIP_EventRowAddedLP *)new SCIP_EventRowAddedLP();
-  *(SCIP_EventRowAddedLP **)&jresult = result;
+  *(SCIP_EventRowAddedLP **)&jresult = result; 
   return jresult;
 }
 
 
 SWIGEXPORT void JNICALL Java_jscip_SCIPJNIJNI_delete_1SCIP_1EventRowAddedLP(JNIEnv *jenv, jclass jcls, jlong jarg1) {
   SCIP_EventRowAddedLP *arg1 = (SCIP_EventRowAddedLP *) 0 ;
-
+  
   (void)jenv;
   (void)jcls;
-  arg1 = *(SCIP_EventRowAddedLP **)&jarg1;
+  arg1 = *(SCIP_EventRowAddedLP **)&jarg1; 
   delete arg1;
 }
 
@@ -8801,12 +8800,12 @@ SWIGEXPORT void JNICALL Java_jscip_SCIPJNIJNI_delete_1SCIP_1EventRowAddedLP(JNIE
 SWIGEXPORT void JNICALL Java_jscip_SCIPJNIJNI_SCIP_1EventRowDeletedLP_1row_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2) {
   SCIP_EventRowDeletedLP *arg1 = (SCIP_EventRowDeletedLP *) 0 ;
   SCIP_ROW *arg2 = (SCIP_ROW *) 0 ;
-
+  
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(SCIP_EventRowDeletedLP **)&jarg1;
-  arg2 = *(SCIP_ROW **)&jarg2;
+  arg1 = *(SCIP_EventRowDeletedLP **)&jarg1; 
+  arg2 = *(SCIP_ROW **)&jarg2; 
   if (arg1) (arg1)->row = arg2;
 }
 
@@ -8815,13 +8814,13 @@ SWIGEXPORT jlong JNICALL Java_jscip_SCIPJNIJNI_SCIP_1EventRowDeletedLP_1row_1get
   jlong jresult = 0 ;
   SCIP_EventRowDeletedLP *arg1 = (SCIP_EventRowDeletedLP *) 0 ;
   SCIP_ROW *result = 0 ;
-
+  
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(SCIP_EventRowDeletedLP **)&jarg1;
+  arg1 = *(SCIP_EventRowDeletedLP **)&jarg1; 
   result = (SCIP_ROW *) ((arg1)->row);
-  *(SCIP_ROW **)&jresult = result;
+  *(SCIP_ROW **)&jresult = result; 
   return jresult;
 }
 
@@ -8829,21 +8828,21 @@ SWIGEXPORT jlong JNICALL Java_jscip_SCIPJNIJNI_SCIP_1EventRowDeletedLP_1row_1get
 SWIGEXPORT jlong JNICALL Java_jscip_SCIPJNIJNI_new_1SCIP_1EventRowDeletedLP(JNIEnv *jenv, jclass jcls) {
   jlong jresult = 0 ;
   SCIP_EventRowDeletedLP *result = 0 ;
-
+  
   (void)jenv;
   (void)jcls;
   result = (SCIP_EventRowDeletedLP *)new SCIP_EventRowDeletedLP();
-  *(SCIP_EventRowDeletedLP **)&jresult = result;
+  *(SCIP_EventRowDeletedLP **)&jresult = result; 
   return jresult;
 }
 
 
 SWIGEXPORT void JNICALL Java_jscip_SCIPJNIJNI_delete_1SCIP_1EventRowDeletedLP(JNIEnv *jenv, jclass jcls, jlong jarg1) {
   SCIP_EventRowDeletedLP *arg1 = (SCIP_EventRowDeletedLP *) 0 ;
-
+  
   (void)jenv;
   (void)jcls;
-  arg1 = *(SCIP_EventRowDeletedLP **)&jarg1;
+  arg1 = *(SCIP_EventRowDeletedLP **)&jarg1; 
   delete arg1;
 }
 
@@ -8851,12 +8850,12 @@ SWIGEXPORT void JNICALL Java_jscip_SCIPJNIJNI_delete_1SCIP_1EventRowDeletedLP(JN
 SWIGEXPORT void JNICALL Java_jscip_SCIPJNIJNI_SCIP_1EventRowCoefChanged_1row_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2) {
   SCIP_EventRowCoefChanged *arg1 = (SCIP_EventRowCoefChanged *) 0 ;
   SCIP_ROW *arg2 = (SCIP_ROW *) 0 ;
-
+  
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(SCIP_EventRowCoefChanged **)&jarg1;
-  arg2 = *(SCIP_ROW **)&jarg2;
+  arg1 = *(SCIP_EventRowCoefChanged **)&jarg1; 
+  arg2 = *(SCIP_ROW **)&jarg2; 
   if (arg1) (arg1)->row = arg2;
 }
 
@@ -8865,13 +8864,13 @@ SWIGEXPORT jlong JNICALL Java_jscip_SCIPJNIJNI_SCIP_1EventRowCoefChanged_1row_1g
   jlong jresult = 0 ;
   SCIP_EventRowCoefChanged *arg1 = (SCIP_EventRowCoefChanged *) 0 ;
   SCIP_ROW *result = 0 ;
-
+  
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(SCIP_EventRowCoefChanged **)&jarg1;
+  arg1 = *(SCIP_EventRowCoefChanged **)&jarg1; 
   result = (SCIP_ROW *) ((arg1)->row);
-  *(SCIP_ROW **)&jresult = result;
+  *(SCIP_ROW **)&jresult = result; 
   return jresult;
 }
 
@@ -8879,12 +8878,12 @@ SWIGEXPORT jlong JNICALL Java_jscip_SCIPJNIJNI_SCIP_1EventRowCoefChanged_1row_1g
 SWIGEXPORT void JNICALL Java_jscip_SCIPJNIJNI_SCIP_1EventRowCoefChanged_1col_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2) {
   SCIP_EventRowCoefChanged *arg1 = (SCIP_EventRowCoefChanged *) 0 ;
   SCIP_COL *arg2 = (SCIP_COL *) 0 ;
-
+  
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(SCIP_EventRowCoefChanged **)&jarg1;
-  arg2 = *(SCIP_COL **)&jarg2;
+  arg1 = *(SCIP_EventRowCoefChanged **)&jarg1; 
+  arg2 = *(SCIP_COL **)&jarg2; 
   if (arg1) (arg1)->col = arg2;
 }
 
@@ -8893,13 +8892,13 @@ SWIGEXPORT jlong JNICALL Java_jscip_SCIPJNIJNI_SCIP_1EventRowCoefChanged_1col_1g
   jlong jresult = 0 ;
   SCIP_EventRowCoefChanged *arg1 = (SCIP_EventRowCoefChanged *) 0 ;
   SCIP_COL *result = 0 ;
-
+  
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(SCIP_EventRowCoefChanged **)&jarg1;
+  arg1 = *(SCIP_EventRowCoefChanged **)&jarg1; 
   result = (SCIP_COL *) ((arg1)->col);
-  *(SCIP_COL **)&jresult = result;
+  *(SCIP_COL **)&jresult = result; 
   return jresult;
 }
 
@@ -8907,12 +8906,12 @@ SWIGEXPORT jlong JNICALL Java_jscip_SCIPJNIJNI_SCIP_1EventRowCoefChanged_1col_1g
 SWIGEXPORT void JNICALL Java_jscip_SCIPJNIJNI_SCIP_1EventRowCoefChanged_1oldval_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jdouble jarg2) {
   SCIP_EventRowCoefChanged *arg1 = (SCIP_EventRowCoefChanged *) 0 ;
   double arg2 ;
-
+  
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(SCIP_EventRowCoefChanged **)&jarg1;
-  arg2 = (double)jarg2;
+  arg1 = *(SCIP_EventRowCoefChanged **)&jarg1; 
+  arg2 = (double)jarg2; 
   if (arg1) (arg1)->oldval = arg2;
 }
 
@@ -8921,13 +8920,13 @@ SWIGEXPORT jdouble JNICALL Java_jscip_SCIPJNIJNI_SCIP_1EventRowCoefChanged_1oldv
   jdouble jresult = 0 ;
   SCIP_EventRowCoefChanged *arg1 = (SCIP_EventRowCoefChanged *) 0 ;
   double result;
-
+  
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(SCIP_EventRowCoefChanged **)&jarg1;
+  arg1 = *(SCIP_EventRowCoefChanged **)&jarg1; 
   result = (double) ((arg1)->oldval);
-  jresult = (jdouble)result;
+  jresult = (jdouble)result; 
   return jresult;
 }
 
@@ -8935,12 +8934,12 @@ SWIGEXPORT jdouble JNICALL Java_jscip_SCIPJNIJNI_SCIP_1EventRowCoefChanged_1oldv
 SWIGEXPORT void JNICALL Java_jscip_SCIPJNIJNI_SCIP_1EventRowCoefChanged_1newval_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jdouble jarg2) {
   SCIP_EventRowCoefChanged *arg1 = (SCIP_EventRowCoefChanged *) 0 ;
   double arg2 ;
-
+  
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(SCIP_EventRowCoefChanged **)&jarg1;
-  arg2 = (double)jarg2;
+  arg1 = *(SCIP_EventRowCoefChanged **)&jarg1; 
+  arg2 = (double)jarg2; 
   if (arg1) (arg1)->newval = arg2;
 }
 
@@ -8949,13 +8948,13 @@ SWIGEXPORT jdouble JNICALL Java_jscip_SCIPJNIJNI_SCIP_1EventRowCoefChanged_1newv
   jdouble jresult = 0 ;
   SCIP_EventRowCoefChanged *arg1 = (SCIP_EventRowCoefChanged *) 0 ;
   double result;
-
+  
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(SCIP_EventRowCoefChanged **)&jarg1;
+  arg1 = *(SCIP_EventRowCoefChanged **)&jarg1; 
   result = (double) ((arg1)->newval);
-  jresult = (jdouble)result;
+  jresult = (jdouble)result; 
   return jresult;
 }
 
@@ -8963,21 +8962,21 @@ SWIGEXPORT jdouble JNICALL Java_jscip_SCIPJNIJNI_SCIP_1EventRowCoefChanged_1newv
 SWIGEXPORT jlong JNICALL Java_jscip_SCIPJNIJNI_new_1SCIP_1EventRowCoefChanged(JNIEnv *jenv, jclass jcls) {
   jlong jresult = 0 ;
   SCIP_EventRowCoefChanged *result = 0 ;
-
+  
   (void)jenv;
   (void)jcls;
   result = (SCIP_EventRowCoefChanged *)new SCIP_EventRowCoefChanged();
-  *(SCIP_EventRowCoefChanged **)&jresult = result;
+  *(SCIP_EventRowCoefChanged **)&jresult = result; 
   return jresult;
 }
 
 
 SWIGEXPORT void JNICALL Java_jscip_SCIPJNIJNI_delete_1SCIP_1EventRowCoefChanged(JNIEnv *jenv, jclass jcls, jlong jarg1) {
   SCIP_EventRowCoefChanged *arg1 = (SCIP_EventRowCoefChanged *) 0 ;
-
+  
   (void)jenv;
   (void)jcls;
-  arg1 = *(SCIP_EventRowCoefChanged **)&jarg1;
+  arg1 = *(SCIP_EventRowCoefChanged **)&jarg1; 
   delete arg1;
 }
 
@@ -8985,12 +8984,12 @@ SWIGEXPORT void JNICALL Java_jscip_SCIPJNIJNI_delete_1SCIP_1EventRowCoefChanged(
 SWIGEXPORT void JNICALL Java_jscip_SCIPJNIJNI_SCIP_1EventRowConstChanged_1row_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2) {
   SCIP_EventRowConstChanged *arg1 = (SCIP_EventRowConstChanged *) 0 ;
   SCIP_ROW *arg2 = (SCIP_ROW *) 0 ;
-
+  
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(SCIP_EventRowConstChanged **)&jarg1;
-  arg2 = *(SCIP_ROW **)&jarg2;
+  arg1 = *(SCIP_EventRowConstChanged **)&jarg1; 
+  arg2 = *(SCIP_ROW **)&jarg2; 
   if (arg1) (arg1)->row = arg2;
 }
 
@@ -8999,13 +8998,13 @@ SWIGEXPORT jlong JNICALL Java_jscip_SCIPJNIJNI_SCIP_1EventRowConstChanged_1row_1
   jlong jresult = 0 ;
   SCIP_EventRowConstChanged *arg1 = (SCIP_EventRowConstChanged *) 0 ;
   SCIP_ROW *result = 0 ;
-
+  
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(SCIP_EventRowConstChanged **)&jarg1;
+  arg1 = *(SCIP_EventRowConstChanged **)&jarg1; 
   result = (SCIP_ROW *) ((arg1)->row);
-  *(SCIP_ROW **)&jresult = result;
+  *(SCIP_ROW **)&jresult = result; 
   return jresult;
 }
 
@@ -9013,12 +9012,12 @@ SWIGEXPORT jlong JNICALL Java_jscip_SCIPJNIJNI_SCIP_1EventRowConstChanged_1row_1
 SWIGEXPORT void JNICALL Java_jscip_SCIPJNIJNI_SCIP_1EventRowConstChanged_1oldval_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jdouble jarg2) {
   SCIP_EventRowConstChanged *arg1 = (SCIP_EventRowConstChanged *) 0 ;
   double arg2 ;
-
+  
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(SCIP_EventRowConstChanged **)&jarg1;
-  arg2 = (double)jarg2;
+  arg1 = *(SCIP_EventRowConstChanged **)&jarg1; 
+  arg2 = (double)jarg2; 
   if (arg1) (arg1)->oldval = arg2;
 }
 
@@ -9027,13 +9026,13 @@ SWIGEXPORT jdouble JNICALL Java_jscip_SCIPJNIJNI_SCIP_1EventRowConstChanged_1old
   jdouble jresult = 0 ;
   SCIP_EventRowConstChanged *arg1 = (SCIP_EventRowConstChanged *) 0 ;
   double result;
-
+  
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(SCIP_EventRowConstChanged **)&jarg1;
+  arg1 = *(SCIP_EventRowConstChanged **)&jarg1; 
   result = (double) ((arg1)->oldval);
-  jresult = (jdouble)result;
+  jresult = (jdouble)result; 
   return jresult;
 }
 
@@ -9041,12 +9040,12 @@ SWIGEXPORT jdouble JNICALL Java_jscip_SCIPJNIJNI_SCIP_1EventRowConstChanged_1old
 SWIGEXPORT void JNICALL Java_jscip_SCIPJNIJNI_SCIP_1EventRowConstChanged_1newval_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jdouble jarg2) {
   SCIP_EventRowConstChanged *arg1 = (SCIP_EventRowConstChanged *) 0 ;
   double arg2 ;
-
+  
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(SCIP_EventRowConstChanged **)&jarg1;
-  arg2 = (double)jarg2;
+  arg1 = *(SCIP_EventRowConstChanged **)&jarg1; 
+  arg2 = (double)jarg2; 
   if (arg1) (arg1)->newval = arg2;
 }
 
@@ -9055,13 +9054,13 @@ SWIGEXPORT jdouble JNICALL Java_jscip_SCIPJNIJNI_SCIP_1EventRowConstChanged_1new
   jdouble jresult = 0 ;
   SCIP_EventRowConstChanged *arg1 = (SCIP_EventRowConstChanged *) 0 ;
   double result;
-
+  
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(SCIP_EventRowConstChanged **)&jarg1;
+  arg1 = *(SCIP_EventRowConstChanged **)&jarg1; 
   result = (double) ((arg1)->newval);
-  jresult = (jdouble)result;
+  jresult = (jdouble)result; 
   return jresult;
 }
 
@@ -9069,21 +9068,21 @@ SWIGEXPORT jdouble JNICALL Java_jscip_SCIPJNIJNI_SCIP_1EventRowConstChanged_1new
 SWIGEXPORT jlong JNICALL Java_jscip_SCIPJNIJNI_new_1SCIP_1EventRowConstChanged(JNIEnv *jenv, jclass jcls) {
   jlong jresult = 0 ;
   SCIP_EventRowConstChanged *result = 0 ;
-
+  
   (void)jenv;
   (void)jcls;
   result = (SCIP_EventRowConstChanged *)new SCIP_EventRowConstChanged();
-  *(SCIP_EventRowConstChanged **)&jresult = result;
+  *(SCIP_EventRowConstChanged **)&jresult = result; 
   return jresult;
 }
 
 
 SWIGEXPORT void JNICALL Java_jscip_SCIPJNIJNI_delete_1SCIP_1EventRowConstChanged(JNIEnv *jenv, jclass jcls, jlong jarg1) {
   SCIP_EventRowConstChanged *arg1 = (SCIP_EventRowConstChanged *) 0 ;
-
+  
   (void)jenv;
   (void)jcls;
-  arg1 = *(SCIP_EventRowConstChanged **)&jarg1;
+  arg1 = *(SCIP_EventRowConstChanged **)&jarg1; 
   delete arg1;
 }
 
@@ -9091,12 +9090,12 @@ SWIGEXPORT void JNICALL Java_jscip_SCIPJNIJNI_delete_1SCIP_1EventRowConstChanged
 SWIGEXPORT void JNICALL Java_jscip_SCIPJNIJNI_SCIP_1EventRowSideChanged_1row_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2) {
   SCIP_EventRowSideChanged *arg1 = (SCIP_EventRowSideChanged *) 0 ;
   SCIP_ROW *arg2 = (SCIP_ROW *) 0 ;
-
+  
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(SCIP_EventRowSideChanged **)&jarg1;
-  arg2 = *(SCIP_ROW **)&jarg2;
+  arg1 = *(SCIP_EventRowSideChanged **)&jarg1; 
+  arg2 = *(SCIP_ROW **)&jarg2; 
   if (arg1) (arg1)->row = arg2;
 }
 
@@ -9105,13 +9104,13 @@ SWIGEXPORT jlong JNICALL Java_jscip_SCIPJNIJNI_SCIP_1EventRowSideChanged_1row_1g
   jlong jresult = 0 ;
   SCIP_EventRowSideChanged *arg1 = (SCIP_EventRowSideChanged *) 0 ;
   SCIP_ROW *result = 0 ;
-
+  
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(SCIP_EventRowSideChanged **)&jarg1;
+  arg1 = *(SCIP_EventRowSideChanged **)&jarg1; 
   result = (SCIP_ROW *) ((arg1)->row);
-  *(SCIP_ROW **)&jresult = result;
+  *(SCIP_ROW **)&jresult = result; 
   return jresult;
 }
 
@@ -9120,17 +9119,17 @@ SWIGEXPORT void JNICALL Java_jscip_SCIPJNIJNI_SCIP_1EventRowSideChanged_1side_1s
   SCIP_EventRowSideChanged *arg1 = (SCIP_EventRowSideChanged *) 0 ;
   SCIP_SIDETYPE arg2 ;
   SCIP_SIDETYPE *argp2 ;
-
+  
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(SCIP_EventRowSideChanged **)&jarg1;
-  argp2 = *(SCIP_SIDETYPE **)&jarg2;
+  arg1 = *(SCIP_EventRowSideChanged **)&jarg1; 
+  argp2 = *(SCIP_SIDETYPE **)&jarg2; 
   if (!argp2) {
     SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "Attempt to dereference null SCIP_SIDETYPE");
     return ;
   }
-  arg2 = *argp2;
+  arg2 = *argp2; 
   if (arg1) (arg1)->side = arg2;
 }
 
@@ -9139,13 +9138,13 @@ SWIGEXPORT jlong JNICALL Java_jscip_SCIPJNIJNI_SCIP_1EventRowSideChanged_1side_1
   jlong jresult = 0 ;
   SCIP_EventRowSideChanged *arg1 = (SCIP_EventRowSideChanged *) 0 ;
   SCIP_SIDETYPE result;
-
+  
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(SCIP_EventRowSideChanged **)&jarg1;
+  arg1 = *(SCIP_EventRowSideChanged **)&jarg1; 
   result =  ((arg1)->side);
-  *(SCIP_SIDETYPE **)&jresult = new SCIP_SIDETYPE((const SCIP_SIDETYPE &)result);
+  *(SCIP_SIDETYPE **)&jresult = new SCIP_SIDETYPE((const SCIP_SIDETYPE &)result); 
   return jresult;
 }
 
@@ -9153,12 +9152,12 @@ SWIGEXPORT jlong JNICALL Java_jscip_SCIPJNIJNI_SCIP_1EventRowSideChanged_1side_1
 SWIGEXPORT void JNICALL Java_jscip_SCIPJNIJNI_SCIP_1EventRowSideChanged_1oldval_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jdouble jarg2) {
   SCIP_EventRowSideChanged *arg1 = (SCIP_EventRowSideChanged *) 0 ;
   double arg2 ;
-
+  
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(SCIP_EventRowSideChanged **)&jarg1;
-  arg2 = (double)jarg2;
+  arg1 = *(SCIP_EventRowSideChanged **)&jarg1; 
+  arg2 = (double)jarg2; 
   if (arg1) (arg1)->oldval = arg2;
 }
 
@@ -9167,13 +9166,13 @@ SWIGEXPORT jdouble JNICALL Java_jscip_SCIPJNIJNI_SCIP_1EventRowSideChanged_1oldv
   jdouble jresult = 0 ;
   SCIP_EventRowSideChanged *arg1 = (SCIP_EventRowSideChanged *) 0 ;
   double result;
-
+  
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(SCIP_EventRowSideChanged **)&jarg1;
+  arg1 = *(SCIP_EventRowSideChanged **)&jarg1; 
   result = (double) ((arg1)->oldval);
-  jresult = (jdouble)result;
+  jresult = (jdouble)result; 
   return jresult;
 }
 
@@ -9181,12 +9180,12 @@ SWIGEXPORT jdouble JNICALL Java_jscip_SCIPJNIJNI_SCIP_1EventRowSideChanged_1oldv
 SWIGEXPORT void JNICALL Java_jscip_SCIPJNIJNI_SCIP_1EventRowSideChanged_1newval_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jdouble jarg2) {
   SCIP_EventRowSideChanged *arg1 = (SCIP_EventRowSideChanged *) 0 ;
   double arg2 ;
-
+  
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(SCIP_EventRowSideChanged **)&jarg1;
-  arg2 = (double)jarg2;
+  arg1 = *(SCIP_EventRowSideChanged **)&jarg1; 
+  arg2 = (double)jarg2; 
   if (arg1) (arg1)->newval = arg2;
 }
 
@@ -9195,13 +9194,13 @@ SWIGEXPORT jdouble JNICALL Java_jscip_SCIPJNIJNI_SCIP_1EventRowSideChanged_1newv
   jdouble jresult = 0 ;
   SCIP_EventRowSideChanged *arg1 = (SCIP_EventRowSideChanged *) 0 ;
   double result;
-
+  
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(SCIP_EventRowSideChanged **)&jarg1;
+  arg1 = *(SCIP_EventRowSideChanged **)&jarg1; 
   result = (double) ((arg1)->newval);
-  jresult = (jdouble)result;
+  jresult = (jdouble)result; 
   return jresult;
 }
 
@@ -9209,21 +9208,21 @@ SWIGEXPORT jdouble JNICALL Java_jscip_SCIPJNIJNI_SCIP_1EventRowSideChanged_1newv
 SWIGEXPORT jlong JNICALL Java_jscip_SCIPJNIJNI_new_1SCIP_1EventRowSideChanged(JNIEnv *jenv, jclass jcls) {
   jlong jresult = 0 ;
   SCIP_EventRowSideChanged *result = 0 ;
-
+  
   (void)jenv;
   (void)jcls;
   result = (SCIP_EventRowSideChanged *)new SCIP_EventRowSideChanged();
-  *(SCIP_EventRowSideChanged **)&jresult = result;
+  *(SCIP_EventRowSideChanged **)&jresult = result; 
   return jresult;
 }
 
 
 SWIGEXPORT void JNICALL Java_jscip_SCIPJNIJNI_delete_1SCIP_1EventRowSideChanged(JNIEnv *jenv, jclass jcls, jlong jarg1) {
   SCIP_EventRowSideChanged *arg1 = (SCIP_EventRowSideChanged *) 0 ;
-
+  
   (void)jenv;
   (void)jcls;
-  arg1 = *(SCIP_EventRowSideChanged **)&jarg1;
+  arg1 = *(SCIP_EventRowSideChanged **)&jarg1; 
   delete arg1;
 }
 
@@ -9231,12 +9230,12 @@ SWIGEXPORT void JNICALL Java_jscip_SCIPJNIJNI_delete_1SCIP_1EventRowSideChanged(
 SWIGEXPORT void JNICALL Java_jscip_SCIPJNIJNI_SCIP_1Event_1eventtype_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2) {
   SCIP_Event *arg1 = (SCIP_Event *) 0 ;
   SCIP_EVENTTYPE arg2 ;
-
+  
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(SCIP_Event **)&jarg1;
-  arg2 = (SCIP_EVENTTYPE)jarg2;
+  arg1 = *(SCIP_Event **)&jarg1; 
+  arg2 = (SCIP_EVENTTYPE)jarg2; 
   if (arg1) (arg1)->eventtype = arg2;
 }
 
@@ -9245,13 +9244,13 @@ SWIGEXPORT jlong JNICALL Java_jscip_SCIPJNIJNI_SCIP_1Event_1eventtype_1get(JNIEn
   jlong jresult = 0 ;
   SCIP_Event *arg1 = (SCIP_Event *) 0 ;
   SCIP_EVENTTYPE result;
-
+  
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(SCIP_Event **)&jarg1;
+  arg1 = *(SCIP_Event **)&jarg1; 
   result = (SCIP_EVENTTYPE) ((arg1)->eventtype);
-  jresult = (jlong)result;
+  jresult = (jlong)result; 
   return jresult;
 }
 
@@ -9259,21 +9258,21 @@ SWIGEXPORT jlong JNICALL Java_jscip_SCIPJNIJNI_SCIP_1Event_1eventtype_1get(JNIEn
 SWIGEXPORT jlong JNICALL Java_jscip_SCIPJNIJNI_new_1SCIP_1Event(JNIEnv *jenv, jclass jcls) {
   jlong jresult = 0 ;
   SCIP_Event *result = 0 ;
-
+  
   (void)jenv;
   (void)jcls;
   result = (SCIP_Event *)new SCIP_Event();
-  *(SCIP_Event **)&jresult = result;
+  *(SCIP_Event **)&jresult = result; 
   return jresult;
 }
 
 
 SWIGEXPORT void JNICALL Java_jscip_SCIPJNIJNI_delete_1SCIP_1Event(JNIEnv *jenv, jclass jcls, jlong jarg1) {
   SCIP_Event *arg1 = (SCIP_Event *) 0 ;
-
+  
   (void)jenv;
   (void)jcls;
-  arg1 = *(SCIP_Event **)&jarg1;
+  arg1 = *(SCIP_Event **)&jarg1; 
   delete arg1;
 }
 
@@ -9283,18 +9282,18 @@ SWIGEXPORT jlong JNICALL Java_jscip_SCIPJNIJNI_getEventDataVarAdde(JNIEnv *jenv,
   SCIP_Event arg1 ;
   SCIP_Event *argp1 ;
   SCIP_EventVarAdded result;
-
+  
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  argp1 = *(SCIP_Event **)&jarg1;
+  argp1 = *(SCIP_Event **)&jarg1; 
   if (!argp1) {
     SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "Attempt to dereference null SCIP_Event");
     return 0;
   }
-  arg1 = *argp1;
+  arg1 = *argp1; 
   result = getEventDataVarAdde(arg1);
-  *(SCIP_EventVarAdded **)&jresult = new SCIP_EventVarAdded((const SCIP_EventVarAdded &)result);
+  *(SCIP_EventVarAdded **)&jresult = new SCIP_EventVarAdded((const SCIP_EventVarAdded &)result); 
   return jresult;
 }
 
@@ -9304,18 +9303,18 @@ SWIGEXPORT jlong JNICALL Java_jscip_SCIPJNIJNI_getEventDataVarDeleted(JNIEnv *je
   SCIP_Event arg1 ;
   SCIP_Event *argp1 ;
   SCIP_EventVarDeleted result;
-
+  
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  argp1 = *(SCIP_Event **)&jarg1;
+  argp1 = *(SCIP_Event **)&jarg1; 
   if (!argp1) {
     SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "Attempt to dereference null SCIP_Event");
     return 0;
   }
-  arg1 = *argp1;
+  arg1 = *argp1; 
   result = getEventDataVarDeleted(arg1);
-  *(SCIP_EventVarDeleted **)&jresult = new SCIP_EventVarDeleted((const SCIP_EventVarDeleted &)result);
+  *(SCIP_EventVarDeleted **)&jresult = new SCIP_EventVarDeleted((const SCIP_EventVarDeleted &)result); 
   return jresult;
 }
 
@@ -9325,18 +9324,18 @@ SWIGEXPORT jlong JNICALL Java_jscip_SCIPJNIJNI_getEventDataVarFixed(JNIEnv *jenv
   SCIP_Event arg1 ;
   SCIP_Event *argp1 ;
   SCIP_EventVarFixed result;
-
+  
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  argp1 = *(SCIP_Event **)&jarg1;
+  argp1 = *(SCIP_Event **)&jarg1; 
   if (!argp1) {
     SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "Attempt to dereference null SCIP_Event");
     return 0;
   }
-  arg1 = *argp1;
+  arg1 = *argp1; 
   result = getEventDataVarFixed(arg1);
-  *(SCIP_EventVarFixed **)&jresult = new SCIP_EventVarFixed((const SCIP_EventVarFixed &)result);
+  *(SCIP_EventVarFixed **)&jresult = new SCIP_EventVarFixed((const SCIP_EventVarFixed &)result); 
   return jresult;
 }
 
@@ -9346,18 +9345,18 @@ SWIGEXPORT jlong JNICALL Java_jscip_SCIPJNIJNI_getEventDataVarUnlocked(JNIEnv *j
   SCIP_Event arg1 ;
   SCIP_Event *argp1 ;
   SCIP_EventVarUnlocked result;
-
+  
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  argp1 = *(SCIP_Event **)&jarg1;
+  argp1 = *(SCIP_Event **)&jarg1; 
   if (!argp1) {
     SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "Attempt to dereference null SCIP_Event");
     return 0;
   }
-  arg1 = *argp1;
+  arg1 = *argp1; 
   result = getEventDataVarUnlocked(arg1);
-  *(SCIP_EventVarUnlocked **)&jresult = new SCIP_EventVarUnlocked((const SCIP_EventVarUnlocked &)result);
+  *(SCIP_EventVarUnlocked **)&jresult = new SCIP_EventVarUnlocked((const SCIP_EventVarUnlocked &)result); 
   return jresult;
 }
 
@@ -9367,18 +9366,18 @@ SWIGEXPORT jlong JNICALL Java_jscip_SCIPJNIJNI_getEventDataObjChg(JNIEnv *jenv, 
   SCIP_Event arg1 ;
   SCIP_Event *argp1 ;
   SCIP_EventObjChg result;
-
+  
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  argp1 = *(SCIP_Event **)&jarg1;
+  argp1 = *(SCIP_Event **)&jarg1; 
   if (!argp1) {
     SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "Attempt to dereference null SCIP_Event");
     return 0;
   }
-  arg1 = *argp1;
+  arg1 = *argp1; 
   result = getEventDataObjChg(arg1);
-  *(SCIP_EventObjChg **)&jresult = new SCIP_EventObjChg((const SCIP_EventObjChg &)result);
+  *(SCIP_EventObjChg **)&jresult = new SCIP_EventObjChg((const SCIP_EventObjChg &)result); 
   return jresult;
 }
 
@@ -9388,18 +9387,18 @@ SWIGEXPORT jlong JNICALL Java_jscip_SCIPJNIJNI_getEventDataBdChg(JNIEnv *jenv, j
   SCIP_Event arg1 ;
   SCIP_Event *argp1 ;
   SCIP_EventBdChg result;
-
+  
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  argp1 = *(SCIP_Event **)&jarg1;
+  argp1 = *(SCIP_Event **)&jarg1; 
   if (!argp1) {
     SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "Attempt to dereference null SCIP_Event");
     return 0;
   }
-  arg1 = *argp1;
+  arg1 = *argp1; 
   result = getEventDataBdChg(arg1);
-  *(SCIP_EventBdChg **)&jresult = new SCIP_EventBdChg((const SCIP_EventBdChg &)result);
+  *(SCIP_EventBdChg **)&jresult = new SCIP_EventBdChg((const SCIP_EventBdChg &)result); 
   return jresult;
 }
 
@@ -9409,18 +9408,18 @@ SWIGEXPORT jlong JNICALL Java_jscip_SCIPJNIJNI_getEventDataHole(JNIEnv *jenv, jc
   SCIP_Event arg1 ;
   SCIP_Event *argp1 ;
   SCIP_EventHole result;
-
+  
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  argp1 = *(SCIP_Event **)&jarg1;
+  argp1 = *(SCIP_Event **)&jarg1; 
   if (!argp1) {
     SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "Attempt to dereference null SCIP_Event");
     return 0;
   }
-  arg1 = *argp1;
+  arg1 = *argp1; 
   result = getEventDataHole(arg1);
-  *(SCIP_EventHole **)&jresult = new SCIP_EventHole((const SCIP_EventHole &)result);
+  *(SCIP_EventHole **)&jresult = new SCIP_EventHole((const SCIP_EventHole &)result); 
   return jresult;
 }
 
@@ -9430,18 +9429,18 @@ SWIGEXPORT jlong JNICALL Java_jscip_SCIPJNIJNI_getEventDataImplAdd(JNIEnv *jenv,
   SCIP_Event arg1 ;
   SCIP_Event *argp1 ;
   SCIP_EventImplAdd result;
-
+  
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  argp1 = *(SCIP_Event **)&jarg1;
+  argp1 = *(SCIP_Event **)&jarg1; 
   if (!argp1) {
     SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "Attempt to dereference null SCIP_Event");
     return 0;
   }
-  arg1 = *argp1;
+  arg1 = *argp1; 
   result = getEventDataImplAdd(arg1);
-  *(SCIP_EventImplAdd **)&jresult = new SCIP_EventImplAdd((const SCIP_EventImplAdd &)result);
+  *(SCIP_EventImplAdd **)&jresult = new SCIP_EventImplAdd((const SCIP_EventImplAdd &)result); 
   return jresult;
 }
 
@@ -9451,18 +9450,18 @@ SWIGEXPORT jlong JNICALL Java_jscip_SCIPJNIJNI_getEventDataTypeChg(JNIEnv *jenv,
   SCIP_Event arg1 ;
   SCIP_Event *argp1 ;
   SCIP_EventTypeChg result;
-
+  
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  argp1 = *(SCIP_Event **)&jarg1;
+  argp1 = *(SCIP_Event **)&jarg1; 
   if (!argp1) {
     SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "Attempt to dereference null SCIP_Event");
     return 0;
   }
-  arg1 = *argp1;
+  arg1 = *argp1; 
   result = getEventDataTypeChg(arg1);
-  *(SCIP_EventTypeChg **)&jresult = new SCIP_EventTypeChg((const SCIP_EventTypeChg &)result);
+  *(SCIP_EventTypeChg **)&jresult = new SCIP_EventTypeChg((const SCIP_EventTypeChg &)result); 
   return jresult;
 }
 
@@ -9472,18 +9471,18 @@ SWIGEXPORT jlong JNICALL Java_jscip_SCIPJNIJNI_getEventDataRowAddedSepa(JNIEnv *
   SCIP_Event arg1 ;
   SCIP_Event *argp1 ;
   SCIP_EventRowAddedSepa result;
-
+  
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  argp1 = *(SCIP_Event **)&jarg1;
+  argp1 = *(SCIP_Event **)&jarg1; 
   if (!argp1) {
     SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "Attempt to dereference null SCIP_Event");
     return 0;
   }
-  arg1 = *argp1;
+  arg1 = *argp1; 
   result = getEventDataRowAddedSepa(arg1);
-  *(SCIP_EventRowAddedSepa **)&jresult = new SCIP_EventRowAddedSepa((const SCIP_EventRowAddedSepa &)result);
+  *(SCIP_EventRowAddedSepa **)&jresult = new SCIP_EventRowAddedSepa((const SCIP_EventRowAddedSepa &)result); 
   return jresult;
 }
 
@@ -9493,18 +9492,18 @@ SWIGEXPORT jlong JNICALL Java_jscip_SCIPJNIJNI_getEventDataRowDeletedSepa(JNIEnv
   SCIP_Event arg1 ;
   SCIP_Event *argp1 ;
   SCIP_EventRowDeletedSepa result;
-
+  
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  argp1 = *(SCIP_Event **)&jarg1;
+  argp1 = *(SCIP_Event **)&jarg1; 
   if (!argp1) {
     SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "Attempt to dereference null SCIP_Event");
     return 0;
   }
-  arg1 = *argp1;
+  arg1 = *argp1; 
   result = getEventDataRowDeletedSepa(arg1);
-  *(SCIP_EventRowDeletedSepa **)&jresult = new SCIP_EventRowDeletedSepa((const SCIP_EventRowDeletedSepa &)result);
+  *(SCIP_EventRowDeletedSepa **)&jresult = new SCIP_EventRowDeletedSepa((const SCIP_EventRowDeletedSepa &)result); 
   return jresult;
 }
 
@@ -9514,18 +9513,18 @@ SWIGEXPORT jlong JNICALL Java_jscip_SCIPJNIJNI_getEventDataRowAddedLp(JNIEnv *je
   SCIP_Event arg1 ;
   SCIP_Event *argp1 ;
   SCIP_EventRowAddedLP result;
-
+  
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  argp1 = *(SCIP_Event **)&jarg1;
+  argp1 = *(SCIP_Event **)&jarg1; 
   if (!argp1) {
     SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "Attempt to dereference null SCIP_Event");
     return 0;
   }
-  arg1 = *argp1;
+  arg1 = *argp1; 
   result = getEventDataRowAddedLp(arg1);
-  *(SCIP_EventRowAddedLP **)&jresult = new SCIP_EventRowAddedLP((const SCIP_EventRowAddedLP &)result);
+  *(SCIP_EventRowAddedLP **)&jresult = new SCIP_EventRowAddedLP((const SCIP_EventRowAddedLP &)result); 
   return jresult;
 }
 
@@ -9535,18 +9534,18 @@ SWIGEXPORT jlong JNICALL Java_jscip_SCIPJNIJNI_getEventDataRowDeletedLp(JNIEnv *
   SCIP_Event arg1 ;
   SCIP_Event *argp1 ;
   SCIP_EventRowDeletedLP result;
-
+  
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  argp1 = *(SCIP_Event **)&jarg1;
+  argp1 = *(SCIP_Event **)&jarg1; 
   if (!argp1) {
     SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "Attempt to dereference null SCIP_Event");
     return 0;
   }
-  arg1 = *argp1;
+  arg1 = *argp1; 
   result = getEventDataRowDeletedLp(arg1);
-  *(SCIP_EventRowDeletedLP **)&jresult = new SCIP_EventRowDeletedLP((const SCIP_EventRowDeletedLP &)result);
+  *(SCIP_EventRowDeletedLP **)&jresult = new SCIP_EventRowDeletedLP((const SCIP_EventRowDeletedLP &)result); 
   return jresult;
 }
 
@@ -9556,18 +9555,18 @@ SWIGEXPORT jlong JNICALL Java_jscip_SCIPJNIJNI_getEventDataRowCoefChanged(JNIEnv
   SCIP_Event arg1 ;
   SCIP_Event *argp1 ;
   SCIP_EventRowCoefChanged result;
-
+  
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  argp1 = *(SCIP_Event **)&jarg1;
+  argp1 = *(SCIP_Event **)&jarg1; 
   if (!argp1) {
     SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "Attempt to dereference null SCIP_Event");
     return 0;
   }
-  arg1 = *argp1;
+  arg1 = *argp1; 
   result = getEventDataRowCoefChanged(arg1);
-  *(SCIP_EventRowCoefChanged **)&jresult = new SCIP_EventRowCoefChanged((const SCIP_EventRowCoefChanged &)result);
+  *(SCIP_EventRowCoefChanged **)&jresult = new SCIP_EventRowCoefChanged((const SCIP_EventRowCoefChanged &)result); 
   return jresult;
 }
 
@@ -9577,18 +9576,18 @@ SWIGEXPORT jlong JNICALL Java_jscip_SCIPJNIJNI_getEventDataRowConstChanged(JNIEn
   SCIP_Event arg1 ;
   SCIP_Event *argp1 ;
   SCIP_EventRowConstChanged result;
-
+  
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  argp1 = *(SCIP_Event **)&jarg1;
+  argp1 = *(SCIP_Event **)&jarg1; 
   if (!argp1) {
     SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "Attempt to dereference null SCIP_Event");
     return 0;
   }
-  arg1 = *argp1;
+  arg1 = *argp1; 
   result = getEventDataRowConstChanged(arg1);
-  *(SCIP_EventRowConstChanged **)&jresult = new SCIP_EventRowConstChanged((const SCIP_EventRowConstChanged &)result);
+  *(SCIP_EventRowConstChanged **)&jresult = new SCIP_EventRowConstChanged((const SCIP_EventRowConstChanged &)result); 
   return jresult;
 }
 
@@ -9598,18 +9597,18 @@ SWIGEXPORT jlong JNICALL Java_jscip_SCIPJNIJNI_getEventDataRowSideChanged(JNIEnv
   SCIP_Event arg1 ;
   SCIP_Event *argp1 ;
   SCIP_EventRowSideChanged result;
-
+  
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  argp1 = *(SCIP_Event **)&jarg1;
+  argp1 = *(SCIP_Event **)&jarg1; 
   if (!argp1) {
     SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "Attempt to dereference null SCIP_Event");
     return 0;
   }
-  arg1 = *argp1;
+  arg1 = *argp1; 
   result = getEventDataRowSideChanged(arg1);
-  *(SCIP_EventRowSideChanged **)&jresult = new SCIP_EventRowSideChanged((const SCIP_EventRowSideChanged &)result);
+  *(SCIP_EventRowSideChanged **)&jresult = new SCIP_EventRowSideChanged((const SCIP_EventRowSideChanged &)result); 
   return jresult;
 }
 
@@ -9619,18 +9618,18 @@ SWIGEXPORT jlong JNICALL Java_jscip_SCIPJNIJNI_getEventDataSolution(JNIEnv *jenv
   SCIP_Event arg1 ;
   SCIP_Event *argp1 ;
   SCIP_SOL *result = 0 ;
-
+  
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  argp1 = *(SCIP_Event **)&jarg1;
+  argp1 = *(SCIP_Event **)&jarg1; 
   if (!argp1) {
     SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "Attempt to dereference null SCIP_Event");
     return 0;
   }
-  arg1 = *argp1;
+  arg1 = *argp1; 
   result = (SCIP_SOL *)getEventDataSolution(arg1);
-  *(SCIP_SOL **)&jresult = result;
+  *(SCIP_SOL **)&jresult = result; 
   return jresult;
 }
 
@@ -9640,18 +9639,18 @@ SWIGEXPORT jlong JNICALL Java_jscip_SCIPJNIJNI_getEventDataNode(JNIEnv *jenv, jc
   SCIP_Event arg1 ;
   SCIP_Event *argp1 ;
   SCIP_NODE *result = 0 ;
-
+  
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  argp1 = *(SCIP_Event **)&jarg1;
+  argp1 = *(SCIP_Event **)&jarg1; 
   if (!argp1) {
     SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "Attempt to dereference null SCIP_Event");
     return 0;
   }
-  arg1 = *argp1;
+  arg1 = *argp1; 
   result = (SCIP_NODE *)getEventDataNode(arg1);
-  *(SCIP_NODE **)&jresult = result;
+  *(SCIP_NODE **)&jresult = result; 
   return jresult;
 }
 
@@ -10049,10 +10048,10 @@ SWIGEXPORT jint JNICALL Java_jscip_SCIPJNIJNI_ObjEventhdlr_1scip_1exec(JNIEnv *j
   (void)jcls;
   (void)jarg1_;
   (void)jarg4_;
-  arg1 = *(scip::ObjEventhdlr **)&jarg1;
+  arg1 = *(scip::ObjEventhdlr **)&jarg1; 
   arg2 = *(SCIP **)&jarg2; 
   arg3 = *(SCIP_EVENTHDLR **)&jarg3; 
-  arg4 = *(SCIP_Event **)&jarg4;
+  arg4 = *(SCIP_Event **)&jarg4; 
   arg5 = *(SCIP_EVENTDATA **)&jarg5; 
   result = (SCIP_RETCODE)(arg1)->scip_exec(arg2,arg3,arg4,arg5);
   jresult = (jint)result; 
@@ -10073,10 +10072,10 @@ SWIGEXPORT jint JNICALL Java_jscip_SCIPJNIJNI_ObjEventhdlr_1scip_1execSwigExplic
   (void)jcls;
   (void)jarg1_;
   (void)jarg4_;
-  arg1 = *(scip::ObjEventhdlr **)&jarg1;
+  arg1 = *(scip::ObjEventhdlr **)&jarg1; 
   arg2 = *(SCIP **)&jarg2; 
   arg3 = *(SCIP_EVENTHDLR **)&jarg3; 
-  arg4 = *(SCIP_Event **)&jarg4;
+  arg4 = *(SCIP_Event **)&jarg4; 
   arg5 = *(SCIP_EVENTDATA **)&jarg5; 
   result = (SCIP_RETCODE)(arg1)->scip::ObjEventhdlr::scip_exec(arg2,arg3,arg4,arg5);
   jresult = (jint)result; 
@@ -10167,11 +10166,11 @@ SWIGEXPORT jint JNICALL Java_jscip_SCIPJNIJNI_SCIPcatchEvent(JNIEnv *jenv, jclas
 SWIGEXPORT jint JNICALL Java_jscip_SCIPJNIJNI_SCIP_1DIDNOTRUN_1get(JNIEnv *jenv, jclass jcls) {
   jint jresult = 0 ;
   SCIP_Result result;
-
+  
   (void)jenv;
   (void)jcls;
   result = (SCIP_Result)SCIP_DIDNOTRUN;
-  jresult = (jint)result;
+  jresult = (jint)result; 
   return jresult;
 }
 
@@ -10179,11 +10178,11 @@ SWIGEXPORT jint JNICALL Java_jscip_SCIPJNIJNI_SCIP_1DIDNOTRUN_1get(JNIEnv *jenv,
 SWIGEXPORT jint JNICALL Java_jscip_SCIPJNIJNI_SCIP_1DELAYED_1get(JNIEnv *jenv, jclass jcls) {
   jint jresult = 0 ;
   SCIP_Result result;
-
+  
   (void)jenv;
   (void)jcls;
   result = (SCIP_Result)SCIP_DELAYED;
-  jresult = (jint)result;
+  jresult = (jint)result; 
   return jresult;
 }
 
@@ -10191,11 +10190,11 @@ SWIGEXPORT jint JNICALL Java_jscip_SCIPJNIJNI_SCIP_1DELAYED_1get(JNIEnv *jenv, j
 SWIGEXPORT jint JNICALL Java_jscip_SCIPJNIJNI_SCIP_1DIDNOTFIND_1get(JNIEnv *jenv, jclass jcls) {
   jint jresult = 0 ;
   SCIP_Result result;
-
+  
   (void)jenv;
   (void)jcls;
   result = (SCIP_Result)SCIP_DIDNOTFIND;
-  jresult = (jint)result;
+  jresult = (jint)result; 
   return jresult;
 }
 
@@ -10203,11 +10202,11 @@ SWIGEXPORT jint JNICALL Java_jscip_SCIPJNIJNI_SCIP_1DIDNOTFIND_1get(JNIEnv *jenv
 SWIGEXPORT jint JNICALL Java_jscip_SCIPJNIJNI_SCIP_1FEASIBLE_1get(JNIEnv *jenv, jclass jcls) {
   jint jresult = 0 ;
   SCIP_Result result;
-
+  
   (void)jenv;
   (void)jcls;
   result = (SCIP_Result)SCIP_FEASIBLE;
-  jresult = (jint)result;
+  jresult = (jint)result; 
   return jresult;
 }
 
@@ -10215,11 +10214,11 @@ SWIGEXPORT jint JNICALL Java_jscip_SCIPJNIJNI_SCIP_1FEASIBLE_1get(JNIEnv *jenv, 
 SWIGEXPORT jint JNICALL Java_jscip_SCIPJNIJNI_SCIP_1INFEASIBLE_1get(JNIEnv *jenv, jclass jcls) {
   jint jresult = 0 ;
   SCIP_Result result;
-
+  
   (void)jenv;
   (void)jcls;
   result = (SCIP_Result)SCIP_INFEASIBLE;
-  jresult = (jint)result;
+  jresult = (jint)result; 
   return jresult;
 }
 
@@ -10227,11 +10226,11 @@ SWIGEXPORT jint JNICALL Java_jscip_SCIPJNIJNI_SCIP_1INFEASIBLE_1get(JNIEnv *jenv
 SWIGEXPORT jint JNICALL Java_jscip_SCIPJNIJNI_SCIP_1UNBOUNDED_1get(JNIEnv *jenv, jclass jcls) {
   jint jresult = 0 ;
   SCIP_Result result;
-
+  
   (void)jenv;
   (void)jcls;
   result = (SCIP_Result)SCIP_UNBOUNDED;
-  jresult = (jint)result;
+  jresult = (jint)result; 
   return jresult;
 }
 
@@ -10239,11 +10238,11 @@ SWIGEXPORT jint JNICALL Java_jscip_SCIPJNIJNI_SCIP_1UNBOUNDED_1get(JNIEnv *jenv,
 SWIGEXPORT jint JNICALL Java_jscip_SCIPJNIJNI_SCIP_1CUTOFF_1get(JNIEnv *jenv, jclass jcls) {
   jint jresult = 0 ;
   SCIP_Result result;
-
+  
   (void)jenv;
   (void)jcls;
   result = (SCIP_Result)SCIP_CUTOFF;
-  jresult = (jint)result;
+  jresult = (jint)result; 
   return jresult;
 }
 
@@ -10251,11 +10250,11 @@ SWIGEXPORT jint JNICALL Java_jscip_SCIPJNIJNI_SCIP_1CUTOFF_1get(JNIEnv *jenv, jc
 SWIGEXPORT jint JNICALL Java_jscip_SCIPJNIJNI_SCIP_1SEPARATED_1get(JNIEnv *jenv, jclass jcls) {
   jint jresult = 0 ;
   SCIP_Result result;
-
+  
   (void)jenv;
   (void)jcls;
   result = (SCIP_Result)SCIP_SEPARATED;
-  jresult = (jint)result;
+  jresult = (jint)result; 
   return jresult;
 }
 
@@ -10263,11 +10262,11 @@ SWIGEXPORT jint JNICALL Java_jscip_SCIPJNIJNI_SCIP_1SEPARATED_1get(JNIEnv *jenv,
 SWIGEXPORT jint JNICALL Java_jscip_SCIPJNIJNI_SCIP_1NEWROUND_1get(JNIEnv *jenv, jclass jcls) {
   jint jresult = 0 ;
   SCIP_Result result;
-
+  
   (void)jenv;
   (void)jcls;
   result = (SCIP_Result)SCIP_NEWROUND;
-  jresult = (jint)result;
+  jresult = (jint)result; 
   return jresult;
 }
 
@@ -10275,11 +10274,11 @@ SWIGEXPORT jint JNICALL Java_jscip_SCIPJNIJNI_SCIP_1NEWROUND_1get(JNIEnv *jenv, 
 SWIGEXPORT jint JNICALL Java_jscip_SCIPJNIJNI_SCIP_1REDUCEDDOM_1get(JNIEnv *jenv, jclass jcls) {
   jint jresult = 0 ;
   SCIP_Result result;
-
+  
   (void)jenv;
   (void)jcls;
   result = (SCIP_Result)SCIP_REDUCEDDOM;
-  jresult = (jint)result;
+  jresult = (jint)result; 
   return jresult;
 }
 
@@ -10287,11 +10286,11 @@ SWIGEXPORT jint JNICALL Java_jscip_SCIPJNIJNI_SCIP_1REDUCEDDOM_1get(JNIEnv *jenv
 SWIGEXPORT jint JNICALL Java_jscip_SCIPJNIJNI_SCIP_1CONSADDED_1get(JNIEnv *jenv, jclass jcls) {
   jint jresult = 0 ;
   SCIP_Result result;
-
+  
   (void)jenv;
   (void)jcls;
   result = (SCIP_Result)SCIP_CONSADDED;
-  jresult = (jint)result;
+  jresult = (jint)result; 
   return jresult;
 }
 
@@ -10299,11 +10298,11 @@ SWIGEXPORT jint JNICALL Java_jscip_SCIPJNIJNI_SCIP_1CONSADDED_1get(JNIEnv *jenv,
 SWIGEXPORT jint JNICALL Java_jscip_SCIPJNIJNI_SCIP_1CONSCHANGED_1get(JNIEnv *jenv, jclass jcls) {
   jint jresult = 0 ;
   SCIP_Result result;
-
+  
   (void)jenv;
   (void)jcls;
   result = (SCIP_Result)SCIP_CONSCHANGED;
-  jresult = (jint)result;
+  jresult = (jint)result; 
   return jresult;
 }
 
@@ -10311,11 +10310,11 @@ SWIGEXPORT jint JNICALL Java_jscip_SCIPJNIJNI_SCIP_1CONSCHANGED_1get(JNIEnv *jen
 SWIGEXPORT jint JNICALL Java_jscip_SCIPJNIJNI_SCIP_1BRANCHED_1get(JNIEnv *jenv, jclass jcls) {
   jint jresult = 0 ;
   SCIP_Result result;
-
+  
   (void)jenv;
   (void)jcls;
   result = (SCIP_Result)SCIP_BRANCHED;
-  jresult = (jint)result;
+  jresult = (jint)result; 
   return jresult;
 }
 
@@ -10323,11 +10322,11 @@ SWIGEXPORT jint JNICALL Java_jscip_SCIPJNIJNI_SCIP_1BRANCHED_1get(JNIEnv *jenv, 
 SWIGEXPORT jint JNICALL Java_jscip_SCIPJNIJNI_SCIP_1SOLVELP_1get(JNIEnv *jenv, jclass jcls) {
   jint jresult = 0 ;
   SCIP_Result result;
-
+  
   (void)jenv;
   (void)jcls;
   result = (SCIP_Result)SCIP_SOLVELP;
-  jresult = (jint)result;
+  jresult = (jint)result; 
   return jresult;
 }
 
@@ -10335,11 +10334,11 @@ SWIGEXPORT jint JNICALL Java_jscip_SCIPJNIJNI_SCIP_1SOLVELP_1get(JNIEnv *jenv, j
 SWIGEXPORT jint JNICALL Java_jscip_SCIPJNIJNI_SCIP_1FOUNDSOL_1get(JNIEnv *jenv, jclass jcls) {
   jint jresult = 0 ;
   SCIP_Result result;
-
+  
   (void)jenv;
   (void)jcls;
   result = (SCIP_Result)SCIP_FOUNDSOL;
-  jresult = (jint)result;
+  jresult = (jint)result; 
   return jresult;
 }
 
@@ -10347,11 +10346,11 @@ SWIGEXPORT jint JNICALL Java_jscip_SCIPJNIJNI_SCIP_1FOUNDSOL_1get(JNIEnv *jenv, 
 SWIGEXPORT jint JNICALL Java_jscip_SCIPJNIJNI_SCIP_1SUSPENDED_1get(JNIEnv *jenv, jclass jcls) {
   jint jresult = 0 ;
   SCIP_Result result;
-
+  
   (void)jenv;
   (void)jcls;
   result = (SCIP_Result)SCIP_SUSPENDED;
-  jresult = (jint)result;
+  jresult = (jint)result; 
   return jresult;
 }
 
@@ -10359,11 +10358,11 @@ SWIGEXPORT jint JNICALL Java_jscip_SCIPJNIJNI_SCIP_1SUSPENDED_1get(JNIEnv *jenv,
 SWIGEXPORT jint JNICALL Java_jscip_SCIPJNIJNI_SCIP_1SUCCESS_1get(JNIEnv *jenv, jclass jcls) {
   jint jresult = 0 ;
   SCIP_Result result;
-
+  
   (void)jenv;
   (void)jcls;
   result = (SCIP_Result)SCIP_SUCCESS;
-  jresult = (jint)result;
+  jresult = (jint)result; 
   return jresult;
 }
 
@@ -10371,11 +10370,11 @@ SWIGEXPORT jint JNICALL Java_jscip_SCIPJNIJNI_SCIP_1SUCCESS_1get(JNIEnv *jenv, j
 SWIGEXPORT jint JNICALL Java_jscip_SCIPJNIJNI_SCIP_1DELAYNODE_1get(JNIEnv *jenv, jclass jcls) {
   jint jresult = 0 ;
   SCIP_Result result;
-
+  
   (void)jenv;
   (void)jcls;
   result = (SCIP_Result)SCIP_DELAYNODE;
-  jresult = (jint)result;
+  jresult = (jint)result; 
   return jresult;
 }
 
@@ -10383,11 +10382,11 @@ SWIGEXPORT jint JNICALL Java_jscip_SCIPJNIJNI_SCIP_1DELAYNODE_1get(JNIEnv *jenv,
 SWIGEXPORT jint JNICALL Java_jscip_SCIPJNIJNI_SCIP_1LOCKTYPE_1MODEL_1get(JNIEnv *jenv, jclass jcls) {
   jint jresult = 0 ;
   SCIP_LockType result;
-
+  
   (void)jenv;
   (void)jcls;
   result = (SCIP_LockType)SCIP_LOCKTYPE_MODEL;
-  jresult = (jint)result;
+  jresult = (jint)result; 
   return jresult;
 }
 
@@ -10395,11 +10394,11 @@ SWIGEXPORT jint JNICALL Java_jscip_SCIPJNIJNI_SCIP_1LOCKTYPE_1MODEL_1get(JNIEnv 
 SWIGEXPORT jint JNICALL Java_jscip_SCIPJNIJNI_SCIP_1LOCKTYPE_1CONFLICT_1get(JNIEnv *jenv, jclass jcls) {
   jint jresult = 0 ;
   SCIP_LockType result;
-
+  
   (void)jenv;
   (void)jcls;
   result = (SCIP_LockType)SCIP_LOCKTYPE_CONFLICT;
-  jresult = (jint)result;
+  jresult = (jint)result; 
   return jresult;
 }
 
@@ -10407,12 +10406,12 @@ SWIGEXPORT jint JNICALL Java_jscip_SCIPJNIJNI_SCIP_1LOCKTYPE_1CONFLICT_1get(JNIE
 SWIGEXPORT void JNICALL Java_jscip_SCIPJNIJNI_ObjConshdlr_1scip_1_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2) {
   scip::ObjConshdlr *arg1 = (scip::ObjConshdlr *) 0 ;
   SCIP *arg2 = (SCIP *) 0 ;
-
+  
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(scip::ObjConshdlr **)&jarg1;
-  arg2 = *(SCIP **)&jarg2;
+  arg1 = *(scip::ObjConshdlr **)&jarg1; 
+  arg2 = *(SCIP **)&jarg2; 
   if (arg1) (arg1)->scip_ = arg2;
 }
 
@@ -10421,13 +10420,13 @@ SWIGEXPORT jlong JNICALL Java_jscip_SCIPJNIJNI_ObjConshdlr_1scip_1_1get(JNIEnv *
   jlong jresult = 0 ;
   scip::ObjConshdlr *arg1 = (scip::ObjConshdlr *) 0 ;
   SCIP *result = 0 ;
-
+  
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(scip::ObjConshdlr **)&jarg1;
+  arg1 = *(scip::ObjConshdlr **)&jarg1; 
   result = (SCIP *) ((arg1)->scip_);
-  *(SCIP **)&jresult = result;
+  *(SCIP **)&jresult = result; 
   return jresult;
 }
 
@@ -10435,11 +10434,11 @@ SWIGEXPORT jlong JNICALL Java_jscip_SCIPJNIJNI_ObjConshdlr_1scip_1_1get(JNIEnv *
 SWIGEXPORT void JNICALL Java_jscip_SCIPJNIJNI_ObjConshdlr_1scip_1name_1_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
   scip::ObjConshdlr *arg1 = (scip::ObjConshdlr *) 0 ;
   char *arg2 = (char *) 0 ;
-
+  
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(scip::ObjConshdlr **)&jarg1;
+  arg1 = *(scip::ObjConshdlr **)&jarg1; 
   arg2 = 0;
   if (jarg2) {
     arg2 = (char *)jenv->GetStringUTFChars(jarg2, 0);
@@ -10462,11 +10461,11 @@ SWIGEXPORT jstring JNICALL Java_jscip_SCIPJNIJNI_ObjConshdlr_1scip_1name_1_1get(
   jstring jresult = 0 ;
   scip::ObjConshdlr *arg1 = (scip::ObjConshdlr *) 0 ;
   char *result = 0 ;
-
+  
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(scip::ObjConshdlr **)&jarg1;
+  arg1 = *(scip::ObjConshdlr **)&jarg1; 
   result = (char *) ((arg1)->scip_name_);
   if (result) jresult = jenv->NewStringUTF((const char *)result);
   return jresult;
@@ -10476,11 +10475,11 @@ SWIGEXPORT jstring JNICALL Java_jscip_SCIPJNIJNI_ObjConshdlr_1scip_1name_1_1get(
 SWIGEXPORT void JNICALL Java_jscip_SCIPJNIJNI_ObjConshdlr_1scip_1desc_1_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
   scip::ObjConshdlr *arg1 = (scip::ObjConshdlr *) 0 ;
   char *arg2 = (char *) 0 ;
-
+  
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(scip::ObjConshdlr **)&jarg1;
+  arg1 = *(scip::ObjConshdlr **)&jarg1; 
   arg2 = 0;
   if (jarg2) {
     arg2 = (char *)jenv->GetStringUTFChars(jarg2, 0);
@@ -10503,11 +10502,11 @@ SWIGEXPORT jstring JNICALL Java_jscip_SCIPJNIJNI_ObjConshdlr_1scip_1desc_1_1get(
   jstring jresult = 0 ;
   scip::ObjConshdlr *arg1 = (scip::ObjConshdlr *) 0 ;
   char *result = 0 ;
-
+  
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(scip::ObjConshdlr **)&jarg1;
+  arg1 = *(scip::ObjConshdlr **)&jarg1; 
   result = (char *) ((arg1)->scip_desc_);
   if (result) jresult = jenv->NewStringUTF((const char *)result);
   return jresult;
@@ -10518,13 +10517,13 @@ SWIGEXPORT jint JNICALL Java_jscip_SCIPJNIJNI_ObjConshdlr_1scip_1sepapriority_1_
   jint jresult = 0 ;
   scip::ObjConshdlr *arg1 = (scip::ObjConshdlr *) 0 ;
   int result;
-
+  
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(scip::ObjConshdlr **)&jarg1;
+  arg1 = *(scip::ObjConshdlr **)&jarg1; 
   result = (int)(int) ((arg1)->scip_sepapriority_);
-  jresult = (jint)result;
+  jresult = (jint)result; 
   return jresult;
 }
 
@@ -10533,13 +10532,13 @@ SWIGEXPORT jint JNICALL Java_jscip_SCIPJNIJNI_ObjConshdlr_1scip_1enfopriority_1_
   jint jresult = 0 ;
   scip::ObjConshdlr *arg1 = (scip::ObjConshdlr *) 0 ;
   int result;
-
+  
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(scip::ObjConshdlr **)&jarg1;
+  arg1 = *(scip::ObjConshdlr **)&jarg1; 
   result = (int)(int) ((arg1)->scip_enfopriority_);
-  jresult = (jint)result;
+  jresult = (jint)result; 
   return jresult;
 }
 
@@ -10548,13 +10547,13 @@ SWIGEXPORT jint JNICALL Java_jscip_SCIPJNIJNI_ObjConshdlr_1scip_1checkpriority_1
   jint jresult = 0 ;
   scip::ObjConshdlr *arg1 = (scip::ObjConshdlr *) 0 ;
   int result;
-
+  
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(scip::ObjConshdlr **)&jarg1;
+  arg1 = *(scip::ObjConshdlr **)&jarg1; 
   result = (int)(int) ((arg1)->scip_checkpriority_);
-  jresult = (jint)result;
+  jresult = (jint)result; 
   return jresult;
 }
 
@@ -10563,13 +10562,13 @@ SWIGEXPORT jint JNICALL Java_jscip_SCIPJNIJNI_ObjConshdlr_1scip_1sepafreq_1_1get
   jint jresult = 0 ;
   scip::ObjConshdlr *arg1 = (scip::ObjConshdlr *) 0 ;
   int result;
-
+  
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(scip::ObjConshdlr **)&jarg1;
+  arg1 = *(scip::ObjConshdlr **)&jarg1; 
   result = (int)(int) ((arg1)->scip_sepafreq_);
-  jresult = (jint)result;
+  jresult = (jint)result; 
   return jresult;
 }
 
@@ -10578,13 +10577,13 @@ SWIGEXPORT jint JNICALL Java_jscip_SCIPJNIJNI_ObjConshdlr_1scip_1propfreq_1_1get
   jint jresult = 0 ;
   scip::ObjConshdlr *arg1 = (scip::ObjConshdlr *) 0 ;
   int result;
-
+  
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(scip::ObjConshdlr **)&jarg1;
+  arg1 = *(scip::ObjConshdlr **)&jarg1; 
   result = (int)(int) ((arg1)->scip_propfreq_);
-  jresult = (jint)result;
+  jresult = (jint)result; 
   return jresult;
 }
 
@@ -10593,13 +10592,13 @@ SWIGEXPORT jint JNICALL Java_jscip_SCIPJNIJNI_ObjConshdlr_1scip_1eagerfreq_1_1ge
   jint jresult = 0 ;
   scip::ObjConshdlr *arg1 = (scip::ObjConshdlr *) 0 ;
   int result;
-
+  
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(scip::ObjConshdlr **)&jarg1;
+  arg1 = *(scip::ObjConshdlr **)&jarg1; 
   result = (int)(int) ((arg1)->scip_eagerfreq_);
-  jresult = (jint)result;
+  jresult = (jint)result; 
   return jresult;
 }
 
@@ -10608,13 +10607,13 @@ SWIGEXPORT jint JNICALL Java_jscip_SCIPJNIJNI_ObjConshdlr_1scip_1maxprerounds_1_
   jint jresult = 0 ;
   scip::ObjConshdlr *arg1 = (scip::ObjConshdlr *) 0 ;
   int result;
-
+  
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(scip::ObjConshdlr **)&jarg1;
+  arg1 = *(scip::ObjConshdlr **)&jarg1; 
   result = (int)(int) ((arg1)->scip_maxprerounds_);
-  jresult = (jint)result;
+  jresult = (jint)result; 
   return jresult;
 }
 
@@ -10623,13 +10622,13 @@ SWIGEXPORT jlong JNICALL Java_jscip_SCIPJNIJNI_ObjConshdlr_1scip_1delaysepa_1_1g
   jlong jresult = 0 ;
   scip::ObjConshdlr *arg1 = (scip::ObjConshdlr *) 0 ;
   unsigned int result;
-
+  
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(scip::ObjConshdlr **)&jarg1;
+  arg1 = *(scip::ObjConshdlr **)&jarg1; 
   result = (unsigned int)(unsigned int) ((arg1)->scip_delaysepa_);
-  jresult = (jlong)result;
+  jresult = (jlong)result; 
   return jresult;
 }
 
@@ -10638,13 +10637,13 @@ SWIGEXPORT jlong JNICALL Java_jscip_SCIPJNIJNI_ObjConshdlr_1scip_1delayprop_1_1g
   jlong jresult = 0 ;
   scip::ObjConshdlr *arg1 = (scip::ObjConshdlr *) 0 ;
   unsigned int result;
-
+  
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(scip::ObjConshdlr **)&jarg1;
+  arg1 = *(scip::ObjConshdlr **)&jarg1; 
   result = (unsigned int)(unsigned int) ((arg1)->scip_delayprop_);
-  jresult = (jlong)result;
+  jresult = (jlong)result; 
   return jresult;
 }
 
@@ -10653,13 +10652,13 @@ SWIGEXPORT jlong JNICALL Java_jscip_SCIPJNIJNI_ObjConshdlr_1scip_1needscons_1_1g
   jlong jresult = 0 ;
   scip::ObjConshdlr *arg1 = (scip::ObjConshdlr *) 0 ;
   unsigned int result;
-
+  
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(scip::ObjConshdlr **)&jarg1;
+  arg1 = *(scip::ObjConshdlr **)&jarg1; 
   result = (unsigned int)(unsigned int) ((arg1)->scip_needscons_);
-  jresult = (jlong)result;
+  jresult = (jlong)result; 
   return jresult;
 }
 
@@ -10668,13 +10667,13 @@ SWIGEXPORT jlong JNICALL Java_jscip_SCIPJNIJNI_ObjConshdlr_1scip_1proptiming_1_1
   jlong jresult = 0 ;
   scip::ObjConshdlr *arg1 = (scip::ObjConshdlr *) 0 ;
   unsigned int result;
-
+  
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(scip::ObjConshdlr **)&jarg1;
+  arg1 = *(scip::ObjConshdlr **)&jarg1; 
   result = (unsigned int)(unsigned int) ((arg1)->scip_proptiming_);
-  jresult = (jlong)result;
+  jresult = (jlong)result; 
   return jresult;
 }
 
@@ -10683,13 +10682,13 @@ SWIGEXPORT jlong JNICALL Java_jscip_SCIPJNIJNI_ObjConshdlr_1scip_1presoltiming_1
   jlong jresult = 0 ;
   scip::ObjConshdlr *arg1 = (scip::ObjConshdlr *) 0 ;
   unsigned int result;
-
+  
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(scip::ObjConshdlr **)&jarg1;
+  arg1 = *(scip::ObjConshdlr **)&jarg1; 
   result = (unsigned int)(unsigned int) ((arg1)->scip_presoltiming_);
-  jresult = (jlong)result;
+  jresult = (jlong)result; 
   return jresult;
 }
 
@@ -10712,10 +10711,10 @@ SWIGEXPORT jlong JNICALL Java_jscip_SCIPJNIJNI_new_1ObjConshdlr(JNIEnv *jenv, jc
   unsigned int arg14 ;
   unsigned int arg15 ;
   scip::ObjConshdlr *result = 0 ;
-
+  
   (void)jenv;
   (void)jcls;
-  arg1 = *(SCIP **)&jarg1;
+  arg1 = *(SCIP **)&jarg1; 
   arg2 = 0;
   if (jarg2) {
     arg2 = (char *)jenv->GetStringUTFChars(jarg2, 0);
@@ -10726,20 +10725,20 @@ SWIGEXPORT jlong JNICALL Java_jscip_SCIPJNIJNI_new_1ObjConshdlr(JNIEnv *jenv, jc
     arg3 = (char *)jenv->GetStringUTFChars(jarg3, 0);
     if (!arg3) return 0;
   }
-  arg4 = (int)jarg4;
-  arg5 = (int)jarg5;
-  arg6 = (int)jarg6;
-  arg7 = (int)jarg7;
-  arg8 = (int)jarg8;
-  arg9 = (int)jarg9;
-  arg10 = (int)jarg10;
-  arg11 = (unsigned int)jarg11;
-  arg12 = (unsigned int)jarg12;
-  arg13 = (unsigned int)jarg13;
-  arg14 = (unsigned int)jarg14;
-  arg15 = (unsigned int)jarg15;
+  arg4 = (int)jarg4; 
+  arg5 = (int)jarg5; 
+  arg6 = (int)jarg6; 
+  arg7 = (int)jarg7; 
+  arg8 = (int)jarg8; 
+  arg9 = (int)jarg9; 
+  arg10 = (int)jarg10; 
+  arg11 = (unsigned int)jarg11; 
+  arg12 = (unsigned int)jarg12; 
+  arg13 = (unsigned int)jarg13; 
+  arg14 = (unsigned int)jarg14; 
+  arg15 = (unsigned int)jarg15; 
   result = (scip::ObjConshdlr *)new SwigDirector_ObjConshdlr(jenv,arg1,(char const *)arg2,(char const *)arg3,arg4,arg5,arg6,arg7,arg8,arg9,arg10,arg11,arg12,arg13,arg14,arg15);
-  *(scip::ObjConshdlr **)&jresult = result;
+  *(scip::ObjConshdlr **)&jresult = result; 
   if (arg2) jenv->ReleaseStringUTFChars(jarg2, (const char *)arg2);
   if (arg3) jenv->ReleaseStringUTFChars(jarg3, (const char *)arg3);
   return jresult;
@@ -10748,10 +10747,10 @@ SWIGEXPORT jlong JNICALL Java_jscip_SCIPJNIJNI_new_1ObjConshdlr(JNIEnv *jenv, jc
 
 SWIGEXPORT void JNICALL Java_jscip_SCIPJNIJNI_delete_1ObjConshdlr(JNIEnv *jenv, jclass jcls, jlong jarg1) {
   scip::ObjConshdlr *arg1 = (scip::ObjConshdlr *) 0 ;
-
+  
   (void)jenv;
   (void)jcls;
-  arg1 = *(scip::ObjConshdlr **)&jarg1;
+  arg1 = *(scip::ObjConshdlr **)&jarg1; 
   delete arg1;
 }
 
@@ -10762,15 +10761,15 @@ SWIGEXPORT jint JNICALL Java_jscip_SCIPJNIJNI_ObjConshdlr_1scip_1free(JNIEnv *je
   SCIP *arg2 = (SCIP *) 0 ;
   SCIP_CONSHDLR *arg3 = (SCIP_CONSHDLR *) 0 ;
   SCIP_RETCODE result;
-
+  
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(scip::ObjConshdlr **)&jarg1;
-  arg2 = *(SCIP **)&jarg2;
-  arg3 = *(SCIP_CONSHDLR **)&jarg3;
+  arg1 = *(scip::ObjConshdlr **)&jarg1; 
+  arg2 = *(SCIP **)&jarg2; 
+  arg3 = *(SCIP_CONSHDLR **)&jarg3; 
   result = (SCIP_RETCODE)(arg1)->scip_free(arg2,arg3);
-  jresult = (jint)result;
+  jresult = (jint)result; 
   return jresult;
 }
 
@@ -10781,15 +10780,15 @@ SWIGEXPORT jint JNICALL Java_jscip_SCIPJNIJNI_ObjConshdlr_1scip_1freeSwigExplici
   SCIP *arg2 = (SCIP *) 0 ;
   SCIP_CONSHDLR *arg3 = (SCIP_CONSHDLR *) 0 ;
   SCIP_RETCODE result;
-
+  
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(scip::ObjConshdlr **)&jarg1;
-  arg2 = *(SCIP **)&jarg2;
-  arg3 = *(SCIP_CONSHDLR **)&jarg3;
+  arg1 = *(scip::ObjConshdlr **)&jarg1; 
+  arg2 = *(SCIP **)&jarg2; 
+  arg3 = *(SCIP_CONSHDLR **)&jarg3; 
   result = (SCIP_RETCODE)(arg1)->scip::ObjConshdlr::scip_free(arg2,arg3);
-  jresult = (jint)result;
+  jresult = (jint)result; 
   return jresult;
 }
 
@@ -10802,17 +10801,17 @@ SWIGEXPORT jint JNICALL Java_jscip_SCIPJNIJNI_ObjConshdlr_1scip_1init(JNIEnv *je
   SCIP_CONS **arg4 = (SCIP_CONS **) 0 ;
   int arg5 ;
   SCIP_RETCODE result;
-
+  
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(scip::ObjConshdlr **)&jarg1;
-  arg2 = *(SCIP **)&jarg2;
-  arg3 = *(SCIP_CONSHDLR **)&jarg3;
-  arg4 = *(SCIP_CONS ***)&jarg4;
-  arg5 = (int)jarg5;
+  arg1 = *(scip::ObjConshdlr **)&jarg1; 
+  arg2 = *(SCIP **)&jarg2; 
+  arg3 = *(SCIP_CONSHDLR **)&jarg3; 
+  arg4 = *(SCIP_CONS ***)&jarg4; 
+  arg5 = (int)jarg5; 
   result = (SCIP_RETCODE)(arg1)->scip_init(arg2,arg3,arg4,arg5);
-  jresult = (jint)result;
+  jresult = (jint)result; 
   return jresult;
 }
 
@@ -10825,17 +10824,17 @@ SWIGEXPORT jint JNICALL Java_jscip_SCIPJNIJNI_ObjConshdlr_1scip_1initSwigExplici
   SCIP_CONS **arg4 = (SCIP_CONS **) 0 ;
   int arg5 ;
   SCIP_RETCODE result;
-
+  
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(scip::ObjConshdlr **)&jarg1;
-  arg2 = *(SCIP **)&jarg2;
-  arg3 = *(SCIP_CONSHDLR **)&jarg3;
-  arg4 = *(SCIP_CONS ***)&jarg4;
-  arg5 = (int)jarg5;
+  arg1 = *(scip::ObjConshdlr **)&jarg1; 
+  arg2 = *(SCIP **)&jarg2; 
+  arg3 = *(SCIP_CONSHDLR **)&jarg3; 
+  arg4 = *(SCIP_CONS ***)&jarg4; 
+  arg5 = (int)jarg5; 
   result = (SCIP_RETCODE)(arg1)->scip::ObjConshdlr::scip_init(arg2,arg3,arg4,arg5);
-  jresult = (jint)result;
+  jresult = (jint)result; 
   return jresult;
 }
 
@@ -10848,17 +10847,17 @@ SWIGEXPORT jint JNICALL Java_jscip_SCIPJNIJNI_ObjConshdlr_1scip_1exit(JNIEnv *je
   SCIP_CONS **arg4 = (SCIP_CONS **) 0 ;
   int arg5 ;
   SCIP_RETCODE result;
-
+  
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(scip::ObjConshdlr **)&jarg1;
-  arg2 = *(SCIP **)&jarg2;
-  arg3 = *(SCIP_CONSHDLR **)&jarg3;
-  arg4 = *(SCIP_CONS ***)&jarg4;
-  arg5 = (int)jarg5;
+  arg1 = *(scip::ObjConshdlr **)&jarg1; 
+  arg2 = *(SCIP **)&jarg2; 
+  arg3 = *(SCIP_CONSHDLR **)&jarg3; 
+  arg4 = *(SCIP_CONS ***)&jarg4; 
+  arg5 = (int)jarg5; 
   result = (SCIP_RETCODE)(arg1)->scip_exit(arg2,arg3,arg4,arg5);
-  jresult = (jint)result;
+  jresult = (jint)result; 
   return jresult;
 }
 
@@ -10871,17 +10870,17 @@ SWIGEXPORT jint JNICALL Java_jscip_SCIPJNIJNI_ObjConshdlr_1scip_1exitSwigExplici
   SCIP_CONS **arg4 = (SCIP_CONS **) 0 ;
   int arg5 ;
   SCIP_RETCODE result;
-
+  
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(scip::ObjConshdlr **)&jarg1;
-  arg2 = *(SCIP **)&jarg2;
-  arg3 = *(SCIP_CONSHDLR **)&jarg3;
-  arg4 = *(SCIP_CONS ***)&jarg4;
-  arg5 = (int)jarg5;
+  arg1 = *(scip::ObjConshdlr **)&jarg1; 
+  arg2 = *(SCIP **)&jarg2; 
+  arg3 = *(SCIP_CONSHDLR **)&jarg3; 
+  arg4 = *(SCIP_CONS ***)&jarg4; 
+  arg5 = (int)jarg5; 
   result = (SCIP_RETCODE)(arg1)->scip::ObjConshdlr::scip_exit(arg2,arg3,arg4,arg5);
-  jresult = (jint)result;
+  jresult = (jint)result; 
   return jresult;
 }
 
@@ -10894,17 +10893,17 @@ SWIGEXPORT jint JNICALL Java_jscip_SCIPJNIJNI_ObjConshdlr_1scip_1initpre(JNIEnv 
   SCIP_CONS **arg4 = (SCIP_CONS **) 0 ;
   int arg5 ;
   SCIP_RETCODE result;
-
+  
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(scip::ObjConshdlr **)&jarg1;
-  arg2 = *(SCIP **)&jarg2;
-  arg3 = *(SCIP_CONSHDLR **)&jarg3;
-  arg4 = *(SCIP_CONS ***)&jarg4;
-  arg5 = (int)jarg5;
+  arg1 = *(scip::ObjConshdlr **)&jarg1; 
+  arg2 = *(SCIP **)&jarg2; 
+  arg3 = *(SCIP_CONSHDLR **)&jarg3; 
+  arg4 = *(SCIP_CONS ***)&jarg4; 
+  arg5 = (int)jarg5; 
   result = (SCIP_RETCODE)(arg1)->scip_initpre(arg2,arg3,arg4,arg5);
-  jresult = (jint)result;
+  jresult = (jint)result; 
   return jresult;
 }
 
@@ -10917,17 +10916,17 @@ SWIGEXPORT jint JNICALL Java_jscip_SCIPJNIJNI_ObjConshdlr_1scip_1initpreSwigExpl
   SCIP_CONS **arg4 = (SCIP_CONS **) 0 ;
   int arg5 ;
   SCIP_RETCODE result;
-
+  
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(scip::ObjConshdlr **)&jarg1;
-  arg2 = *(SCIP **)&jarg2;
-  arg3 = *(SCIP_CONSHDLR **)&jarg3;
-  arg4 = *(SCIP_CONS ***)&jarg4;
-  arg5 = (int)jarg5;
+  arg1 = *(scip::ObjConshdlr **)&jarg1; 
+  arg2 = *(SCIP **)&jarg2; 
+  arg3 = *(SCIP_CONSHDLR **)&jarg3; 
+  arg4 = *(SCIP_CONS ***)&jarg4; 
+  arg5 = (int)jarg5; 
   result = (SCIP_RETCODE)(arg1)->scip::ObjConshdlr::scip_initpre(arg2,arg3,arg4,arg5);
-  jresult = (jint)result;
+  jresult = (jint)result; 
   return jresult;
 }
 
@@ -10940,17 +10939,17 @@ SWIGEXPORT jint JNICALL Java_jscip_SCIPJNIJNI_ObjConshdlr_1scip_1exitpre(JNIEnv 
   SCIP_CONS **arg4 = (SCIP_CONS **) 0 ;
   int arg5 ;
   SCIP_RETCODE result;
-
+  
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(scip::ObjConshdlr **)&jarg1;
-  arg2 = *(SCIP **)&jarg2;
-  arg3 = *(SCIP_CONSHDLR **)&jarg3;
-  arg4 = *(SCIP_CONS ***)&jarg4;
-  arg5 = (int)jarg5;
+  arg1 = *(scip::ObjConshdlr **)&jarg1; 
+  arg2 = *(SCIP **)&jarg2; 
+  arg3 = *(SCIP_CONSHDLR **)&jarg3; 
+  arg4 = *(SCIP_CONS ***)&jarg4; 
+  arg5 = (int)jarg5; 
   result = (SCIP_RETCODE)(arg1)->scip_exitpre(arg2,arg3,arg4,arg5);
-  jresult = (jint)result;
+  jresult = (jint)result; 
   return jresult;
 }
 
@@ -10963,17 +10962,17 @@ SWIGEXPORT jint JNICALL Java_jscip_SCIPJNIJNI_ObjConshdlr_1scip_1exitpreSwigExpl
   SCIP_CONS **arg4 = (SCIP_CONS **) 0 ;
   int arg5 ;
   SCIP_RETCODE result;
-
+  
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(scip::ObjConshdlr **)&jarg1;
-  arg2 = *(SCIP **)&jarg2;
-  arg3 = *(SCIP_CONSHDLR **)&jarg3;
-  arg4 = *(SCIP_CONS ***)&jarg4;
-  arg5 = (int)jarg5;
+  arg1 = *(scip::ObjConshdlr **)&jarg1; 
+  arg2 = *(SCIP **)&jarg2; 
+  arg3 = *(SCIP_CONSHDLR **)&jarg3; 
+  arg4 = *(SCIP_CONS ***)&jarg4; 
+  arg5 = (int)jarg5; 
   result = (SCIP_RETCODE)(arg1)->scip::ObjConshdlr::scip_exitpre(arg2,arg3,arg4,arg5);
-  jresult = (jint)result;
+  jresult = (jint)result; 
   return jresult;
 }
 
@@ -10986,17 +10985,17 @@ SWIGEXPORT jint JNICALL Java_jscip_SCIPJNIJNI_ObjConshdlr_1scip_1initsol(JNIEnv 
   SCIP_CONS **arg4 = (SCIP_CONS **) 0 ;
   int arg5 ;
   SCIP_RETCODE result;
-
+  
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(scip::ObjConshdlr **)&jarg1;
-  arg2 = *(SCIP **)&jarg2;
-  arg3 = *(SCIP_CONSHDLR **)&jarg3;
-  arg4 = *(SCIP_CONS ***)&jarg4;
-  arg5 = (int)jarg5;
+  arg1 = *(scip::ObjConshdlr **)&jarg1; 
+  arg2 = *(SCIP **)&jarg2; 
+  arg3 = *(SCIP_CONSHDLR **)&jarg3; 
+  arg4 = *(SCIP_CONS ***)&jarg4; 
+  arg5 = (int)jarg5; 
   result = (SCIP_RETCODE)(arg1)->scip_initsol(arg2,arg3,arg4,arg5);
-  jresult = (jint)result;
+  jresult = (jint)result; 
   return jresult;
 }
 
@@ -11009,17 +11008,17 @@ SWIGEXPORT jint JNICALL Java_jscip_SCIPJNIJNI_ObjConshdlr_1scip_1initsolSwigExpl
   SCIP_CONS **arg4 = (SCIP_CONS **) 0 ;
   int arg5 ;
   SCIP_RETCODE result;
-
+  
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(scip::ObjConshdlr **)&jarg1;
-  arg2 = *(SCIP **)&jarg2;
-  arg3 = *(SCIP_CONSHDLR **)&jarg3;
-  arg4 = *(SCIP_CONS ***)&jarg4;
-  arg5 = (int)jarg5;
+  arg1 = *(scip::ObjConshdlr **)&jarg1; 
+  arg2 = *(SCIP **)&jarg2; 
+  arg3 = *(SCIP_CONSHDLR **)&jarg3; 
+  arg4 = *(SCIP_CONS ***)&jarg4; 
+  arg5 = (int)jarg5; 
   result = (SCIP_RETCODE)(arg1)->scip::ObjConshdlr::scip_initsol(arg2,arg3,arg4,arg5);
-  jresult = (jint)result;
+  jresult = (jint)result; 
   return jresult;
 }
 
@@ -11033,18 +11032,18 @@ SWIGEXPORT jint JNICALL Java_jscip_SCIPJNIJNI_ObjConshdlr_1scip_1exitsol(JNIEnv 
   int arg5 ;
   unsigned int arg6 ;
   SCIP_RETCODE result;
-
+  
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(scip::ObjConshdlr **)&jarg1;
-  arg2 = *(SCIP **)&jarg2;
-  arg3 = *(SCIP_CONSHDLR **)&jarg3;
-  arg4 = *(SCIP_CONS ***)&jarg4;
-  arg5 = (int)jarg5;
-  arg6 = (unsigned int)jarg6;
+  arg1 = *(scip::ObjConshdlr **)&jarg1; 
+  arg2 = *(SCIP **)&jarg2; 
+  arg3 = *(SCIP_CONSHDLR **)&jarg3; 
+  arg4 = *(SCIP_CONS ***)&jarg4; 
+  arg5 = (int)jarg5; 
+  arg6 = (unsigned int)jarg6; 
   result = (SCIP_RETCODE)(arg1)->scip_exitsol(arg2,arg3,arg4,arg5,arg6);
-  jresult = (jint)result;
+  jresult = (jint)result; 
   return jresult;
 }
 
@@ -11058,18 +11057,18 @@ SWIGEXPORT jint JNICALL Java_jscip_SCIPJNIJNI_ObjConshdlr_1scip_1exitsolSwigExpl
   int arg5 ;
   unsigned int arg6 ;
   SCIP_RETCODE result;
-
+  
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(scip::ObjConshdlr **)&jarg1;
-  arg2 = *(SCIP **)&jarg2;
-  arg3 = *(SCIP_CONSHDLR **)&jarg3;
-  arg4 = *(SCIP_CONS ***)&jarg4;
-  arg5 = (int)jarg5;
-  arg6 = (unsigned int)jarg6;
+  arg1 = *(scip::ObjConshdlr **)&jarg1; 
+  arg2 = *(SCIP **)&jarg2; 
+  arg3 = *(SCIP_CONSHDLR **)&jarg3; 
+  arg4 = *(SCIP_CONS ***)&jarg4; 
+  arg5 = (int)jarg5; 
+  arg6 = (unsigned int)jarg6; 
   result = (SCIP_RETCODE)(arg1)->scip::ObjConshdlr::scip_exitsol(arg2,arg3,arg4,arg5,arg6);
-  jresult = (jint)result;
+  jresult = (jint)result; 
   return jresult;
 }
 
@@ -11082,17 +11081,17 @@ SWIGEXPORT jint JNICALL Java_jscip_SCIPJNIJNI_ObjConshdlr_1scip_1delete(JNIEnv *
   SCIP_CONS *arg4 = (SCIP_CONS *) 0 ;
   SCIP_CONSDATA **arg5 = (SCIP_CONSDATA **) 0 ;
   SCIP_RETCODE result;
-
+  
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(scip::ObjConshdlr **)&jarg1;
-  arg2 = *(SCIP **)&jarg2;
-  arg3 = *(SCIP_CONSHDLR **)&jarg3;
-  arg4 = *(SCIP_CONS **)&jarg4;
-  arg5 = *(SCIP_CONSDATA ***)&jarg5;
+  arg1 = *(scip::ObjConshdlr **)&jarg1; 
+  arg2 = *(SCIP **)&jarg2; 
+  arg3 = *(SCIP_CONSHDLR **)&jarg3; 
+  arg4 = *(SCIP_CONS **)&jarg4; 
+  arg5 = *(SCIP_CONSDATA ***)&jarg5; 
   result = (SCIP_RETCODE)(arg1)->scip_delete(arg2,arg3,arg4,arg5);
-  jresult = (jint)result;
+  jresult = (jint)result; 
   return jresult;
 }
 
@@ -11105,17 +11104,17 @@ SWIGEXPORT jint JNICALL Java_jscip_SCIPJNIJNI_ObjConshdlr_1scip_1deleteSwigExpli
   SCIP_CONS *arg4 = (SCIP_CONS *) 0 ;
   SCIP_CONSDATA **arg5 = (SCIP_CONSDATA **) 0 ;
   SCIP_RETCODE result;
-
+  
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(scip::ObjConshdlr **)&jarg1;
-  arg2 = *(SCIP **)&jarg2;
-  arg3 = *(SCIP_CONSHDLR **)&jarg3;
-  arg4 = *(SCIP_CONS **)&jarg4;
-  arg5 = *(SCIP_CONSDATA ***)&jarg5;
+  arg1 = *(scip::ObjConshdlr **)&jarg1; 
+  arg2 = *(SCIP **)&jarg2; 
+  arg3 = *(SCIP_CONSHDLR **)&jarg3; 
+  arg4 = *(SCIP_CONS **)&jarg4; 
+  arg5 = *(SCIP_CONSDATA ***)&jarg5; 
   result = (SCIP_RETCODE)(arg1)->scip::ObjConshdlr::scip_delete(arg2,arg3,arg4,arg5);
-  jresult = (jint)result;
+  jresult = (jint)result; 
   return jresult;
 }
 
@@ -11128,17 +11127,17 @@ SWIGEXPORT jint JNICALL Java_jscip_SCIPJNIJNI_ObjConshdlr_1scip_1trans(JNIEnv *j
   SCIP_CONS *arg4 = (SCIP_CONS *) 0 ;
   SCIP_CONS **arg5 = (SCIP_CONS **) 0 ;
   SCIP_RETCODE result;
-
+  
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(scip::ObjConshdlr **)&jarg1;
-  arg2 = *(SCIP **)&jarg2;
-  arg3 = *(SCIP_CONSHDLR **)&jarg3;
-  arg4 = *(SCIP_CONS **)&jarg4;
-  arg5 = *(SCIP_CONS ***)&jarg5;
+  arg1 = *(scip::ObjConshdlr **)&jarg1; 
+  arg2 = *(SCIP **)&jarg2; 
+  arg3 = *(SCIP_CONSHDLR **)&jarg3; 
+  arg4 = *(SCIP_CONS **)&jarg4; 
+  arg5 = *(SCIP_CONS ***)&jarg5; 
   result = (SCIP_RETCODE)(arg1)->scip_trans(arg2,arg3,arg4,arg5);
-  jresult = (jint)result;
+  jresult = (jint)result; 
   return jresult;
 }
 
@@ -11151,17 +11150,17 @@ SWIGEXPORT jint JNICALL Java_jscip_SCIPJNIJNI_ObjConshdlr_1scip_1transSwigExplic
   SCIP_CONS *arg4 = (SCIP_CONS *) 0 ;
   SCIP_CONS **arg5 = (SCIP_CONS **) 0 ;
   SCIP_RETCODE result;
-
+  
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(scip::ObjConshdlr **)&jarg1;
-  arg2 = *(SCIP **)&jarg2;
-  arg3 = *(SCIP_CONSHDLR **)&jarg3;
-  arg4 = *(SCIP_CONS **)&jarg4;
-  arg5 = *(SCIP_CONS ***)&jarg5;
+  arg1 = *(scip::ObjConshdlr **)&jarg1; 
+  arg2 = *(SCIP **)&jarg2; 
+  arg3 = *(SCIP_CONSHDLR **)&jarg3; 
+  arg4 = *(SCIP_CONS **)&jarg4; 
+  arg5 = *(SCIP_CONS ***)&jarg5; 
   result = (SCIP_RETCODE)(arg1)->scip::ObjConshdlr::scip_trans(arg2,arg3,arg4,arg5);
-  jresult = (jint)result;
+  jresult = (jint)result; 
   return jresult;
 }
 
@@ -11175,18 +11174,18 @@ SWIGEXPORT jint JNICALL Java_jscip_SCIPJNIJNI_ObjConshdlr_1scip_1initlp(JNIEnv *
   int arg5 ;
   unsigned int *arg6 = (unsigned int *) 0 ;
   SCIP_RETCODE result;
-
+  
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(scip::ObjConshdlr **)&jarg1;
-  arg2 = *(SCIP **)&jarg2;
-  arg3 = *(SCIP_CONSHDLR **)&jarg3;
-  arg4 = *(SCIP_CONS ***)&jarg4;
-  arg5 = (int)jarg5;
-  arg6 = *(unsigned int **)&jarg6;
+  arg1 = *(scip::ObjConshdlr **)&jarg1; 
+  arg2 = *(SCIP **)&jarg2; 
+  arg3 = *(SCIP_CONSHDLR **)&jarg3; 
+  arg4 = *(SCIP_CONS ***)&jarg4; 
+  arg5 = (int)jarg5; 
+  arg6 = *(unsigned int **)&jarg6; 
   result = (SCIP_RETCODE)(arg1)->scip_initlp(arg2,arg3,arg4,arg5,arg6);
-  jresult = (jint)result;
+  jresult = (jint)result; 
   return jresult;
 }
 
@@ -11200,18 +11199,18 @@ SWIGEXPORT jint JNICALL Java_jscip_SCIPJNIJNI_ObjConshdlr_1scip_1initlpSwigExpli
   int arg5 ;
   unsigned int *arg6 = (unsigned int *) 0 ;
   SCIP_RETCODE result;
-
+  
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(scip::ObjConshdlr **)&jarg1;
-  arg2 = *(SCIP **)&jarg2;
-  arg3 = *(SCIP_CONSHDLR **)&jarg3;
-  arg4 = *(SCIP_CONS ***)&jarg4;
-  arg5 = (int)jarg5;
-  arg6 = *(unsigned int **)&jarg6;
+  arg1 = *(scip::ObjConshdlr **)&jarg1; 
+  arg2 = *(SCIP **)&jarg2; 
+  arg3 = *(SCIP_CONSHDLR **)&jarg3; 
+  arg4 = *(SCIP_CONS ***)&jarg4; 
+  arg5 = (int)jarg5; 
+  arg6 = *(unsigned int **)&jarg6; 
   result = (SCIP_RETCODE)(arg1)->scip::ObjConshdlr::scip_initlp(arg2,arg3,arg4,arg5,arg6);
-  jresult = (jint)result;
+  jresult = (jint)result; 
   return jresult;
 }
 
@@ -11226,19 +11225,19 @@ SWIGEXPORT jint JNICALL Java_jscip_SCIPJNIJNI_ObjConshdlr_1scip_1sepalp(JNIEnv *
   int arg6 ;
   SCIP_Result *arg7 = (SCIP_Result *) 0 ;
   SCIP_RETCODE result;
-
+  
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(scip::ObjConshdlr **)&jarg1;
-  arg2 = *(SCIP **)&jarg2;
-  arg3 = *(SCIP_CONSHDLR **)&jarg3;
-  arg4 = *(SCIP_CONS ***)&jarg4;
-  arg5 = (int)jarg5;
-  arg6 = (int)jarg6;
-  arg7 = *(SCIP_Result **)&jarg7;
+  arg1 = *(scip::ObjConshdlr **)&jarg1; 
+  arg2 = *(SCIP **)&jarg2; 
+  arg3 = *(SCIP_CONSHDLR **)&jarg3; 
+  arg4 = *(SCIP_CONS ***)&jarg4; 
+  arg5 = (int)jarg5; 
+  arg6 = (int)jarg6; 
+  arg7 = *(SCIP_Result **)&jarg7; 
   result = (SCIP_RETCODE)(arg1)->scip_sepalp(arg2,arg3,arg4,arg5,arg6,arg7);
-  jresult = (jint)result;
+  jresult = (jint)result; 
   return jresult;
 }
 
@@ -11253,19 +11252,19 @@ SWIGEXPORT jint JNICALL Java_jscip_SCIPJNIJNI_ObjConshdlr_1scip_1sepalpSwigExpli
   int arg6 ;
   SCIP_Result *arg7 = (SCIP_Result *) 0 ;
   SCIP_RETCODE result;
-
+  
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(scip::ObjConshdlr **)&jarg1;
-  arg2 = *(SCIP **)&jarg2;
-  arg3 = *(SCIP_CONSHDLR **)&jarg3;
-  arg4 = *(SCIP_CONS ***)&jarg4;
-  arg5 = (int)jarg5;
-  arg6 = (int)jarg6;
-  arg7 = *(SCIP_Result **)&jarg7;
+  arg1 = *(scip::ObjConshdlr **)&jarg1; 
+  arg2 = *(SCIP **)&jarg2; 
+  arg3 = *(SCIP_CONSHDLR **)&jarg3; 
+  arg4 = *(SCIP_CONS ***)&jarg4; 
+  arg5 = (int)jarg5; 
+  arg6 = (int)jarg6; 
+  arg7 = *(SCIP_Result **)&jarg7; 
   result = (SCIP_RETCODE)(arg1)->scip::ObjConshdlr::scip_sepalp(arg2,arg3,arg4,arg5,arg6,arg7);
-  jresult = (jint)result;
+  jresult = (jint)result; 
   return jresult;
 }
 
@@ -11281,20 +11280,20 @@ SWIGEXPORT jint JNICALL Java_jscip_SCIPJNIJNI_ObjConshdlr_1scip_1sepasol(JNIEnv 
   SCIP_SOL *arg7 = (SCIP_SOL *) 0 ;
   SCIP_Result *arg8 = (SCIP_Result *) 0 ;
   SCIP_RETCODE result;
-
+  
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(scip::ObjConshdlr **)&jarg1;
-  arg2 = *(SCIP **)&jarg2;
-  arg3 = *(SCIP_CONSHDLR **)&jarg3;
-  arg4 = *(SCIP_CONS ***)&jarg4;
-  arg5 = (int)jarg5;
-  arg6 = (int)jarg6;
-  arg7 = *(SCIP_SOL **)&jarg7;
-  arg8 = *(SCIP_Result **)&jarg8;
+  arg1 = *(scip::ObjConshdlr **)&jarg1; 
+  arg2 = *(SCIP **)&jarg2; 
+  arg3 = *(SCIP_CONSHDLR **)&jarg3; 
+  arg4 = *(SCIP_CONS ***)&jarg4; 
+  arg5 = (int)jarg5; 
+  arg6 = (int)jarg6; 
+  arg7 = *(SCIP_SOL **)&jarg7; 
+  arg8 = *(SCIP_Result **)&jarg8; 
   result = (SCIP_RETCODE)(arg1)->scip_sepasol(arg2,arg3,arg4,arg5,arg6,arg7,arg8);
-  jresult = (jint)result;
+  jresult = (jint)result; 
   return jresult;
 }
 
@@ -11310,20 +11309,20 @@ SWIGEXPORT jint JNICALL Java_jscip_SCIPJNIJNI_ObjConshdlr_1scip_1sepasolSwigExpl
   SCIP_SOL *arg7 = (SCIP_SOL *) 0 ;
   SCIP_Result *arg8 = (SCIP_Result *) 0 ;
   SCIP_RETCODE result;
-
+  
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(scip::ObjConshdlr **)&jarg1;
-  arg2 = *(SCIP **)&jarg2;
-  arg3 = *(SCIP_CONSHDLR **)&jarg3;
-  arg4 = *(SCIP_CONS ***)&jarg4;
-  arg5 = (int)jarg5;
-  arg6 = (int)jarg6;
-  arg7 = *(SCIP_SOL **)&jarg7;
-  arg8 = *(SCIP_Result **)&jarg8;
+  arg1 = *(scip::ObjConshdlr **)&jarg1; 
+  arg2 = *(SCIP **)&jarg2; 
+  arg3 = *(SCIP_CONSHDLR **)&jarg3; 
+  arg4 = *(SCIP_CONS ***)&jarg4; 
+  arg5 = (int)jarg5; 
+  arg6 = (int)jarg6; 
+  arg7 = *(SCIP_SOL **)&jarg7; 
+  arg8 = *(SCIP_Result **)&jarg8; 
   result = (SCIP_RETCODE)(arg1)->scip::ObjConshdlr::scip_sepasol(arg2,arg3,arg4,arg5,arg6,arg7,arg8);
-  jresult = (jint)result;
+  jresult = (jint)result; 
   return jresult;
 }
 
@@ -11339,20 +11338,20 @@ SWIGEXPORT jint JNICALL Java_jscip_SCIPJNIJNI_ObjConshdlr_1scip_1enfolp(JNIEnv *
   unsigned int arg7 ;
   SCIP_Result *arg8 = (SCIP_Result *) 0 ;
   SCIP_RETCODE result;
-
+  
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(scip::ObjConshdlr **)&jarg1;
-  arg2 = *(SCIP **)&jarg2;
-  arg3 = *(SCIP_CONSHDLR **)&jarg3;
-  arg4 = *(SCIP_CONS ***)&jarg4;
-  arg5 = (int)jarg5;
-  arg6 = (int)jarg6;
-  arg7 = (unsigned int)jarg7;
-  arg8 = *(SCIP_Result **)&jarg8;
+  arg1 = *(scip::ObjConshdlr **)&jarg1; 
+  arg2 = *(SCIP **)&jarg2; 
+  arg3 = *(SCIP_CONSHDLR **)&jarg3; 
+  arg4 = *(SCIP_CONS ***)&jarg4; 
+  arg5 = (int)jarg5; 
+  arg6 = (int)jarg6; 
+  arg7 = (unsigned int)jarg7; 
+  arg8 = *(SCIP_Result **)&jarg8; 
   result = (SCIP_RETCODE)(arg1)->scip_enfolp(arg2,arg3,arg4,arg5,arg6,arg7,arg8);
-  jresult = (jint)result;
+  jresult = (jint)result; 
   return jresult;
 }
 
@@ -11368,20 +11367,20 @@ SWIGEXPORT jint JNICALL Java_jscip_SCIPJNIJNI_ObjConshdlr_1scip_1enfolpSwigExpli
   unsigned int arg7 ;
   SCIP_Result *arg8 = (SCIP_Result *) 0 ;
   SCIP_RETCODE result;
-
+  
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(scip::ObjConshdlr **)&jarg1;
-  arg2 = *(SCIP **)&jarg2;
-  arg3 = *(SCIP_CONSHDLR **)&jarg3;
-  arg4 = *(SCIP_CONS ***)&jarg4;
-  arg5 = (int)jarg5;
-  arg6 = (int)jarg6;
-  arg7 = (unsigned int)jarg7;
-  arg8 = *(SCIP_Result **)&jarg8;
+  arg1 = *(scip::ObjConshdlr **)&jarg1; 
+  arg2 = *(SCIP **)&jarg2; 
+  arg3 = *(SCIP_CONSHDLR **)&jarg3; 
+  arg4 = *(SCIP_CONS ***)&jarg4; 
+  arg5 = (int)jarg5; 
+  arg6 = (int)jarg6; 
+  arg7 = (unsigned int)jarg7; 
+  arg8 = *(SCIP_Result **)&jarg8; 
   result = (SCIP_RETCODE)(arg1)->scip::ObjConshdlr::scip_enfolp(arg2,arg3,arg4,arg5,arg6,arg7,arg8);
-  jresult = (jint)result;
+  jresult = (jint)result; 
   return jresult;
 }
 
@@ -11398,21 +11397,21 @@ SWIGEXPORT jint JNICALL Java_jscip_SCIPJNIJNI_ObjConshdlr_1scip_1enforelax(JNIEn
   unsigned int arg8 ;
   SCIP_Result *arg9 = (SCIP_Result *) 0 ;
   SCIP_RETCODE result;
-
+  
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(scip::ObjConshdlr **)&jarg1;
-  arg2 = *(SCIP **)&jarg2;
-  arg3 = *(SCIP_SOL **)&jarg3;
-  arg4 = *(SCIP_CONSHDLR **)&jarg4;
-  arg5 = *(SCIP_CONS ***)&jarg5;
-  arg6 = (int)jarg6;
-  arg7 = (int)jarg7;
-  arg8 = (unsigned int)jarg8;
-  arg9 = *(SCIP_Result **)&jarg9;
+  arg1 = *(scip::ObjConshdlr **)&jarg1; 
+  arg2 = *(SCIP **)&jarg2; 
+  arg3 = *(SCIP_SOL **)&jarg3; 
+  arg4 = *(SCIP_CONSHDLR **)&jarg4; 
+  arg5 = *(SCIP_CONS ***)&jarg5; 
+  arg6 = (int)jarg6; 
+  arg7 = (int)jarg7; 
+  arg8 = (unsigned int)jarg8; 
+  arg9 = *(SCIP_Result **)&jarg9; 
   result = (SCIP_RETCODE)(arg1)->scip_enforelax(arg2,arg3,arg4,arg5,arg6,arg7,arg8,arg9);
-  jresult = (jint)result;
+  jresult = (jint)result; 
   return jresult;
 }
 
@@ -11429,21 +11428,21 @@ SWIGEXPORT jint JNICALL Java_jscip_SCIPJNIJNI_ObjConshdlr_1scip_1enforelaxSwigEx
   unsigned int arg8 ;
   SCIP_Result *arg9 = (SCIP_Result *) 0 ;
   SCIP_RETCODE result;
-
+  
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(scip::ObjConshdlr **)&jarg1;
-  arg2 = *(SCIP **)&jarg2;
-  arg3 = *(SCIP_SOL **)&jarg3;
-  arg4 = *(SCIP_CONSHDLR **)&jarg4;
-  arg5 = *(SCIP_CONS ***)&jarg5;
-  arg6 = (int)jarg6;
-  arg7 = (int)jarg7;
-  arg8 = (unsigned int)jarg8;
-  arg9 = *(SCIP_Result **)&jarg9;
+  arg1 = *(scip::ObjConshdlr **)&jarg1; 
+  arg2 = *(SCIP **)&jarg2; 
+  arg3 = *(SCIP_SOL **)&jarg3; 
+  arg4 = *(SCIP_CONSHDLR **)&jarg4; 
+  arg5 = *(SCIP_CONS ***)&jarg5; 
+  arg6 = (int)jarg6; 
+  arg7 = (int)jarg7; 
+  arg8 = (unsigned int)jarg8; 
+  arg9 = *(SCIP_Result **)&jarg9; 
   result = (SCIP_RETCODE)(arg1)->scip::ObjConshdlr::scip_enforelax(arg2,arg3,arg4,arg5,arg6,arg7,arg8,arg9);
-  jresult = (jint)result;
+  jresult = (jint)result; 
   return jresult;
 }
 
@@ -11460,21 +11459,21 @@ SWIGEXPORT jint JNICALL Java_jscip_SCIPJNIJNI_ObjConshdlr_1scip_1enfops(JNIEnv *
   unsigned int arg8 ;
   SCIP_Result *arg9 = (SCIP_Result *) 0 ;
   SCIP_RETCODE result;
-
+  
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(scip::ObjConshdlr **)&jarg1;
-  arg2 = *(SCIP **)&jarg2;
-  arg3 = *(SCIP_CONSHDLR **)&jarg3;
-  arg4 = *(SCIP_CONS ***)&jarg4;
-  arg5 = (int)jarg5;
-  arg6 = (int)jarg6;
-  arg7 = (unsigned int)jarg7;
-  arg8 = (unsigned int)jarg8;
-  arg9 = *(SCIP_Result **)&jarg9;
+  arg1 = *(scip::ObjConshdlr **)&jarg1; 
+  arg2 = *(SCIP **)&jarg2; 
+  arg3 = *(SCIP_CONSHDLR **)&jarg3; 
+  arg4 = *(SCIP_CONS ***)&jarg4; 
+  arg5 = (int)jarg5; 
+  arg6 = (int)jarg6; 
+  arg7 = (unsigned int)jarg7; 
+  arg8 = (unsigned int)jarg8; 
+  arg9 = *(SCIP_Result **)&jarg9; 
   result = (SCIP_RETCODE)(arg1)->scip_enfops(arg2,arg3,arg4,arg5,arg6,arg7,arg8,arg9);
-  jresult = (jint)result;
+  jresult = (jint)result; 
   return jresult;
 }
 
@@ -11491,21 +11490,21 @@ SWIGEXPORT jint JNICALL Java_jscip_SCIPJNIJNI_ObjConshdlr_1scip_1enfopsSwigExpli
   unsigned int arg8 ;
   SCIP_Result *arg9 = (SCIP_Result *) 0 ;
   SCIP_RETCODE result;
-
+  
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(scip::ObjConshdlr **)&jarg1;
-  arg2 = *(SCIP **)&jarg2;
-  arg3 = *(SCIP_CONSHDLR **)&jarg3;
-  arg4 = *(SCIP_CONS ***)&jarg4;
-  arg5 = (int)jarg5;
-  arg6 = (int)jarg6;
-  arg7 = (unsigned int)jarg7;
-  arg8 = (unsigned int)jarg8;
-  arg9 = *(SCIP_Result **)&jarg9;
+  arg1 = *(scip::ObjConshdlr **)&jarg1; 
+  arg2 = *(SCIP **)&jarg2; 
+  arg3 = *(SCIP_CONSHDLR **)&jarg3; 
+  arg4 = *(SCIP_CONS ***)&jarg4; 
+  arg5 = (int)jarg5; 
+  arg6 = (int)jarg6; 
+  arg7 = (unsigned int)jarg7; 
+  arg8 = (unsigned int)jarg8; 
+  arg9 = *(SCIP_Result **)&jarg9; 
   result = (SCIP_RETCODE)(arg1)->scip::ObjConshdlr::scip_enfops(arg2,arg3,arg4,arg5,arg6,arg7,arg8,arg9);
-  jresult = (jint)result;
+  jresult = (jint)result; 
   return jresult;
 }
 
@@ -11524,23 +11523,23 @@ SWIGEXPORT jint JNICALL Java_jscip_SCIPJNIJNI_ObjConshdlr_1scip_1check(JNIEnv *j
   unsigned int arg10 ;
   SCIP_Result *arg11 = (SCIP_Result *) 0 ;
   SCIP_RETCODE result;
-
+  
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(scip::ObjConshdlr **)&jarg1;
-  arg2 = *(SCIP **)&jarg2;
-  arg3 = *(SCIP_CONSHDLR **)&jarg3;
-  arg4 = *(SCIP_CONS ***)&jarg4;
-  arg5 = (int)jarg5;
-  arg6 = *(SCIP_SOL **)&jarg6;
-  arg7 = (unsigned int)jarg7;
-  arg8 = (unsigned int)jarg8;
-  arg9 = (unsigned int)jarg9;
-  arg10 = (unsigned int)jarg10;
-  arg11 = *(SCIP_Result **)&jarg11;
+  arg1 = *(scip::ObjConshdlr **)&jarg1; 
+  arg2 = *(SCIP **)&jarg2; 
+  arg3 = *(SCIP_CONSHDLR **)&jarg3; 
+  arg4 = *(SCIP_CONS ***)&jarg4; 
+  arg5 = (int)jarg5; 
+  arg6 = *(SCIP_SOL **)&jarg6; 
+  arg7 = (unsigned int)jarg7; 
+  arg8 = (unsigned int)jarg8; 
+  arg9 = (unsigned int)jarg9; 
+  arg10 = (unsigned int)jarg10; 
+  arg11 = *(SCIP_Result **)&jarg11; 
   result = (SCIP_RETCODE)(arg1)->scip_check(arg2,arg3,arg4,arg5,arg6,arg7,arg8,arg9,arg10,arg11);
-  jresult = (jint)result;
+  jresult = (jint)result; 
   return jresult;
 }
 
@@ -11559,23 +11558,23 @@ SWIGEXPORT jint JNICALL Java_jscip_SCIPJNIJNI_ObjConshdlr_1scip_1checkSwigExplic
   unsigned int arg10 ;
   SCIP_Result *arg11 = (SCIP_Result *) 0 ;
   SCIP_RETCODE result;
-
+  
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(scip::ObjConshdlr **)&jarg1;
-  arg2 = *(SCIP **)&jarg2;
-  arg3 = *(SCIP_CONSHDLR **)&jarg3;
-  arg4 = *(SCIP_CONS ***)&jarg4;
-  arg5 = (int)jarg5;
-  arg6 = *(SCIP_SOL **)&jarg6;
-  arg7 = (unsigned int)jarg7;
-  arg8 = (unsigned int)jarg8;
-  arg9 = (unsigned int)jarg9;
-  arg10 = (unsigned int)jarg10;
-  arg11 = *(SCIP_Result **)&jarg11;
+  arg1 = *(scip::ObjConshdlr **)&jarg1; 
+  arg2 = *(SCIP **)&jarg2; 
+  arg3 = *(SCIP_CONSHDLR **)&jarg3; 
+  arg4 = *(SCIP_CONS ***)&jarg4; 
+  arg5 = (int)jarg5; 
+  arg6 = *(SCIP_SOL **)&jarg6; 
+  arg7 = (unsigned int)jarg7; 
+  arg8 = (unsigned int)jarg8; 
+  arg9 = (unsigned int)jarg9; 
+  arg10 = (unsigned int)jarg10; 
+  arg11 = *(SCIP_Result **)&jarg11; 
   result = (SCIP_RETCODE)(arg1)->scip::ObjConshdlr::scip_check(arg2,arg3,arg4,arg5,arg6,arg7,arg8,arg9,arg10,arg11);
-  jresult = (jint)result;
+  jresult = (jint)result; 
   return jresult;
 }
 
@@ -11593,26 +11592,26 @@ SWIGEXPORT jint JNICALL Java_jscip_SCIPJNIJNI_ObjConshdlr_1scip_1prop(JNIEnv *je
   SCIP_Result *arg9 = (SCIP_Result *) 0 ;
   SCIP_PROPTIMING *argp8 ;
   SCIP_RETCODE result;
-
+  
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(scip::ObjConshdlr **)&jarg1;
-  arg2 = *(SCIP **)&jarg2;
-  arg3 = *(SCIP_CONSHDLR **)&jarg3;
-  arg4 = *(SCIP_CONS ***)&jarg4;
-  arg5 = (int)jarg5;
-  arg6 = (int)jarg6;
-  arg7 = (int)jarg7;
-  argp8 = *(SCIP_PROPTIMING **)&jarg8;
+  arg1 = *(scip::ObjConshdlr **)&jarg1; 
+  arg2 = *(SCIP **)&jarg2; 
+  arg3 = *(SCIP_CONSHDLR **)&jarg3; 
+  arg4 = *(SCIP_CONS ***)&jarg4; 
+  arg5 = (int)jarg5; 
+  arg6 = (int)jarg6; 
+  arg7 = (int)jarg7; 
+  argp8 = *(SCIP_PROPTIMING **)&jarg8; 
   if (!argp8) {
     SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "Attempt to dereference null SCIP_PROPTIMING");
     return 0;
   }
-  arg8 = *argp8;
-  arg9 = *(SCIP_Result **)&jarg9;
+  arg8 = *argp8; 
+  arg9 = *(SCIP_Result **)&jarg9; 
   result = (SCIP_RETCODE)(arg1)->scip_prop(arg2,arg3,arg4,arg5,arg6,arg7,arg8,arg9);
-  jresult = (jint)result;
+  jresult = (jint)result; 
   return jresult;
 }
 
@@ -11630,26 +11629,26 @@ SWIGEXPORT jint JNICALL Java_jscip_SCIPJNIJNI_ObjConshdlr_1scip_1propSwigExplici
   SCIP_Result *arg9 = (SCIP_Result *) 0 ;
   SCIP_PROPTIMING *argp8 ;
   SCIP_RETCODE result;
-
+  
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(scip::ObjConshdlr **)&jarg1;
-  arg2 = *(SCIP **)&jarg2;
-  arg3 = *(SCIP_CONSHDLR **)&jarg3;
-  arg4 = *(SCIP_CONS ***)&jarg4;
-  arg5 = (int)jarg5;
-  arg6 = (int)jarg6;
-  arg7 = (int)jarg7;
-  argp8 = *(SCIP_PROPTIMING **)&jarg8;
+  arg1 = *(scip::ObjConshdlr **)&jarg1; 
+  arg2 = *(SCIP **)&jarg2; 
+  arg3 = *(SCIP_CONSHDLR **)&jarg3; 
+  arg4 = *(SCIP_CONS ***)&jarg4; 
+  arg5 = (int)jarg5; 
+  arg6 = (int)jarg6; 
+  arg7 = (int)jarg7; 
+  argp8 = *(SCIP_PROPTIMING **)&jarg8; 
   if (!argp8) {
     SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "Attempt to dereference null SCIP_PROPTIMING");
     return 0;
   }
-  arg8 = *argp8;
-  arg9 = *(SCIP_Result **)&jarg9;
+  arg8 = *argp8; 
+  arg9 = *(SCIP_Result **)&jarg9; 
   result = (SCIP_RETCODE)(arg1)->scip::ObjConshdlr::scip_prop(arg2,arg3,arg4,arg5,arg6,arg7,arg8,arg9);
-  jresult = (jint)result;
+  jresult = (jint)result; 
   return jresult;
 }
 
@@ -11686,45 +11685,45 @@ SWIGEXPORT jint JNICALL Java_jscip_SCIPJNIJNI_ObjConshdlr_1scip_1presol(JNIEnv *
   SCIP_Result *arg28 = (SCIP_Result *) 0 ;
   SCIP_PRESOLTIMING *argp7 ;
   SCIP_RETCODE result;
-
+  
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(scip::ObjConshdlr **)&jarg1;
-  arg2 = *(SCIP **)&jarg2;
-  arg3 = *(SCIP_CONSHDLR **)&jarg3;
-  arg4 = *(SCIP_CONS ***)&jarg4;
-  arg5 = (int)jarg5;
-  arg6 = (int)jarg6;
-  argp7 = *(SCIP_PRESOLTIMING **)&jarg7;
+  arg1 = *(scip::ObjConshdlr **)&jarg1; 
+  arg2 = *(SCIP **)&jarg2; 
+  arg3 = *(SCIP_CONSHDLR **)&jarg3; 
+  arg4 = *(SCIP_CONS ***)&jarg4; 
+  arg5 = (int)jarg5; 
+  arg6 = (int)jarg6; 
+  argp7 = *(SCIP_PRESOLTIMING **)&jarg7; 
   if (!argp7) {
     SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "Attempt to dereference null SCIP_PRESOLTIMING");
     return 0;
   }
-  arg7 = *argp7;
-  arg8 = (int)jarg8;
-  arg9 = (int)jarg9;
-  arg10 = (int)jarg10;
-  arg11 = (int)jarg11;
-  arg12 = (int)jarg12;
-  arg13 = (int)jarg13;
-  arg14 = (int)jarg14;
-  arg15 = (int)jarg15;
-  arg16 = (int)jarg16;
-  arg17 = (int)jarg17;
-  arg18 = *(int **)&jarg18;
-  arg19 = *(int **)&jarg19;
-  arg20 = *(int **)&jarg20;
-  arg21 = *(int **)&jarg21;
-  arg22 = *(int **)&jarg22;
-  arg23 = *(int **)&jarg23;
-  arg24 = *(int **)&jarg24;
-  arg25 = *(int **)&jarg25;
-  arg26 = *(int **)&jarg26;
-  arg27 = *(int **)&jarg27;
-  arg28 = *(SCIP_Result **)&jarg28;
+  arg7 = *argp7; 
+  arg8 = (int)jarg8; 
+  arg9 = (int)jarg9; 
+  arg10 = (int)jarg10; 
+  arg11 = (int)jarg11; 
+  arg12 = (int)jarg12; 
+  arg13 = (int)jarg13; 
+  arg14 = (int)jarg14; 
+  arg15 = (int)jarg15; 
+  arg16 = (int)jarg16; 
+  arg17 = (int)jarg17; 
+  arg18 = *(int **)&jarg18; 
+  arg19 = *(int **)&jarg19; 
+  arg20 = *(int **)&jarg20; 
+  arg21 = *(int **)&jarg21; 
+  arg22 = *(int **)&jarg22; 
+  arg23 = *(int **)&jarg23; 
+  arg24 = *(int **)&jarg24; 
+  arg25 = *(int **)&jarg25; 
+  arg26 = *(int **)&jarg26; 
+  arg27 = *(int **)&jarg27; 
+  arg28 = *(SCIP_Result **)&jarg28; 
   result = (SCIP_RETCODE)(arg1)->scip_presol(arg2,arg3,arg4,arg5,arg6,arg7,arg8,arg9,arg10,arg11,arg12,arg13,arg14,arg15,arg16,arg17,arg18,arg19,arg20,arg21,arg22,arg23,arg24,arg25,arg26,arg27,arg28);
-  jresult = (jint)result;
+  jresult = (jint)result; 
   return jresult;
 }
 
@@ -11761,45 +11760,45 @@ SWIGEXPORT jint JNICALL Java_jscip_SCIPJNIJNI_ObjConshdlr_1scip_1presolSwigExpli
   SCIP_Result *arg28 = (SCIP_Result *) 0 ;
   SCIP_PRESOLTIMING *argp7 ;
   SCIP_RETCODE result;
-
+  
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(scip::ObjConshdlr **)&jarg1;
-  arg2 = *(SCIP **)&jarg2;
-  arg3 = *(SCIP_CONSHDLR **)&jarg3;
-  arg4 = *(SCIP_CONS ***)&jarg4;
-  arg5 = (int)jarg5;
-  arg6 = (int)jarg6;
-  argp7 = *(SCIP_PRESOLTIMING **)&jarg7;
+  arg1 = *(scip::ObjConshdlr **)&jarg1; 
+  arg2 = *(SCIP **)&jarg2; 
+  arg3 = *(SCIP_CONSHDLR **)&jarg3; 
+  arg4 = *(SCIP_CONS ***)&jarg4; 
+  arg5 = (int)jarg5; 
+  arg6 = (int)jarg6; 
+  argp7 = *(SCIP_PRESOLTIMING **)&jarg7; 
   if (!argp7) {
     SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "Attempt to dereference null SCIP_PRESOLTIMING");
     return 0;
   }
-  arg7 = *argp7;
-  arg8 = (int)jarg8;
-  arg9 = (int)jarg9;
-  arg10 = (int)jarg10;
-  arg11 = (int)jarg11;
-  arg12 = (int)jarg12;
-  arg13 = (int)jarg13;
-  arg14 = (int)jarg14;
-  arg15 = (int)jarg15;
-  arg16 = (int)jarg16;
-  arg17 = (int)jarg17;
-  arg18 = *(int **)&jarg18;
-  arg19 = *(int **)&jarg19;
-  arg20 = *(int **)&jarg20;
-  arg21 = *(int **)&jarg21;
-  arg22 = *(int **)&jarg22;
-  arg23 = *(int **)&jarg23;
-  arg24 = *(int **)&jarg24;
-  arg25 = *(int **)&jarg25;
-  arg26 = *(int **)&jarg26;
-  arg27 = *(int **)&jarg27;
-  arg28 = *(SCIP_Result **)&jarg28;
+  arg7 = *argp7; 
+  arg8 = (int)jarg8; 
+  arg9 = (int)jarg9; 
+  arg10 = (int)jarg10; 
+  arg11 = (int)jarg11; 
+  arg12 = (int)jarg12; 
+  arg13 = (int)jarg13; 
+  arg14 = (int)jarg14; 
+  arg15 = (int)jarg15; 
+  arg16 = (int)jarg16; 
+  arg17 = (int)jarg17; 
+  arg18 = *(int **)&jarg18; 
+  arg19 = *(int **)&jarg19; 
+  arg20 = *(int **)&jarg20; 
+  arg21 = *(int **)&jarg21; 
+  arg22 = *(int **)&jarg22; 
+  arg23 = *(int **)&jarg23; 
+  arg24 = *(int **)&jarg24; 
+  arg25 = *(int **)&jarg25; 
+  arg26 = *(int **)&jarg26; 
+  arg27 = *(int **)&jarg27; 
+  arg28 = *(SCIP_Result **)&jarg28; 
   result = (SCIP_RETCODE)(arg1)->scip::ObjConshdlr::scip_presol(arg2,arg3,arg4,arg5,arg6,arg7,arg8,arg9,arg10,arg11,arg12,arg13,arg14,arg15,arg16,arg17,arg18,arg19,arg20,arg21,arg22,arg23,arg24,arg25,arg26,arg27,arg28);
-  jresult = (jint)result;
+  jresult = (jint)result; 
   return jresult;
 }
 
@@ -11817,22 +11816,22 @@ SWIGEXPORT jint JNICALL Java_jscip_SCIPJNIJNI_ObjConshdlr_1scip_1resprop(JNIEnv 
   double arg9 ;
   SCIP_Result *arg10 = (SCIP_Result *) 0 ;
   SCIP_RETCODE result;
-
+  
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(scip::ObjConshdlr **)&jarg1;
-  arg2 = *(SCIP **)&jarg2;
-  arg3 = *(SCIP_CONSHDLR **)&jarg3;
-  arg4 = *(SCIP_CONS **)&jarg4;
-  arg5 = *(SCIP_VAR **)&jarg5;
-  arg6 = (int)jarg6;
-  arg7 = (SCIP_BOUNDTYPE)jarg7;
-  arg8 = *(SCIP_BDCHGIDX **)&jarg8;
-  arg9 = (double)jarg9;
-  arg10 = *(SCIP_Result **)&jarg10;
+  arg1 = *(scip::ObjConshdlr **)&jarg1; 
+  arg2 = *(SCIP **)&jarg2; 
+  arg3 = *(SCIP_CONSHDLR **)&jarg3; 
+  arg4 = *(SCIP_CONS **)&jarg4; 
+  arg5 = *(SCIP_VAR **)&jarg5; 
+  arg6 = (int)jarg6; 
+  arg7 = (SCIP_BOUNDTYPE)jarg7; 
+  arg8 = *(SCIP_BDCHGIDX **)&jarg8; 
+  arg9 = (double)jarg9; 
+  arg10 = *(SCIP_Result **)&jarg10; 
   result = (SCIP_RETCODE)(arg1)->scip_resprop(arg2,arg3,arg4,arg5,arg6,arg7,arg8,arg9,arg10);
-  jresult = (jint)result;
+  jresult = (jint)result; 
   return jresult;
 }
 
@@ -11850,22 +11849,22 @@ SWIGEXPORT jint JNICALL Java_jscip_SCIPJNIJNI_ObjConshdlr_1scip_1respropSwigExpl
   double arg9 ;
   SCIP_Result *arg10 = (SCIP_Result *) 0 ;
   SCIP_RETCODE result;
-
+  
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(scip::ObjConshdlr **)&jarg1;
-  arg2 = *(SCIP **)&jarg2;
-  arg3 = *(SCIP_CONSHDLR **)&jarg3;
-  arg4 = *(SCIP_CONS **)&jarg4;
-  arg5 = *(SCIP_VAR **)&jarg5;
-  arg6 = (int)jarg6;
-  arg7 = (SCIP_BOUNDTYPE)jarg7;
-  arg8 = *(SCIP_BDCHGIDX **)&jarg8;
-  arg9 = (double)jarg9;
-  arg10 = *(SCIP_Result **)&jarg10;
+  arg1 = *(scip::ObjConshdlr **)&jarg1; 
+  arg2 = *(SCIP **)&jarg2; 
+  arg3 = *(SCIP_CONSHDLR **)&jarg3; 
+  arg4 = *(SCIP_CONS **)&jarg4; 
+  arg5 = *(SCIP_VAR **)&jarg5; 
+  arg6 = (int)jarg6; 
+  arg7 = (SCIP_BOUNDTYPE)jarg7; 
+  arg8 = *(SCIP_BDCHGIDX **)&jarg8; 
+  arg9 = (double)jarg9; 
+  arg10 = *(SCIP_Result **)&jarg10; 
   result = (SCIP_RETCODE)(arg1)->scip::ObjConshdlr::scip_resprop(arg2,arg3,arg4,arg5,arg6,arg7,arg8,arg9,arg10);
-  jresult = (jint)result;
+  jresult = (jint)result; 
   return jresult;
 }
 
@@ -11880,24 +11879,19 @@ SWIGEXPORT jint JNICALL Java_jscip_SCIPJNIJNI_ObjConshdlr_1scip_1lock(JNIEnv *je
   int arg6 ;
   int arg7 ;
   SCIP_RETCODE result;
-
+  
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(scip::ObjConshdlr **)&jarg1;
-  arg2 = *(SCIP **)&jarg2;
-  arg3 = *(SCIP_CONSHDLR **)&jarg3;
-  arg4 = *(SCIP_CONS **)&jarg4;
-  argp5 = *(SCIP_LOCKTYPE **)&jarg5;
-  if (!argp5) {
-    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "Attempt to dereference null SCIP_LOCKTYPE");
-    return 0;
-  }
-  arg5 = *argp5;
-  arg6 = (int)jarg6;
-  arg7 = (int)jarg7;
+  arg1 = *(scip::ObjConshdlr **)&jarg1; 
+  arg2 = *(SCIP **)&jarg2; 
+  arg3 = *(SCIP_CONSHDLR **)&jarg3; 
+  arg4 = *(SCIP_CONS **)&jarg4; 
+  arg5 = (SCIP_LockType)jarg5; 
+  arg6 = (int)jarg6; 
+  arg7 = (int)jarg7; 
   result = (SCIP_RETCODE)(arg1)->scip_lock(arg2,arg3,arg4,arg5,arg6,arg7);
-  jresult = (jint)result;
+  jresult = (jint)result; 
   return jresult;
 }
 
@@ -11912,24 +11906,19 @@ SWIGEXPORT jint JNICALL Java_jscip_SCIPJNIJNI_ObjConshdlr_1scip_1lockSwigExplici
   int arg6 ;
   int arg7 ;
   SCIP_RETCODE result;
-
+  
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(scip::ObjConshdlr **)&jarg1;
-  arg2 = *(SCIP **)&jarg2;
-  arg3 = *(SCIP_CONSHDLR **)&jarg3;
-  arg4 = *(SCIP_CONS **)&jarg4;
-  argp5 = *(SCIP_LOCKTYPE **)&jarg5;
-  if (!argp5) {
-    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "Attempt to dereference null SCIP_LOCKTYPE");
-    return 0;
-  }
-  arg5 = *argp5;
-  arg6 = (int)jarg6;
-  arg7 = (int)jarg7;
+  arg1 = *(scip::ObjConshdlr **)&jarg1; 
+  arg2 = *(SCIP **)&jarg2; 
+  arg3 = *(SCIP_CONSHDLR **)&jarg3; 
+  arg4 = *(SCIP_CONS **)&jarg4; 
+  arg5 = (SCIP_LockType)jarg5; 
+  arg6 = (int)jarg6; 
+  arg7 = (int)jarg7; 
   result = (SCIP_RETCODE)(arg1)->scip::ObjConshdlr::scip_lock(arg2,arg3,arg4,arg5,arg6,arg7);
-  jresult = (jint)result;
+  jresult = (jint)result; 
   return jresult;
 }
 
@@ -11941,16 +11930,16 @@ SWIGEXPORT jint JNICALL Java_jscip_SCIPJNIJNI_ObjConshdlr_1scip_1active(JNIEnv *
   SCIP_CONSHDLR *arg3 = (SCIP_CONSHDLR *) 0 ;
   SCIP_CONS *arg4 = (SCIP_CONS *) 0 ;
   SCIP_RETCODE result;
-
+  
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(scip::ObjConshdlr **)&jarg1;
-  arg2 = *(SCIP **)&jarg2;
-  arg3 = *(SCIP_CONSHDLR **)&jarg3;
-  arg4 = *(SCIP_CONS **)&jarg4;
+  arg1 = *(scip::ObjConshdlr **)&jarg1; 
+  arg2 = *(SCIP **)&jarg2; 
+  arg3 = *(SCIP_CONSHDLR **)&jarg3; 
+  arg4 = *(SCIP_CONS **)&jarg4; 
   result = (SCIP_RETCODE)(arg1)->scip_active(arg2,arg3,arg4);
-  jresult = (jint)result;
+  jresult = (jint)result; 
   return jresult;
 }
 
@@ -11962,16 +11951,16 @@ SWIGEXPORT jint JNICALL Java_jscip_SCIPJNIJNI_ObjConshdlr_1scip_1activeSwigExpli
   SCIP_CONSHDLR *arg3 = (SCIP_CONSHDLR *) 0 ;
   SCIP_CONS *arg4 = (SCIP_CONS *) 0 ;
   SCIP_RETCODE result;
-
+  
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(scip::ObjConshdlr **)&jarg1;
-  arg2 = *(SCIP **)&jarg2;
-  arg3 = *(SCIP_CONSHDLR **)&jarg3;
-  arg4 = *(SCIP_CONS **)&jarg4;
+  arg1 = *(scip::ObjConshdlr **)&jarg1; 
+  arg2 = *(SCIP **)&jarg2; 
+  arg3 = *(SCIP_CONSHDLR **)&jarg3; 
+  arg4 = *(SCIP_CONS **)&jarg4; 
   result = (SCIP_RETCODE)(arg1)->scip::ObjConshdlr::scip_active(arg2,arg3,arg4);
-  jresult = (jint)result;
+  jresult = (jint)result; 
   return jresult;
 }
 
@@ -11983,16 +11972,16 @@ SWIGEXPORT jint JNICALL Java_jscip_SCIPJNIJNI_ObjConshdlr_1scip_1deactive(JNIEnv
   SCIP_CONSHDLR *arg3 = (SCIP_CONSHDLR *) 0 ;
   SCIP_CONS *arg4 = (SCIP_CONS *) 0 ;
   SCIP_RETCODE result;
-
+  
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(scip::ObjConshdlr **)&jarg1;
-  arg2 = *(SCIP **)&jarg2;
-  arg3 = *(SCIP_CONSHDLR **)&jarg3;
-  arg4 = *(SCIP_CONS **)&jarg4;
+  arg1 = *(scip::ObjConshdlr **)&jarg1; 
+  arg2 = *(SCIP **)&jarg2; 
+  arg3 = *(SCIP_CONSHDLR **)&jarg3; 
+  arg4 = *(SCIP_CONS **)&jarg4; 
   result = (SCIP_RETCODE)(arg1)->scip_deactive(arg2,arg3,arg4);
-  jresult = (jint)result;
+  jresult = (jint)result; 
   return jresult;
 }
 
@@ -12004,16 +11993,16 @@ SWIGEXPORT jint JNICALL Java_jscip_SCIPJNIJNI_ObjConshdlr_1scip_1deactiveSwigExp
   SCIP_CONSHDLR *arg3 = (SCIP_CONSHDLR *) 0 ;
   SCIP_CONS *arg4 = (SCIP_CONS *) 0 ;
   SCIP_RETCODE result;
-
+  
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(scip::ObjConshdlr **)&jarg1;
-  arg2 = *(SCIP **)&jarg2;
-  arg3 = *(SCIP_CONSHDLR **)&jarg3;
-  arg4 = *(SCIP_CONS **)&jarg4;
+  arg1 = *(scip::ObjConshdlr **)&jarg1; 
+  arg2 = *(SCIP **)&jarg2; 
+  arg3 = *(SCIP_CONSHDLR **)&jarg3; 
+  arg4 = *(SCIP_CONS **)&jarg4; 
   result = (SCIP_RETCODE)(arg1)->scip::ObjConshdlr::scip_deactive(arg2,arg3,arg4);
-  jresult = (jint)result;
+  jresult = (jint)result; 
   return jresult;
 }
 
@@ -12025,16 +12014,16 @@ SWIGEXPORT jint JNICALL Java_jscip_SCIPJNIJNI_ObjConshdlr_1scip_1enable(JNIEnv *
   SCIP_CONSHDLR *arg3 = (SCIP_CONSHDLR *) 0 ;
   SCIP_CONS *arg4 = (SCIP_CONS *) 0 ;
   SCIP_RETCODE result;
-
+  
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(scip::ObjConshdlr **)&jarg1;
-  arg2 = *(SCIP **)&jarg2;
-  arg3 = *(SCIP_CONSHDLR **)&jarg3;
-  arg4 = *(SCIP_CONS **)&jarg4;
+  arg1 = *(scip::ObjConshdlr **)&jarg1; 
+  arg2 = *(SCIP **)&jarg2; 
+  arg3 = *(SCIP_CONSHDLR **)&jarg3; 
+  arg4 = *(SCIP_CONS **)&jarg4; 
   result = (SCIP_RETCODE)(arg1)->scip_enable(arg2,arg3,arg4);
-  jresult = (jint)result;
+  jresult = (jint)result; 
   return jresult;
 }
 
@@ -12046,16 +12035,16 @@ SWIGEXPORT jint JNICALL Java_jscip_SCIPJNIJNI_ObjConshdlr_1scip_1enableSwigExpli
   SCIP_CONSHDLR *arg3 = (SCIP_CONSHDLR *) 0 ;
   SCIP_CONS *arg4 = (SCIP_CONS *) 0 ;
   SCIP_RETCODE result;
-
+  
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(scip::ObjConshdlr **)&jarg1;
-  arg2 = *(SCIP **)&jarg2;
-  arg3 = *(SCIP_CONSHDLR **)&jarg3;
-  arg4 = *(SCIP_CONS **)&jarg4;
+  arg1 = *(scip::ObjConshdlr **)&jarg1; 
+  arg2 = *(SCIP **)&jarg2; 
+  arg3 = *(SCIP_CONSHDLR **)&jarg3; 
+  arg4 = *(SCIP_CONS **)&jarg4; 
   result = (SCIP_RETCODE)(arg1)->scip::ObjConshdlr::scip_enable(arg2,arg3,arg4);
-  jresult = (jint)result;
+  jresult = (jint)result; 
   return jresult;
 }
 
@@ -12067,16 +12056,16 @@ SWIGEXPORT jint JNICALL Java_jscip_SCIPJNIJNI_ObjConshdlr_1scip_1disable(JNIEnv 
   SCIP_CONSHDLR *arg3 = (SCIP_CONSHDLR *) 0 ;
   SCIP_CONS *arg4 = (SCIP_CONS *) 0 ;
   SCIP_RETCODE result;
-
+  
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(scip::ObjConshdlr **)&jarg1;
-  arg2 = *(SCIP **)&jarg2;
-  arg3 = *(SCIP_CONSHDLR **)&jarg3;
-  arg4 = *(SCIP_CONS **)&jarg4;
+  arg1 = *(scip::ObjConshdlr **)&jarg1; 
+  arg2 = *(SCIP **)&jarg2; 
+  arg3 = *(SCIP_CONSHDLR **)&jarg3; 
+  arg4 = *(SCIP_CONS **)&jarg4; 
   result = (SCIP_RETCODE)(arg1)->scip_disable(arg2,arg3,arg4);
-  jresult = (jint)result;
+  jresult = (jint)result; 
   return jresult;
 }
 
@@ -12088,16 +12077,16 @@ SWIGEXPORT jint JNICALL Java_jscip_SCIPJNIJNI_ObjConshdlr_1scip_1disableSwigExpl
   SCIP_CONSHDLR *arg3 = (SCIP_CONSHDLR *) 0 ;
   SCIP_CONS *arg4 = (SCIP_CONS *) 0 ;
   SCIP_RETCODE result;
-
+  
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(scip::ObjConshdlr **)&jarg1;
-  arg2 = *(SCIP **)&jarg2;
-  arg3 = *(SCIP_CONSHDLR **)&jarg3;
-  arg4 = *(SCIP_CONS **)&jarg4;
+  arg1 = *(scip::ObjConshdlr **)&jarg1; 
+  arg2 = *(SCIP **)&jarg2; 
+  arg3 = *(SCIP_CONSHDLR **)&jarg3; 
+  arg4 = *(SCIP_CONS **)&jarg4; 
   result = (SCIP_RETCODE)(arg1)->scip::ObjConshdlr::scip_disable(arg2,arg3,arg4);
-  jresult = (jint)result;
+  jresult = (jint)result; 
   return jresult;
 }
 
@@ -12110,17 +12099,17 @@ SWIGEXPORT jint JNICALL Java_jscip_SCIPJNIJNI_ObjConshdlr_1scip_1delvars(JNIEnv 
   SCIP_CONS **arg4 = (SCIP_CONS **) 0 ;
   int arg5 ;
   SCIP_RETCODE result;
-
+  
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(scip::ObjConshdlr **)&jarg1;
-  arg2 = *(SCIP **)&jarg2;
-  arg3 = *(SCIP_CONSHDLR **)&jarg3;
-  arg4 = *(SCIP_CONS ***)&jarg4;
-  arg5 = (int)jarg5;
+  arg1 = *(scip::ObjConshdlr **)&jarg1; 
+  arg2 = *(SCIP **)&jarg2; 
+  arg3 = *(SCIP_CONSHDLR **)&jarg3; 
+  arg4 = *(SCIP_CONS ***)&jarg4; 
+  arg5 = (int)jarg5; 
   result = (SCIP_RETCODE)(arg1)->scip_delvars(arg2,arg3,arg4,arg5);
-  jresult = (jint)result;
+  jresult = (jint)result; 
   return jresult;
 }
 
@@ -12133,17 +12122,17 @@ SWIGEXPORT jint JNICALL Java_jscip_SCIPJNIJNI_ObjConshdlr_1scip_1delvarsSwigExpl
   SCIP_CONS **arg4 = (SCIP_CONS **) 0 ;
   int arg5 ;
   SCIP_RETCODE result;
-
+  
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(scip::ObjConshdlr **)&jarg1;
-  arg2 = *(SCIP **)&jarg2;
-  arg3 = *(SCIP_CONSHDLR **)&jarg3;
-  arg4 = *(SCIP_CONS ***)&jarg4;
-  arg5 = (int)jarg5;
+  arg1 = *(scip::ObjConshdlr **)&jarg1; 
+  arg2 = *(SCIP **)&jarg2; 
+  arg3 = *(SCIP_CONSHDLR **)&jarg3; 
+  arg4 = *(SCIP_CONS ***)&jarg4; 
+  arg5 = (int)jarg5; 
   result = (SCIP_RETCODE)(arg1)->scip::ObjConshdlr::scip_delvars(arg2,arg3,arg4,arg5);
-  jresult = (jint)result;
+  jresult = (jint)result; 
   return jresult;
 }
 
@@ -12156,17 +12145,17 @@ SWIGEXPORT jint JNICALL Java_jscip_SCIPJNIJNI_ObjConshdlr_1scip_1print(JNIEnv *j
   SCIP_CONS *arg4 = (SCIP_CONS *) 0 ;
   FILE *arg5 = (FILE *) 0 ;
   SCIP_RETCODE result;
-
+  
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(scip::ObjConshdlr **)&jarg1;
-  arg2 = *(SCIP **)&jarg2;
-  arg3 = *(SCIP_CONSHDLR **)&jarg3;
-  arg4 = *(SCIP_CONS **)&jarg4;
-  arg5 = *(FILE **)&jarg5;
+  arg1 = *(scip::ObjConshdlr **)&jarg1; 
+  arg2 = *(SCIP **)&jarg2; 
+  arg3 = *(SCIP_CONSHDLR **)&jarg3; 
+  arg4 = *(SCIP_CONS **)&jarg4; 
+  arg5 = *(FILE **)&jarg5; 
   result = (SCIP_RETCODE)(arg1)->scip_print(arg2,arg3,arg4,arg5);
-  jresult = (jint)result;
+  jresult = (jint)result; 
   return jresult;
 }
 
@@ -12179,17 +12168,17 @@ SWIGEXPORT jint JNICALL Java_jscip_SCIPJNIJNI_ObjConshdlr_1scip_1printSwigExplic
   SCIP_CONS *arg4 = (SCIP_CONS *) 0 ;
   FILE *arg5 = (FILE *) 0 ;
   SCIP_RETCODE result;
-
+  
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(scip::ObjConshdlr **)&jarg1;
-  arg2 = *(SCIP **)&jarg2;
-  arg3 = *(SCIP_CONSHDLR **)&jarg3;
-  arg4 = *(SCIP_CONS **)&jarg4;
-  arg5 = *(FILE **)&jarg5;
+  arg1 = *(scip::ObjConshdlr **)&jarg1; 
+  arg2 = *(SCIP **)&jarg2; 
+  arg3 = *(SCIP_CONSHDLR **)&jarg3; 
+  arg4 = *(SCIP_CONS **)&jarg4; 
+  arg5 = *(FILE **)&jarg5; 
   result = (SCIP_RETCODE)(arg1)->scip::ObjConshdlr::scip_print(arg2,arg3,arg4,arg5);
-  jresult = (jint)result;
+  jresult = (jint)result; 
   return jresult;
 }
 
@@ -12218,37 +12207,37 @@ SWIGEXPORT jint JNICALL Java_jscip_SCIPJNIJNI_ObjConshdlr_1scip_1copy(JNIEnv *je
   unsigned int arg20 ;
   unsigned int *arg21 = (unsigned int *) 0 ;
   SCIP_RETCODE result;
-
+  
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(scip::ObjConshdlr **)&jarg1;
-  arg2 = *(SCIP **)&jarg2;
-  arg3 = *(SCIP_CONS ***)&jarg3;
+  arg1 = *(scip::ObjConshdlr **)&jarg1; 
+  arg2 = *(SCIP **)&jarg2; 
+  arg3 = *(SCIP_CONS ***)&jarg3; 
   arg4 = 0;
   if (jarg4) {
     arg4 = (char *)jenv->GetStringUTFChars(jarg4, 0);
     if (!arg4) return 0;
   }
-  arg5 = *(SCIP **)&jarg5;
-  arg6 = *(SCIP_CONSHDLR **)&jarg6;
-  arg7 = *(SCIP_CONS **)&jarg7;
-  arg8 = *(SCIP_HASHMAP **)&jarg8;
-  arg9 = *(SCIP_HASHMAP **)&jarg9;
-  arg10 = (unsigned int)jarg10;
-  arg11 = (unsigned int)jarg11;
-  arg12 = (unsigned int)jarg12;
-  arg13 = (unsigned int)jarg13;
-  arg14 = (unsigned int)jarg14;
-  arg15 = (unsigned int)jarg15;
-  arg16 = (unsigned int)jarg16;
-  arg17 = (unsigned int)jarg17;
-  arg18 = (unsigned int)jarg18;
-  arg19 = (unsigned int)jarg19;
-  arg20 = (unsigned int)jarg20;
-  arg21 = *(unsigned int **)&jarg21;
+  arg5 = *(SCIP **)&jarg5; 
+  arg6 = *(SCIP_CONSHDLR **)&jarg6; 
+  arg7 = *(SCIP_CONS **)&jarg7; 
+  arg8 = *(SCIP_HASHMAP **)&jarg8; 
+  arg9 = *(SCIP_HASHMAP **)&jarg9; 
+  arg10 = (unsigned int)jarg10; 
+  arg11 = (unsigned int)jarg11; 
+  arg12 = (unsigned int)jarg12; 
+  arg13 = (unsigned int)jarg13; 
+  arg14 = (unsigned int)jarg14; 
+  arg15 = (unsigned int)jarg15; 
+  arg16 = (unsigned int)jarg16; 
+  arg17 = (unsigned int)jarg17; 
+  arg18 = (unsigned int)jarg18; 
+  arg19 = (unsigned int)jarg19; 
+  arg20 = (unsigned int)jarg20; 
+  arg21 = *(unsigned int **)&jarg21; 
   result = (SCIP_RETCODE)(arg1)->scip_copy(arg2,arg3,(char const *)arg4,arg5,arg6,arg7,arg8,arg9,arg10,arg11,arg12,arg13,arg14,arg15,arg16,arg17,arg18,arg19,arg20,arg21);
-  jresult = (jint)result;
+  jresult = (jint)result; 
   if (arg4) jenv->ReleaseStringUTFChars(jarg4, (const char *)arg4);
   return jresult;
 }
@@ -12278,37 +12267,37 @@ SWIGEXPORT jint JNICALL Java_jscip_SCIPJNIJNI_ObjConshdlr_1scip_1copySwigExplici
   unsigned int arg20 ;
   unsigned int *arg21 = (unsigned int *) 0 ;
   SCIP_RETCODE result;
-
+  
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(scip::ObjConshdlr **)&jarg1;
-  arg2 = *(SCIP **)&jarg2;
-  arg3 = *(SCIP_CONS ***)&jarg3;
+  arg1 = *(scip::ObjConshdlr **)&jarg1; 
+  arg2 = *(SCIP **)&jarg2; 
+  arg3 = *(SCIP_CONS ***)&jarg3; 
   arg4 = 0;
   if (jarg4) {
     arg4 = (char *)jenv->GetStringUTFChars(jarg4, 0);
     if (!arg4) return 0;
   }
-  arg5 = *(SCIP **)&jarg5;
-  arg6 = *(SCIP_CONSHDLR **)&jarg6;
-  arg7 = *(SCIP_CONS **)&jarg7;
-  arg8 = *(SCIP_HASHMAP **)&jarg8;
-  arg9 = *(SCIP_HASHMAP **)&jarg9;
-  arg10 = (unsigned int)jarg10;
-  arg11 = (unsigned int)jarg11;
-  arg12 = (unsigned int)jarg12;
-  arg13 = (unsigned int)jarg13;
-  arg14 = (unsigned int)jarg14;
-  arg15 = (unsigned int)jarg15;
-  arg16 = (unsigned int)jarg16;
-  arg17 = (unsigned int)jarg17;
-  arg18 = (unsigned int)jarg18;
-  arg19 = (unsigned int)jarg19;
-  arg20 = (unsigned int)jarg20;
-  arg21 = *(unsigned int **)&jarg21;
+  arg5 = *(SCIP **)&jarg5; 
+  arg6 = *(SCIP_CONSHDLR **)&jarg6; 
+  arg7 = *(SCIP_CONS **)&jarg7; 
+  arg8 = *(SCIP_HASHMAP **)&jarg8; 
+  arg9 = *(SCIP_HASHMAP **)&jarg9; 
+  arg10 = (unsigned int)jarg10; 
+  arg11 = (unsigned int)jarg11; 
+  arg12 = (unsigned int)jarg12; 
+  arg13 = (unsigned int)jarg13; 
+  arg14 = (unsigned int)jarg14; 
+  arg15 = (unsigned int)jarg15; 
+  arg16 = (unsigned int)jarg16; 
+  arg17 = (unsigned int)jarg17; 
+  arg18 = (unsigned int)jarg18; 
+  arg19 = (unsigned int)jarg19; 
+  arg20 = (unsigned int)jarg20; 
+  arg21 = *(unsigned int **)&jarg21; 
   result = (SCIP_RETCODE)(arg1)->scip::ObjConshdlr::scip_copy(arg2,arg3,(char const *)arg4,arg5,arg6,arg7,arg8,arg9,arg10,arg11,arg12,arg13,arg14,arg15,arg16,arg17,arg18,arg19,arg20,arg21);
-  jresult = (jint)result;
+  jresult = (jint)result; 
   if (arg4) jenv->ReleaseStringUTFChars(jarg4, (const char *)arg4);
   return jresult;
 }
@@ -12334,14 +12323,14 @@ SWIGEXPORT jint JNICALL Java_jscip_SCIPJNIJNI_ObjConshdlr_1scip_1parse(JNIEnv *j
   unsigned int arg16 ;
   unsigned int *arg17 = (unsigned int *) 0 ;
   SCIP_RETCODE result;
-
+  
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(scip::ObjConshdlr **)&jarg1;
-  arg2 = *(SCIP **)&jarg2;
-  arg3 = *(SCIP_CONSHDLR **)&jarg3;
-  arg4 = *(SCIP_CONS ***)&jarg4;
+  arg1 = *(scip::ObjConshdlr **)&jarg1; 
+  arg2 = *(SCIP **)&jarg2; 
+  arg3 = *(SCIP_CONSHDLR **)&jarg3; 
+  arg4 = *(SCIP_CONS ***)&jarg4; 
   arg5 = 0;
   if (jarg5) {
     arg5 = (char *)jenv->GetStringUTFChars(jarg5, 0);
@@ -12352,19 +12341,19 @@ SWIGEXPORT jint JNICALL Java_jscip_SCIPJNIJNI_ObjConshdlr_1scip_1parse(JNIEnv *j
     arg6 = (char *)jenv->GetStringUTFChars(jarg6, 0);
     if (!arg6) return 0;
   }
-  arg7 = (unsigned int)jarg7;
-  arg8 = (unsigned int)jarg8;
-  arg9 = (unsigned int)jarg9;
-  arg10 = (unsigned int)jarg10;
-  arg11 = (unsigned int)jarg11;
-  arg12 = (unsigned int)jarg12;
-  arg13 = (unsigned int)jarg13;
-  arg14 = (unsigned int)jarg14;
-  arg15 = (unsigned int)jarg15;
-  arg16 = (unsigned int)jarg16;
-  arg17 = *(unsigned int **)&jarg17;
+  arg7 = (unsigned int)jarg7; 
+  arg8 = (unsigned int)jarg8; 
+  arg9 = (unsigned int)jarg9; 
+  arg10 = (unsigned int)jarg10; 
+  arg11 = (unsigned int)jarg11; 
+  arg12 = (unsigned int)jarg12; 
+  arg13 = (unsigned int)jarg13; 
+  arg14 = (unsigned int)jarg14; 
+  arg15 = (unsigned int)jarg15; 
+  arg16 = (unsigned int)jarg16; 
+  arg17 = *(unsigned int **)&jarg17; 
   result = (SCIP_RETCODE)(arg1)->scip_parse(arg2,arg3,arg4,(char const *)arg5,(char const *)arg6,arg7,arg8,arg9,arg10,arg11,arg12,arg13,arg14,arg15,arg16,arg17);
-  jresult = (jint)result;
+  jresult = (jint)result; 
   if (arg5) jenv->ReleaseStringUTFChars(jarg5, (const char *)arg5);
   if (arg6) jenv->ReleaseStringUTFChars(jarg6, (const char *)arg6);
   return jresult;
@@ -12391,14 +12380,14 @@ SWIGEXPORT jint JNICALL Java_jscip_SCIPJNIJNI_ObjConshdlr_1scip_1parseSwigExplic
   unsigned int arg16 ;
   unsigned int *arg17 = (unsigned int *) 0 ;
   SCIP_RETCODE result;
-
+  
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(scip::ObjConshdlr **)&jarg1;
-  arg2 = *(SCIP **)&jarg2;
-  arg3 = *(SCIP_CONSHDLR **)&jarg3;
-  arg4 = *(SCIP_CONS ***)&jarg4;
+  arg1 = *(scip::ObjConshdlr **)&jarg1; 
+  arg2 = *(SCIP **)&jarg2; 
+  arg3 = *(SCIP_CONSHDLR **)&jarg3; 
+  arg4 = *(SCIP_CONS ***)&jarg4; 
   arg5 = 0;
   if (jarg5) {
     arg5 = (char *)jenv->GetStringUTFChars(jarg5, 0);
@@ -12409,19 +12398,19 @@ SWIGEXPORT jint JNICALL Java_jscip_SCIPJNIJNI_ObjConshdlr_1scip_1parseSwigExplic
     arg6 = (char *)jenv->GetStringUTFChars(jarg6, 0);
     if (!arg6) return 0;
   }
-  arg7 = (unsigned int)jarg7;
-  arg8 = (unsigned int)jarg8;
-  arg9 = (unsigned int)jarg9;
-  arg10 = (unsigned int)jarg10;
-  arg11 = (unsigned int)jarg11;
-  arg12 = (unsigned int)jarg12;
-  arg13 = (unsigned int)jarg13;
-  arg14 = (unsigned int)jarg14;
-  arg15 = (unsigned int)jarg15;
-  arg16 = (unsigned int)jarg16;
-  arg17 = *(unsigned int **)&jarg17;
+  arg7 = (unsigned int)jarg7; 
+  arg8 = (unsigned int)jarg8; 
+  arg9 = (unsigned int)jarg9; 
+  arg10 = (unsigned int)jarg10; 
+  arg11 = (unsigned int)jarg11; 
+  arg12 = (unsigned int)jarg12; 
+  arg13 = (unsigned int)jarg13; 
+  arg14 = (unsigned int)jarg14; 
+  arg15 = (unsigned int)jarg15; 
+  arg16 = (unsigned int)jarg16; 
+  arg17 = *(unsigned int **)&jarg17; 
   result = (SCIP_RETCODE)(arg1)->scip::ObjConshdlr::scip_parse(arg2,arg3,arg4,(char const *)arg5,(char const *)arg6,arg7,arg8,arg9,arg10,arg11,arg12,arg13,arg14,arg15,arg16,arg17);
-  jresult = (jint)result;
+  jresult = (jint)result; 
   if (arg5) jenv->ReleaseStringUTFChars(jarg5, (const char *)arg5);
   if (arg6) jenv->ReleaseStringUTFChars(jarg6, (const char *)arg6);
   return jresult;
@@ -12438,19 +12427,19 @@ SWIGEXPORT jint JNICALL Java_jscip_SCIPJNIJNI_ObjConshdlr_1scip_1getvars(JNIEnv 
   int arg6 ;
   unsigned int *arg7 = (unsigned int *) 0 ;
   SCIP_RETCODE result;
-
+  
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(scip::ObjConshdlr **)&jarg1;
-  arg2 = *(SCIP **)&jarg2;
-  arg3 = *(SCIP_CONSHDLR **)&jarg3;
-  arg4 = *(SCIP_CONS **)&jarg4;
-  arg5 = *(SCIP_VAR ***)&jarg5;
-  arg6 = (int)jarg6;
-  arg7 = *(unsigned int **)&jarg7;
+  arg1 = *(scip::ObjConshdlr **)&jarg1; 
+  arg2 = *(SCIP **)&jarg2; 
+  arg3 = *(SCIP_CONSHDLR **)&jarg3; 
+  arg4 = *(SCIP_CONS **)&jarg4; 
+  arg5 = *(SCIP_VAR ***)&jarg5; 
+  arg6 = (int)jarg6; 
+  arg7 = *(unsigned int **)&jarg7; 
   result = (SCIP_RETCODE)(arg1)->scip_getvars(arg2,arg3,arg4,arg5,arg6,arg7);
-  jresult = (jint)result;
+  jresult = (jint)result; 
   return jresult;
 }
 
@@ -12465,19 +12454,19 @@ SWIGEXPORT jint JNICALL Java_jscip_SCIPJNIJNI_ObjConshdlr_1scip_1getvarsSwigExpl
   int arg6 ;
   unsigned int *arg7 = (unsigned int *) 0 ;
   SCIP_RETCODE result;
-
+  
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(scip::ObjConshdlr **)&jarg1;
-  arg2 = *(SCIP **)&jarg2;
-  arg3 = *(SCIP_CONSHDLR **)&jarg3;
-  arg4 = *(SCIP_CONS **)&jarg4;
-  arg5 = *(SCIP_VAR ***)&jarg5;
-  arg6 = (int)jarg6;
-  arg7 = *(unsigned int **)&jarg7;
+  arg1 = *(scip::ObjConshdlr **)&jarg1; 
+  arg2 = *(SCIP **)&jarg2; 
+  arg3 = *(SCIP_CONSHDLR **)&jarg3; 
+  arg4 = *(SCIP_CONS **)&jarg4; 
+  arg5 = *(SCIP_VAR ***)&jarg5; 
+  arg6 = (int)jarg6; 
+  arg7 = *(unsigned int **)&jarg7; 
   result = (SCIP_RETCODE)(arg1)->scip::ObjConshdlr::scip_getvars(arg2,arg3,arg4,arg5,arg6,arg7);
-  jresult = (jint)result;
+  jresult = (jint)result; 
   return jresult;
 }
 
@@ -12491,18 +12480,18 @@ SWIGEXPORT jint JNICALL Java_jscip_SCIPJNIJNI_ObjConshdlr_1scip_1getnvars(JNIEnv
   int *arg5 = (int *) 0 ;
   unsigned int *arg6 = (unsigned int *) 0 ;
   SCIP_RETCODE result;
-
+  
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(scip::ObjConshdlr **)&jarg1;
-  arg2 = *(SCIP **)&jarg2;
-  arg3 = *(SCIP_CONSHDLR **)&jarg3;
-  arg4 = *(SCIP_CONS **)&jarg4;
-  arg5 = *(int **)&jarg5;
-  arg6 = *(unsigned int **)&jarg6;
+  arg1 = *(scip::ObjConshdlr **)&jarg1; 
+  arg2 = *(SCIP **)&jarg2; 
+  arg3 = *(SCIP_CONSHDLR **)&jarg3; 
+  arg4 = *(SCIP_CONS **)&jarg4; 
+  arg5 = *(int **)&jarg5; 
+  arg6 = *(unsigned int **)&jarg6; 
   result = (SCIP_RETCODE)(arg1)->scip_getnvars(arg2,arg3,arg4,arg5,arg6);
-  jresult = (jint)result;
+  jresult = (jint)result; 
   return jresult;
 }
 
@@ -12516,18 +12505,18 @@ SWIGEXPORT jint JNICALL Java_jscip_SCIPJNIJNI_ObjConshdlr_1scip_1getnvarsSwigExp
   int *arg5 = (int *) 0 ;
   unsigned int *arg6 = (unsigned int *) 0 ;
   SCIP_RETCODE result;
-
+  
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(scip::ObjConshdlr **)&jarg1;
-  arg2 = *(SCIP **)&jarg2;
-  arg3 = *(SCIP_CONSHDLR **)&jarg3;
-  arg4 = *(SCIP_CONS **)&jarg4;
-  arg5 = *(int **)&jarg5;
-  arg6 = *(unsigned int **)&jarg6;
+  arg1 = *(scip::ObjConshdlr **)&jarg1; 
+  arg2 = *(SCIP **)&jarg2; 
+  arg3 = *(SCIP_CONSHDLR **)&jarg3; 
+  arg4 = *(SCIP_CONS **)&jarg4; 
+  arg5 = *(int **)&jarg5; 
+  arg6 = *(unsigned int **)&jarg6; 
   result = (SCIP_RETCODE)(arg1)->scip::ObjConshdlr::scip_getnvars(arg2,arg3,arg4,arg5,arg6);
-  jresult = (jint)result;
+  jresult = (jint)result; 
   return jresult;
 }
 
@@ -12542,19 +12531,19 @@ SWIGEXPORT jint JNICALL Java_jscip_SCIPJNIJNI_ObjConshdlr_1scip_1getdivebdchgs(J
   unsigned int *arg6 = (unsigned int *) 0 ;
   unsigned int *arg7 = (unsigned int *) 0 ;
   SCIP_RETCODE result;
-
+  
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(scip::ObjConshdlr **)&jarg1;
-  arg2 = *(SCIP **)&jarg2;
-  arg3 = *(SCIP_CONSHDLR **)&jarg3;
-  arg4 = *(SCIP_DIVESET **)&jarg4;
-  arg5 = *(SCIP_SOL **)&jarg5;
-  arg6 = *(unsigned int **)&jarg6;
-  arg7 = *(unsigned int **)&jarg7;
+  arg1 = *(scip::ObjConshdlr **)&jarg1; 
+  arg2 = *(SCIP **)&jarg2; 
+  arg3 = *(SCIP_CONSHDLR **)&jarg3; 
+  arg4 = *(SCIP_DIVESET **)&jarg4; 
+  arg5 = *(SCIP_SOL **)&jarg5; 
+  arg6 = *(unsigned int **)&jarg6; 
+  arg7 = *(unsigned int **)&jarg7; 
   result = (SCIP_RETCODE)(arg1)->scip_getdivebdchgs(arg2,arg3,arg4,arg5,arg6,arg7);
-  jresult = (jint)result;
+  jresult = (jint)result; 
   return jresult;
 }
 
@@ -12569,19 +12558,19 @@ SWIGEXPORT jint JNICALL Java_jscip_SCIPJNIJNI_ObjConshdlr_1scip_1getdivebdchgsSw
   unsigned int *arg6 = (unsigned int *) 0 ;
   unsigned int *arg7 = (unsigned int *) 0 ;
   SCIP_RETCODE result;
-
+  
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(scip::ObjConshdlr **)&jarg1;
-  arg2 = *(SCIP **)&jarg2;
-  arg3 = *(SCIP_CONSHDLR **)&jarg3;
-  arg4 = *(SCIP_DIVESET **)&jarg4;
-  arg5 = *(SCIP_SOL **)&jarg5;
-  arg6 = *(unsigned int **)&jarg6;
-  arg7 = *(unsigned int **)&jarg7;
+  arg1 = *(scip::ObjConshdlr **)&jarg1; 
+  arg2 = *(SCIP **)&jarg2; 
+  arg3 = *(SCIP_CONSHDLR **)&jarg3; 
+  arg4 = *(SCIP_DIVESET **)&jarg4; 
+  arg5 = *(SCIP_SOL **)&jarg5; 
+  arg6 = *(unsigned int **)&jarg6; 
+  arg7 = *(unsigned int **)&jarg7; 
   result = (SCIP_RETCODE)(arg1)->scip::ObjConshdlr::scip_getdivebdchgs(arg2,arg3,arg4,arg5,arg6,arg7);
-  jresult = (jint)result;
+  jresult = (jint)result; 
   return jresult;
 }
 
@@ -12595,18 +12584,18 @@ SWIGEXPORT jint JNICALL Java_jscip_SCIPJNIJNI_ObjConshdlr_1scip_1getpermsymgraph
   SYM_GRAPH *arg5 = (SYM_GRAPH *) 0 ;
   unsigned int *arg6 = (unsigned int *) 0 ;
   SCIP_RETCODE result;
-
+  
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(scip::ObjConshdlr **)&jarg1;
-  arg2 = *(SCIP **)&jarg2;
-  arg3 = *(SCIP_CONSHDLR **)&jarg3;
-  arg4 = *(SCIP_CONS **)&jarg4;
-  arg5 = *(SYM_GRAPH **)&jarg5;
-  arg6 = *(unsigned int **)&jarg6;
+  arg1 = *(scip::ObjConshdlr **)&jarg1; 
+  arg2 = *(SCIP **)&jarg2; 
+  arg3 = *(SCIP_CONSHDLR **)&jarg3; 
+  arg4 = *(SCIP_CONS **)&jarg4; 
+  arg5 = *(SYM_GRAPH **)&jarg5; 
+  arg6 = *(unsigned int **)&jarg6; 
   result = (SCIP_RETCODE)(arg1)->scip_getpermsymgraph(arg2,arg3,arg4,arg5,arg6);
-  jresult = (jint)result;
+  jresult = (jint)result; 
   return jresult;
 }
 
@@ -12620,18 +12609,18 @@ SWIGEXPORT jint JNICALL Java_jscip_SCIPJNIJNI_ObjConshdlr_1scip_1getpermsymgraph
   SYM_GRAPH *arg5 = (SYM_GRAPH *) 0 ;
   unsigned int *arg6 = (unsigned int *) 0 ;
   SCIP_RETCODE result;
-
+  
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(scip::ObjConshdlr **)&jarg1;
-  arg2 = *(SCIP **)&jarg2;
-  arg3 = *(SCIP_CONSHDLR **)&jarg3;
-  arg4 = *(SCIP_CONS **)&jarg4;
-  arg5 = *(SYM_GRAPH **)&jarg5;
-  arg6 = *(unsigned int **)&jarg6;
+  arg1 = *(scip::ObjConshdlr **)&jarg1; 
+  arg2 = *(SCIP **)&jarg2; 
+  arg3 = *(SCIP_CONSHDLR **)&jarg3; 
+  arg4 = *(SCIP_CONS **)&jarg4; 
+  arg5 = *(SYM_GRAPH **)&jarg5; 
+  arg6 = *(unsigned int **)&jarg6; 
   result = (SCIP_RETCODE)(arg1)->scip::ObjConshdlr::scip_getpermsymgraph(arg2,arg3,arg4,arg5,arg6);
-  jresult = (jint)result;
+  jresult = (jint)result; 
   return jresult;
 }
 
@@ -12645,18 +12634,18 @@ SWIGEXPORT jint JNICALL Java_jscip_SCIPJNIJNI_ObjConshdlr_1scip_1getsignedpermsy
   SYM_GRAPH *arg5 = (SYM_GRAPH *) 0 ;
   unsigned int *arg6 = (unsigned int *) 0 ;
   SCIP_RETCODE result;
-
+  
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(scip::ObjConshdlr **)&jarg1;
-  arg2 = *(SCIP **)&jarg2;
-  arg3 = *(SCIP_CONSHDLR **)&jarg3;
-  arg4 = *(SCIP_CONS **)&jarg4;
-  arg5 = *(SYM_GRAPH **)&jarg5;
-  arg6 = *(unsigned int **)&jarg6;
+  arg1 = *(scip::ObjConshdlr **)&jarg1; 
+  arg2 = *(SCIP **)&jarg2; 
+  arg3 = *(SCIP_CONSHDLR **)&jarg3; 
+  arg4 = *(SCIP_CONS **)&jarg4; 
+  arg5 = *(SYM_GRAPH **)&jarg5; 
+  arg6 = *(unsigned int **)&jarg6; 
   result = (SCIP_RETCODE)(arg1)->scip_getsignedpermsymgraph(arg2,arg3,arg4,arg5,arg6);
-  jresult = (jint)result;
+  jresult = (jint)result; 
   return jresult;
 }
 
@@ -12670,18 +12659,18 @@ SWIGEXPORT jint JNICALL Java_jscip_SCIPJNIJNI_ObjConshdlr_1scip_1getsignedpermsy
   SYM_GRAPH *arg5 = (SYM_GRAPH *) 0 ;
   unsigned int *arg6 = (unsigned int *) 0 ;
   SCIP_RETCODE result;
-
+  
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(scip::ObjConshdlr **)&jarg1;
-  arg2 = *(SCIP **)&jarg2;
-  arg3 = *(SCIP_CONSHDLR **)&jarg3;
-  arg4 = *(SCIP_CONS **)&jarg4;
-  arg5 = *(SYM_GRAPH **)&jarg5;
-  arg6 = *(unsigned int **)&jarg6;
+  arg1 = *(scip::ObjConshdlr **)&jarg1; 
+  arg2 = *(SCIP **)&jarg2; 
+  arg3 = *(SCIP_CONSHDLR **)&jarg3; 
+  arg4 = *(SCIP_CONS **)&jarg4; 
+  arg5 = *(SYM_GRAPH **)&jarg5; 
+  arg6 = *(unsigned int **)&jarg6; 
   result = (SCIP_RETCODE)(arg1)->scip::ObjConshdlr::scip_getsignedpermsymgraph(arg2,arg3,arg4,arg5,arg6);
-  jresult = (jint)result;
+  jresult = (jint)result; 
   return jresult;
 }
 
@@ -12710,15 +12699,15 @@ SWIGEXPORT jint JNICALL Java_jscip_SCIPJNIJNI_SCIPincludeObjConshdlr(JNIEnv *jen
   scip::ObjConshdlr *arg2 = (scip::ObjConshdlr *) 0 ;
   unsigned int arg3 ;
   SCIP_RETCODE result;
-
+  
   (void)jenv;
   (void)jcls;
   (void)jarg2_;
-  arg1 = *(SCIP **)&jarg1;
-  arg2 = *(scip::ObjConshdlr **)&jarg2;
-  arg3 = (unsigned int)jarg3;
+  arg1 = *(SCIP **)&jarg1; 
+  arg2 = *(scip::ObjConshdlr **)&jarg2; 
+  arg3 = (unsigned int)jarg3; 
   result = (SCIP_RETCODE)SCIPincludeObjConshdlr(arg1,arg2,arg3);
-  jresult = (jint)result;
+  jresult = (jint)result; 
   return jresult;
 }
 
@@ -12728,17 +12717,17 @@ SWIGEXPORT jlong JNICALL Java_jscip_SCIPJNIJNI_SCIPfindObjConshdlr(JNIEnv *jenv,
   SCIP *arg1 = (SCIP *) 0 ;
   char *arg2 = (char *) 0 ;
   scip::ObjConshdlr *result = 0 ;
-
+  
   (void)jenv;
   (void)jcls;
-  arg1 = *(SCIP **)&jarg1;
+  arg1 = *(SCIP **)&jarg1; 
   arg2 = 0;
   if (jarg2) {
     arg2 = (char *)jenv->GetStringUTFChars(jarg2, 0);
     if (!arg2) return 0;
   }
   result = (scip::ObjConshdlr *)SCIPfindObjConshdlr(arg1,(char const *)arg2);
-  *(scip::ObjConshdlr **)&jresult = result;
+  *(scip::ObjConshdlr **)&jresult = result; 
   if (arg2) jenv->ReleaseStringUTFChars(jarg2, (const char *)arg2);
   return jresult;
 }
@@ -12749,13 +12738,13 @@ SWIGEXPORT jlong JNICALL Java_jscip_SCIPJNIJNI_SCIPgetObjConshdlr(JNIEnv *jenv, 
   SCIP *arg1 = (SCIP *) 0 ;
   SCIP_CONSHDLR *arg2 = (SCIP_CONSHDLR *) 0 ;
   scip::ObjConshdlr *result = 0 ;
-
+  
   (void)jenv;
   (void)jcls;
-  arg1 = *(SCIP **)&jarg1;
-  arg2 = *(SCIP_CONSHDLR **)&jarg2;
+  arg1 = *(SCIP **)&jarg1; 
+  arg2 = *(SCIP_CONSHDLR **)&jarg2; 
   result = (scip::ObjConshdlr *)SCIPgetObjConshdlr(arg1,arg2);
-  *(scip::ObjConshdlr **)&jresult = result;
+  *(scip::ObjConshdlr **)&jresult = result; 
   return jresult;
 }
 
@@ -12768,16 +12757,16 @@ SWIGEXPORT jint JNICALL Java_jscip_SCIPJNIJNI_SCIPaddVarLocksType(JNIEnv *jenv, 
   int arg4 ;
   int arg5 ;
   SCIP_RETCODE result;
-
+  
   (void)jenv;
   (void)jcls;
-  arg1 = *(SCIP **)&jarg1;
-  arg2 = *(SCIP_VAR **)&jarg2;
-  arg3 = (SCIP_LockType)jarg3;
-  arg4 = (int)jarg4;
-  arg5 = (int)jarg5;
+  arg1 = *(SCIP **)&jarg1; 
+  arg2 = *(SCIP_VAR **)&jarg2; 
+  arg3 = (SCIP_LockType)jarg3; 
+  arg4 = (int)jarg4; 
+  arg5 = (int)jarg5; 
   result = (SCIP_RETCODE)SCIPaddVarLocksType(arg1,arg2,arg3,arg4,arg5);
-  jresult = (jint)result;
+  jresult = (jint)result; 
   return jresult;
 }
 
@@ -12790,16 +12779,16 @@ SWIGEXPORT jint JNICALL Java_jscip_SCIPJNIJNI_SCIPaddConsLocksType(JNIEnv *jenv,
   int arg4 ;
   int arg5 ;
   SCIP_RETCODE result;
-
+  
   (void)jenv;
   (void)jcls;
-  arg1 = *(SCIP **)&jarg1;
-  arg2 = *(SCIP_CONS **)&jarg2;
-  arg3 = (SCIP_LockType)jarg3;
-  arg4 = (int)jarg4;
-  arg5 = (int)jarg5;
+  arg1 = *(SCIP **)&jarg1; 
+  arg2 = *(SCIP_CONS **)&jarg2; 
+  arg3 = (SCIP_LockType)jarg3; 
+  arg4 = (int)jarg4; 
+  arg5 = (int)jarg5; 
   result = (SCIP_RETCODE)SCIPaddConsLocksType(arg1,arg2,arg3,arg4,arg5);
-  jresult = (jint)result;
+  jresult = (jint)result; 
   return jresult;
 }
 
@@ -12807,11 +12796,11 @@ SWIGEXPORT jint JNICALL Java_jscip_SCIPJNIJNI_SCIPaddConsLocksType(JNIEnv *jenv,
 SWIGEXPORT void JNICALL Java_jscip_SCIPJNIJNI_setResult(JNIEnv *jenv, jclass jcls, jlong jarg1, jint jarg2) {
   SCIP_Result *arg1 = (SCIP_Result *) 0 ;
   SCIP_Result arg2 ;
-
+  
   (void)jenv;
   (void)jcls;
-  arg1 = *(SCIP_Result **)&jarg1;
-  arg2 = (SCIP_Result)jarg2;
+  arg1 = *(SCIP_Result **)&jarg1; 
+  arg2 = (SCIP_Result)jarg2; 
   setResult(arg1,arg2);
 }
 
@@ -12860,103 +12849,103 @@ SWIGEXPORT void JNICALL Java_jscip_SCIPJNIJNI_swig_1module_1init(JNIEnv *jenv, j
       "SwigDirector_ObjEventhdlr_scip_exec", "(Ljscip/ObjEventhdlr;JJJJ)I" 
     },
     {
-      "SwigDirector_ObjConshdlr_scip_free", "(Ljscip/ObjConshdlr;JJ)I"
+      "SwigDirector_ObjConshdlr_scip_free", "(Ljscip/ObjConshdlr;JJ)I" 
     },
     {
-      "SwigDirector_ObjConshdlr_scip_init", "(Ljscip/ObjConshdlr;JJJI)I"
+      "SwigDirector_ObjConshdlr_scip_init", "(Ljscip/ObjConshdlr;JJJI)I" 
     },
     {
-      "SwigDirector_ObjConshdlr_scip_exit", "(Ljscip/ObjConshdlr;JJJI)I"
+      "SwigDirector_ObjConshdlr_scip_exit", "(Ljscip/ObjConshdlr;JJJI)I" 
     },
     {
-      "SwigDirector_ObjConshdlr_scip_initpre", "(Ljscip/ObjConshdlr;JJJI)I"
+      "SwigDirector_ObjConshdlr_scip_initpre", "(Ljscip/ObjConshdlr;JJJI)I" 
     },
     {
-      "SwigDirector_ObjConshdlr_scip_exitpre", "(Ljscip/ObjConshdlr;JJJI)I"
+      "SwigDirector_ObjConshdlr_scip_exitpre", "(Ljscip/ObjConshdlr;JJJI)I" 
     },
     {
-      "SwigDirector_ObjConshdlr_scip_initsol", "(Ljscip/ObjConshdlr;JJJI)I"
+      "SwigDirector_ObjConshdlr_scip_initsol", "(Ljscip/ObjConshdlr;JJJI)I" 
     },
     {
-      "SwigDirector_ObjConshdlr_scip_exitsol", "(Ljscip/ObjConshdlr;JJJIJ)I"
+      "SwigDirector_ObjConshdlr_scip_exitsol", "(Ljscip/ObjConshdlr;JJJIJ)I" 
     },
     {
-      "SwigDirector_ObjConshdlr_scip_delete", "(Ljscip/ObjConshdlr;JJJJ)I"
+      "SwigDirector_ObjConshdlr_scip_delete", "(Ljscip/ObjConshdlr;JJJJ)I" 
     },
     {
-      "SwigDirector_ObjConshdlr_scip_trans", "(Ljscip/ObjConshdlr;JJJJ)I"
+      "SwigDirector_ObjConshdlr_scip_trans", "(Ljscip/ObjConshdlr;JJJJ)I" 
     },
     {
-      "SwigDirector_ObjConshdlr_scip_initlp", "(Ljscip/ObjConshdlr;JJJIJ)I"
+      "SwigDirector_ObjConshdlr_scip_initlp", "(Ljscip/ObjConshdlr;JJJIJ)I" 
     },
     {
-      "SwigDirector_ObjConshdlr_scip_sepalp", "(Ljscip/ObjConshdlr;JJJIIJ)I"
+      "SwigDirector_ObjConshdlr_scip_sepalp", "(Ljscip/ObjConshdlr;JJJIIJ)I" 
     },
     {
-      "SwigDirector_ObjConshdlr_scip_sepasol", "(Ljscip/ObjConshdlr;JJJIIJJ)I"
+      "SwigDirector_ObjConshdlr_scip_sepasol", "(Ljscip/ObjConshdlr;JJJIIJJ)I" 
     },
     {
-      "SwigDirector_ObjConshdlr_scip_enfolp", "(Ljscip/ObjConshdlr;JJJIIJJ)I"
+      "SwigDirector_ObjConshdlr_scip_enfolp", "(Ljscip/ObjConshdlr;JJJIIJJ)I" 
     },
     {
-      "SwigDirector_ObjConshdlr_scip_enforelax", "(Ljscip/ObjConshdlr;JJJJIIJJ)I"
+      "SwigDirector_ObjConshdlr_scip_enforelax", "(Ljscip/ObjConshdlr;JJJJIIJJ)I" 
     },
     {
-      "SwigDirector_ObjConshdlr_scip_enfops", "(Ljscip/ObjConshdlr;JJJIIJJJ)I"
+      "SwigDirector_ObjConshdlr_scip_enfops", "(Ljscip/ObjConshdlr;JJJIIJJJ)I" 
     },
     {
-      "SwigDirector_ObjConshdlr_scip_check", "(Ljscip/ObjConshdlr;JJJIJJJJJJ)I"
+      "SwigDirector_ObjConshdlr_scip_check", "(Ljscip/ObjConshdlr;JJJIJJJJJJ)I" 
     },
     {
-      "SwigDirector_ObjConshdlr_scip_prop", "(Ljscip/ObjConshdlr;JJJIIIJJ)I"
+      "SwigDirector_ObjConshdlr_scip_prop", "(Ljscip/ObjConshdlr;JJJIIIJJ)I" 
     },
     {
-      "SwigDirector_ObjConshdlr_scip_presol", "(Ljscip/ObjConshdlr;JJJIIJIIIIIIIIIIJJJJJJJJJJJ)I"
+      "SwigDirector_ObjConshdlr_scip_presol", "(Ljscip/ObjConshdlr;JJJIIJIIIIIIIIIIJJJJJJJJJJJ)I" 
     },
     {
-      "SwigDirector_ObjConshdlr_scip_resprop", "(Ljscip/ObjConshdlr;JJJJIIJDJ)I"
+      "SwigDirector_ObjConshdlr_scip_resprop", "(Ljscip/ObjConshdlr;JJJJIIJDJ)I" 
     },
     {
-      "SwigDirector_ObjConshdlr_scip_lock", "(Ljscip/ObjConshdlr;JJJJII)I"
+      "SwigDirector_ObjConshdlr_scip_lock", "(Ljscip/ObjConshdlr;JJJIII)I" 
     },
     {
-      "SwigDirector_ObjConshdlr_scip_active", "(Ljscip/ObjConshdlr;JJJ)I"
+      "SwigDirector_ObjConshdlr_scip_active", "(Ljscip/ObjConshdlr;JJJ)I" 
     },
     {
-      "SwigDirector_ObjConshdlr_scip_deactive", "(Ljscip/ObjConshdlr;JJJ)I"
+      "SwigDirector_ObjConshdlr_scip_deactive", "(Ljscip/ObjConshdlr;JJJ)I" 
     },
     {
-      "SwigDirector_ObjConshdlr_scip_enable", "(Ljscip/ObjConshdlr;JJJ)I"
+      "SwigDirector_ObjConshdlr_scip_enable", "(Ljscip/ObjConshdlr;JJJ)I" 
     },
     {
-      "SwigDirector_ObjConshdlr_scip_disable", "(Ljscip/ObjConshdlr;JJJ)I"
+      "SwigDirector_ObjConshdlr_scip_disable", "(Ljscip/ObjConshdlr;JJJ)I" 
     },
     {
-      "SwigDirector_ObjConshdlr_scip_delvars", "(Ljscip/ObjConshdlr;JJJI)I"
+      "SwigDirector_ObjConshdlr_scip_delvars", "(Ljscip/ObjConshdlr;JJJI)I" 
     },
     {
-      "SwigDirector_ObjConshdlr_scip_print", "(Ljscip/ObjConshdlr;JJJJ)I"
+      "SwigDirector_ObjConshdlr_scip_print", "(Ljscip/ObjConshdlr;JJJJ)I" 
     },
     {
-      "SwigDirector_ObjConshdlr_scip_copy", "(Ljscip/ObjConshdlr;JJLjava/lang/String;JJJJJJJJJJJJJJJJJ)I"
+      "SwigDirector_ObjConshdlr_scip_copy", "(Ljscip/ObjConshdlr;JJLjava/lang/String;JJJJJJJJJJJJJJJJJ)I" 
     },
     {
-      "SwigDirector_ObjConshdlr_scip_parse", "(Ljscip/ObjConshdlr;JJJLjava/lang/String;Ljava/lang/String;JJJJJJJJJJJ)I"
+      "SwigDirector_ObjConshdlr_scip_parse", "(Ljscip/ObjConshdlr;JJJLjava/lang/String;Ljava/lang/String;JJJJJJJJJJJ)I" 
     },
     {
-      "SwigDirector_ObjConshdlr_scip_getvars", "(Ljscip/ObjConshdlr;JJJJIJ)I"
+      "SwigDirector_ObjConshdlr_scip_getvars", "(Ljscip/ObjConshdlr;JJJJIJ)I" 
     },
     {
-      "SwigDirector_ObjConshdlr_scip_getnvars", "(Ljscip/ObjConshdlr;JJJJJ)I"
+      "SwigDirector_ObjConshdlr_scip_getnvars", "(Ljscip/ObjConshdlr;JJJJJ)I" 
     },
     {
-      "SwigDirector_ObjConshdlr_scip_getdivebdchgs", "(Ljscip/ObjConshdlr;JJJJJJ)I"
+      "SwigDirector_ObjConshdlr_scip_getdivebdchgs", "(Ljscip/ObjConshdlr;JJJJJJ)I" 
     },
     {
-      "SwigDirector_ObjConshdlr_scip_getpermsymgraph", "(Ljscip/ObjConshdlr;JJJJJ)I"
+      "SwigDirector_ObjConshdlr_scip_getpermsymgraph", "(Ljscip/ObjConshdlr;JJJJJ)I" 
     },
     {
-      "SwigDirector_ObjConshdlr_scip_getsignedpermsymgraph", "(Ljscip/ObjConshdlr;JJJJJ)I"
+      "SwigDirector_ObjConshdlr_scip_getsignedpermsymgraph", "(Ljscip/ObjConshdlr;JJJJJ)I" 
     }
   };
   Swig::jclass_SCIPJNIJNI = (jclass) jenv->NewGlobalRef(jcls);
