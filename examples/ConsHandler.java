@@ -9,13 +9,16 @@ import java.util.*;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class Tsp {
+/**
+ * Illustrates the use of ConsHandler to solve the traveling salesman problem.
+ */
+public class ConsHandler {
 
     private static final long DEFAULT_SEED = 4L;
 
     public static void main(String[] args) {
         if (args.length == 1 && args[0].equals("--help")) {
-            System.out.println("Usage: Tsp [nodeCount] [outputImage] [seed]");
+            System.out.println("Usage: ConsHandler [nodeCount] [outputImage] [seed]");
             return;
         }
         int nodeCount;
@@ -325,29 +328,28 @@ public class Tsp {
         }
 
         @Override
-        protected SCIP_Retcode check(Scip scip, Solution solution, long checkintegrality, long checklprows, long printreason, long completely, ResultHolder resultHolder) {
+        protected SCIP_Result check(Scip scip, Solution solution, long checkintegrality, long checklprows, long printreason, long completely) {
             log("check");
             List<List<TourPart>> tours = tourFinder.findTours(edges, scip, solution);
-            resultHolder.setValue(checkFeasibility(tours));
-            return SCIP_Retcode.SCIP_OKAY;
+            return checkFeasibility(tours);
         }
 
         @Override
-        protected SCIP_Retcode sepalp(Scip scip, ResultHolder resultHolder) {
+        protected SCIP_Result sepalp(Scip scip) {
             log("sepalp");
             List<List<TourPart>> tours = tourFinder.findTours(edges, scip, null);
-            resultHolder.setValue(separate(scip, tours));
+            SCIP_Result result = separate(scip, tours);
             recordSolution(tours);
-            return SCIP_Retcode.SCIP_OKAY;
+            return result;
         }
 
         @Override
-        protected SCIP_Retcode sepasol(Scip scip, Solution solution, ResultHolder resultHolder) {
+        protected SCIP_Result sepasol(Scip scip, Solution solution) {
             log("scipExec, stage: " + scip.getStage());
             List<List<TourPart>> subtours = tourFinder.findTours(edges, scip, solution);
-            resultHolder.setValue(separate(scip, subtours));
+            SCIP_Result result = separate(scip, subtours);
             recordSolution(subtours);
-            return SCIP_Retcode.SCIP_OKAY;
+            return result;
         }
 
         private void addSubtourConstraints(Scip scip, List<List<TourPart>> subtours) {
@@ -406,12 +408,12 @@ public class Tsp {
         }
 
         @Override
-        protected SCIP_Retcode enfolp(Scip scip, ResultHolder resultHolder) {
+        protected SCIP_Result enfolp(Scip scip) {
             log("enfolp");
             List<List<TourPart>> tours = tourFinder.findTours(edges, scip, null);
-            resultHolder.setValue(separate(scip, tours));
+            SCIP_Result result = separate(scip, tours);
             recordSolution(tours);
-            return SCIP_Retcode.SCIP_OKAY;
+            return result;
         }
 
     }

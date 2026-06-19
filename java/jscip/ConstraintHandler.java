@@ -68,149 +68,130 @@ public class ConstraintHandler {
         this.presoltiming = presoltiming;
     }
 
-    protected SCIP_Retcode free(Scip scip) {
-        return SCIP_Retcode.SCIP_OKAY;
+    protected void free(Scip scip) {
     }
 
-    protected SCIP_Retcode init(Scip scip) {
-        return SCIP_Retcode.SCIP_OKAY;
+    protected void init(Scip scip) {
     }
 
-    protected SCIP_Retcode exit(Scip scip) {
-        return SCIP_Retcode.SCIP_OKAY;
+    protected void exit(Scip scip) {
     }
 
-    protected SCIP_Retcode initpre(Scip scip) {
-        return SCIP_Retcode.SCIP_OKAY;
+    protected void initpre(Scip scip) {
     }
 
-    protected SCIP_Retcode exitpre(Scip scip) {
-        return SCIP_Retcode.SCIP_OKAY;
+    protected void exitpre(Scip scip) {
     }
 
-    protected SCIP_Retcode initsol(Scip scip) {
-        return SCIP_Retcode.SCIP_OKAY;
+    protected void initsol(Scip scip) {
     }
 
-    protected SCIP_Retcode exitsol(Scip scip, long restart) {
-        return SCIP_Retcode.SCIP_OKAY;
+    protected void exitsol(Scip scip, long restart) {
     }
 
-    protected SCIP_Retcode delete(Scip scip) {
-        return SCIP_Retcode.SCIP_OKAY;
+    protected void delete(Scip scip) {
     }
 
-    protected SCIP_Retcode trans(Scip scip) {
-        return SCIP_Retcode.SCIP_OKAY;
+    protected void trans(Scip scip) {
     }
 
-    protected SCIP_Retcode initlp(Scip scip, IntHolder infeasible) {
-        return SCIP_Retcode.SCIP_OKAY;
+    protected Integer initlp(Scip scip) {
+        return 0;
     }
 
-    protected SCIP_Retcode sepalp(Scip scip, ResultHolder result) {
-        return SCIP_Retcode.SCIP_OKAY;
+    protected SCIP_Result sepalp(Scip scip) {
+        return SCIP_Result.SCIP_DIDNOTRUN;
     }
 
-    protected SCIP_Retcode sepasol(Scip scip, Solution solution, ResultHolder result) {
-        return SCIP_Retcode.SCIP_OKAY;
+    protected SCIP_Result sepasol(Scip scip, Solution solution) {
+        return SCIP_Result.SCIP_DIDNOTRUN;
     }
 
-    protected SCIP_Retcode enfolp(Scip scip, ResultHolder result) {
-        return SCIP_Retcode.SCIP_OKAY;
+    protected SCIP_Result enfolp(Scip scip) {
+        return SCIP_Result.SCIP_DIDNOTRUN;
     }
 
-    protected SCIP_Retcode enforelax(Scip scip, ResultHolder result) {
-        return SCIP_Retcode.SCIP_OKAY;
+    protected SCIP_Result enforelax(Scip scip) {
+        return SCIP_Result.SCIP_DIDNOTRUN;
     }
 
-    protected SCIP_Retcode enfops(Scip scip, long solinfeasible, long objinfeasible, ResultHolder result) {
-        return SCIP_Retcode.SCIP_OKAY;
+    protected SCIP_Result enfops(Scip scip, long solinfeasible, long objinfeasible) {
+        return SCIP_Result.SCIP_DIDNOTRUN;
     }
 
-    protected SCIP_Retcode check(
+    protected SCIP_Result check(
             Scip scip,
             Solution solution,
             long checkintegrality,
             long checklprows,
             long printreason,
-            long completely,
-            ResultHolder result
+            long completely
     ) {
-        return SCIP_Retcode.SCIP_OKAY;
+        return SCIP_Result.SCIP_DIDNOTRUN;
     }
 
-    protected SCIP_Retcode prop(Scip scip, ResultHolder result) {
-        return SCIP_Retcode.SCIP_OKAY;
+    protected SCIP_Result prop(Scip scip) {
+        return SCIP_Result.SCIP_DIDNOTRUN;
     }
 
-    protected SCIP_Retcode presol(Scip scip, ResultHolder result) {
-        return SCIP_Retcode.SCIP_OKAY;
+    protected SCIP_Result presol(Scip scip) {
+        return SCIP_Result.SCIP_DIDNOTRUN;
     }
 
-    protected SCIP_Retcode resprop(Scip scip, ResultHolder result) {
-        return SCIP_Retcode.SCIP_OKAY;
+    protected SCIP_Result resprop(Scip scip) {
+        return SCIP_Result.SCIP_DIDNOTRUN;
     }
 
-    protected SCIP_Retcode lock(Scip scip, SCIP_LockType locktype, int nlocksneg, int nlockspos) {
-        return SCIP_Retcode.SCIP_OKAY;
+    protected void lock(Scip scip, SCIP_LockType locktype, int nlocksneg, int nlockspos) {
     }
 
-    protected SCIP_Retcode active(Scip scip) {
-        return SCIP_Retcode.SCIP_OKAY;
+    protected void active(Scip scip) {
     }
 
-    protected SCIP_Retcode deactive(Scip scip) {
-        return SCIP_Retcode.SCIP_OKAY;
+    protected void deactive(Scip scip) {
     }
 
-    protected SCIP_Retcode enable(Scip scip) {
-        return SCIP_Retcode.SCIP_OKAY;
+    protected void enable(Scip scip) {
     }
 
-    protected SCIP_Retcode disable(Scip scip) {
-        return SCIP_Retcode.SCIP_OKAY;
+    protected void disable(Scip scip) {
     }
 
-    protected SCIP_Retcode delvars(Scip scip) {
-        return SCIP_Retcode.SCIP_OKAY;
+    protected void delvars(Scip scip) {
     }
 
-    protected SCIP_Retcode print(Scip scip) {
-        return SCIP_Retcode.SCIP_OKAY;
+    protected void print(Scip scip) {
     }
 
-    protected SCIP_Retcode copy(Scip scip, IntHolder valid) {
-        return SCIP_Retcode.SCIP_OKAY;
+    protected Integer copy(Scip scip) {
+        return null;
     }
 
-    protected SCIP_Retcode parse(Scip scip, IntHolder success) {
-        return SCIP_Retcode.SCIP_OKAY;
+    protected Integer parse(Scip scip) {
+        return null;
     }
 
-    protected SCIP_Retcode getvars(Scip scip, IntHolder success) {
-        return SCIP_Retcode.SCIP_OKAY;
+    protected Integer getvars(Scip scip) {
+        return null;
     }
 
-    protected SCIP_Retcode getnvars(Scip scip, IntHolder nvars, IntHolder success) {
-        return SCIP_Retcode.SCIP_OKAY;
+    protected int getnvars(Scip scip) {
+        return 0;
     }
 
-    protected SCIP_Retcode getdivebdchgs(
+    protected GetDiveBdChgsResult getdivebdchgs(
             Scip scip,
-            Solution solution,
-            IntHolder success,
-            IntHolder infeasible
+            Solution solution
     ) {
-        return SCIP_Retcode.SCIP_OKAY;
+        return null;
     }
 
-    protected SCIP_Retcode getpermsymgraph(Scip scip, IntHolder success) {
-        return SCIP_Retcode.SCIP_OKAY;
+    protected Integer getpermsymgraph(Scip scip) {
+        return null;
     }
 
-    protected SCIP_Retcode getsignedpermsymgraph(Scip scip, IntHolder success) {
-        return SCIP_Retcode.SCIP_OKAY;
+    protected Integer getsignedpermsymgraph(Scip scip) {
+        return null;
     }
 
     public void attach(Scip jScip, SWIGTYPE_p_SCIP cPtr) {
@@ -233,7 +214,12 @@ public class ConstraintHandler {
         ) {
             @Override
             public SCIP_Retcode scip_free(SWIGTYPE_p_SCIP scip, SWIGTYPE_p_SCIP_CONSHDLR conshdlr) {
-                return free(jScip);
+                try {
+                    free(jScip);
+                    return SCIP_Retcode.SCIP_OKAY;
+                } catch (Exception e) {
+                    return SCIP_Retcode.SCIP_ERROR;
+                }
             }
 
             @Override
@@ -243,7 +229,12 @@ public class ConstraintHandler {
                     SWIGTYPE_p_p_SCIP_CONS conss,
                     int nconss
             ) {
-                return init(jScip);
+                try {
+                    init(jScip);
+                    return SCIP_Retcode.SCIP_OKAY;
+                } catch (Exception e) {
+                    return SCIP_Retcode.SCIP_ERROR;
+                }
             }
 
             @Override
@@ -253,7 +244,12 @@ public class ConstraintHandler {
                     SWIGTYPE_p_p_SCIP_CONS conss,
                     int nconss
             ) {
-                return exit(jScip);
+                try {
+                    exit(jScip);
+                    return SCIP_Retcode.SCIP_OKAY;
+                } catch (Exception ex) {
+                    return SCIP_Retcode.SCIP_ERROR;
+                }
             }
 
             @Override
@@ -263,7 +259,12 @@ public class ConstraintHandler {
                     SWIGTYPE_p_p_SCIP_CONS conss,
                     int nconss
             ) {
-                return initpre(jScip);
+                try {
+                    initpre(jScip);
+                    return SCIP_Retcode.SCIP_OKAY;
+                } catch (Exception e) {
+                    return SCIP_Retcode.SCIP_ERROR;
+                }
             }
 
             @Override
@@ -273,7 +274,12 @@ public class ConstraintHandler {
                     SWIGTYPE_p_p_SCIP_CONS conss,
                     int nconss
             ) {
-                return exitpre(jScip);
+                try {
+                    exitpre(jScip);
+                    return SCIP_Retcode.SCIP_OKAY;
+                } catch (Exception e) {
+                    return SCIP_Retcode.SCIP_ERROR;
+                }
             }
 
             @Override
@@ -283,7 +289,12 @@ public class ConstraintHandler {
                     SWIGTYPE_p_p_SCIP_CONS conss,
                     int nconss
             ) {
-                return initsol(jScip);
+                try {
+                    initsol(jScip);
+                    return SCIP_Retcode.SCIP_OKAY;
+                } catch (Exception e) {
+                    return SCIP_Retcode.SCIP_ERROR;
+                }
             }
 
             @Override
@@ -294,7 +305,12 @@ public class ConstraintHandler {
                     int nconss,
                     long restart
             ) {
-                return exitsol(jScip, restart);
+                try {
+                    exitsol(jScip, restart);
+                    return SCIP_Retcode.SCIP_OKAY;
+                } catch (Exception e) {
+                    return SCIP_Retcode.SCIP_ERROR;
+                }
             }
 
             @Override
@@ -304,7 +320,12 @@ public class ConstraintHandler {
                     SWIGTYPE_p_SCIP_CONS cons,
                     SWIGTYPE_p_p_SCIP_CONSDATA consdata
             ) {
-                return ConstraintHandler.this.delete(jScip);
+                try {
+                    ConstraintHandler.this.delete(jScip);
+                    return SCIP_Retcode.SCIP_OKAY;
+                } catch (Exception e) {
+                    return SCIP_Retcode.SCIP_ERROR;
+                }
             }
 
             @Override
@@ -314,7 +335,12 @@ public class ConstraintHandler {
                     SWIGTYPE_p_SCIP_CONS sourcecons,
                     SWIGTYPE_p_p_SCIP_CONS targetcons
             ) {
-                return trans(jScip);
+                try {
+                    trans(jScip);
+                    return SCIP_Retcode.SCIP_OKAY;
+                } catch (Exception e) {
+                    return SCIP_Retcode.SCIP_ERROR;
+                }
             }
 
             @Override
@@ -325,12 +351,15 @@ public class ConstraintHandler {
                     int nconss,
                     SWIGTYPE_p_unsigned_int infeasible
             ) {
-                IntHolder infeasibleHolder = new IntHolder();
-                SCIP_Retcode retCode = initlp(jScip, infeasibleHolder);
-                if (infeasibleHolder.isSet()) {
-                    SCIPJNI.unsigned_int_array_setitem(infeasible, 0, infeasibleHolder.getValue());
+                try {
+                    Integer infeasibleResult = initlp(jScip);
+                    if (infeasibleResult != null) {
+                        SCIPJNI.unsigned_int_array_setitem(infeasible, 0, infeasibleResult);
+                    }
+                    return SCIP_Retcode.SCIP_OKAY;
+                } catch (Exception e) {
+                    return SCIP_Retcode.SCIP_ERROR;
                 }
-                return retCode;
             }
 
             @Override
@@ -342,12 +371,13 @@ public class ConstraintHandler {
                     int nusefulconss,
                     SWIGTYPE_p_SCIP_Result result
             ) {
-                ResultHolder resultHolder = new ResultHolder();
-                SCIP_Retcode retCode = sepalp(jScip, resultHolder);
-                if (resultHolder.isSet()) {
-                    SCIPJNI.setResult(result, resultHolder.getValue());
+                try {
+                    SCIP_Result resultValue = sepalp(jScip);
+                    SCIPJNI.setResult(result, resultValue);
+                    return SCIP_Retcode.SCIP_OKAY;
+                } catch (Exception e) {
+                    return SCIP_Retcode.SCIP_ERROR;
                 }
-                return retCode;
             }
 
             @Override
@@ -360,12 +390,13 @@ public class ConstraintHandler {
                     SWIGTYPE_p_SCIP_SOL sol,
                     SWIGTYPE_p_SCIP_Result result
             ) {
-                ResultHolder resultHolder = new ResultHolder();
-                SCIP_Retcode retCode = sepasol(jScip, new Solution(sol), resultHolder);
-                if (resultHolder.isSet()) {
-                    SCIPJNI.setResult(result, resultHolder.getValue());
+                try {
+                    SCIP_Result resultValue = sepasol(jScip, new Solution(sol));
+                    SCIPJNI.setResult(result, resultValue);
+                    return SCIP_Retcode.SCIP_OKAY;
+                } catch (Exception e) {
+                    return SCIP_Retcode.SCIP_ERROR;
                 }
-                return retCode;
             }
 
             @Override
@@ -378,12 +409,13 @@ public class ConstraintHandler {
                     long solinfeasible,
                     SWIGTYPE_p_SCIP_Result result
             ) {
-                ResultHolder resultHolder = new ResultHolder();
-                SCIP_Retcode retCode = enfolp(jScip, resultHolder);
-                if (resultHolder.isSet()) {
-                    SCIPJNI.setResult(result, resultHolder.getValue());
+                try {
+                    SCIP_Result resultValue = enfolp(jScip);
+                    SCIPJNI.setResult(result, resultValue);
+                    return SCIP_Retcode.SCIP_OKAY;
+                } catch (Exception e) {
+                    return SCIP_Retcode.SCIP_ERROR;
                 }
-                return retCode;
             }
 
             @Override
@@ -397,12 +429,13 @@ public class ConstraintHandler {
                     long solinfeasible,
                     SWIGTYPE_p_SCIP_Result result
             ) {
-                ResultHolder resultHolder = new ResultHolder();
-                SCIP_Retcode retCode = enforelax(jScip, resultHolder);
-                if (resultHolder.isSet()) {
-                    SCIPJNI.setResult(result, resultHolder.getValue());
+                try {
+                    SCIP_Result resultValue = enforelax(jScip);
+                    SCIPJNI.setResult(result, resultValue);
+                    return SCIP_Retcode.SCIP_OKAY;
+                } catch (Exception e) {
+                    return SCIP_Retcode.SCIP_ERROR;
                 }
-                return retCode;
             }
 
             @Override
@@ -416,12 +449,13 @@ public class ConstraintHandler {
                     long objinfeasible,
                     SWIGTYPE_p_SCIP_Result result
             ) {
-                ResultHolder resultHolder = new ResultHolder();
-                SCIP_Retcode retCode = enfops(jScip, solinfeasible, objinfeasible, resultHolder);
-                if (resultHolder.isSet()) {
-                    SCIPJNI.setResult(result, resultHolder.getValue());
+                try {
+                    SCIP_Result resultValue = enfops(jScip, solinfeasible, objinfeasible);
+                    SCIPJNI.setResult(result, resultValue);
+                    return SCIP_Retcode.SCIP_OKAY;
+                } catch (Exception e) {
+                    return SCIP_Retcode.SCIP_ERROR;
                 }
-                return retCode;
             }
 
             @Override
@@ -437,20 +471,20 @@ public class ConstraintHandler {
                     long completely,
                     SWIGTYPE_p_SCIP_Result result
             ) {
-                ResultHolder resultHolder = new ResultHolder();
-                SCIP_Retcode retCode = check(
-                        jScip,
-                        new Solution(sol),
-                        checkintegrality,
-                        checklprows,
-                        printreason,
-                        completely,
-                        resultHolder
-                );
-                if (resultHolder.isSet()) {
-                    SCIPJNI.setResult(result, resultHolder.getValue());
+                try {
+                    SCIP_Result resultValue = check(
+                            jScip,
+                            new Solution(sol),
+                            checkintegrality,
+                            checklprows,
+                            printreason,
+                            completely
+                    );
+                    SCIPJNI.setResult(result, resultValue);
+                    return SCIP_Retcode.SCIP_OKAY;
+                } catch (Exception e) {
+                    return SCIP_Retcode.SCIP_ERROR;
                 }
-                return retCode;
             }
 
             @Override
@@ -464,12 +498,13 @@ public class ConstraintHandler {
                     SWIGTYPE_p_SCIP_PROPTIMING proptiming,
                     SWIGTYPE_p_SCIP_Result result
             ) {
-                ResultHolder resultHolder = new ResultHolder();
-                SCIP_Retcode retCode = prop(jScip, resultHolder);
-                if (resultHolder.isSet()) {
-                    SCIPJNI.setResult(result, resultHolder.getValue());
+                try {
+                    SCIP_Result resultValue = prop(jScip);
+                    SCIPJNI.setResult(result, resultValue);
+                    return SCIP_Retcode.SCIP_OKAY;
+                } catch (Exception e) {
+                    return SCIP_Retcode.SCIP_ERROR;
                 }
-                return retCode;
             }
 
             @Override
@@ -502,12 +537,13 @@ public class ConstraintHandler {
                     SWIGTYPE_p_int nchgsides,
                     SWIGTYPE_p_SCIP_Result result
             ) {
-                ResultHolder resultHolder = new ResultHolder();
-                SCIP_Retcode retCode = presol(jScip, resultHolder);
-                if (resultHolder.isSet()) {
-                    SCIPJNI.setResult(result, resultHolder.getValue());
+                try {
+                    SCIP_Result resultValue = presol(jScip);
+                    SCIPJNI.setResult(result, resultValue);
+                    return SCIP_Retcode.SCIP_OKAY;
+                } catch (Exception e) {
+                    return SCIP_Retcode.SCIP_ERROR;
                 }
-                return retCode;
             }
 
             @Override
@@ -522,12 +558,13 @@ public class ConstraintHandler {
                     double relaxedbd,
                     SWIGTYPE_p_SCIP_Result result
             ) {
-                ResultHolder resultHolder = new ResultHolder();
-                SCIP_Retcode retCode = resprop(jScip, resultHolder);
-                if (resultHolder.isSet()) {
-                    SCIPJNI.setResult(result, resultHolder.getValue());
+                try {
+                    SCIP_Result resultValue = resprop(jScip);
+                    SCIPJNI.setResult(result, resultValue);
+                    return SCIP_Retcode.SCIP_OKAY;
+                } catch (Exception e) {
+                    return SCIP_Retcode.SCIP_ERROR;
                 }
-                return retCode;
             }
 
             @Override
@@ -539,7 +576,12 @@ public class ConstraintHandler {
                     int nlockspos,
                     int nlocksneg
             ) {
-                return lock(jScip, locktype, nlocksneg, nlockspos);
+                try {
+                    lock(jScip, locktype, nlocksneg, nlockspos);
+                    return SCIP_Retcode.SCIP_OKAY;
+                } catch (Exception e) {
+                    return SCIP_Retcode.SCIP_ERROR;
+                }
             }
 
             @Override
@@ -548,7 +590,12 @@ public class ConstraintHandler {
                     SWIGTYPE_p_SCIP_CONSHDLR conshdlr,
                     SWIGTYPE_p_SCIP_CONS cons
             ) {
-                return active(jScip);
+                try {
+                    active(jScip);
+                    return SCIP_Retcode.SCIP_OKAY;
+                } catch (Exception e) {
+                    return SCIP_Retcode.SCIP_ERROR;
+                }
             }
 
             @Override
@@ -557,7 +604,12 @@ public class ConstraintHandler {
                     SWIGTYPE_p_SCIP_CONSHDLR conshdlr,
                     SWIGTYPE_p_SCIP_CONS cons
             ) {
-                return deactive(jScip);
+                try {
+                    deactive(jScip);
+                    return SCIP_Retcode.SCIP_OKAY;
+                } catch (Exception e) {
+                    return SCIP_Retcode.SCIP_ERROR;
+                }
             }
 
             @Override
@@ -566,7 +618,12 @@ public class ConstraintHandler {
                     SWIGTYPE_p_SCIP_CONSHDLR conshdlr,
                     SWIGTYPE_p_SCIP_CONS cons
             ) {
-                return enable(jScip);
+                try {
+                    enable(jScip);
+                    return SCIP_Retcode.SCIP_OKAY;
+                } catch (Exception e) {
+                    return SCIP_Retcode.SCIP_ERROR;
+                }
             }
 
             @Override
@@ -575,7 +632,12 @@ public class ConstraintHandler {
                     SWIGTYPE_p_SCIP_CONSHDLR conshdlr,
                     SWIGTYPE_p_SCIP_CONS cons
             ) {
-                return disable(jScip);
+                try {
+                    disable(jScip);
+                    return SCIP_Retcode.SCIP_OKAY;
+                } catch (Exception e) {
+                    return SCIP_Retcode.SCIP_ERROR;
+                }
             }
 
             @Override
@@ -585,7 +647,12 @@ public class ConstraintHandler {
                     SWIGTYPE_p_p_SCIP_CONS conss,
                     int nconss
             ) {
-                return delvars(jScip);
+                try {
+                    delvars(jScip);
+                    return SCIP_Retcode.SCIP_OKAY;
+                } catch (Exception e) {
+                    return SCIP_Retcode.SCIP_ERROR;
+                }
             }
 
             @Override
@@ -595,7 +662,12 @@ public class ConstraintHandler {
                     SWIGTYPE_p_SCIP_CONS cons,
                     SWIGTYPE_p_FILE file
             ) {
-                return print(jScip);
+                try {
+                    print(jScip);
+                    return SCIP_Retcode.SCIP_OKAY;
+                } catch (Exception e) {
+                    return SCIP_Retcode.SCIP_ERROR;
+                }
             }
 
             @Override
@@ -621,12 +693,15 @@ public class ConstraintHandler {
                     long global,
                     SWIGTYPE_p_unsigned_int valid
             ) {
-                IntHolder validHolder = new IntHolder();
-                SCIP_Retcode retCode = copy(jScip, validHolder);
-                if (validHolder.isSet()) {
-                    SCIPJNI.unsigned_int_array_setitem(valid, 0, validHolder.getValue());
+                try {
+                    Integer isValid = copy(jScip);
+                    if (isValid != null) {
+                        SCIPJNI.unsigned_int_array_setitem(valid, 0, isValid);
+                    }
+                    return SCIP_Retcode.SCIP_OKAY;
+                } catch (Exception e) {
+                    return SCIP_Retcode.SCIP_ERROR;
                 }
-                return retCode;
             }
 
             @Override
@@ -648,12 +723,15 @@ public class ConstraintHandler {
                     long stickingatnode,
                     SWIGTYPE_p_unsigned_int success
             ) {
-                IntHolder successHolder = new IntHolder();
-                SCIP_Retcode retCode = parse(jScip, successHolder);
-                if (successHolder.isSet()) {
-                    SCIPJNI.unsigned_int_array_setitem(success, 0, successHolder.getValue());
+                try {
+                    Integer isSuccess = parse(jScip);
+                    if (isSuccess != null) {
+                        SCIPJNI.unsigned_int_array_setitem(success, 0, isSuccess);
+                    }
+                    return SCIP_Retcode.SCIP_OKAY;
+                } catch (Exception e) {
+                    return SCIP_Retcode.SCIP_ERROR;
                 }
-                return retCode;
             }
 
             @Override
@@ -665,12 +743,15 @@ public class ConstraintHandler {
                     int varssize,
                     SWIGTYPE_p_unsigned_int success
             ) {
-                IntHolder successHolder = new IntHolder();
-                SCIP_Retcode retCode = getvars(jScip, successHolder);
-                if (successHolder.isSet()) {
-                    SCIPJNI.unsigned_int_array_setitem(success, 0, successHolder.getValue());
+                try {
+                    Integer isSuccess = getvars(jScip);
+                    if (isSuccess != null) {
+                        SCIPJNI.unsigned_int_array_setitem(success, 0, isSuccess);
+                    }
+                    return SCIP_Retcode.SCIP_OKAY;
+                } catch (Exception e) {
+                    return SCIP_Retcode.SCIP_ERROR;
                 }
-                return retCode;
             }
 
             @Override
@@ -681,16 +762,18 @@ public class ConstraintHandler {
                     SWIGTYPE_p_int nvars,
                     SWIGTYPE_p_unsigned_int success
             ) {
-                IntHolder nvarsHolder = new IntHolder();
-                IntHolder successHolder = new IntHolder();
-                SCIP_Retcode retCode = getnvars(jScip, nvarsHolder, successHolder);
-                if (nvarsHolder.isSet()) {
-                    SCIPJNI.int_array_setitem(nvars,0, nvarsHolder.getValue());
+                try {
+                    int result = getnvars(jScip);
+                    if (result >= 0) {
+                        SCIPJNI.unsigned_int_array_setitem(success, 0, 1);
+                        SCIPJNI.int_array_setitem(nvars, 0, result);
+                    } else {
+                        SCIPJNI.unsigned_int_array_setitem(success, 0, 0);
+                    }
+                    return SCIP_Retcode.SCIP_OKAY;
+                } catch (Exception e) {
+                    return SCIP_Retcode.SCIP_ERROR;
                 }
-                if (successHolder.isSet()) {
-                    SCIPJNI.unsigned_int_array_setitem(success, 0, successHolder.getValue());
-                }
-                return retCode;
             }
 
             @Override
@@ -702,17 +785,27 @@ public class ConstraintHandler {
                     SWIGTYPE_p_unsigned_int success,
                     SWIGTYPE_p_unsigned_int infeasible
             ) {
-                Solution solution = new Solution(sol);
-                IntHolder successHolder = new IntHolder();
-                IntHolder infeasibleHolder = new IntHolder();
-                SCIP_Retcode retcode = getdivebdchgs(jScip, solution, successHolder, infeasibleHolder);
-                if (successHolder.isSet()) {
-                    SCIPJNI.unsigned_int_array_setitem(success, 0, successHolder.getValue());
+                try {
+                    Solution solution = new Solution(sol);
+                    GetDiveBdChgsResult result = getdivebdchgs(jScip, solution);
+                    if (result == null) {
+                        return SCIP_Retcode.SCIP_OKAY;
+                    }
+                    switch(result) {
+                        case INFEASIBLE:
+                            SCIPJNI.unsigned_int_array_setitem(success, 0, 1);
+                            SCIPJNI.unsigned_int_array_setitem(infeasible, 0, 1);
+                        case FEASIBLE:
+                            SCIPJNI.unsigned_int_array_setitem(success, 0, 1);
+                            SCIPJNI.unsigned_int_array_setitem(infeasible, 0, 0);
+                        case ERROR:
+                            SCIPJNI.unsigned_int_array_setitem(success, 0, 0);
+                            return SCIP_Retcode.SCIP_ERROR;
+                    }
+                    return SCIP_Retcode.SCIP_OKAY;
+                } catch (Exception e) {
+                    return SCIP_Retcode.SCIP_ERROR;
                 }
-                if (infeasibleHolder.isSet()) {
-                    SCIPJNI.unsigned_int_array_setitem(infeasible, 0, infeasibleHolder.getValue());
-                }
-                return retcode;
             }
 
             @Override
@@ -723,12 +816,15 @@ public class ConstraintHandler {
                     SWIGTYPE_p_SYM_GRAPH graph,
                     SWIGTYPE_p_unsigned_int success
             ) {
-                IntHolder successHolder = new IntHolder();
-                SCIP_Retcode retCode = getpermsymgraph(jScip, successHolder);
-                if (successHolder.isSet()) {
-                    SCIPJNI.unsigned_int_array_setitem(success, 0, successHolder.getValue());
+                try {
+                    Integer isSuccess = getpermsymgraph(jScip);
+                    if (isSuccess != null) {
+                        SCIPJNI.unsigned_int_array_setitem(success, 0, isSuccess);
+                    }
+                    return SCIP_Retcode.SCIP_OKAY;
+                } catch (Exception e) {
+                    return SCIP_Retcode.SCIP_ERROR;
                 }
-                return retCode;
             }
 
             @Override
@@ -739,12 +835,15 @@ public class ConstraintHandler {
                     SWIGTYPE_p_SYM_GRAPH graph,
                     SWIGTYPE_p_unsigned_int success
             ) {
-                IntHolder successHolder = new IntHolder();
-                SCIP_Retcode retCode = getsignedpermsymgraph(jScip, successHolder);
-                if (successHolder.isSet()) {
-                    SCIPJNI.unsigned_int_array_setitem(success, 0, successHolder.getValue());
+                try {
+                    Integer isSuccess = getsignedpermsymgraph(jScip);
+                    if (isSuccess != null) {
+                        SCIPJNI.unsigned_int_array_setitem(success, 0, isSuccess);
+                    }
+                    return SCIP_Retcode.SCIP_OKAY;
+                } catch (Exception e) {
+                    return SCIP_Retcode.SCIP_ERROR;
                 }
-                return retCode;
             }
         };
         SCIPJNI.SCIPincludeObjConshdlr(cPtr, _objConshdlr, 1L);

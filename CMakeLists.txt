@@ -109,11 +109,10 @@ set(JAVA_SOURCES
   ${PROJECT_SOURCE_DIR}/java/jscip/MessageHandler.java
   ${PROJECT_SOURCE_DIR}/java/jscip/EventHandler.java
   ${PROJECT_SOURCE_DIR}/java/jscip/EventType.java
-  ${PROJECT_SOURCE_DIR}/java/jscip/ResultHolder.java
+  ${PROJECT_SOURCE_DIR}/java/jscip/GetDiveBdChgsResult.java
   ${PROJECT_SOURCE_DIR}/java/jscip/ConstraintHandler.java
   ${PROJECT_SOURCE_DIR}/java/jscip/ScipPresolTiming.java
   ${PROJECT_SOURCE_DIR}/java/jscip/ScipPropTiming.java
-  ${PROJECT_SOURCE_DIR}/java/jscip/IntHolder.java
   )
 
 #

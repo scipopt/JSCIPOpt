@@ -6,14 +6,15 @@ import java.util.List;
 import java.util.Random;
 
 /**
- * Illustrating the use of ObjEventHandler to implement a custom stopping criterion.
+ * Illustrating the use of ObjEventHandler to implement a custom stopping criterion to get a decent solution in a short
+ * period of time.
  */
-public class PortfolioOptimization {
+public class EventHandler {
 
     public static void main(String[] args) {
         System.loadLibrary("jscip");
         if (args.length == 1 && args[0].equals("--help")) {
-            System.out.println("Usage: PortfolioOptimization <assetCount> <maxPositionCount> <minPositionWeight> <maxPositionWeight> <riskAffinity> <rngSeed>");
+            System.out.println("Usage: EventHandler <assetCount> <maxPositionCount> <minPositionWeight> <maxPositionWeight> <riskAffinity> <rngSeed>");
             return;
         }
         int assetCount = 35;
@@ -77,6 +78,19 @@ public class PortfolioOptimization {
                 covarianceMatrix[j][i] = covarianceMatrix[i][j];
             }
         }
+        double[][] unalteredCovMat = covarianceMatrix;
+        //*
+        // using a PD matrix as covariance speeds up solving by 100 to 1000 times, but that is not what this test is
+        // after
+
+        // forcing covariance matrix to be psd
+        covarianceMatrix = gemm(covarianceMatrix, covarianceMatrix);
+        // forcing pd
+        double jiggle = trace(covarianceMatrix) * 1.0e-6 / assetCount;
+        for (int i = 0; i != assetCount; ++i) {
+            covarianceMatrix[i][i] += rng.nextDouble() * jiggle;
+        }
+        //*/
 
         Scip scip = new Scip();
         scip.create("Portfolio Optimization");
@@ -333,7 +347,7 @@ public class PortfolioOptimization {
         return result;
     }
 
-    public static class CustomStoppingCriterion extends EventHandler {
+    public static class CustomStoppingCriterion extends jscip.EventHandler {
 
         private final Variable[] positionVariables;
         private final double[] returns;
@@ -355,12 +369,12 @@ public class PortfolioOptimization {
         }
 
         @Override
-        protected SCIP_Retcode scipExec(Scip scip, SCIP_Event event) {
+        protected void scipExec(Scip scip, SCIP_Event event) {
             assert (event.getEventtype() & EventType.BESTSOLFOUND) != 0 : "Unexpected event caught";
             Solution solution = new Solution(SCIPJNI.getEventDataSolution(event));
             if (scip.isSolveInterrupted()) {
                 System.out.println("Already interrupted. Skipping execution.");
-                return SCIP_Retcode.SCIP_OKAY;
+                return;
             }
             ElapsedSeconds elapsed = elapsedSeconds();
             double currentObjValue = scip.getSolOrigObj(solution);
@@ -385,7 +399,6 @@ public class PortfolioOptimization {
             }
             ++solutionCount;
             lastObjValue = currentObjValue;
-            return SCIP_Retcode.SCIP_OKAY;
         }
 
         private ElapsedSeconds elapsedSeconds() {
@@ -408,6 +421,33 @@ public class PortfolioOptimization {
             this.sinceStart = sinceStart;
             this.sincePreviousExecution = sincePreviousExecution;
         }
+    }
+
+    /**
+     * Implements general matrix multiplication a * b^T if a and b are given in row major order.
+     * @param a first matrix
+     * @param bTransposed second matrix transposed
+     * @return
+     */
+    private static double[][] gemm(double[][] a, double[][] bTransposed) {
+        double[][] result = new double[a.length][];
+        for (int i = 0; i != a.length; ++i) {
+            double[] aCol = a[i];
+            double[] outRow = new double[aCol.length];
+            for (int j = 0; j != bTransposed.length; ++j) {
+                outRow[j] = dot(aCol, bTransposed[j]);
+            }
+            result[i] = outRow;
+        }
+        return result;
+    }
+
+    private static double trace(double[][] a) {
+        double result = 0.0;
+        for (int i = 0; i != a.length; ++i) {
+            result += a[i][i];
+        }
+        return result;
     }
 
 }

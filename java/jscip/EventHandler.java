@@ -13,32 +13,25 @@ public class EventHandler {
         this.events = events;
     }
 
-    protected SCIP_Retcode scipFree(Scip scip) {
-        return SCIP_Retcode.SCIP_OKAY;
+    protected void scipFree(Scip scip) {
     }
 
-    protected SCIP_Retcode scipInit(Scip scip) {
-        return SCIP_Retcode.SCIP_OKAY;
+    protected void scipInit(Scip scip) {
     }
 
-    protected SCIP_Retcode scipExit(Scip scip) {
-        return SCIP_Retcode.SCIP_OKAY;
+    protected void scipExit(Scip scip) {
     }
 
-    protected SCIP_Retcode scipInitsol(Scip scip) {
-        return SCIP_Retcode.SCIP_OKAY;
+    protected void scipInitsol(Scip scip) {
     }
 
-    protected SCIP_Retcode scipExitsol(Scip scip) {
-        return SCIP_Retcode.SCIP_OKAY;
+    protected void scipExitsol(Scip scip) {
     }
 
-    protected SCIP_Retcode scipDelete(Scip scip) {
-        return SCIP_Retcode.SCIP_OKAY;
+    protected void scipDelete(Scip scip) {
     }
 
-    protected SCIP_Retcode scipExec(Scip scip, SCIP_Event event) {
-        return SCIP_Retcode.SCIP_OKAY;
+    protected void scipExec(Scip scip, SCIP_Event event) {
     }
 
     public String getName() {
@@ -53,34 +46,59 @@ public class EventHandler {
         this._objEventhdlr = new ObjEventhdlr(scipptr, name, description) {
             @Override
             public SCIP_Retcode scip_free(SWIGTYPE_p_SCIP scipptr, SWIGTYPE_p_SCIP_EVENTHDLR eventhdlr) {
-                return scipFree(scip);
+                try {
+                    scipFree(scip);
+                    return SCIP_Retcode.SCIP_OKAY;
+                } catch (Exception e) {
+                    return SCIP_Retcode.SCIP_ERROR;
+                }
             }
 
             @Override
             public SCIP_Retcode scip_init(SWIGTYPE_p_SCIP scipptr, SWIGTYPE_p_SCIP_EVENTHDLR eventhdlr) {
-                SCIPJNI.SCIPcatchEvent(
-                        scipptr,
-                        events,
-                        eventhdlr,
-                        null,
-                        null
-                );
-                return scipInit(scip);
+                try {
+                    SCIPJNI.SCIPcatchEvent(
+                            scipptr,
+                            events,
+                            eventhdlr,
+                            null,
+                            null
+                    );
+                    scipInit(scip);
+                    return SCIP_Retcode.SCIP_OKAY;
+                } catch (Exception e) {
+                    return SCIP_Retcode.SCIP_ERROR;
+                }
             }
 
             @Override
             public SCIP_Retcode scip_exit(SWIGTYPE_p_SCIP scipptr, SWIGTYPE_p_SCIP_EVENTHDLR eventhdlr) {
-                return scipExit(scip);
+                try {
+                    scipExit(scip);
+                    return SCIP_Retcode.SCIP_OKAY;
+                } catch (Exception e) {
+                    return SCIP_Retcode.SCIP_ERROR;
+                }
             }
 
             @Override
             public SCIP_Retcode scip_initsol(SWIGTYPE_p_SCIP scipptr, SWIGTYPE_p_SCIP_EVENTHDLR eventhdlr) {
-                return scipInitsol(scip);
+                try {
+                    scipInitsol(scip);
+                    return SCIP_Retcode.SCIP_OKAY;
+                } catch (Exception e) {
+                    return SCIP_Retcode.SCIP_ERROR;
+                }
             }
 
             @Override
             public SCIP_Retcode scip_exitsol(SWIGTYPE_p_SCIP scipptr, SWIGTYPE_p_SCIP_EVENTHDLR eventhdlr) {
-                return scipExitsol(scip);
+                try {
+                    scipExitsol(scip);
+                    return SCIP_Retcode.SCIP_OKAY;
+                } catch (Exception e) {
+                    return SCIP_Retcode.SCIP_ERROR;
+                }
             }
 
             @Override
@@ -89,7 +107,12 @@ public class EventHandler {
                     SWIGTYPE_p_SCIP_EVENTHDLR eventhdlr,
                     SWIGTYPE_p_p_SCIP_EVENTDATA eventdata
             ) {
-                return scipDelete(scip);
+                try {
+                    scipDelete(scip);
+                    return SCIP_Retcode.SCIP_OKAY;
+                } catch (Exception e) {
+                    return SCIP_Retcode.SCIP_ERROR;
+                }
             }
 
             @Override
@@ -99,7 +122,12 @@ public class EventHandler {
                     SCIP_Event event,
                     SWIGTYPE_p_SCIP_EVENTDATA eventdata
             ) {
-                return scipExec(scip, event);
+                try {
+                    scipExec(scip, event);
+                    return SCIP_Retcode.SCIP_OKAY;
+                } catch (Exception e) {
+                    return SCIP_Retcode.SCIP_ERROR;
+                }
             }
         };
         SCIPJNI.SCIPincludeObjEventhdlr(scipptr, _objEventhdlr, 1L);
