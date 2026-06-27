@@ -30,5 +30,73 @@ protected:
     Swig::BoolArray<5> swig_override;
 };
 
+class SwigDirector_ObjEventhdlr : public scip::ObjEventhdlr, public Swig::Director {
+
+public:
+    void swig_connect_director(JNIEnv *jenv, jobject jself, jclass jcls, bool swig_mem_own, bool weak_global);
+    SwigDirector_ObjEventhdlr(JNIEnv *jenv, SCIP *scip, char const *name, char const *desc);
+    virtual ~SwigDirector_ObjEventhdlr();
+    virtual SCIP_RETCODE scip_free(SCIP *scip, SCIP_EVENTHDLR *eventhdlr);
+    virtual SCIP_RETCODE scip_init(SCIP *scip, SCIP_EVENTHDLR *eventhdlr);
+    virtual SCIP_RETCODE scip_exit(SCIP *scip, SCIP_EVENTHDLR *eventhdlr);
+    virtual SCIP_RETCODE scip_initsol(SCIP *scip, SCIP_EVENTHDLR *eventhdlr);
+    virtual SCIP_RETCODE scip_exitsol(SCIP *scip, SCIP_EVENTHDLR *eventhdlr);
+    virtual SCIP_RETCODE scip_delete(SCIP *scip, SCIP_EVENTHDLR *eventhdlr, SCIP_EVENTDATA **eventdata);
+    virtual SCIP_RETCODE scip_exec(SCIP *scip, SCIP_EVENTHDLR *eventhdlr, SCIP_Event *event, SCIP_EVENTDATA *eventdata);
+public:
+    bool swig_overrides(int n) {
+      return (n < 7 ? swig_override[n] : false);
+    }
+protected:
+    Swig::BoolArray<7> swig_override;
+};
+
+class SwigDirector_ObjConshdlr : public scip::ObjConshdlr, public Swig::Director {
+
+public:
+    void swig_connect_director(JNIEnv *jenv, jobject jself, jclass jcls, bool swig_mem_own, bool weak_global);
+    SwigDirector_ObjConshdlr(JNIEnv *jenv, SCIP *scip, char const *name, char const *desc, int sepapriority, int enfopriority, int checkpriority, int sepafreq, int propfreq, int eagerfreq, int scip_maxprerounds, unsigned int delaysepa, unsigned int delayprop, unsigned int needscons, unsigned int proptiming, unsigned int presoltiming);
+    virtual ~SwigDirector_ObjConshdlr();
+    virtual SCIP_RETCODE scip_free(SCIP *scip, SCIP_CONSHDLR *conshdlr);
+    virtual SCIP_RETCODE scip_init(SCIP *scip, SCIP_CONSHDLR *conshdlr, SCIP_CONS **conss, int nconss);
+    virtual SCIP_RETCODE scip_exit(SCIP *scip, SCIP_CONSHDLR *conshdlr, SCIP_CONS **conss, int nconss);
+    virtual SCIP_RETCODE scip_initpre(SCIP *scip, SCIP_CONSHDLR *conshdlr, SCIP_CONS **conss, int nconss);
+    virtual SCIP_RETCODE scip_exitpre(SCIP *scip, SCIP_CONSHDLR *conshdlr, SCIP_CONS **conss, int nconss);
+    virtual SCIP_RETCODE scip_initsol(SCIP *scip, SCIP_CONSHDLR *conshdlr, SCIP_CONS **conss, int nconss);
+    virtual SCIP_RETCODE scip_exitsol(SCIP *scip, SCIP_CONSHDLR *conshdlr, SCIP_CONS **conss, int nconss, unsigned int restart);
+    virtual SCIP_RETCODE scip_delete(SCIP *scip, SCIP_CONSHDLR *conshdlr, SCIP_CONS *cons, SCIP_CONSDATA **consdata);
+    virtual SCIP_RETCODE scip_trans(SCIP *scip, SCIP_CONSHDLR *conshdlr, SCIP_CONS *sourcecons, SCIP_CONS **targetcons);
+    virtual SCIP_RETCODE scip_initlp(SCIP *scip, SCIP_CONSHDLR *conshdlr, SCIP_CONS **conss, int nconss, unsigned int *infeasible);
+    virtual SCIP_RETCODE scip_sepalp(SCIP *scip, SCIP_CONSHDLR *conshdlr, SCIP_CONS **conss, int nconss, int nusefulconss, SCIP_Result *result);
+    virtual SCIP_RETCODE scip_sepasol(SCIP *scip, SCIP_CONSHDLR *conshdlr, SCIP_CONS **conss, int nconss, int nusefulconss, SCIP_SOL *sol, SCIP_Result *result);
+    virtual SCIP_RETCODE scip_enfolp(SCIP *scip, SCIP_CONSHDLR *conshdlr, SCIP_CONS **conss, int nconss, int nusefulconss, unsigned int solinfeasible, SCIP_Result *result);
+    virtual SCIP_RETCODE scip_enforelax(SCIP *scip, SCIP_SOL *sol, SCIP_CONSHDLR *conshdlr, SCIP_CONS **conss, int nconss, int nusefulconss, unsigned int solinfeasible, SCIP_Result *result);
+    virtual SCIP_RETCODE scip_enfops(SCIP *scip, SCIP_CONSHDLR *conshdlr, SCIP_CONS **conss, int nconss, int nusefulconss, unsigned int solinfeasible, unsigned int objinfeasible, SCIP_Result *result);
+    virtual SCIP_RETCODE scip_check(SCIP *scip, SCIP_CONSHDLR *conshdlr, SCIP_CONS **conss, int nconss, SCIP_SOL *sol, unsigned int checkintegrality, unsigned int checklprows, unsigned int printreason, unsigned int completely, SCIP_Result *result);
+    virtual SCIP_RETCODE scip_prop(SCIP *scip, SCIP_CONSHDLR *conshdlr, SCIP_CONS **conss, int nconss, int nusefulconss, int nmarkedconss, SCIP_PROPTIMING proptiming, SCIP_Result *result);
+    virtual SCIP_RETCODE scip_presol(SCIP *scip, SCIP_CONSHDLR *conshdlr, SCIP_CONS **conss, int nconss, int nrounds, SCIP_PRESOLTIMING presoltiming, int nnewfixedvars, int nnewaggrvars, int nnewchgvartypes, int nnewchgbds, int nnewholes, int nnewdelconss, int nnewaddconss, int nnewupgdconss, int nnewchgcoefs, int nnewchgsides, int *nfixedvars, int *naggrvars, int *nchgvartypes, int *nchgbds, int *naddholes, int *ndelconss, int *naddconss, int *nupgdconss, int *nchgcoefs, int *nchgsides, SCIP_Result *result);
+    virtual SCIP_RETCODE scip_resprop(SCIP *scip, SCIP_CONSHDLR *conshdlr, SCIP_CONS *cons, SCIP_VAR *infervar, int inferinfo, SCIP_BOUNDTYPE boundtype, SCIP_BDCHGIDX *bdchgidx, double relaxedbd, SCIP_Result *result);
+    virtual SCIP_RETCODE scip_lock(SCIP *scip, SCIP_CONSHDLR *conshdlr, SCIP_CONS *cons, SCIP_LockType locktype, int nlockspos, int nlocksneg);
+    virtual SCIP_RETCODE scip_active(SCIP *scip, SCIP_CONSHDLR *conshdlr, SCIP_CONS *cons);
+    virtual SCIP_RETCODE scip_deactive(SCIP *scip, SCIP_CONSHDLR *conshdlr, SCIP_CONS *cons);
+    virtual SCIP_RETCODE scip_enable(SCIP *scip, SCIP_CONSHDLR *conshdlr, SCIP_CONS *cons);
+    virtual SCIP_RETCODE scip_disable(SCIP *scip, SCIP_CONSHDLR *conshdlr, SCIP_CONS *cons);
+    virtual SCIP_RETCODE scip_delvars(SCIP *scip, SCIP_CONSHDLR *conshdlr, SCIP_CONS **conss, int nconss);
+    virtual SCIP_RETCODE scip_print(SCIP *scip, SCIP_CONSHDLR *conshdlr, SCIP_CONS *cons, FILE *file);
+    virtual SCIP_RETCODE scip_copy(SCIP *scip, SCIP_CONS **cons, char const *name, SCIP *sourcescip, SCIP_CONSHDLR *sourceconshdlr, SCIP_CONS *sourcecons, SCIP_HASHMAP *varmap, SCIP_HASHMAP *consmap, unsigned int initial, unsigned int separate, unsigned int enforce, unsigned int check, unsigned int propagate, unsigned int local, unsigned int modifiable, unsigned int dynamic, unsigned int removable, unsigned int stickingatnode, unsigned int global, unsigned int *valid);
+    virtual SCIP_RETCODE scip_parse(SCIP *scip, SCIP_CONSHDLR *conshdlr, SCIP_CONS **cons, char const *name, char const *str, unsigned int initial, unsigned int separate, unsigned int enforce, unsigned int check, unsigned int propagate, unsigned int local, unsigned int modifiable, unsigned int dynamic, unsigned int removable, unsigned int stickingatnode, unsigned int *success);
+    virtual SCIP_RETCODE scip_getvars(SCIP *scip, SCIP_CONSHDLR *conshdlr, SCIP_CONS *cons, SCIP_VAR **vars, int varssize, unsigned int *success);
+    virtual SCIP_RETCODE scip_getnvars(SCIP *scip, SCIP_CONSHDLR *conshdlr, SCIP_CONS *cons, int *nvars, unsigned int *success);
+    virtual SCIP_RETCODE scip_getdivebdchgs(SCIP *scip, SCIP_CONSHDLR *conshdlr, SCIP_DIVESET *diveset, SCIP_SOL *sol, unsigned int *success, unsigned int *infeasible);
+    virtual SCIP_RETCODE scip_getpermsymgraph(SCIP *scip, SCIP_CONSHDLR *conshdlr, SCIP_CONS *cons, SYM_GRAPH *graph, unsigned int *success);
+    virtual SCIP_RETCODE scip_getsignedpermsymgraph(SCIP *scip, SCIP_CONSHDLR *conshdlr, SCIP_CONS *cons, SYM_GRAPH *graph, unsigned int *success);
+public:
+    bool swig_overrides(int n) {
+      return (n < 33 ? swig_override[n] : false);
+    }
+protected:
+    Swig::BoolArray<33> swig_override;
+};
+
 
 #endif

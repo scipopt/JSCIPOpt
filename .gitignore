@@ -3,3 +3,11 @@
 *.jar
 obj/*
 lib/*
+build/*
+
+# general file ignore pattern for test outputs
+*.ign.*
+
+# idea files
+.idea/
+jscipopt.iml

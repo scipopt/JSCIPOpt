@@ -282,6 +282,265 @@ public class SCIPJNIJNI {
   public final static native long createConsBasicXor(long jarg1, String jarg2, long jarg3, int jarg4, long jarg5);
   public final static native void releaseCons(long jarg1, long jarg2);
   public final static native long createObjMessagehdlr(long jarg1, ObjMessagehdlr jarg1_, long jarg2);
+  public final static native void SCIP_EventVarAdded_var_set(long jarg1, SCIP_EventVarAdded jarg1_, long jarg2);
+  public final static native long SCIP_EventVarAdded_var_get(long jarg1, SCIP_EventVarAdded jarg1_);
+  public final static native long new_SCIP_EventVarAdded();
+  public final static native void delete_SCIP_EventVarAdded(long jarg1);
+  public final static native void SCIP_EventVarDeleted_var_set(long jarg1, SCIP_EventVarDeleted jarg1_, long jarg2);
+  public final static native long SCIP_EventVarDeleted_var_get(long jarg1, SCIP_EventVarDeleted jarg1_);
+  public final static native long new_SCIP_EventVarDeleted();
+  public final static native void delete_SCIP_EventVarDeleted(long jarg1);
+  public final static native void SCIP_EventVarFixed_var_set(long jarg1, SCIP_EventVarFixed jarg1_, long jarg2);
+  public final static native long SCIP_EventVarFixed_var_get(long jarg1, SCIP_EventVarFixed jarg1_);
+  public final static native long new_SCIP_EventVarFixed();
+  public final static native void delete_SCIP_EventVarFixed(long jarg1);
+  public final static native void SCIP_EventVarUnlocked_var_set(long jarg1, SCIP_EventVarUnlocked jarg1_, long jarg2);
+  public final static native long SCIP_EventVarUnlocked_var_get(long jarg1, SCIP_EventVarUnlocked jarg1_);
+  public final static native long new_SCIP_EventVarUnlocked();
+  public final static native void delete_SCIP_EventVarUnlocked(long jarg1);
+  public final static native void SCIP_EventObjChg_oldobj_set(long jarg1, SCIP_EventObjChg jarg1_, double jarg2);
+  public final static native double SCIP_EventObjChg_oldobj_get(long jarg1, SCIP_EventObjChg jarg1_);
+  public final static native void SCIP_EventObjChg_newobj_set(long jarg1, SCIP_EventObjChg jarg1_, double jarg2);
+  public final static native double SCIP_EventObjChg_newobj_get(long jarg1, SCIP_EventObjChg jarg1_);
+  public final static native void SCIP_EventObjChg_var_set(long jarg1, SCIP_EventObjChg jarg1_, long jarg2);
+  public final static native long SCIP_EventObjChg_var_get(long jarg1, SCIP_EventObjChg jarg1_);
+  public final static native long new_SCIP_EventObjChg();
+  public final static native void delete_SCIP_EventObjChg(long jarg1);
+  public final static native void SCIP_EventBdChg_oldbound_set(long jarg1, SCIP_EventBdChg jarg1_, double jarg2);
+  public final static native double SCIP_EventBdChg_oldbound_get(long jarg1, SCIP_EventBdChg jarg1_);
+  public final static native void SCIP_EventBdChg_newbound_set(long jarg1, SCIP_EventBdChg jarg1_, double jarg2);
+  public final static native double SCIP_EventBdChg_newbound_get(long jarg1, SCIP_EventBdChg jarg1_);
+  public final static native void SCIP_EventBdChg_var_set(long jarg1, SCIP_EventBdChg jarg1_, long jarg2);
+  public final static native long SCIP_EventBdChg_var_get(long jarg1, SCIP_EventBdChg jarg1_);
+  public final static native long new_SCIP_EventBdChg();
+  public final static native void delete_SCIP_EventBdChg(long jarg1);
+  public final static native void SCIP_EventHole_left_set(long jarg1, SCIP_EventHole jarg1_, double jarg2);
+  public final static native double SCIP_EventHole_left_get(long jarg1, SCIP_EventHole jarg1_);
+  public final static native void SCIP_EventHole_right_set(long jarg1, SCIP_EventHole jarg1_, double jarg2);
+  public final static native double SCIP_EventHole_right_get(long jarg1, SCIP_EventHole jarg1_);
+  public final static native void SCIP_EventHole_var_set(long jarg1, SCIP_EventHole jarg1_, long jarg2);
+  public final static native long SCIP_EventHole_var_get(long jarg1, SCIP_EventHole jarg1_);
+  public final static native long new_SCIP_EventHole();
+  public final static native void delete_SCIP_EventHole(long jarg1);
+  public final static native void SCIP_EventImplAdd_var_set(long jarg1, SCIP_EventImplAdd jarg1_, long jarg2);
+  public final static native long SCIP_EventImplAdd_var_get(long jarg1, SCIP_EventImplAdd jarg1_);
+  public final static native long new_SCIP_EventImplAdd();
+  public final static native void delete_SCIP_EventImplAdd(long jarg1);
+  public final static native void SCIP_EventTypeChg_oldtype_set(long jarg1, SCIP_EventTypeChg jarg1_, int jarg2);
+  public final static native int SCIP_EventTypeChg_oldtype_get(long jarg1, SCIP_EventTypeChg jarg1_);
+  public final static native void SCIP_EventTypeChg_newtype_set(long jarg1, SCIP_EventTypeChg jarg1_, int jarg2);
+  public final static native int SCIP_EventTypeChg_newtype_get(long jarg1, SCIP_EventTypeChg jarg1_);
+  public final static native void SCIP_EventTypeChg_var_set(long jarg1, SCIP_EventTypeChg jarg1_, long jarg2);
+  public final static native long SCIP_EventTypeChg_var_get(long jarg1, SCIP_EventTypeChg jarg1_);
+  public final static native long new_SCIP_EventTypeChg();
+  public final static native void delete_SCIP_EventTypeChg(long jarg1);
+  public final static native void SCIP_EventRowAddedSepa_row_set(long jarg1, SCIP_EventRowAddedSepa jarg1_, long jarg2);
+  public final static native long SCIP_EventRowAddedSepa_row_get(long jarg1, SCIP_EventRowAddedSepa jarg1_);
+  public final static native long new_SCIP_EventRowAddedSepa();
+  public final static native void delete_SCIP_EventRowAddedSepa(long jarg1);
+  public final static native void SCIP_EventRowDeletedSepa_row_set(long jarg1, SCIP_EventRowDeletedSepa jarg1_, long jarg2);
+  public final static native long SCIP_EventRowDeletedSepa_row_get(long jarg1, SCIP_EventRowDeletedSepa jarg1_);
+  public final static native long new_SCIP_EventRowDeletedSepa();
+  public final static native void delete_SCIP_EventRowDeletedSepa(long jarg1);
+  public final static native void SCIP_EventRowAddedLP_row_set(long jarg1, SCIP_EventRowAddedLP jarg1_, long jarg2);
+  public final static native long SCIP_EventRowAddedLP_row_get(long jarg1, SCIP_EventRowAddedLP jarg1_);
+  public final static native long new_SCIP_EventRowAddedLP();
+  public final static native void delete_SCIP_EventRowAddedLP(long jarg1);
+  public final static native void SCIP_EventRowDeletedLP_row_set(long jarg1, SCIP_EventRowDeletedLP jarg1_, long jarg2);
+  public final static native long SCIP_EventRowDeletedLP_row_get(long jarg1, SCIP_EventRowDeletedLP jarg1_);
+  public final static native long new_SCIP_EventRowDeletedLP();
+  public final static native void delete_SCIP_EventRowDeletedLP(long jarg1);
+  public final static native void SCIP_EventRowCoefChanged_row_set(long jarg1, SCIP_EventRowCoefChanged jarg1_, long jarg2);
+  public final static native long SCIP_EventRowCoefChanged_row_get(long jarg1, SCIP_EventRowCoefChanged jarg1_);
+  public final static native void SCIP_EventRowCoefChanged_col_set(long jarg1, SCIP_EventRowCoefChanged jarg1_, long jarg2);
+  public final static native long SCIP_EventRowCoefChanged_col_get(long jarg1, SCIP_EventRowCoefChanged jarg1_);
+  public final static native void SCIP_EventRowCoefChanged_oldval_set(long jarg1, SCIP_EventRowCoefChanged jarg1_, double jarg2);
+  public final static native double SCIP_EventRowCoefChanged_oldval_get(long jarg1, SCIP_EventRowCoefChanged jarg1_);
+  public final static native void SCIP_EventRowCoefChanged_newval_set(long jarg1, SCIP_EventRowCoefChanged jarg1_, double jarg2);
+  public final static native double SCIP_EventRowCoefChanged_newval_get(long jarg1, SCIP_EventRowCoefChanged jarg1_);
+  public final static native long new_SCIP_EventRowCoefChanged();
+  public final static native void delete_SCIP_EventRowCoefChanged(long jarg1);
+  public final static native void SCIP_EventRowConstChanged_row_set(long jarg1, SCIP_EventRowConstChanged jarg1_, long jarg2);
+  public final static native long SCIP_EventRowConstChanged_row_get(long jarg1, SCIP_EventRowConstChanged jarg1_);
+  public final static native void SCIP_EventRowConstChanged_oldval_set(long jarg1, SCIP_EventRowConstChanged jarg1_, double jarg2);
+  public final static native double SCIP_EventRowConstChanged_oldval_get(long jarg1, SCIP_EventRowConstChanged jarg1_);
+  public final static native void SCIP_EventRowConstChanged_newval_set(long jarg1, SCIP_EventRowConstChanged jarg1_, double jarg2);
+  public final static native double SCIP_EventRowConstChanged_newval_get(long jarg1, SCIP_EventRowConstChanged jarg1_);
+  public final static native long new_SCIP_EventRowConstChanged();
+  public final static native void delete_SCIP_EventRowConstChanged(long jarg1);
+  public final static native void SCIP_EventRowSideChanged_row_set(long jarg1, SCIP_EventRowSideChanged jarg1_, long jarg2);
+  public final static native long SCIP_EventRowSideChanged_row_get(long jarg1, SCIP_EventRowSideChanged jarg1_);
+  public final static native void SCIP_EventRowSideChanged_side_set(long jarg1, SCIP_EventRowSideChanged jarg1_, long jarg2);
+  public final static native long SCIP_EventRowSideChanged_side_get(long jarg1, SCIP_EventRowSideChanged jarg1_);
+  public final static native void SCIP_EventRowSideChanged_oldval_set(long jarg1, SCIP_EventRowSideChanged jarg1_, double jarg2);
+  public final static native double SCIP_EventRowSideChanged_oldval_get(long jarg1, SCIP_EventRowSideChanged jarg1_);
+  public final static native void SCIP_EventRowSideChanged_newval_set(long jarg1, SCIP_EventRowSideChanged jarg1_, double jarg2);
+  public final static native double SCIP_EventRowSideChanged_newval_get(long jarg1, SCIP_EventRowSideChanged jarg1_);
+  public final static native long new_SCIP_EventRowSideChanged();
+  public final static native void delete_SCIP_EventRowSideChanged(long jarg1);
+  public final static native void SCIP_Event_eventtype_set(long jarg1, SCIP_Event jarg1_, long jarg2);
+  public final static native long SCIP_Event_eventtype_get(long jarg1, SCIP_Event jarg1_);
+  public final static native long new_SCIP_Event();
+  public final static native void delete_SCIP_Event(long jarg1);
+  public final static native long getEventDataVarAdde(long jarg1, SCIP_Event jarg1_);
+  public final static native long getEventDataVarDeleted(long jarg1, SCIP_Event jarg1_);
+  public final static native long getEventDataVarFixed(long jarg1, SCIP_Event jarg1_);
+  public final static native long getEventDataVarUnlocked(long jarg1, SCIP_Event jarg1_);
+  public final static native long getEventDataObjChg(long jarg1, SCIP_Event jarg1_);
+  public final static native long getEventDataBdChg(long jarg1, SCIP_Event jarg1_);
+  public final static native long getEventDataHole(long jarg1, SCIP_Event jarg1_);
+  public final static native long getEventDataImplAdd(long jarg1, SCIP_Event jarg1_);
+  public final static native long getEventDataTypeChg(long jarg1, SCIP_Event jarg1_);
+  public final static native long getEventDataRowAddedSepa(long jarg1, SCIP_Event jarg1_);
+  public final static native long getEventDataRowDeletedSepa(long jarg1, SCIP_Event jarg1_);
+  public final static native long getEventDataRowAddedLp(long jarg1, SCIP_Event jarg1_);
+  public final static native long getEventDataRowDeletedLp(long jarg1, SCIP_Event jarg1_);
+  public final static native long getEventDataRowCoefChanged(long jarg1, SCIP_Event jarg1_);
+  public final static native long getEventDataRowConstChanged(long jarg1, SCIP_Event jarg1_);
+  public final static native long getEventDataRowSideChanged(long jarg1, SCIP_Event jarg1_);
+  public final static native long getEventDataSolution(long jarg1, SCIP_Event jarg1_);
+  public final static native long getEventDataNode(long jarg1, SCIP_Event jarg1_);
+  public final static native void ObjEventhdlr_scip__set(long jarg1, ObjEventhdlr jarg1_, long jarg2);
+  public final static native long ObjEventhdlr_scip__get(long jarg1, ObjEventhdlr jarg1_);
+  public final static native void ObjEventhdlr_scip_name__set(long jarg1, ObjEventhdlr jarg1_, String jarg2);
+  public final static native String ObjEventhdlr_scip_name__get(long jarg1, ObjEventhdlr jarg1_);
+  public final static native void ObjEventhdlr_scip_desc__set(long jarg1, ObjEventhdlr jarg1_, String jarg2);
+  public final static native String ObjEventhdlr_scip_desc__get(long jarg1, ObjEventhdlr jarg1_);
+  public final static native long new_ObjEventhdlr(long jarg1, String jarg2, String jarg3);
+  public final static native void delete_ObjEventhdlr(long jarg1);
+  public final static native int ObjEventhdlr_scip_free(long jarg1, ObjEventhdlr jarg1_, long jarg2, long jarg3);
+  public final static native int ObjEventhdlr_scip_freeSwigExplicitObjEventhdlr(long jarg1, ObjEventhdlr jarg1_, long jarg2, long jarg3);
+  public final static native int ObjEventhdlr_scip_init(long jarg1, ObjEventhdlr jarg1_, long jarg2, long jarg3);
+  public final static native int ObjEventhdlr_scip_initSwigExplicitObjEventhdlr(long jarg1, ObjEventhdlr jarg1_, long jarg2, long jarg3);
+  public final static native int ObjEventhdlr_scip_exit(long jarg1, ObjEventhdlr jarg1_, long jarg2, long jarg3);
+  public final static native int ObjEventhdlr_scip_exitSwigExplicitObjEventhdlr(long jarg1, ObjEventhdlr jarg1_, long jarg2, long jarg3);
+  public final static native int ObjEventhdlr_scip_initsol(long jarg1, ObjEventhdlr jarg1_, long jarg2, long jarg3);
+  public final static native int ObjEventhdlr_scip_initsolSwigExplicitObjEventhdlr(long jarg1, ObjEventhdlr jarg1_, long jarg2, long jarg3);
+  public final static native int ObjEventhdlr_scip_exitsol(long jarg1, ObjEventhdlr jarg1_, long jarg2, long jarg3);
+  public final static native int ObjEventhdlr_scip_exitsolSwigExplicitObjEventhdlr(long jarg1, ObjEventhdlr jarg1_, long jarg2, long jarg3);
+  public final static native int ObjEventhdlr_scip_delete(long jarg1, ObjEventhdlr jarg1_, long jarg2, long jarg3, long jarg4);
+  public final static native int ObjEventhdlr_scip_deleteSwigExplicitObjEventhdlr(long jarg1, ObjEventhdlr jarg1_, long jarg2, long jarg3, long jarg4);
+  public final static native int ObjEventhdlr_scip_exec(long jarg1, ObjEventhdlr jarg1_, long jarg2, long jarg3, long jarg4, SCIP_Event jarg4_, long jarg5);
+  public final static native int ObjEventhdlr_scip_execSwigExplicitObjEventhdlr(long jarg1, ObjEventhdlr jarg1_, long jarg2, long jarg3, long jarg4, SCIP_Event jarg4_, long jarg5);
+  public final static native void ObjEventhdlr_director_connect(ObjEventhdlr obj, long cptr, boolean mem_own, boolean weak_global);
+  public final static native void ObjEventhdlr_change_ownership(ObjEventhdlr obj, long cptr, boolean take_or_release);
+  public final static native int SCIPincludeObjEventhdlr(long jarg1, long jarg2, ObjEventhdlr jarg2_, long jarg3);
+  public final static native long SCIPfindObjEventhdlr(long jarg1, String jarg2);
+  public final static native int SCIPcatchEvent(long jarg1, long jarg2, long jarg3, long jarg4, long jarg5);
+  public final static native int SCIP_DIDNOTRUN_get();
+  public final static native int SCIP_DELAYED_get();
+  public final static native int SCIP_DIDNOTFIND_get();
+  public final static native int SCIP_FEASIBLE_get();
+  public final static native int SCIP_INFEASIBLE_get();
+  public final static native int SCIP_UNBOUNDED_get();
+  public final static native int SCIP_CUTOFF_get();
+  public final static native int SCIP_SEPARATED_get();
+  public final static native int SCIP_NEWROUND_get();
+  public final static native int SCIP_REDUCEDDOM_get();
+  public final static native int SCIP_CONSADDED_get();
+  public final static native int SCIP_CONSCHANGED_get();
+  public final static native int SCIP_BRANCHED_get();
+  public final static native int SCIP_SOLVELP_get();
+  public final static native int SCIP_FOUNDSOL_get();
+  public final static native int SCIP_SUSPENDED_get();
+  public final static native int SCIP_SUCCESS_get();
+  public final static native int SCIP_DELAYNODE_get();
+  public final static native int SCIP_LOCKTYPE_MODEL_get();
+  public final static native int SCIP_LOCKTYPE_CONFLICT_get();
+  public final static native void ObjConshdlr_scip__set(long jarg1, ObjConshdlr jarg1_, long jarg2);
+  public final static native long ObjConshdlr_scip__get(long jarg1, ObjConshdlr jarg1_);
+  public final static native void ObjConshdlr_scip_name__set(long jarg1, ObjConshdlr jarg1_, String jarg2);
+  public final static native String ObjConshdlr_scip_name__get(long jarg1, ObjConshdlr jarg1_);
+  public final static native void ObjConshdlr_scip_desc__set(long jarg1, ObjConshdlr jarg1_, String jarg2);
+  public final static native String ObjConshdlr_scip_desc__get(long jarg1, ObjConshdlr jarg1_);
+  public final static native int ObjConshdlr_scip_sepapriority__get(long jarg1, ObjConshdlr jarg1_);
+  public final static native int ObjConshdlr_scip_enfopriority__get(long jarg1, ObjConshdlr jarg1_);
+  public final static native int ObjConshdlr_scip_checkpriority__get(long jarg1, ObjConshdlr jarg1_);
+  public final static native int ObjConshdlr_scip_sepafreq__get(long jarg1, ObjConshdlr jarg1_);
+  public final static native int ObjConshdlr_scip_propfreq__get(long jarg1, ObjConshdlr jarg1_);
+  public final static native int ObjConshdlr_scip_eagerfreq__get(long jarg1, ObjConshdlr jarg1_);
+  public final static native int ObjConshdlr_scip_maxprerounds__get(long jarg1, ObjConshdlr jarg1_);
+  public final static native long ObjConshdlr_scip_delaysepa__get(long jarg1, ObjConshdlr jarg1_);
+  public final static native long ObjConshdlr_scip_delayprop__get(long jarg1, ObjConshdlr jarg1_);
+  public final static native long ObjConshdlr_scip_needscons__get(long jarg1, ObjConshdlr jarg1_);
+  public final static native long ObjConshdlr_scip_proptiming__get(long jarg1, ObjConshdlr jarg1_);
+  public final static native long ObjConshdlr_scip_presoltiming__get(long jarg1, ObjConshdlr jarg1_);
+  public final static native long new_ObjConshdlr(long jarg1, String jarg2, String jarg3, int jarg4, int jarg5, int jarg6, int jarg7, int jarg8, int jarg9, int jarg10, long jarg11, long jarg12, long jarg13, long jarg14, long jarg15);
+  public final static native void delete_ObjConshdlr(long jarg1);
+  public final static native int ObjConshdlr_scip_free(long jarg1, ObjConshdlr jarg1_, long jarg2, long jarg3);
+  public final static native int ObjConshdlr_scip_freeSwigExplicitObjConshdlr(long jarg1, ObjConshdlr jarg1_, long jarg2, long jarg3);
+  public final static native int ObjConshdlr_scip_init(long jarg1, ObjConshdlr jarg1_, long jarg2, long jarg3, long jarg4, int jarg5);
+  public final static native int ObjConshdlr_scip_initSwigExplicitObjConshdlr(long jarg1, ObjConshdlr jarg1_, long jarg2, long jarg3, long jarg4, int jarg5);
+  public final static native int ObjConshdlr_scip_exit(long jarg1, ObjConshdlr jarg1_, long jarg2, long jarg3, long jarg4, int jarg5);
+  public final static native int ObjConshdlr_scip_exitSwigExplicitObjConshdlr(long jarg1, ObjConshdlr jarg1_, long jarg2, long jarg3, long jarg4, int jarg5);
+  public final static native int ObjConshdlr_scip_initpre(long jarg1, ObjConshdlr jarg1_, long jarg2, long jarg3, long jarg4, int jarg5);
+  public final static native int ObjConshdlr_scip_initpreSwigExplicitObjConshdlr(long jarg1, ObjConshdlr jarg1_, long jarg2, long jarg3, long jarg4, int jarg5);
+  public final static native int ObjConshdlr_scip_exitpre(long jarg1, ObjConshdlr jarg1_, long jarg2, long jarg3, long jarg4, int jarg5);
+  public final static native int ObjConshdlr_scip_exitpreSwigExplicitObjConshdlr(long jarg1, ObjConshdlr jarg1_, long jarg2, long jarg3, long jarg4, int jarg5);
+  public final static native int ObjConshdlr_scip_initsol(long jarg1, ObjConshdlr jarg1_, long jarg2, long jarg3, long jarg4, int jarg5);
+  public final static native int ObjConshdlr_scip_initsolSwigExplicitObjConshdlr(long jarg1, ObjConshdlr jarg1_, long jarg2, long jarg3, long jarg4, int jarg5);
+  public final static native int ObjConshdlr_scip_exitsol(long jarg1, ObjConshdlr jarg1_, long jarg2, long jarg3, long jarg4, int jarg5, long jarg6);
+  public final static native int ObjConshdlr_scip_exitsolSwigExplicitObjConshdlr(long jarg1, ObjConshdlr jarg1_, long jarg2, long jarg3, long jarg4, int jarg5, long jarg6);
+  public final static native int ObjConshdlr_scip_delete(long jarg1, ObjConshdlr jarg1_, long jarg2, long jarg3, long jarg4, long jarg5);
+  public final static native int ObjConshdlr_scip_deleteSwigExplicitObjConshdlr(long jarg1, ObjConshdlr jarg1_, long jarg2, long jarg3, long jarg4, long jarg5);
+  public final static native int ObjConshdlr_scip_trans(long jarg1, ObjConshdlr jarg1_, long jarg2, long jarg3, long jarg4, long jarg5);
+  public final static native int ObjConshdlr_scip_transSwigExplicitObjConshdlr(long jarg1, ObjConshdlr jarg1_, long jarg2, long jarg3, long jarg4, long jarg5);
+  public final static native int ObjConshdlr_scip_initlp(long jarg1, ObjConshdlr jarg1_, long jarg2, long jarg3, long jarg4, int jarg5, long jarg6);
+  public final static native int ObjConshdlr_scip_initlpSwigExplicitObjConshdlr(long jarg1, ObjConshdlr jarg1_, long jarg2, long jarg3, long jarg4, int jarg5, long jarg6);
+  public final static native int ObjConshdlr_scip_sepalp(long jarg1, ObjConshdlr jarg1_, long jarg2, long jarg3, long jarg4, int jarg5, int jarg6, long jarg7);
+  public final static native int ObjConshdlr_scip_sepalpSwigExplicitObjConshdlr(long jarg1, ObjConshdlr jarg1_, long jarg2, long jarg3, long jarg4, int jarg5, int jarg6, long jarg7);
+  public final static native int ObjConshdlr_scip_sepasol(long jarg1, ObjConshdlr jarg1_, long jarg2, long jarg3, long jarg4, int jarg5, int jarg6, long jarg7, long jarg8);
+  public final static native int ObjConshdlr_scip_sepasolSwigExplicitObjConshdlr(long jarg1, ObjConshdlr jarg1_, long jarg2, long jarg3, long jarg4, int jarg5, int jarg6, long jarg7, long jarg8);
+  public final static native int ObjConshdlr_scip_enfolp(long jarg1, ObjConshdlr jarg1_, long jarg2, long jarg3, long jarg4, int jarg5, int jarg6, long jarg7, long jarg8);
+  public final static native int ObjConshdlr_scip_enfolpSwigExplicitObjConshdlr(long jarg1, ObjConshdlr jarg1_, long jarg2, long jarg3, long jarg4, int jarg5, int jarg6, long jarg7, long jarg8);
+  public final static native int ObjConshdlr_scip_enforelax(long jarg1, ObjConshdlr jarg1_, long jarg2, long jarg3, long jarg4, long jarg5, int jarg6, int jarg7, long jarg8, long jarg9);
+  public final static native int ObjConshdlr_scip_enforelaxSwigExplicitObjConshdlr(long jarg1, ObjConshdlr jarg1_, long jarg2, long jarg3, long jarg4, long jarg5, int jarg6, int jarg7, long jarg8, long jarg9);
+  public final static native int ObjConshdlr_scip_enfops(long jarg1, ObjConshdlr jarg1_, long jarg2, long jarg3, long jarg4, int jarg5, int jarg6, long jarg7, long jarg8, long jarg9);
+  public final static native int ObjConshdlr_scip_enfopsSwigExplicitObjConshdlr(long jarg1, ObjConshdlr jarg1_, long jarg2, long jarg3, long jarg4, int jarg5, int jarg6, long jarg7, long jarg8, long jarg9);
+  public final static native int ObjConshdlr_scip_check(long jarg1, ObjConshdlr jarg1_, long jarg2, long jarg3, long jarg4, int jarg5, long jarg6, long jarg7, long jarg8, long jarg9, long jarg10, long jarg11);
+  public final static native int ObjConshdlr_scip_checkSwigExplicitObjConshdlr(long jarg1, ObjConshdlr jarg1_, long jarg2, long jarg3, long jarg4, int jarg5, long jarg6, long jarg7, long jarg8, long jarg9, long jarg10, long jarg11);
+  public final static native int ObjConshdlr_scip_prop(long jarg1, ObjConshdlr jarg1_, long jarg2, long jarg3, long jarg4, int jarg5, int jarg6, int jarg7, long jarg8, long jarg9);
+  public final static native int ObjConshdlr_scip_propSwigExplicitObjConshdlr(long jarg1, ObjConshdlr jarg1_, long jarg2, long jarg3, long jarg4, int jarg5, int jarg6, int jarg7, long jarg8, long jarg9);
+  public final static native int ObjConshdlr_scip_presol(long jarg1, ObjConshdlr jarg1_, long jarg2, long jarg3, long jarg4, int jarg5, int jarg6, long jarg7, int jarg8, int jarg9, int jarg10, int jarg11, int jarg12, int jarg13, int jarg14, int jarg15, int jarg16, int jarg17, long jarg18, long jarg19, long jarg20, long jarg21, long jarg22, long jarg23, long jarg24, long jarg25, long jarg26, long jarg27, long jarg28);
+  public final static native int ObjConshdlr_scip_presolSwigExplicitObjConshdlr(long jarg1, ObjConshdlr jarg1_, long jarg2, long jarg3, long jarg4, int jarg5, int jarg6, long jarg7, int jarg8, int jarg9, int jarg10, int jarg11, int jarg12, int jarg13, int jarg14, int jarg15, int jarg16, int jarg17, long jarg18, long jarg19, long jarg20, long jarg21, long jarg22, long jarg23, long jarg24, long jarg25, long jarg26, long jarg27, long jarg28);
+  public final static native int ObjConshdlr_scip_resprop(long jarg1, ObjConshdlr jarg1_, long jarg2, long jarg3, long jarg4, long jarg5, int jarg6, int jarg7, long jarg8, double jarg9, long jarg10);
+  public final static native int ObjConshdlr_scip_respropSwigExplicitObjConshdlr(long jarg1, ObjConshdlr jarg1_, long jarg2, long jarg3, long jarg4, long jarg5, int jarg6, int jarg7, long jarg8, double jarg9, long jarg10);
+  public final static native int ObjConshdlr_scip_lock(long jarg1, ObjConshdlr jarg1_, long jarg2, long jarg3, long jarg4, int jarg5, int jarg6, int jarg7);
+  public final static native int ObjConshdlr_scip_lockSwigExplicitObjConshdlr(long jarg1, ObjConshdlr jarg1_, long jarg2, long jarg3, long jarg4, int jarg5, int jarg6, int jarg7);
+  public final static native int ObjConshdlr_scip_active(long jarg1, ObjConshdlr jarg1_, long jarg2, long jarg3, long jarg4);
+  public final static native int ObjConshdlr_scip_activeSwigExplicitObjConshdlr(long jarg1, ObjConshdlr jarg1_, long jarg2, long jarg3, long jarg4);
+  public final static native int ObjConshdlr_scip_deactive(long jarg1, ObjConshdlr jarg1_, long jarg2, long jarg3, long jarg4);
+  public final static native int ObjConshdlr_scip_deactiveSwigExplicitObjConshdlr(long jarg1, ObjConshdlr jarg1_, long jarg2, long jarg3, long jarg4);
+  public final static native int ObjConshdlr_scip_enable(long jarg1, ObjConshdlr jarg1_, long jarg2, long jarg3, long jarg4);
+  public final static native int ObjConshdlr_scip_enableSwigExplicitObjConshdlr(long jarg1, ObjConshdlr jarg1_, long jarg2, long jarg3, long jarg4);
+  public final static native int ObjConshdlr_scip_disable(long jarg1, ObjConshdlr jarg1_, long jarg2, long jarg3, long jarg4);
+  public final static native int ObjConshdlr_scip_disableSwigExplicitObjConshdlr(long jarg1, ObjConshdlr jarg1_, long jarg2, long jarg3, long jarg4);
+  public final static native int ObjConshdlr_scip_delvars(long jarg1, ObjConshdlr jarg1_, long jarg2, long jarg3, long jarg4, int jarg5);
+  public final static native int ObjConshdlr_scip_delvarsSwigExplicitObjConshdlr(long jarg1, ObjConshdlr jarg1_, long jarg2, long jarg3, long jarg4, int jarg5);
+  public final static native int ObjConshdlr_scip_print(long jarg1, ObjConshdlr jarg1_, long jarg2, long jarg3, long jarg4, long jarg5);
+  public final static native int ObjConshdlr_scip_printSwigExplicitObjConshdlr(long jarg1, ObjConshdlr jarg1_, long jarg2, long jarg3, long jarg4, long jarg5);
+  public final static native int ObjConshdlr_scip_copy(long jarg1, ObjConshdlr jarg1_, long jarg2, long jarg3, String jarg4, long jarg5, long jarg6, long jarg7, long jarg8, long jarg9, long jarg10, long jarg11, long jarg12, long jarg13, long jarg14, long jarg15, long jarg16, long jarg17, long jarg18, long jarg19, long jarg20, long jarg21);
+  public final static native int ObjConshdlr_scip_copySwigExplicitObjConshdlr(long jarg1, ObjConshdlr jarg1_, long jarg2, long jarg3, String jarg4, long jarg5, long jarg6, long jarg7, long jarg8, long jarg9, long jarg10, long jarg11, long jarg12, long jarg13, long jarg14, long jarg15, long jarg16, long jarg17, long jarg18, long jarg19, long jarg20, long jarg21);
+  public final static native int ObjConshdlr_scip_parse(long jarg1, ObjConshdlr jarg1_, long jarg2, long jarg3, long jarg4, String jarg5, String jarg6, long jarg7, long jarg8, long jarg9, long jarg10, long jarg11, long jarg12, long jarg13, long jarg14, long jarg15, long jarg16, long jarg17);
+  public final static native int ObjConshdlr_scip_parseSwigExplicitObjConshdlr(long jarg1, ObjConshdlr jarg1_, long jarg2, long jarg3, long jarg4, String jarg5, String jarg6, long jarg7, long jarg8, long jarg9, long jarg10, long jarg11, long jarg12, long jarg13, long jarg14, long jarg15, long jarg16, long jarg17);
+  public final static native int ObjConshdlr_scip_getvars(long jarg1, ObjConshdlr jarg1_, long jarg2, long jarg3, long jarg4, long jarg5, int jarg6, long jarg7);
+  public final static native int ObjConshdlr_scip_getvarsSwigExplicitObjConshdlr(long jarg1, ObjConshdlr jarg1_, long jarg2, long jarg3, long jarg4, long jarg5, int jarg6, long jarg7);
+  public final static native int ObjConshdlr_scip_getnvars(long jarg1, ObjConshdlr jarg1_, long jarg2, long jarg3, long jarg4, long jarg5, long jarg6);
+  public final static native int ObjConshdlr_scip_getnvarsSwigExplicitObjConshdlr(long jarg1, ObjConshdlr jarg1_, long jarg2, long jarg3, long jarg4, long jarg5, long jarg6);
+  public final static native int ObjConshdlr_scip_getdivebdchgs(long jarg1, ObjConshdlr jarg1_, long jarg2, long jarg3, long jarg4, long jarg5, long jarg6, long jarg7);
+  public final static native int ObjConshdlr_scip_getdivebdchgsSwigExplicitObjConshdlr(long jarg1, ObjConshdlr jarg1_, long jarg2, long jarg3, long jarg4, long jarg5, long jarg6, long jarg7);
+  public final static native int ObjConshdlr_scip_getpermsymgraph(long jarg1, ObjConshdlr jarg1_, long jarg2, long jarg3, long jarg4, long jarg5, long jarg6);
+  public final static native int ObjConshdlr_scip_getpermsymgraphSwigExplicitObjConshdlr(long jarg1, ObjConshdlr jarg1_, long jarg2, long jarg3, long jarg4, long jarg5, long jarg6);
+  public final static native int ObjConshdlr_scip_getsignedpermsymgraph(long jarg1, ObjConshdlr jarg1_, long jarg2, long jarg3, long jarg4, long jarg5, long jarg6);
+  public final static native int ObjConshdlr_scip_getsignedpermsymgraphSwigExplicitObjConshdlr(long jarg1, ObjConshdlr jarg1_, long jarg2, long jarg3, long jarg4, long jarg5, long jarg6);
+  public final static native void ObjConshdlr_director_connect(ObjConshdlr obj, long cptr, boolean mem_own, boolean weak_global);
+  public final static native void ObjConshdlr_change_ownership(ObjConshdlr obj, long cptr, boolean take_or_release);
+  public final static native int SCIPincludeObjConshdlr(long jarg1, long jarg2, ObjConshdlr jarg2_, long jarg3);
+  public final static native long SCIPfindObjConshdlr(long jarg1, String jarg2);
+  public final static native long SCIPgetObjConshdlr(long jarg1, long jarg2);
+  public final static native int SCIPaddVarLocksType(long jarg1, long jarg2, int jarg3, int jarg4, int jarg5);
+  public final static native int SCIPaddConsLocksType(long jarg1, long jarg2, int jarg3, int jarg4, int jarg5);
+  public final static native void setResult(long jarg1, int jarg2);
 
   public static void SwigDirector_ObjMessagehdlr_scip_error(ObjMessagehdlr jself, long messagehdlr, long file, String msg) {
     jself.scip_error((messagehdlr == 0) ? null : new SWIGTYPE_p_SCIP_Messagehdlr(messagehdlr, false), (file == 0) ? null : new SWIGTYPE_p_FILE(file, false), msg);
@@ -297,6 +556,126 @@ public class SCIPJNIJNI {
   }
   public static int SwigDirector_ObjMessagehdlr_scip_free(ObjMessagehdlr jself, long messagehdlr) {
     return (jself.scip_free((messagehdlr == 0) ? null : new SWIGTYPE_p_SCIP_Messagehdlr(messagehdlr, false))).swigValue();
+  }
+  public static int SwigDirector_ObjEventhdlr_scip_free(ObjEventhdlr jself, long scip, long eventhdlr) {
+    return (jself.scip_free((scip == 0) ? null : new SWIGTYPE_p_SCIP(scip, false), (eventhdlr == 0) ? null : new SWIGTYPE_p_SCIP_EVENTHDLR(eventhdlr, false))).swigValue();
+  }
+  public static int SwigDirector_ObjEventhdlr_scip_init(ObjEventhdlr jself, long scip, long eventhdlr) {
+    return (jself.scip_init((scip == 0) ? null : new SWIGTYPE_p_SCIP(scip, false), (eventhdlr == 0) ? null : new SWIGTYPE_p_SCIP_EVENTHDLR(eventhdlr, false))).swigValue();
+  }
+  public static int SwigDirector_ObjEventhdlr_scip_exit(ObjEventhdlr jself, long scip, long eventhdlr) {
+    return (jself.scip_exit((scip == 0) ? null : new SWIGTYPE_p_SCIP(scip, false), (eventhdlr == 0) ? null : new SWIGTYPE_p_SCIP_EVENTHDLR(eventhdlr, false))).swigValue();
+  }
+  public static int SwigDirector_ObjEventhdlr_scip_initsol(ObjEventhdlr jself, long scip, long eventhdlr) {
+    return (jself.scip_initsol((scip == 0) ? null : new SWIGTYPE_p_SCIP(scip, false), (eventhdlr == 0) ? null : new SWIGTYPE_p_SCIP_EVENTHDLR(eventhdlr, false))).swigValue();
+  }
+  public static int SwigDirector_ObjEventhdlr_scip_exitsol(ObjEventhdlr jself, long scip, long eventhdlr) {
+    return (jself.scip_exitsol((scip == 0) ? null : new SWIGTYPE_p_SCIP(scip, false), (eventhdlr == 0) ? null : new SWIGTYPE_p_SCIP_EVENTHDLR(eventhdlr, false))).swigValue();
+  }
+  public static int SwigDirector_ObjEventhdlr_scip_delete(ObjEventhdlr jself, long scip, long eventhdlr, long eventdata) {
+    return (jself.scip_delete((scip == 0) ? null : new SWIGTYPE_p_SCIP(scip, false), (eventhdlr == 0) ? null : new SWIGTYPE_p_SCIP_EVENTHDLR(eventhdlr, false), (eventdata == 0) ? null : new SWIGTYPE_p_p_SCIP_EVENTDATA(eventdata, false))).swigValue();
+  }
+  public static int SwigDirector_ObjEventhdlr_scip_exec(ObjEventhdlr jself, long scip, long eventhdlr, long event, long eventdata) {
+    return (jself.scip_exec((scip == 0) ? null : new SWIGTYPE_p_SCIP(scip, false), (eventhdlr == 0) ? null : new SWIGTYPE_p_SCIP_EVENTHDLR(eventhdlr, false), (event == 0) ? null : new SCIP_Event(event, false), (eventdata == 0) ? null : new SWIGTYPE_p_SCIP_EVENTDATA(eventdata, false))).swigValue();
+  }
+  public static int SwigDirector_ObjConshdlr_scip_free(ObjConshdlr jself, long scip, long conshdlr) {
+    return (jself.scip_free((scip == 0) ? null : new SWIGTYPE_p_SCIP(scip, false), (conshdlr == 0) ? null : new SWIGTYPE_p_SCIP_CONSHDLR(conshdlr, false))).swigValue();
+  }
+  public static int SwigDirector_ObjConshdlr_scip_init(ObjConshdlr jself, long scip, long conshdlr, long conss, int nconss) {
+    return (jself.scip_init((scip == 0) ? null : new SWIGTYPE_p_SCIP(scip, false), (conshdlr == 0) ? null : new SWIGTYPE_p_SCIP_CONSHDLR(conshdlr, false), (conss == 0) ? null : new SWIGTYPE_p_p_SCIP_CONS(conss, false), nconss)).swigValue();
+  }
+  public static int SwigDirector_ObjConshdlr_scip_exit(ObjConshdlr jself, long scip, long conshdlr, long conss, int nconss) {
+    return (jself.scip_exit((scip == 0) ? null : new SWIGTYPE_p_SCIP(scip, false), (conshdlr == 0) ? null : new SWIGTYPE_p_SCIP_CONSHDLR(conshdlr, false), (conss == 0) ? null : new SWIGTYPE_p_p_SCIP_CONS(conss, false), nconss)).swigValue();
+  }
+  public static int SwigDirector_ObjConshdlr_scip_initpre(ObjConshdlr jself, long scip, long conshdlr, long conss, int nconss) {
+    return (jself.scip_initpre((scip == 0) ? null : new SWIGTYPE_p_SCIP(scip, false), (conshdlr == 0) ? null : new SWIGTYPE_p_SCIP_CONSHDLR(conshdlr, false), (conss == 0) ? null : new SWIGTYPE_p_p_SCIP_CONS(conss, false), nconss)).swigValue();
+  }
+  public static int SwigDirector_ObjConshdlr_scip_exitpre(ObjConshdlr jself, long scip, long conshdlr, long conss, int nconss) {
+    return (jself.scip_exitpre((scip == 0) ? null : new SWIGTYPE_p_SCIP(scip, false), (conshdlr == 0) ? null : new SWIGTYPE_p_SCIP_CONSHDLR(conshdlr, false), (conss == 0) ? null : new SWIGTYPE_p_p_SCIP_CONS(conss, false), nconss)).swigValue();
+  }
+  public static int SwigDirector_ObjConshdlr_scip_initsol(ObjConshdlr jself, long scip, long conshdlr, long conss, int nconss) {
+    return (jself.scip_initsol((scip == 0) ? null : new SWIGTYPE_p_SCIP(scip, false), (conshdlr == 0) ? null : new SWIGTYPE_p_SCIP_CONSHDLR(conshdlr, false), (conss == 0) ? null : new SWIGTYPE_p_p_SCIP_CONS(conss, false), nconss)).swigValue();
+  }
+  public static int SwigDirector_ObjConshdlr_scip_exitsol(ObjConshdlr jself, long scip, long conshdlr, long conss, int nconss, long restart) {
+    return (jself.scip_exitsol((scip == 0) ? null : new SWIGTYPE_p_SCIP(scip, false), (conshdlr == 0) ? null : new SWIGTYPE_p_SCIP_CONSHDLR(conshdlr, false), (conss == 0) ? null : new SWIGTYPE_p_p_SCIP_CONS(conss, false), nconss, restart)).swigValue();
+  }
+  public static int SwigDirector_ObjConshdlr_scip_delete(ObjConshdlr jself, long scip, long conshdlr, long cons, long consdata) {
+    return (jself.scip_delete((scip == 0) ? null : new SWIGTYPE_p_SCIP(scip, false), (conshdlr == 0) ? null : new SWIGTYPE_p_SCIP_CONSHDLR(conshdlr, false), (cons == 0) ? null : new SWIGTYPE_p_SCIP_CONS(cons, false), (consdata == 0) ? null : new SWIGTYPE_p_p_SCIP_CONSDATA(consdata, false))).swigValue();
+  }
+  public static int SwigDirector_ObjConshdlr_scip_trans(ObjConshdlr jself, long scip, long conshdlr, long sourcecons, long targetcons) {
+    return (jself.scip_trans((scip == 0) ? null : new SWIGTYPE_p_SCIP(scip, false), (conshdlr == 0) ? null : new SWIGTYPE_p_SCIP_CONSHDLR(conshdlr, false), (sourcecons == 0) ? null : new SWIGTYPE_p_SCIP_CONS(sourcecons, false), (targetcons == 0) ? null : new SWIGTYPE_p_p_SCIP_CONS(targetcons, false))).swigValue();
+  }
+  public static int SwigDirector_ObjConshdlr_scip_initlp(ObjConshdlr jself, long scip, long conshdlr, long conss, int nconss, long infeasible) {
+    return (jself.scip_initlp((scip == 0) ? null : new SWIGTYPE_p_SCIP(scip, false), (conshdlr == 0) ? null : new SWIGTYPE_p_SCIP_CONSHDLR(conshdlr, false), (conss == 0) ? null : new SWIGTYPE_p_p_SCIP_CONS(conss, false), nconss, (infeasible == 0) ? null : new SWIGTYPE_p_unsigned_int(infeasible, false))).swigValue();
+  }
+  public static int SwigDirector_ObjConshdlr_scip_sepalp(ObjConshdlr jself, long scip, long conshdlr, long conss, int nconss, int nusefulconss, long result) {
+    return (jself.scip_sepalp((scip == 0) ? null : new SWIGTYPE_p_SCIP(scip, false), (conshdlr == 0) ? null : new SWIGTYPE_p_SCIP_CONSHDLR(conshdlr, false), (conss == 0) ? null : new SWIGTYPE_p_p_SCIP_CONS(conss, false), nconss, nusefulconss, (result == 0) ? null : new SWIGTYPE_p_SCIP_Result(result, false))).swigValue();
+  }
+  public static int SwigDirector_ObjConshdlr_scip_sepasol(ObjConshdlr jself, long scip, long conshdlr, long conss, int nconss, int nusefulconss, long sol, long result) {
+    return (jself.scip_sepasol((scip == 0) ? null : new SWIGTYPE_p_SCIP(scip, false), (conshdlr == 0) ? null : new SWIGTYPE_p_SCIP_CONSHDLR(conshdlr, false), (conss == 0) ? null : new SWIGTYPE_p_p_SCIP_CONS(conss, false), nconss, nusefulconss, (sol == 0) ? null : new SWIGTYPE_p_SCIP_SOL(sol, false), (result == 0) ? null : new SWIGTYPE_p_SCIP_Result(result, false))).swigValue();
+  }
+  public static int SwigDirector_ObjConshdlr_scip_enfolp(ObjConshdlr jself, long scip, long conshdlr, long conss, int nconss, int nusefulconss, long solinfeasible, long result) {
+    return (jself.scip_enfolp((scip == 0) ? null : new SWIGTYPE_p_SCIP(scip, false), (conshdlr == 0) ? null : new SWIGTYPE_p_SCIP_CONSHDLR(conshdlr, false), (conss == 0) ? null : new SWIGTYPE_p_p_SCIP_CONS(conss, false), nconss, nusefulconss, solinfeasible, (result == 0) ? null : new SWIGTYPE_p_SCIP_Result(result, false))).swigValue();
+  }
+  public static int SwigDirector_ObjConshdlr_scip_enforelax(ObjConshdlr jself, long scip, long sol, long conshdlr, long conss, int nconss, int nusefulconss, long solinfeasible, long result) {
+    return (jself.scip_enforelax((scip == 0) ? null : new SWIGTYPE_p_SCIP(scip, false), (sol == 0) ? null : new SWIGTYPE_p_SCIP_SOL(sol, false), (conshdlr == 0) ? null : new SWIGTYPE_p_SCIP_CONSHDLR(conshdlr, false), (conss == 0) ? null : new SWIGTYPE_p_p_SCIP_CONS(conss, false), nconss, nusefulconss, solinfeasible, (result == 0) ? null : new SWIGTYPE_p_SCIP_Result(result, false))).swigValue();
+  }
+  public static int SwigDirector_ObjConshdlr_scip_enfops(ObjConshdlr jself, long scip, long conshdlr, long conss, int nconss, int nusefulconss, long solinfeasible, long objinfeasible, long result) {
+    return (jself.scip_enfops((scip == 0) ? null : new SWIGTYPE_p_SCIP(scip, false), (conshdlr == 0) ? null : new SWIGTYPE_p_SCIP_CONSHDLR(conshdlr, false), (conss == 0) ? null : new SWIGTYPE_p_p_SCIP_CONS(conss, false), nconss, nusefulconss, solinfeasible, objinfeasible, (result == 0) ? null : new SWIGTYPE_p_SCIP_Result(result, false))).swigValue();
+  }
+  public static int SwigDirector_ObjConshdlr_scip_check(ObjConshdlr jself, long scip, long conshdlr, long conss, int nconss, long sol, long checkintegrality, long checklprows, long printreason, long completely, long result) {
+    return (jself.scip_check((scip == 0) ? null : new SWIGTYPE_p_SCIP(scip, false), (conshdlr == 0) ? null : new SWIGTYPE_p_SCIP_CONSHDLR(conshdlr, false), (conss == 0) ? null : new SWIGTYPE_p_p_SCIP_CONS(conss, false), nconss, (sol == 0) ? null : new SWIGTYPE_p_SCIP_SOL(sol, false), checkintegrality, checklprows, printreason, completely, (result == 0) ? null : new SWIGTYPE_p_SCIP_Result(result, false))).swigValue();
+  }
+  public static int SwigDirector_ObjConshdlr_scip_prop(ObjConshdlr jself, long scip, long conshdlr, long conss, int nconss, int nusefulconss, int nmarkedconss, long proptiming, long result) {
+    return (jself.scip_prop((scip == 0) ? null : new SWIGTYPE_p_SCIP(scip, false), (conshdlr == 0) ? null : new SWIGTYPE_p_SCIP_CONSHDLR(conshdlr, false), (conss == 0) ? null : new SWIGTYPE_p_p_SCIP_CONS(conss, false), nconss, nusefulconss, nmarkedconss, new SWIGTYPE_p_SCIP_PROPTIMING(proptiming, true), (result == 0) ? null : new SWIGTYPE_p_SCIP_Result(result, false))).swigValue();
+  }
+  public static int SwigDirector_ObjConshdlr_scip_presol(ObjConshdlr jself, long scip, long conshdlr, long conss, int nconss, int nrounds, long presoltiming, int nnewfixedvars, int nnewaggrvars, int nnewchgvartypes, int nnewchgbds, int nnewholes, int nnewdelconss, int nnewaddconss, int nnewupgdconss, int nnewchgcoefs, int nnewchgsides, long nfixedvars, long naggrvars, long nchgvartypes, long nchgbds, long naddholes, long ndelconss, long naddconss, long nupgdconss, long nchgcoefs, long nchgsides, long result) {
+    return (jself.scip_presol((scip == 0) ? null : new SWIGTYPE_p_SCIP(scip, false), (conshdlr == 0) ? null : new SWIGTYPE_p_SCIP_CONSHDLR(conshdlr, false), (conss == 0) ? null : new SWIGTYPE_p_p_SCIP_CONS(conss, false), nconss, nrounds, new SWIGTYPE_p_SCIP_PRESOLTIMING(presoltiming, true), nnewfixedvars, nnewaggrvars, nnewchgvartypes, nnewchgbds, nnewholes, nnewdelconss, nnewaddconss, nnewupgdconss, nnewchgcoefs, nnewchgsides, (nfixedvars == 0) ? null : new SWIGTYPE_p_int(nfixedvars, false), (naggrvars == 0) ? null : new SWIGTYPE_p_int(naggrvars, false), (nchgvartypes == 0) ? null : new SWIGTYPE_p_int(nchgvartypes, false), (nchgbds == 0) ? null : new SWIGTYPE_p_int(nchgbds, false), (naddholes == 0) ? null : new SWIGTYPE_p_int(naddholes, false), (ndelconss == 0) ? null : new SWIGTYPE_p_int(ndelconss, false), (naddconss == 0) ? null : new SWIGTYPE_p_int(naddconss, false), (nupgdconss == 0) ? null : new SWIGTYPE_p_int(nupgdconss, false), (nchgcoefs == 0) ? null : new SWIGTYPE_p_int(nchgcoefs, false), (nchgsides == 0) ? null : new SWIGTYPE_p_int(nchgsides, false), (result == 0) ? null : new SWIGTYPE_p_SCIP_Result(result, false))).swigValue();
+  }
+  public static int SwigDirector_ObjConshdlr_scip_resprop(ObjConshdlr jself, long scip, long conshdlr, long cons, long infervar, int inferinfo, int boundtype, long bdchgidx, double relaxedbd, long result) {
+    return (jself.scip_resprop((scip == 0) ? null : new SWIGTYPE_p_SCIP(scip, false), (conshdlr == 0) ? null : new SWIGTYPE_p_SCIP_CONSHDLR(conshdlr, false), (cons == 0) ? null : new SWIGTYPE_p_SCIP_CONS(cons, false), (infervar == 0) ? null : new SWIGTYPE_p_SCIP_VAR(infervar, false), inferinfo, SCIP_BoundType.swigToEnum(boundtype), (bdchgidx == 0) ? null : new SWIGTYPE_p_SCIP_BDCHGIDX(bdchgidx, false), relaxedbd, (result == 0) ? null : new SWIGTYPE_p_SCIP_Result(result, false))).swigValue();
+  }
+  public static int SwigDirector_ObjConshdlr_scip_lock(ObjConshdlr jself, long scip, long conshdlr, long cons, int locktype, int nlockspos, int nlocksneg) {
+    return (jself.scip_lock((scip == 0) ? null : new SWIGTYPE_p_SCIP(scip, false), (conshdlr == 0) ? null : new SWIGTYPE_p_SCIP_CONSHDLR(conshdlr, false), (cons == 0) ? null : new SWIGTYPE_p_SCIP_CONS(cons, false), SCIP_LockType.swigToEnum(locktype), nlockspos, nlocksneg)).swigValue();
+  }
+  public static int SwigDirector_ObjConshdlr_scip_active(ObjConshdlr jself, long scip, long conshdlr, long cons) {
+    return (jself.scip_active((scip == 0) ? null : new SWIGTYPE_p_SCIP(scip, false), (conshdlr == 0) ? null : new SWIGTYPE_p_SCIP_CONSHDLR(conshdlr, false), (cons == 0) ? null : new SWIGTYPE_p_SCIP_CONS(cons, false))).swigValue();
+  }
+  public static int SwigDirector_ObjConshdlr_scip_deactive(ObjConshdlr jself, long scip, long conshdlr, long cons) {
+    return (jself.scip_deactive((scip == 0) ? null : new SWIGTYPE_p_SCIP(scip, false), (conshdlr == 0) ? null : new SWIGTYPE_p_SCIP_CONSHDLR(conshdlr, false), (cons == 0) ? null : new SWIGTYPE_p_SCIP_CONS(cons, false))).swigValue();
+  }
+  public static int SwigDirector_ObjConshdlr_scip_enable(ObjConshdlr jself, long scip, long conshdlr, long cons) {
+    return (jself.scip_enable((scip == 0) ? null : new SWIGTYPE_p_SCIP(scip, false), (conshdlr == 0) ? null : new SWIGTYPE_p_SCIP_CONSHDLR(conshdlr, false), (cons == 0) ? null : new SWIGTYPE_p_SCIP_CONS(cons, false))).swigValue();
+  }
+  public static int SwigDirector_ObjConshdlr_scip_disable(ObjConshdlr jself, long scip, long conshdlr, long cons) {
+    return (jself.scip_disable((scip == 0) ? null : new SWIGTYPE_p_SCIP(scip, false), (conshdlr == 0) ? null : new SWIGTYPE_p_SCIP_CONSHDLR(conshdlr, false), (cons == 0) ? null : new SWIGTYPE_p_SCIP_CONS(cons, false))).swigValue();
+  }
+  public static int SwigDirector_ObjConshdlr_scip_delvars(ObjConshdlr jself, long scip, long conshdlr, long conss, int nconss) {
+    return (jself.scip_delvars((scip == 0) ? null : new SWIGTYPE_p_SCIP(scip, false), (conshdlr == 0) ? null : new SWIGTYPE_p_SCIP_CONSHDLR(conshdlr, false), (conss == 0) ? null : new SWIGTYPE_p_p_SCIP_CONS(conss, false), nconss)).swigValue();
+  }
+  public static int SwigDirector_ObjConshdlr_scip_print(ObjConshdlr jself, long scip, long conshdlr, long cons, long file) {
+    return (jself.scip_print((scip == 0) ? null : new SWIGTYPE_p_SCIP(scip, false), (conshdlr == 0) ? null : new SWIGTYPE_p_SCIP_CONSHDLR(conshdlr, false), (cons == 0) ? null : new SWIGTYPE_p_SCIP_CONS(cons, false), (file == 0) ? null : new SWIGTYPE_p_FILE(file, false))).swigValue();
+  }
+  public static int SwigDirector_ObjConshdlr_scip_copy(ObjConshdlr jself, long scip, long cons, String name, long sourcescip, long sourceconshdlr, long sourcecons, long varmap, long consmap, long initial, long separate, long enforce, long check, long propagate, long local, long modifiable, long dynamic, long removable, long stickingatnode, long global, long valid) {
+    return (jself.scip_copy((scip == 0) ? null : new SWIGTYPE_p_SCIP(scip, false), (cons == 0) ? null : new SWIGTYPE_p_p_SCIP_CONS(cons, false), name, (sourcescip == 0) ? null : new SWIGTYPE_p_SCIP(sourcescip, false), (sourceconshdlr == 0) ? null : new SWIGTYPE_p_SCIP_CONSHDLR(sourceconshdlr, false), (sourcecons == 0) ? null : new SWIGTYPE_p_SCIP_CONS(sourcecons, false), (varmap == 0) ? null : new SWIGTYPE_p_SCIP_HASHMAP(varmap, false), (consmap == 0) ? null : new SWIGTYPE_p_SCIP_HASHMAP(consmap, false), initial, separate, enforce, check, propagate, local, modifiable, dynamic, removable, stickingatnode, global, (valid == 0) ? null : new SWIGTYPE_p_unsigned_int(valid, false))).swigValue();
+  }
+  public static int SwigDirector_ObjConshdlr_scip_parse(ObjConshdlr jself, long scip, long conshdlr, long cons, String name, String str, long initial, long separate, long enforce, long check, long propagate, long local, long modifiable, long dynamic, long removable, long stickingatnode, long success) {
+    return (jself.scip_parse((scip == 0) ? null : new SWIGTYPE_p_SCIP(scip, false), (conshdlr == 0) ? null : new SWIGTYPE_p_SCIP_CONSHDLR(conshdlr, false), (cons == 0) ? null : new SWIGTYPE_p_p_SCIP_CONS(cons, false), name, str, initial, separate, enforce, check, propagate, local, modifiable, dynamic, removable, stickingatnode, (success == 0) ? null : new SWIGTYPE_p_unsigned_int(success, false))).swigValue();
+  }
+  public static int SwigDirector_ObjConshdlr_scip_getvars(ObjConshdlr jself, long scip, long conshdlr, long cons, long vars, int varssize, long success) {
+    return (jself.scip_getvars((scip == 0) ? null : new SWIGTYPE_p_SCIP(scip, false), (conshdlr == 0) ? null : new SWIGTYPE_p_SCIP_CONSHDLR(conshdlr, false), (cons == 0) ? null : new SWIGTYPE_p_SCIP_CONS(cons, false), (vars == 0) ? null : new SWIGTYPE_p_p_SCIP_VAR(vars, false), varssize, (success == 0) ? null : new SWIGTYPE_p_unsigned_int(success, false))).swigValue();
+  }
+  public static int SwigDirector_ObjConshdlr_scip_getnvars(ObjConshdlr jself, long scip, long conshdlr, long cons, long nvars, long success) {
+    return (jself.scip_getnvars((scip == 0) ? null : new SWIGTYPE_p_SCIP(scip, false), (conshdlr == 0) ? null : new SWIGTYPE_p_SCIP_CONSHDLR(conshdlr, false), (cons == 0) ? null : new SWIGTYPE_p_SCIP_CONS(cons, false), (nvars == 0) ? null : new SWIGTYPE_p_int(nvars, false), (success == 0) ? null : new SWIGTYPE_p_unsigned_int(success, false))).swigValue();
+  }
+  public static int SwigDirector_ObjConshdlr_scip_getdivebdchgs(ObjConshdlr jself, long scip, long conshdlr, long diveset, long sol, long success, long infeasible) {
+    return (jself.scip_getdivebdchgs((scip == 0) ? null : new SWIGTYPE_p_SCIP(scip, false), (conshdlr == 0) ? null : new SWIGTYPE_p_SCIP_CONSHDLR(conshdlr, false), (diveset == 0) ? null : new SWIGTYPE_p_SCIP_DIVESET(diveset, false), (sol == 0) ? null : new SWIGTYPE_p_SCIP_SOL(sol, false), (success == 0) ? null : new SWIGTYPE_p_unsigned_int(success, false), (infeasible == 0) ? null : new SWIGTYPE_p_unsigned_int(infeasible, false))).swigValue();
+  }
+  public static int SwigDirector_ObjConshdlr_scip_getpermsymgraph(ObjConshdlr jself, long scip, long conshdlr, long cons, long graph, long success) {
+    return (jself.scip_getpermsymgraph((scip == 0) ? null : new SWIGTYPE_p_SCIP(scip, false), (conshdlr == 0) ? null : new SWIGTYPE_p_SCIP_CONSHDLR(conshdlr, false), (cons == 0) ? null : new SWIGTYPE_p_SCIP_CONS(cons, false), (graph == 0) ? null : new SWIGTYPE_p_SYM_GRAPH(graph, false), (success == 0) ? null : new SWIGTYPE_p_unsigned_int(success, false))).swigValue();
+  }
+  public static int SwigDirector_ObjConshdlr_scip_getsignedpermsymgraph(ObjConshdlr jself, long scip, long conshdlr, long cons, long graph, long success) {
+    return (jself.scip_getsignedpermsymgraph((scip == 0) ? null : new SWIGTYPE_p_SCIP(scip, false), (conshdlr == 0) ? null : new SWIGTYPE_p_SCIP_CONSHDLR(conshdlr, false), (cons == 0) ? null : new SWIGTYPE_p_SCIP_CONS(cons, false), (graph == 0) ? null : new SWIGTYPE_p_SYM_GRAPH(graph, false), (success == 0) ? null : new SWIGTYPE_p_unsigned_int(success, false))).swigValue();
   }
 
   private final static native void swig_module_init();

@@ -34,6 +34,7 @@ set(SWIG_JAVA_SOURCES
   ${PROJECT_SOURCE_DIR}/java/jscip/SCIP_VerbLevel.java
   ${PROJECT_SOURCE_DIR}/java/jscip/SCIP_Status.java
   ${PROJECT_SOURCE_DIR}/java/jscip/SCIP_Stage.java
+  ${PROJECT_SOURCE_DIR}/java/jscip/SCIP_Result.java
   ${PROJECT_SOURCE_DIR}/java/jscip/SWIGTYPE_p_char.java
   ${PROJECT_SOURCE_DIR}/java/jscip/SWIGTYPE_p_double.java
   ${PROJECT_SOURCE_DIR}/java/jscip/SWIGTYPE_p_int.java
@@ -55,8 +56,49 @@ set(SWIG_JAVA_SOURCES
   ${PROJECT_SOURCE_DIR}/java/jscip/SWIGTYPE_p_SCIP_EXPR.java
   ${PROJECT_SOURCE_DIR}/java/jscip/SWIGTYPE_p_SCIP_HEUR.java
   ${PROJECT_SOURCE_DIR}/java/jscip/SWIGTYPE_p_SCIP_Messagehdlr.java
+  ${PROJECT_SOURCE_DIR}/java/jscip/ObjEventhdlr.java
+  ${PROJECT_SOURCE_DIR}/java/jscip/SWIGTYPE_p_SCIP_EVENT.java
+  ${PROJECT_SOURCE_DIR}/java/jscip/SWIGTYPE_p_p_SCIP_EVENTDATA.java
+  ${PROJECT_SOURCE_DIR}/java/jscip/SWIGTYPE_p_SCIP_EVENTDATA.java
+  ${PROJECT_SOURCE_DIR}/java/jscip/SWIGTYPE_p_SCIP_EVENTHDLR.java
+  ${PROJECT_SOURCE_DIR}/java/jscip/SWIGTYPE_p_SCIP_Eventhdlr.java
+  ${PROJECT_SOURCE_DIR}/java/jscip/SWIGTYPE_p_SCIP_EVENTTYPE.java
+  ${PROJECT_SOURCE_DIR}/java/jscip/SWIGTYPE_p_uint64_t.java
+  ${PROJECT_SOURCE_DIR}/java/jscip/SCIP_Event.java
+  ${PROJECT_SOURCE_DIR}/java/jscip/SCIP_EventVarAdded.java
+  ${PROJECT_SOURCE_DIR}/java/jscip/SCIP_EventVarDeleted.java
+  ${PROJECT_SOURCE_DIR}/java/jscip/SCIP_EventVarFixed.java
+  ${PROJECT_SOURCE_DIR}/java/jscip/SCIP_EventVarUnlocked.java
+  ${PROJECT_SOURCE_DIR}/java/jscip/SCIP_EventObjChg.java
+  ${PROJECT_SOURCE_DIR}/java/jscip/SCIP_EventBdChg.java
+  ${PROJECT_SOURCE_DIR}/java/jscip/SCIP_EventHole.java
+  ${PROJECT_SOURCE_DIR}/java/jscip/SCIP_EventImplAdd.java
+  ${PROJECT_SOURCE_DIR}/java/jscip/SCIP_EventTypeChg.java
+  ${PROJECT_SOURCE_DIR}/java/jscip/SCIP_EventRowAddedSepa.java
+  ${PROJECT_SOURCE_DIR}/java/jscip/SCIP_EventRowDeletedSepa.java
+  ${PROJECT_SOURCE_DIR}/java/jscip/SCIP_EventRowAddedLP.java
+  ${PROJECT_SOURCE_DIR}/java/jscip/SCIP_EventRowDeletedLP.java
+  ${PROJECT_SOURCE_DIR}/java/jscip/SCIP_EventRowCoefChanged.java
+  ${PROJECT_SOURCE_DIR}/java/jscip/SCIP_EventRowConstChanged.java
+  ${PROJECT_SOURCE_DIR}/java/jscip/SCIP_EventRowSideChanged.java
+  ${PROJECT_SOURCE_DIR}/java/jscip/SWIGTYPE_p_SCIP_COL.java
+  ${PROJECT_SOURCE_DIR}/java/jscip/SWIGTYPE_p_SCIP_ROW.java
+  ${PROJECT_SOURCE_DIR}/java/jscip/SWIGTYPE_p_SCIP_NODE.java
+  ${PROJECT_SOURCE_DIR}/java/jscip/SWIGTYPE_p_SCIP_SIDETYPE.java
+  ${PROJECT_SOURCE_DIR}/java/jscip/ObjConshdlr.java
+  ${PROJECT_SOURCE_DIR}/java/jscip/SWIGTYPE_p_p_SCIP_CONSDATA.java
+  ${PROJECT_SOURCE_DIR}/java/jscip/SWIGTYPE_p_SCIP_BDCHGIDX.java
+  ${PROJECT_SOURCE_DIR}/java/jscip/SWIGTYPE_p_SCIP_CONSHDLR.java
+  ${PROJECT_SOURCE_DIR}/java/jscip/SWIGTYPE_p_SCIP_DIVESET.java
+  ${PROJECT_SOURCE_DIR}/java/jscip/SWIGTYPE_p_SCIP_HASHMAP.java
+  ${PROJECT_SOURCE_DIR}/java/jscip/SCIP_LockType.java
+  ${PROJECT_SOURCE_DIR}/java/jscip/SWIGTYPE_p_SCIP_PRESOLTIMING.java
+  ${PROJECT_SOURCE_DIR}/java/jscip/SWIGTYPE_p_SCIP_PROPTIMING.java
+  ${PROJECT_SOURCE_DIR}/java/jscip/SWIGTYPE_p_SCIP_Result.java
+  ${PROJECT_SOURCE_DIR}/java/jscip/SWIGTYPE_p_SYM_GRAPH.java
   )
 
+# TODO: #60 add sources
 set(JAVA_SOURCES
   ${SWIG_JAVA_SOURCES}
   ${PROJECT_SOURCE_DIR}/java/jscip/Constraint.java
@@ -66,6 +108,12 @@ set(JAVA_SOURCES
   ${PROJECT_SOURCE_DIR}/java/jscip/Constraint.java
   ${PROJECT_SOURCE_DIR}/java/jscip/Solution.java
   ${PROJECT_SOURCE_DIR}/java/jscip/MessageHandler.java
+  ${PROJECT_SOURCE_DIR}/java/jscip/EventHandler.java
+  ${PROJECT_SOURCE_DIR}/java/jscip/EventType.java
+  ${PROJECT_SOURCE_DIR}/java/jscip/GetDiveBdChgsResult.java
+  ${PROJECT_SOURCE_DIR}/java/jscip/ConstraintHandler.java
+  ${PROJECT_SOURCE_DIR}/java/jscip/ScipPresolTiming.java
+  ${PROJECT_SOURCE_DIR}/java/jscip/ScipPropTiming.java
   )
 
 #

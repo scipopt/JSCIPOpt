@@ -8,6 +8,8 @@
    #include "scip/scip.h"
    #include "scip/scipdefplugins.h"
    #include "objscip/objmessagehdlr.h"
+   #include "objscip/objeventhdlr.h"
+   #include "objscip/objconshdlr.h"
 
    /* if libscip is a shared library, ensure we use function calls instead of
       macros, for better binary compatibility across SCIP versions */
@@ -542,6 +544,85 @@
 
       return messagehdlr;
    }
+
+   /* BEGIN assist functions for accessing SCIP_Event data union members */
+   SCIP_EventVarAdded getEventDataVarAdde(SCIP_Event event) {
+      return event.data.eventvaradded;
+   }
+
+   SCIP_EventVarDeleted getEventDataVarDeleted(SCIP_Event event) {
+      return event.data.eventvardeleted;
+   }
+
+   SCIP_EventVarFixed getEventDataVarFixed(SCIP_Event event) {
+      return event.data.eventvarfixed;
+   }
+
+   SCIP_EventVarUnlocked getEventDataVarUnlocked(SCIP_Event event) {
+      return event.data.eventvarunlocked;
+   }
+
+   SCIP_EventObjChg getEventDataObjChg(SCIP_Event event) {
+      return event.data.eventobjchg;
+   }
+
+   SCIP_EventBdChg getEventDataBdChg(SCIP_Event event) {
+      return event.data.eventbdchg;
+   }
+
+   SCIP_EventHole getEventDataHole(SCIP_Event event) {
+      return event.data.eventhole;
+   }
+
+   SCIP_EventImplAdd getEventDataImplAdd(SCIP_Event event) {
+      return event.data.eventimpladd;
+   }
+
+   SCIP_EventTypeChg getEventDataTypeChg(SCIP_Event event) {
+      return event.data.eventtypechg;
+   }
+
+   SCIP_EventRowAddedSepa getEventDataRowAddedSepa(SCIP_Event event) {
+      return event.data.eventrowaddedsepa;
+   }
+
+   SCIP_EventRowDeletedSepa getEventDataRowDeletedSepa(SCIP_Event event) {
+      return event.data.eventrowdeletedsepa;
+   }
+
+   SCIP_EventRowAddedLP getEventDataRowAddedLp(SCIP_Event event) {
+      return event.data.eventrowaddedlp;
+   }
+
+   SCIP_EventRowDeletedLP getEventDataRowDeletedLp(SCIP_Event event) {
+      return event.data.eventrowdeletedlp;
+   }
+
+   SCIP_EventRowCoefChanged getEventDataRowCoefChanged(SCIP_Event event) {
+      return event.data.eventrowcoefchanged;
+   }
+
+   SCIP_EventRowConstChanged getEventDataRowConstChanged(SCIP_Event event) {
+      return event.data.eventrowconstchanged;
+   }
+
+   SCIP_EventRowSideChanged getEventDataRowSideChanged(SCIP_Event event) {
+      return event.data.eventrowsidechanged;
+   }
+
+   SCIP_SOL* getEventDataSolution(SCIP_Event event) {
+      return event.data.sol;
+   }
+
+   SCIP_NODE* getEventDataNode(SCIP_Event event) {
+      return event.data.node;
+   }
+   /* END assist functions for accessing SCIP_Event data union members*/
+
+   /* assist function to set result from constraint handler */
+   void setResult(SCIP_Result* resultPtr, SCIP_Result scipResult) {
+      *resultPtr = scipResult;
+   }
 %}
 
 /* use SWIG internal arrays */
@@ -888,3 +969,522 @@ SCIP_CONS*     createConsBasicVarbound(SCIP* scip, const char* name, SCIP_VAR* v
 SCIP_CONS*     createConsBasicXor(SCIP* scip, const char* name, SCIP_Bool rhs, int nvars, SCIP_VAR** vars);
 void           releaseCons(SCIP* scip, SCIP_CONS* cons);
 SCIP_MESSAGEHDLR* createObjMessagehdlr(scip::ObjMessagehdlr* objmessagehdlr, SCIP_Bool deleteobject);
+
+// from struct_event.h
+struct SCIP_EventVarAdded
+{
+   SCIP_VAR* var;
+};
+
+struct SCIP_EventVarDeleted
+{
+   SCIP_VAR* var;
+};
+
+struct SCIP_EventVarFixed
+{
+   SCIP_VAR* var;
+};
+
+struct SCIP_EventVarUnlocked
+{
+   SCIP_VAR* var;
+};
+
+struct SCIP_EventObjChg
+{
+   SCIP_Real oldobj;
+   SCIP_Real newobj;
+   SCIP_VAR* var;
+};
+
+struct SCIP_EventBdChg
+{
+   SCIP_Real oldbound;
+   SCIP_Real newbound;
+   SCIP_VAR* var;
+};
+
+struct SCIP_EventHole
+{
+   SCIP_Real left;
+   SCIP_Real right;
+   SCIP_VAR* var;
+};
+
+struct SCIP_EventImplAdd
+{
+   SCIP_VAR* var;
+};
+
+struct SCIP_EventTypeChg
+{
+   SCIP_VARTYPE oldtype;
+   SCIP_VARTYPE newtype;
+   SCIP_VAR* var;
+};
+
+struct SCIP_EventRowAddedSepa
+{
+   SCIP_ROW* row;
+};
+
+struct SCIP_EventRowDeletedSepa
+{
+   SCIP_ROW* row;
+};
+
+struct SCIP_EventRowAddedLP
+{
+   SCIP_ROW* row;
+};
+
+struct SCIP_EventRowDeletedLP
+{
+   SCIP_ROW* row;
+};
+
+struct SCIP_EventRowCoefChanged
+{
+   SCIP_ROW* row;
+   SCIP_COL* col;
+   SCIP_Real oldval;
+   SCIP_Real newval;
+};
+
+struct SCIP_EventRowConstChanged
+{
+   SCIP_ROW* row;
+   SCIP_Real oldval;
+   SCIP_Real newval;
+};
+
+struct SCIP_EventRowSideChanged
+{
+   SCIP_ROW* row;
+   SCIP_SIDETYPE side;
+   SCIP_Real oldval;
+   SCIP_Real newval;
+};
+
+struct SCIP_Event
+{
+   union
+   {
+      SCIP_EventVarAdded eventvaradded;
+      SCIP_EventVarDeleted eventvardeleted;
+      SCIP_EventVarFixed eventvarfixed;
+      SCIP_EventVarUnlocked eventvarunlocked;
+      SCIP_EventObjChg eventobjchg;
+      SCIP_EventBdChg eventbdchg;
+      SCIP_EventHole eventhole;
+      SCIP_EventImplAdd eventimpladd;
+      SCIP_EventTypeChg eventtypechg;
+      SCIP_EventRowAddedSepa eventrowaddedsepa;
+      SCIP_EventRowDeletedSepa eventrowdeletedsepa;
+      SCIP_EventRowAddedLP eventrowaddedlp;
+      SCIP_EventRowDeletedLP eventrowdeletedlp;
+      SCIP_EventRowCoefChanged eventrowcoefchanged;
+      SCIP_EventRowConstChanged eventrowconstchanged;
+      SCIP_EventRowSideChanged eventrowsidechanged;
+      SCIP_NODE* node;
+      SCIP_SOL* sol;
+   } data;
+   SCIP_EVENTTYPE eventtype;
+};
+
+SCIP_EventVarAdded getEventDataVarAdde(SCIP_Event event);
+SCIP_EventVarDeleted getEventDataVarDeleted(SCIP_Event event);
+SCIP_EventVarFixed getEventDataVarFixed(SCIP_Event event);
+SCIP_EventVarUnlocked getEventDataVarUnlocked(SCIP_Event event);
+SCIP_EventObjChg getEventDataObjChg(SCIP_Event event);
+SCIP_EventBdChg getEventDataBdChg(SCIP_Event event);
+SCIP_EventHole getEventDataHole(SCIP_Event event);
+SCIP_EventImplAdd getEventDataImplAdd(SCIP_Event event);
+SCIP_EventTypeChg getEventDataTypeChg(SCIP_Event event);
+SCIP_EventRowAddedSepa getEventDataRowAddedSepa(SCIP_Event event);
+SCIP_EventRowDeletedSepa getEventDataRowDeletedSepa(SCIP_Event event);
+SCIP_EventRowAddedLP getEventDataRowAddedLp(SCIP_Event event);
+SCIP_EventRowDeletedLP getEventDataRowDeletedLp(SCIP_Event event);
+SCIP_EventRowCoefChanged getEventDataRowCoefChanged(SCIP_Event event);
+SCIP_EventRowConstChanged getEventDataRowConstChanged(SCIP_Event event);
+SCIP_EventRowSideChanged getEventDataRowSideChanged(SCIP_Event event);
+SCIP_SOL* getEventDataSolution(SCIP_Event event);
+SCIP_NODE* getEventDataNode(SCIP_Event event);
+
+// from objeventhdlr.h
+namespace scip {
+class ObjEventhdlr {
+public:
+    SCIP* scip_;
+    char* scip_name_;
+    char* scip_desc_;
+
+    ObjEventhdlr(SCIP* scip, const char* name, const char* desc);
+    virtual ~ObjEventhdlr();
+    virtual SCIP_RETCODE scip_free(SCIP* scip, SCIP_EVENTHDLR* eventhdlr);
+    virtual SCIP_RETCODE scip_init(SCIP* scip, SCIP_EVENTHDLR* eventhdlr);
+    virtual SCIP_RETCODE scip_exit(SCIP* scip, SCIP_EVENTHDLR* eventhdlr);
+    virtual SCIP_RETCODE scip_initsol(SCIP* scip, SCIP_EVENTHDLR* eventhdlr);
+    virtual SCIP_RETCODE scip_exitsol(SCIP* scip, SCIP_EVENTHDLR* eventhdlr);
+    virtual SCIP_RETCODE scip_delete(SCIP* scip, SCIP_EVENTHDLR* eventhdlr, SCIP_EVENTDATA** eventdata);
+    virtual SCIP_RETCODE scip_exec(SCIP* scip, SCIP_EVENTHDLR* eventhdlr, SCIP_Event* event, SCIP_EVENTDATA* eventdata);
+};
+} /* namespace scip */
+
+SCIP_RETCODE SCIPincludeObjEventhdlr(SCIP* scip, scip::ObjEventhdlr* objeventhdlr, SCIP_Bool deleteobject);
+scip::ObjEventhdlr* SCIPfindObjEventhdlr(SCIP* scip, const char* name);
+typedef long long int SCIP_EVENTTYPE;
+SCIP_RETCODE   SCIPcatchEvent(
+    SCIP* scip,
+    SCIP_EVENTTYPE eventtype,
+    SCIP_EVENTHDLR* eventhdlr,
+    SCIP_EVENTDATA* eventdata,
+    int* filterpos
+);
+
+// from type_result.h
+/** result codes for SCIP callback methods */
+enum SCIP_Result
+{
+   SCIP_DIDNOTRUN   =   1,
+   SCIP_DELAYED     =   2,
+   SCIP_DIDNOTFIND  =   3,
+   SCIP_FEASIBLE    =   4,
+   SCIP_INFEASIBLE  =   5,
+   SCIP_UNBOUNDED   =   6,
+   SCIP_CUTOFF      =   7,
+   SCIP_SEPARATED   =   8,
+   SCIP_NEWROUND    =   9,
+   SCIP_REDUCEDDOM  =  10,
+   SCIP_CONSADDED   =  11,
+   SCIP_CONSCHANGED =  12,
+   SCIP_BRANCHED    =  13,
+   SCIP_SOLVELP     =  14,
+   SCIP_FOUNDSOL    =  15,
+   SCIP_SUSPENDED   =  16,
+   SCIP_SUCCESS     =  17,
+   SCIP_DELAYNODE   =  18
+};
+
+// from type_var.h
+enum SCIP_LockType
+{
+   SCIP_LOCKTYPE_MODEL    = 0,
+   SCIP_LOCKTYPE_CONFLICT = 1
+};
+
+// from objconshdlr.h
+namespace scip {
+class ObjConshdlr {
+public:
+   /*lint --e{1540}*/
+
+   /** SCIP data structure */
+   SCIP* scip_;
+
+   /** name of the constraint handler */
+   char* scip_name_;
+
+   /** description of the constraint handler */
+   char* scip_desc_;
+
+   /** default separation priority of the constraint handler */
+   const int scip_sepapriority_;
+
+   /** default enforcing priority of the constraint handler */
+   const int scip_enfopriority_;
+
+   /** default checking priority of the constraint handler */
+   const int scip_checkpriority_;
+
+   /** default separation frequency of the constraint handler */
+   const int scip_sepafreq_;
+
+   /** default propagation frequency of the constraint handler */
+   const int scip_propfreq_;
+
+   /** default frequency of the constraint handler for eager evaluations in separation, propagation and enforcement */
+   const int scip_eagerfreq_;
+
+   /** maximal number of presolving rounds the constraint handler participates in (-1: no limit) */
+   const int scip_maxprerounds_;
+
+   /** should separation method be delayed, if other separators found cuts? */
+   const SCIP_Bool scip_delaysepa_;
+
+   /** should propagation method be delayed, if other propagators found reductions? */
+   const SCIP_Bool scip_delayprop_;
+
+   /** should the constraint handler be skipped, if no constraints are available? */
+   const SCIP_Bool scip_needscons_;
+
+   /** positions in the node solving loop where propagation method of constraint handler should be executed */
+   const unsigned int scip_proptiming_;
+
+   /**< timing mask of the constraint handler's presolving method */
+   const unsigned int scip_presoltiming_;
+
+   ObjConshdlr(
+      SCIP* scip,
+      const char* name,
+      const char* desc,
+      int sepapriority,
+      int enfopriority,
+      int checkpriority,
+      int sepafreq,
+      int propfreq,
+      int eagerfreq,
+      int scip_maxprerounds,
+      SCIP_Bool delaysepa,
+      SCIP_Bool delayprop,
+      SCIP_Bool needscons,
+      unsigned int proptiming,
+      unsigned int presoltiming
+   );
+
+   /** destructor */
+   virtual ~ObjConshdlr();
+
+   virtual SCIP_RETCODE scip_free(SCIP* scip, SCIP_CONSHDLR* conshdlr);
+   virtual SCIP_RETCODE scip_init(SCIP* scip, SCIP_CONSHDLR* conshdlr, SCIP_CONS** conss, int nconss);
+   virtual SCIP_RETCODE scip_exit(SCIP* scip, SCIP_CONSHDLR* conshdlr, SCIP_CONS** conss, int nconss);
+   virtual SCIP_RETCODE scip_initpre(SCIP* scip, SCIP_CONSHDLR* conshdlr, SCIP_CONS** conss, int nconss);
+   virtual SCIP_RETCODE scip_exitpre(SCIP* scip, SCIP_CONSHDLR* conshdlr, SCIP_CONS** conss, int nconss);
+   virtual SCIP_RETCODE scip_initsol(SCIP* scip, SCIP_CONSHDLR* conshdlr, SCIP_CONS** conss, int nconss);
+   virtual SCIP_RETCODE scip_exitsol(
+      SCIP* scip,
+      SCIP_CONSHDLR* conshdlr,
+      SCIP_CONS** conss,
+      int nconss,
+      unsigned int restart
+   );
+   virtual SCIP_RETCODE scip_delete(
+      SCIP* scip,
+      SCIP_CONSHDLR* conshdlr,
+      SCIP_CONS* cons,
+      SCIP_CONSDATA** consdata
+   );
+   virtual SCIP_RETCODE scip_trans(
+      SCIP* scip,
+      SCIP_CONSHDLR* conshdlr,
+      SCIP_CONS* sourcecons,
+      SCIP_CONS** targetcons
+   );
+   virtual SCIP_RETCODE scip_initlp(
+      SCIP* scip,
+      SCIP_CONSHDLR* conshdlr,
+      SCIP_CONS** conss,
+      int nconss,
+      unsigned int* infeasible
+   );
+   virtual SCIP_RETCODE scip_sepalp(
+      SCIP* scip,
+      SCIP_CONSHDLR* conshdlr,
+      SCIP_CONS** conss,
+      int nconss,
+      int nusefulconss,
+      SCIP_Result* result
+   );
+   virtual SCIP_RETCODE scip_sepasol(
+      SCIP* scip,
+      SCIP_CONSHDLR* conshdlr,
+      SCIP_CONS** conss,
+      int nconss,
+      int nusefulconss,
+      SCIP_SOL* sol,
+      SCIP_Result* result
+   );
+   virtual SCIP_RETCODE scip_enfolp(
+      SCIP* scip,
+      SCIP_CONSHDLR* conshdlr,
+      SCIP_CONS** conss,
+      int nconss,
+      int nusefulconss,
+      unsigned int solinfeasible,
+      SCIP_Result* result
+   );
+   virtual SCIP_RETCODE scip_enforelax(
+      SCIP* scip,
+      SCIP_SOL* sol,
+      SCIP_CONSHDLR* conshdlr,
+      SCIP_CONS** conss,
+      int nconss,
+      int nusefulconss,
+      unsigned int solinfeasible,
+      SCIP_Result* result
+   );
+   virtual SCIP_RETCODE scip_enfops(
+      SCIP* scip,
+      SCIP_CONSHDLR* conshdlr,
+      SCIP_CONS** conss,
+      int nconss,
+      int nusefulconss,
+      unsigned int solinfeasible,
+      unsigned int objinfeasible,
+      SCIP_Result* result
+   );
+   virtual SCIP_RETCODE scip_check(
+      SCIP* scip,
+      SCIP_CONSHDLR* conshdlr,
+      SCIP_CONS** conss,
+      int nconss,
+      SCIP_SOL* sol,
+      unsigned int checkintegrality,
+      unsigned int checklprows,
+      unsigned int printreason,
+      unsigned int completely,
+      SCIP_Result* result
+   );
+   virtual SCIP_RETCODE scip_prop(
+      SCIP* scip,
+      SCIP_CONSHDLR* conshdlr,
+      SCIP_CONS** conss,
+      int nconss,
+      int nusefulconss,
+      int nmarkedconss,
+      SCIP_PROPTIMING proptiming,
+      SCIP_Result* result
+   );
+   virtual SCIP_RETCODE scip_presol(
+      SCIP* scip,
+      SCIP_CONSHDLR* conshdlr,
+      SCIP_CONS** conss,
+      int nconss,
+      int nrounds,
+      SCIP_PRESOLTIMING presoltiming,
+      int nnewfixedvars,
+      int nnewaggrvars,
+      int nnewchgvartypes,
+      int nnewchgbds,
+      int nnewholes,
+      int nnewdelconss,
+      int nnewaddconss,
+      int nnewupgdconss,
+      int nnewchgcoefs,
+      int nnewchgsides,
+      int* nfixedvars,
+      int* naggrvars,
+      int* nchgvartypes,
+      int* nchgbds,
+      int* naddholes,
+      int* ndelconss,
+      int* naddconss,
+      int* nupgdconss,
+      int* nchgcoefs,
+      int* nchgsides,
+      SCIP_Result* result
+   );
+   virtual SCIP_RETCODE scip_resprop(
+      SCIP* scip,
+      SCIP_CONSHDLR* conshdlr,
+      SCIP_CONS* cons,
+      SCIP_VAR* infervar,
+      int inferinfo,
+      SCIP_BOUNDTYPE boundtype,
+      SCIP_BDCHGIDX* bdchgidx,
+      double relaxedbd,
+      SCIP_Result* result
+   );
+   virtual SCIP_RETCODE scip_lock(
+      SCIP* scip,
+      SCIP_CONSHDLR* conshdlr,
+      SCIP_CONS* cons,
+      SCIP_LockType locktype,
+      int nlockspos,
+      int nlocksneg
+   );
+   virtual SCIP_RETCODE scip_active(SCIP* scip, SCIP_CONSHDLR* conshdlr, SCIP_CONS* cons);
+   virtual SCIP_RETCODE scip_deactive(SCIP* scip, SCIP_CONSHDLR* conshdlr, SCIP_CONS* cons);
+   virtual SCIP_RETCODE scip_enable(SCIP* scip, SCIP_CONSHDLR* conshdlr, SCIP_CONS* cons);
+   virtual SCIP_RETCODE scip_disable(SCIP* scip, SCIP_CONSHDLR* conshdlr, SCIP_CONS* cons);
+   virtual SCIP_RETCODE scip_delvars(SCIP* scip, SCIP_CONSHDLR* conshdlr, SCIP_CONS** conss, int nconss);
+   virtual SCIP_RETCODE scip_print(SCIP* scip, SCIP_CONSHDLR* conshdlr, SCIP_CONS* cons, FILE* file);
+   virtual SCIP_RETCODE scip_copy(
+      SCIP* scip,
+      SCIP_CONS** cons,
+      const char* name,
+      SCIP* sourcescip,
+      SCIP_CONSHDLR* sourceconshdlr,
+      SCIP_CONS* sourcecons,
+      SCIP_HASHMAP* varmap,
+      SCIP_HASHMAP* consmap,
+      unsigned int initial,
+      unsigned int separate,
+      unsigned int enforce,
+      unsigned int check,
+      unsigned int propagate,
+      unsigned int local,
+      unsigned int modifiable,
+      unsigned int dynamic,
+      unsigned int removable,
+      unsigned int stickingatnode,
+      unsigned int global,
+      unsigned int* valid
+   );
+   virtual SCIP_RETCODE scip_parse(
+      SCIP* scip,
+      SCIP_CONSHDLR* conshdlr,
+      SCIP_CONS** cons,
+      const char* name,
+      const char* str,
+      unsigned int initial,
+      unsigned int separate,
+      unsigned int enforce,
+      unsigned int check,
+      unsigned int propagate,
+      unsigned int local,
+      unsigned int modifiable,
+      unsigned int dynamic,
+      unsigned int removable,
+      unsigned int stickingatnode,
+      unsigned int* success
+   );
+   virtual SCIP_RETCODE scip_getvars(
+      SCIP* scip,
+      SCIP_CONSHDLR* conshdlr,
+      SCIP_CONS* cons,
+      SCIP_VAR** vars,
+      int varssize,
+      unsigned int* success
+   );
+   virtual SCIP_RETCODE scip_getnvars(
+      SCIP* scip,
+      SCIP_CONSHDLR* conshdlr,
+      SCIP_CONS* cons,
+      int* nvars,
+      unsigned int* success
+   );
+   virtual SCIP_RETCODE scip_getdivebdchgs(
+      SCIP* scip,
+      SCIP_CONSHDLR* conshdlr,
+      SCIP_DIVESET* diveset,
+      SCIP_SOL* sol,
+      unsigned int* success,
+      unsigned int* infeasible
+   );
+   virtual SCIP_RETCODE scip_getpermsymgraph(
+      SCIP* scip,
+      SCIP_CONSHDLR* conshdlr,
+      SCIP_CONS* cons,
+      SYM_GRAPH* graph,
+      unsigned int* success
+   );
+   virtual SCIP_RETCODE scip_getsignedpermsymgraph(
+      SCIP* scip,
+      SCIP_CONSHDLR* conshdlr,
+      SCIP_CONS* cons,
+      SYM_GRAPH* graph,
+      unsigned int* success
+   );
+};
+
+} /* namespace scip */
+
+SCIP_RETCODE SCIPincludeObjConshdlr(SCIP* scip, scip::ObjConshdlr* objconshdlr, SCIP_Bool deleteobject);
+scip::ObjConshdlr* SCIPfindObjConshdlr(SCIP* scip, const char* name);
+scip::ObjConshdlr* SCIPgetObjConshdlr(SCIP* scip, SCIP_CONSHDLR* conshdlr);
+SCIP_RETCODE SCIPaddVarLocksType(SCIP* scip, SCIP_VAR* var, SCIP_LockType locktype, int nlocksdown, int nlocksup);
+SCIP_RETCODE SCIPaddConsLocksType(SCIP* scip, SCIP_CONS* cons, SCIP_LockType locktype, int nlockspos, int nlocksneg);
+
+void setResult(SCIP_Result* resultPtr, SCIP_Result scipResult);
