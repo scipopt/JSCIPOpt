@@ -98,6 +98,7 @@ set(SWIG_JAVA_SOURCES
   ${PROJECT_SOURCE_DIR}/java/jscip/SWIGTYPE_p_SYM_GRAPH.java
   )
 
+# TODO: #60 add sources
 set(JAVA_SOURCES
   ${SWIG_JAVA_SOURCES}
   ${PROJECT_SOURCE_DIR}/java/jscip/Constraint.java

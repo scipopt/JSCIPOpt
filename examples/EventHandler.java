@@ -1,9 +1,6 @@
 import jscip.*;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 
 /**
  * Illustrating the use of ObjEventHandler to implement a custom stopping criterion to get a decent solution in a short
@@ -248,6 +245,12 @@ public class EventHandler {
                         covarianceMatrix
                 )
         );
+        scip.addEventHandler(
+                new AllEventHandler(
+                        "All events",
+                        "Dummy handler for all events"
+                )
+        );
         scip.solve();
 
         // print result
@@ -369,9 +372,9 @@ public class EventHandler {
         }
 
         @Override
-        protected void scipExec(Scip scip, SCIP_Event event) {
-            assert (event.getEventtype() & EventType.BESTSOLFOUND) != 0 : "Unexpected event caught";
-            Solution solution = new Solution(SCIPJNI.getEventDataSolution(event));
+        protected void scipExec(Scip scip, Event event) {
+            assert event instanceof EventSolution : "Unexpected event caught";
+            Solution solution = ((EventSolution) event).getSolution();
             if (scip.isSolveInterrupted()) {
                 System.out.println("Already interrupted. Skipping execution.");
                 return;
@@ -425,7 +428,8 @@ public class EventHandler {
 
     /**
      * Implements general matrix multiplication a * b^T if a and b are given in row major order.
-     * @param a first matrix
+     *
+     * @param a           first matrix
      * @param bTransposed second matrix transposed
      * @return
      */
@@ -448,6 +452,28 @@ public class EventHandler {
             result += a[i][i];
         }
         return result;
+    }
+
+    private static class AllEventHandler extends jscip.EventHandler {
+
+        public AllEventHandler(String name, String description) {
+            super(
+                    name,
+                    description,
+                    EventType.NODEEVENT
+                            | EventType.VAREVENT
+                            | EventType.SOLEVENT
+                            | EventType.ROWEVENT
+                            | EventType.PRESOLVEROUND
+                            | EventType.LPEVENT
+                            | EventType.SYNC
+            );
+        }
+
+        @Override
+        protected void scipExec(Scip scip, Event event) {
+            System.out.println("Caught event type: " + event.getClass());
+        }
     }
 
 }
