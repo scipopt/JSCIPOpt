@@ -11,6 +11,27 @@
 #ifndef SWIG_SCIPJNI_WRAP_H_
 #define SWIG_SCIPJNI_WRAP_H_
 
+class SwigDirector_ObjEventhdlr : public scip::ObjEventhdlr, public Swig::Director {
+
+public:
+    void swig_connect_director(JNIEnv *jenv, jobject jself, jclass jcls, bool swig_mem_own, bool weak_global);
+    SwigDirector_ObjEventhdlr(JNIEnv *jenv,SCIP *scip,char const *name,char const *desc);
+    virtual ~SwigDirector_ObjEventhdlr();
+    virtual SCIP_RETCODE scip_free(SCIP *scip,SCIP_EVENTHDLR *eventhdlr);
+    virtual SCIP_RETCODE scip_init(SCIP *scip,SCIP_EVENTHDLR *eventhdlr);
+    virtual SCIP_RETCODE scip_exit(SCIP *scip,SCIP_EVENTHDLR *eventhdlr);
+    virtual SCIP_RETCODE scip_initsol(SCIP *scip,SCIP_EVENTHDLR *eventhdlr);
+    virtual SCIP_RETCODE scip_exitsol(SCIP *scip,SCIP_EVENTHDLR *eventhdlr);
+    virtual SCIP_RETCODE scip_delete(SCIP *scip,SCIP_EVENTHDLR *eventhdlr,SCIP_EVENTDATA **eventdata);
+    virtual SCIP_RETCODE scip_exec(SCIP *scip,SCIP_EVENTHDLR *eventhdlr,SCIP_EVENT *event,SCIP_EVENTDATA *eventdata);
+public:
+    bool swig_overrides(int n) {
+      return (n < 7 ? swig_override[n] : false);
+    }
+protected:
+    Swig::BoolArray<7> swig_override;
+};
+
 class SwigDirector_ObjMessagehdlr : public scip::ObjMessagehdlr, public Swig::Director {
 
 public:

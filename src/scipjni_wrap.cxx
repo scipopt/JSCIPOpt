@@ -752,6 +752,7 @@ namespace Swig {
 
    #include "scip/scip.h"
    #include "scip/scipdefplugins.h"
+   #include "objscip/objeventhdlr.h"
    #include "objscip/objmessagehdlr.h"
 
    /* if libscip is a shared library, ensure we use function calls instead of
@@ -814,6 +815,90 @@ namespace Swig {
    #ifdef SCIPconsGetName
    #undef SCIPconsGetName
    #endif
+
+   #ifdef SCIProwGetName
+   #undef SCIProwGetName
+   #endif
+
+   #ifdef SCIProwGetIndex
+   #undef SCIProwGetIndex
+   #endif
+
+   #ifdef SCIPcolGetVar
+   #undef SCIPcolGetVar
+   #endif
+
+   #ifdef SCIPcolGetIndex
+   #undef SCIPcolGetIndex
+   #endif
+
+   #ifdef SCIPeventGetType
+   #undef SCIPeventGetType
+   #endif
+
+   #ifdef SCIPeventGetOldobj
+   #undef SCIPeventGetOldobj
+   #endif
+
+   #ifdef SCIPeventGetNewobj
+   #undef SCIPeventGetNewobj
+   #endif
+
+   #ifdef SCIPeventGetOldbound
+   #undef SCIPeventGetOldbound
+   #endif
+
+   #ifdef SCIPeventGetNewbound
+   #undef SCIPeventGetNewbound
+   #endif
+
+   #ifdef SCIPeventGetOldtype
+   #undef SCIPeventGetOldtype
+   #endif
+
+   #ifdef SCIPeventGetNewtype
+   #undef SCIPeventGetNewtype
+   #endif
+
+   #ifdef SCIPeventGetNode
+   #undef SCIPeventGetNode
+   #endif
+
+   #ifdef SCIPeventGetSol
+   #undef SCIPeventGetSol
+   #endif
+
+   #ifdef SCIPeventGetRowCol
+   #undef SCIPeventGetRowCol
+   #endif
+
+   #ifdef SCIPeventGetRowOldCoefVal
+   #undef SCIPeventGetRowOldCoefVal
+   #endif
+
+   #ifdef SCIPeventGetRowNewCoefVal
+   #undef SCIPeventGetRowNewCoefVal
+   #endif
+
+   #ifdef SCIPeventGetRowOldConstVal
+   #undef SCIPeventGetRowOldConstVal
+   #endif
+
+   #ifdef SCIPeventGetRowNewConstVal
+   #undef SCIPeventGetRowNewConstVal
+   #endif
+
+   #ifdef SCIPeventGetRowSide
+   #undef SCIPeventGetRowSide
+   #endif
+
+   #ifdef SCIPeventGetRowOldSideVal
+   #undef SCIPeventGetRowOldSideVal
+   #endif
+
+   #ifdef SCIPeventGetRowNewSideVal
+   #undef SCIPeventGetRowNewSideVal
+   #endif
    #endif /* ndef HAVE_STATIC_LIBSCIP */
 
    /* assist function to create a SCIP */
@@ -845,6 +930,18 @@ namespace Swig {
    void releaseVar(SCIP* scip, SCIP_VAR* var)
    {
       SCIP_CALL_ABORT( SCIPreleaseVar(scip, &var) );
+   }
+
+   /* assist function to return a current LP row by index */
+   SCIP_ROW* getLPRow(SCIP* scip, int rowpos)
+   {
+      return SCIPgetLPRows(scip)[rowpos];
+   }
+
+   /* assist function to release an LP row */
+   void releaseRow(SCIP* scip, SCIP_ROW* row)
+   {
+      SCIP_CALL_ABORT( SCIPreleaseRow(scip, &row) );
    }
 
    /* assist function to create an abs expression */

@@ -21,10 +21,12 @@ include (UseJava)
 # list of all java sources
 #
 set(SWIG_JAVA_SOURCES
+  ${PROJECT_SOURCE_DIR}/java/jscip/ObjEventhdlr.java
   ${PROJECT_SOURCE_DIR}/java/jscip/ObjMessagehdlr.java
   ${PROJECT_SOURCE_DIR}/java/jscip/SCIPJNI.java
   ${PROJECT_SOURCE_DIR}/java/jscip/SCIPJNIJNI.java
   ${PROJECT_SOURCE_DIR}/java/jscip/SCIP_Retcode.java
+  ${PROJECT_SOURCE_DIR}/java/jscip/SCIP_SideType.java
   ${PROJECT_SOURCE_DIR}/java/jscip/SCIP_Vartype.java
   ${PROJECT_SOURCE_DIR}/java/jscip/SCIP_BoundType.java
   ${PROJECT_SOURCE_DIR}/java/jscip/SCIP_ParamSetting.java
@@ -50,17 +52,30 @@ set(SWIG_JAVA_SOURCES
   ${PROJECT_SOURCE_DIR}/java/jscip/SWIGTYPE_p_SCIP_CONS.java
   ${PROJECT_SOURCE_DIR}/java/jscip/SWIGTYPE_p_SCIP.java
   ${PROJECT_SOURCE_DIR}/java/jscip/SWIGTYPE_p_SCIP_BoundType.java
+  ${PROJECT_SOURCE_DIR}/java/jscip/SWIGTYPE_p_SCIP_Col.java
   ${PROJECT_SOURCE_DIR}/java/jscip/SWIGTYPE_p_SCIP_SOL.java
   ${PROJECT_SOURCE_DIR}/java/jscip/SWIGTYPE_p_SCIP_VAR.java
+  ${PROJECT_SOURCE_DIR}/java/jscip/SWIGTYPE_p_SCIP_Event.java
+  ${PROJECT_SOURCE_DIR}/java/jscip/SWIGTYPE_p_SCIP_EventData.java
+  ${PROJECT_SOURCE_DIR}/java/jscip/SWIGTYPE_p_SCIP_Eventhdlr.java
   ${PROJECT_SOURCE_DIR}/java/jscip/SWIGTYPE_p_SCIP_EXPR.java
   ${PROJECT_SOURCE_DIR}/java/jscip/SWIGTYPE_p_SCIP_HEUR.java
   ${PROJECT_SOURCE_DIR}/java/jscip/SWIGTYPE_p_SCIP_Messagehdlr.java
+  ${PROJECT_SOURCE_DIR}/java/jscip/SWIGTYPE_p_SCIP_Node.java
+  ${PROJECT_SOURCE_DIR}/java/jscip/SWIGTYPE_p_SCIP_Row.java
+  ${PROJECT_SOURCE_DIR}/java/jscip/SWIGTYPE_p_p_SCIP_EventData.java
   )
 
 set(JAVA_SOURCES
   ${SWIG_JAVA_SOURCES}
   ${PROJECT_SOURCE_DIR}/java/jscip/Constraint.java
+  ${PROJECT_SOURCE_DIR}/java/jscip/Column.java
+  ${PROJECT_SOURCE_DIR}/java/jscip/Event.java
+  ${PROJECT_SOURCE_DIR}/java/jscip/EventHandler.java
+  ${PROJECT_SOURCE_DIR}/java/jscip/EventMask.java
   ${PROJECT_SOURCE_DIR}/java/jscip/Scip.java
+  ${PROJECT_SOURCE_DIR}/java/jscip/Node.java
+  ${PROJECT_SOURCE_DIR}/java/jscip/Row.java
   ${PROJECT_SOURCE_DIR}/java/jscip/Variable.java
   ${PROJECT_SOURCE_DIR}/java/jscip/Expression.java
   ${PROJECT_SOURCE_DIR}/java/jscip/Constraint.java
